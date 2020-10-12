@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  db:
+    build: development/db
+    ports:
+      - "15432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - DB_APP_NAME=prbed-aviation
+      - DB_APP_USER=prbed-aviation
+      - DB_APP_PASS=prbed-aviation
+    volumes:
+      - "./data:/var/data/db"
