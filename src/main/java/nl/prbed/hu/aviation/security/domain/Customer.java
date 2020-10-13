@@ -1,13 +1,13 @@
 package nl.prbed.hu.aviation.security.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Customer extends User {
     private String nationality;
     private LocalDate birthdate;

@@ -1,10 +1,10 @@
 package nl.prbed.hu.aviation.security.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Employee extends User {
 
 }
