@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.security.domain;
+package nl.prbed.hu.aviation.domain;
 
 import lombok.*;
 
