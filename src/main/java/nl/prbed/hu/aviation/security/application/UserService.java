@@ -1,5 +1,7 @@
 package nl.prbed.hu.aviation.security.application;
 
+import nl.prbed.hu.aviation.security.data.Customer;
+import nl.prbed.hu.aviation.security.data.Employee;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 /**
  *  Implements UserDetailsService in order to make it usable
@@ -25,9 +28,28 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void register(String username, String password, String firstName, String lastName) {
-        String encodedPassword = this.passwordEncoder.encode(password);
-        User user = new User(username, encodedPassword, firstName, lastName);
+    public void registerCustomer(
+            String username,
+            String password,
+            String firstName,
+            String lastName,
+            String nationality,
+            LocalDate birthDate,
+            String email,
+            int phoneNumber
+    ) {
+        var encodedPassword = this.passwordEncoder.encode(password);
+        var customer = new Customer(username, encodedPassword, firstName, lastName, nationality, birthDate, email, phoneNumber);
+        this.save(customer);
+    }
+
+    public void registerEmployee(String username, String password, String firstName, String lastName) {
+        var encodedPassword = this.passwordEncoder.encode(password);
+        var employee = new Employee(username, encodedPassword, firstName, lastName);
+        this.save(employee);
+    }
+
+    private void save(User user) {
         this.userRepository.save(user);
     }
 

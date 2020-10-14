@@ -3,7 +3,7 @@ package nl.prbed.hu.aviation.security.presentation.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class RegistrationDto {
+public class EmployeeRegisterationDto {
     @NotBlank
     public String username;
 
