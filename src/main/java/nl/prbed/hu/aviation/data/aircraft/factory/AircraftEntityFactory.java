@@ -12,17 +12,22 @@ public class AircraftEntityFactory {
     private final TypeEntityFactory typeEntityFactory;
 
     public AircraftEntity createFromAircraft(Aircraft aircraft, TypeEntity type) {
-        return new AircraftEntity(
+        return create(
                 null,
                 aircraft.getCode(),
-                type);
+                type
+        );
     }
 
     public AircraftEntity create(String code, TypeEntity type) {
-        return new AircraftEntity(
+        return create(
                 null,
                 code,
                 type
         );
+    }
+
+    private AircraftEntity create(Long id, String code, TypeEntity type) {
+        return new AircraftEntity(id, code, type);
     }
 }

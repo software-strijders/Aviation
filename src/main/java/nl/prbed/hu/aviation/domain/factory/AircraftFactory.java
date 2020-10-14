@@ -11,15 +11,6 @@ import org.springframework.stereotype.Component;
 public class AircraftFactory {
     private TypeFactory typeFactory;
 
-    public Aircraft create(Type type) {
-        return new Aircraft(
-                "KLM74701",
-                type,
-                null,
-                null,
-                null);
-    }
-
     public Aircraft createFromEntity(AircraftEntity entity) {
         return new Aircraft(
                 entity.getCode(),
