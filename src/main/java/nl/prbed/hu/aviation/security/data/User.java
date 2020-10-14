@@ -1,5 +1,10 @@
 package nl.prbed.hu.aviation.security.data;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,13 +23,14 @@ import java.util.List;
  * It implements UserDetails in order to make it usable
  * as login/registration model for Spring.
  */
+@Getter
+@Setter
 @Entity
-@Table(name = "users")
-public class User implements UserDetails {
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue
+    protected Long id;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -40,25 +46,9 @@ public class User implements UserDetails {
         this.lastName = lastName;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
     @Override
     public String getPassword() {
         return password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     @Override
@@ -79,10 +69,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 }
