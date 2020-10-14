@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Aircraft {
-    private String id;
+    private String code;
     private Type type;
     private Flight current;
     private List<Flight> past;
