@@ -9,4 +9,8 @@ public class CreateTypeDto {
     public String manufacturer;
     public int fuelCapacity;
     public int fuelConsumption;
+    public int numSeatsFirst;
+    public int numSeatsBusiness;
+    public int numSeatsEconomy;
+
 }

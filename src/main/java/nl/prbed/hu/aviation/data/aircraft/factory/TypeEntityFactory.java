@@ -12,7 +12,10 @@ public class TypeEntityFactory {
                 type.getModelName(),
                 type.getManufacturer(),
                 type.getFuelCapacity(),
-                type.getFuelConsumption()
+                type.getFuelConsumption(),
+                type.getNumSeatsFirst(),
+                type.getNumSeatsBusiness(),
+                type.getNumSeatsEconomy()
         );
     }
 }

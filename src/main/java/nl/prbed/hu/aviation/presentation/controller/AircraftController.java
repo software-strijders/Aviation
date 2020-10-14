@@ -21,11 +21,21 @@ public class AircraftController {
 
     @PostMapping()
     public void create(@Validated @RequestBody CreateAircraftDto dto) {
-        aircraftService.create(dto);
+        aircraftService.create(
+                dto.code,
+                dto.modelName
+        );
     }
 
     @PostMapping("/type")
     public void create(@Validated @RequestBody CreateTypeDto dto) {
-        typeService.create(dto);
+        typeService.create(
+                dto.modelName,
+                dto.manufacturer,
+                dto.fuelCapacity,
+                dto.fuelConsumption,
+                dto.numSeatsFirst,
+                dto.numSeatsBusiness,
+                dto.numSeatsEconomy);
     }
 }

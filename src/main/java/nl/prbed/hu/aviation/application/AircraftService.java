@@ -20,11 +20,11 @@ public class AircraftService {
     private final AircraftFactory aircraftFactory;
     private final AircraftEntityFactory aircraftEntityFactory;
 
-    public void create(CreateAircraftDto dto) {
+    public void create(String code, String modelName) {
         aircraftRepository.save(
                 aircraftEntityFactory.create(
-                        dto.code,
-                        typeService.findTypeEntityByModelName(dto.modelName)
+                        code,
+                        typeService.findTypeEntityByModelName(modelName)
                 )
         );
     }

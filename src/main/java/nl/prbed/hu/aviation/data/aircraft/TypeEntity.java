@@ -21,4 +21,7 @@ public class TypeEntity {
     @Getter private String manufacturer;
     @Getter private int fuelCapacity;
     @Getter private int fuelConsumption;
+    @Getter private int numSeatsFirst;
+    @Getter private int numSeatsBusiness;
+    @Getter private int numSeatsEconomy;
 }

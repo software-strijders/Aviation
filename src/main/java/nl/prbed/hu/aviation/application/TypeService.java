@@ -17,13 +17,23 @@ public class TypeService {
     private final TypeEntityFactory typeEntityFactory;
     private final TypeFactory typeFactory;
 
-    public void create(CreateTypeDto dto) {
+    public void create(
+            String modelName,
+            String manufacturer,
+            int fuelCapacity,
+            int fuelConsumption,
+            int numSeatsFirst,
+            int numSeatsBusiness,
+            int numSeatsEconomy) {
         typeRepository.save(new TypeEntity(
                 null,
-                dto.modelName,
-                dto.manufacturer,
-                dto.fuelCapacity,
-                dto.fuelConsumption
+                modelName,
+                manufacturer,
+                fuelCapacity,
+                fuelConsumption,
+                numSeatsFirst,
+                numSeatsBusiness,
+                numSeatsEconomy
         ));
     }
 
