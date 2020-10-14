@@ -1,11 +1,10 @@
-package nl.prbed.hu.aviation.presentation.controller;
+package nl.prbed.hu.aviation.presentation.aircraft.controller;
 
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.application.AircraftService;
 import nl.prbed.hu.aviation.application.TypeService;
-import nl.prbed.hu.aviation.domain.factory.TypeFactory;
-import nl.prbed.hu.aviation.presentation.dto.CreateAircraftDto;
-import nl.prbed.hu.aviation.presentation.dto.CreateTypeDto;
+import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateAircraftDto;
+import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateTypeDto;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,7 @@ public class AircraftController {
     private final AircraftService aircraftService;
     private final TypeService typeService;
 
-    @PostMapping()
+    @PostMapping("/create")
     public void create(@Validated @RequestBody CreateAircraftDto dto) {
         aircraftService.create(
                 dto.code,
