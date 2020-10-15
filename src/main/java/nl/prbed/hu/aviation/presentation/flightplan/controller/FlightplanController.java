@@ -18,13 +18,13 @@ public class FlightplanController {
     @PostMapping("/create")
     public ResponseFlightplanDto create(@RequestBody CreateFlightplanDto dto) {
         var flightplan = flightplanService.create(dto.duration, dto.code);
-        return new ResponseFlightplanDto(flightplan.getCode(), flightplan.getDuration());
+        return new ResponseFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 
     //TODO: fix destination and arrival
     @GetMapping("/get")
     public ResponseFlightplanDto get(@RequestBody GetFlightplanDto dto) {
         var flightplan = flightplanService.get(dto.code);
-        return new ResponseFlightplanDto(flightplan.getCode(), flightplan.getDuration());
+        return new ResponseFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 }
