@@ -1,7 +1,8 @@
 package nl.prbed.hu.aviation.security.presentation.controller;
 
 import nl.prbed.hu.aviation.security.application.UserService;
-import nl.prbed.hu.aviation.security.presentation.dto.RegistrationDto;
+import nl.prbed.hu.aviation.security.presentation.dto.CustomerRegistrationDto;
+import nl.prbed.hu.aviation.security.presentation.dto.EmployeeRegisterationDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +18,23 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public void register(@Validated @RequestBody RegistrationDto registrationDto) {
-        this.userService.register(
+    @PostMapping("/customer")
+    public void registerCustomer(@Validated @RequestBody CustomerRegistrationDto registrationDto) {
+        this.userService.registerCustomer(
+                registrationDto.username,
+                registrationDto.password,
+                registrationDto.firstName,
+                registrationDto.lastName,
+                registrationDto.nationality,
+                registrationDto.birthDate,
+                registrationDto.email,
+                registrationDto.phoneNumber
+        );
+    }
+
+    @PostMapping("/employee")
+    public void register(@Validated @RequestBody EmployeeRegisterationDto registrationDto) {
+        this.userService.registerEmployee(
                 registrationDto.username,
                 registrationDto.password,
                 registrationDto.firstName,

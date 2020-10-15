@@ -6,6 +6,7 @@ import nl.prbed.hu.aviation.application.TypeService;
 import nl.prbed.hu.aviation.domain.factory.TypeFactory;
 import nl.prbed.hu.aviation.presentation.dto.CreateAircraftDto;
 import nl.prbed.hu.aviation.presentation.dto.CreateTypeDto;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/aircraft")
+@Secured("ROLE_EMPLOYEE")
 @AllArgsConstructor
 public class AircraftController {
     private final AircraftService aircraftService;
