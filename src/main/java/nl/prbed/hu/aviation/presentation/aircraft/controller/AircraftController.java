@@ -5,12 +5,10 @@ import nl.prbed.hu.aviation.application.AircraftService;
 import nl.prbed.hu.aviation.application.TypeService;
 import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateAircraftDto;
 import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateTypeDto;
+import nl.prbed.hu.aviation.presentation.aircraft.dto.DeleteAircraftDto;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/aircraft")
@@ -20,12 +18,17 @@ public class AircraftController {
     private final AircraftService aircraftService;
     private final TypeService typeService;
 
-    @PostMapping("/create")
+    @PostMapping
     public void create(@Validated @RequestBody CreateAircraftDto dto) {
         aircraftService.create(
                 dto.code,
                 dto.modelName
         );
+    }
+
+    @DeleteMapping("/{code}")
+    public void delete(@Validated @PathVariable String code) {
+        aircraftService.delete(code);
     }
 
     @PostMapping("/type")

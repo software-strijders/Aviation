@@ -15,7 +15,7 @@ public class AircraftEntity {
     @Column(unique = true)
     @Getter private String code;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(referencedColumnName = "id")
     @Getter private TypeEntity type;
 }

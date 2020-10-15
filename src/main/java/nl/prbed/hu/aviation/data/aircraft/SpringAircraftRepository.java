@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface SpringAircraftRepository extends JpaRepository<AircraftEntity, Long> {
     Optional<List<AircraftEntity>> findAircraftEntitiesByType(TypeEntity type);
+    Optional<AircraftEntity> findAircraftEntityByCode(String code);
+
+    void deleteAircraftEntitiesByType(TypeEntity type);
 }
