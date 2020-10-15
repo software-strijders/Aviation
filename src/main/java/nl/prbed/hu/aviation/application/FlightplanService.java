@@ -8,10 +8,12 @@ import nl.prbed.hu.aviation.domain.Flightplan;
 import nl.prbed.hu.aviation.domain.factory.FlightplanFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class FlightplanService {
-    private final SpringFlightplanRepository fightplanRepository;
+    private final SpringFlightplanRepository flightplanRepository;
     private final FlightPlanEntityFactory flightPlanEntityFactory;
     private final FlightplanFactory flightplanFactory;
 
@@ -21,6 +23,15 @@ public class FlightplanService {
         AirportEntity destination = null;
         var entity = flightPlanEntityFactory.create(code, duration, arrival, destination);
 
-        return this.flightplanFactory.from(this.fightplanRepository.save(entity));
+        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+    }
+
+    public Flightplan findByCode(String code) {
+        return this.flightplanFactory.from(this.flightplanRepository.findByCode(code).get());
+    }
+
+    public List<Flightplan> findAll() {
+        var entities = this.flightplanRepository.findAll();
+        return this.flightplanFactory.from(entities);
     }
 }

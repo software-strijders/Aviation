@@ -3,12 +3,9 @@ package nl.prbed.hu.aviation.presentation.flightplan.controller;
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.application.FlightplanService;
 import nl.prbed.hu.aviation.presentation.flightplan.dto.CreateFlightplanDto;
-import nl.prbed.hu.aviation.presentation.flightplan.dto.ResponseFlightplanDto;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import nl.prbed.hu.aviation.presentation.flightplan.dto.ResponseFindAllFlightplanDto;
+import nl.prbed.hu.aviation.presentation.flightplan.dto.ResponseFindByCodeFlightplanDto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/flightplan")
@@ -16,9 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class FlightplanController {
     private final FlightplanService flightplanService;
 
-    @PostMapping("/create")
-    public ResponseFlightplanDto create(@RequestBody CreateFlightplanDto dto) {
+    //TODO: fix destination and arrival
+    @PostMapping
+    public ResponseFindByCodeFlightplanDto create(@RequestBody CreateFlightplanDto dto) {
         var flightplan = flightplanService.create(dto.duration, dto.code);
-        return new ResponseFlightplanDto(flightplan.getCode(), flightplan.getDuration());
+        return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
+    }
+
+    @GetMapping
+    public ResponseFindAllFlightplanDto findAll() {
+        var flightplans = flightplanService.findAll();
+        return new ResponseFindAllFlightplanDto(flightplans);
+    }
+
+    //TODO: fix destination and arrival
+    @GetMapping("/{code}")
+    public ResponseFindByCodeFlightplanDto findByCode(@PathVariable String code) {
+        var flightplan = flightplanService.findByCode(code);
+        return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 }
