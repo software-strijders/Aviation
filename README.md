@@ -27,7 +27,7 @@ This project is an assignment for the course `prbed` in the field of study Softw
 For documentation, we've implemented a domain diagram that will be updated over the course of this project. We've also added the most important dependencies we will use in this project.
 
 ### Domain model
-![Domain diagram](https://github.com/huict/prbed-2021-v2b-1/blob/feature/134-setup-readme/diagram/Aviation%20domain%20diagram.png)
+![Domain diagram](diagram/Aviation%20domain%20diagram.png)
 
 ### Dependencies
 For this project, we use the following dependencies (the most important ones):
