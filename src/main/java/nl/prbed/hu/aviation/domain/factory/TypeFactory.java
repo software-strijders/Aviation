@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class TypeFactory {
-    public Type createFromEntity(TypeEntity entity) {
+    public Type from(TypeEntity entity) {
         return new Type(
                 entity.getModelName(),
                 entity.getManufacturer(),
@@ -17,7 +17,6 @@ public class TypeFactory {
                 entity.getNumSeatsFirst(),
                 entity.getNumSeatsBusiness(),
                 entity.getNumSeatsEconomy()
-
         );
     }
 }
