@@ -39,19 +39,22 @@ public class UserService implements UserDetailsService {
             String email,
             int phoneNumber
     ) {
+        this.checkIfUserExists(username);
         var encodedPassword = this.passwordEncoder.encode(password);
         var customer = new Customer(username, encodedPassword, firstName, lastName, nationality, birthDate, email, phoneNumber);
         this.save(customer);
     }
 
     public void registerEmployee(String username, String password, String firstName, String lastName) {
-        var user = this.userRepository.findByUsername(username);
-        if (user.isPresent())
-            throw new UserAlreadyExistsException(username);
-
+        this.checkIfUserExists(username);
         var encodedPassword = this.passwordEncoder.encode(password);
         var employee = new Employee(username, encodedPassword, firstName, lastName);
         this.save(employee);
+    }
+
+    private void checkIfUserExists(String username) {
+        this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserAlreadyExistsException(username));
     }
 
     private void save(User user) {
