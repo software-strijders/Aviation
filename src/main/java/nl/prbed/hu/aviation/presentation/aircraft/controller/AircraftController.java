@@ -17,6 +17,17 @@ public class AircraftController {
     private final AircraftService aircraftService;
     private final TypeService typeService;
 
+    @DeleteMapping("/{code}")
+    public void delete(@Validated @PathVariable String code) {
+        this.aircraftService.delete(code);
+    }
+
+    @DeleteMapping("/type/{model}")
+    public void deleteType(@Validated @PathVariable String model) {
+        this.aircraftService.deleteByType(model);
+        this.typeService.delete(model);
+    }
+
     @GetMapping
     public AircraftOverviewResponseDto findAll() {
         return new AircraftOverviewResponseDto(this.aircraftService.findAll());
@@ -27,19 +38,7 @@ public class AircraftController {
         return new AircraftOverviewByTypeResponseDto(modelName, this.aircraftService.findAllByType(modelName));
     }
 
-    @DeleteMapping("/{code}")
-    public void delete(@Validated @PathVariable String code) {
-        this.aircraftService.delete(code);
-    }
-
-    @Transactional
-    @DeleteMapping("/type/{model}")
-    public void deleteType(@Validated @PathVariable String model) {
-        this.aircraftService.deleteByType(model);
-        this.typeService.delete(model);
-    }
-
-    @PostMapping("/create")
+    @PostMapping
     public CreateAircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
         var aircraft = this.aircraftService.create(dto.code, dto.modelName);
         return new CreateAircraftResponseDto(aircraft.getCode(), aircraft.getType());
