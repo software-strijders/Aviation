@@ -6,7 +6,7 @@ import nl.prbed.hu.aviation.domain.Airport;
 
 @Getter
 @RequiredArgsConstructor
-public class ResponseFlightplanDto {
+public class ResponseFindByCodeFlightplanDto {
     private final String code;
     private final Long duration;
     private final Airport arrival;
