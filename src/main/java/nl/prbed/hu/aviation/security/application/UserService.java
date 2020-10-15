@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.security.application;
 
+import nl.prbed.hu.aviation.security.application.exception.UserAlreadyExistsException;
 import nl.prbed.hu.aviation.security.data.Customer;
 import nl.prbed.hu.aviation.security.data.Employee;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
@@ -44,6 +45,10 @@ public class UserService implements UserDetailsService {
     }
 
     public void registerEmployee(String username, String password, String firstName, String lastName) {
+        var user = this.userRepository.findByUsername(username);
+        if (user.isPresent())
+            throw new UserAlreadyExistsException(username);
+
         var encodedPassword = this.passwordEncoder.encode(password);
         var employee = new Employee(username, encodedPassword, firstName, lastName);
         this.save(employee);
