@@ -26,11 +26,6 @@ public class AirportService {
         );
     }
 
-    public void createCity(String name, String country, String code) {
-        cityService.create(name, country, null);
-        cityService.addAirportToCity(findByCode(code), name);
-    }
-
     public AirportEntity findByCode(String code) {
         return airportRepository.findByCode(code).orElseThrow(RuntimeException::new);
     }

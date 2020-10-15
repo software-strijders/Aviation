@@ -30,10 +30,9 @@ public class AirportController {
 
     @PostMapping("/city")
     public void create(@Validated @RequestBody CreateCityDto dto) {
-        airportService.createCity(
+        cityService.create(
                 dto.name,
-                dto.country,
-                dto.airportCode
+                dto.country
         );
     }
 }
