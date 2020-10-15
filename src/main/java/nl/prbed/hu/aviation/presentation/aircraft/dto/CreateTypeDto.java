@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.presentation.dto;
+package nl.prbed.hu.aviation.presentation.aircraft.dto;
 
 public class CreateTypeDto {
     public String modelName;
