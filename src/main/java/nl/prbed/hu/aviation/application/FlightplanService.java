@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.data.flightplan.SpringFlightplanRepository;
 import nl.prbed.hu.aviation.data.flightplan.factory.FlightPlanEntityFactory;
+import nl.prbed.hu.aviation.domain.Flightplan;
+import nl.prbed.hu.aviation.domain.factory.FlightplanFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,18 +13,14 @@ import org.springframework.stereotype.Service;
 public class FlightplanService {
     private final SpringFlightplanRepository fightplanRepository;
     private final FlightPlanEntityFactory flightPlanEntityFactory;
+    private final FlightplanFactory flightplanFactory;
 
-    //TODO: fix AirportEntity
-    public void create(Long duration, String code) {
+    //TODO: fix destination and arrival
+    public Flightplan create(Long duration, String code) {
         AirportEntity arrival = null;
         AirportEntity destination = null;
-        fightplanRepository.save(
-                flightPlanEntityFactory.create(
-                        code,
-                        duration,
-                        arrival,
-                        destination
-                )
-        );
+        var entity = flightPlanEntityFactory.create(code, duration, arrival, destination);
+
+        return this.flightplanFactory.from(this.fightplanRepository.save(entity));
     }
 }
