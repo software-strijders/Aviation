@@ -1,28 +1,31 @@
 package nl.prbed.hu.aviation.application;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.application.exception.ModelNotFoundException;
 import nl.prbed.hu.aviation.data.aircraft.SpringTypeRepository;
 import nl.prbed.hu.aviation.data.aircraft.TypeEntity;
 import nl.prbed.hu.aviation.data.aircraft.factory.TypeEntityFactory;
+import nl.prbed.hu.aviation.domain.Type;
 import nl.prbed.hu.aviation.domain.factory.TypeFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TypeService {
     private final SpringTypeRepository typeRepository;
     private final TypeEntityFactory typeEntityFactory;
     private final TypeFactory typeFactory;
 
-    public void create(
+    public Type create(
             String modelName,
             String manufacturer,
             int fuelCapacity,
             int fuelConsumption,
             int numSeatsFirst,
             int numSeatsBusiness,
-            int numSeatsEconomy) {
-        typeRepository.save(new TypeEntity(
+            int numSeatsEconomy
+    ) {
+        var entity = typeRepository.save(new TypeEntity(
                 null,
                 modelName,
                 manufacturer,
@@ -32,10 +35,12 @@ public class TypeService {
                 numSeatsBusiness,
                 numSeatsEconomy
         ));
+        return this.typeFactory.from(entity);
     }
 
     public TypeEntity findTypeEntityByModelName(String modelName) {
-        return typeRepository.findByModelName(modelName).orElseThrow(RuntimeException::new);
+        return this.typeRepository.findByModelName(modelName)
+                .orElseThrow(() -> new ModelNotFoundException(modelName));
     }
 
     public void delete(String model) {
