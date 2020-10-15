@@ -7,6 +7,7 @@ import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateAircraftDto;
 import nl.prbed.hu.aviation.presentation.aircraft.dto.CreateTypeDto;
 import nl.prbed.hu.aviation.presentation.aircraft.dto.DeleteAircraftDto;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class AircraftController {
     }
 
     @PostMapping("/type")
-    public void create(@Validated @RequestBody CreateTypeDto dto) {
+    public void createType(@Validated @RequestBody CreateTypeDto dto) {
         typeService.create(
                 dto.modelName,
                 dto.manufacturer,
@@ -41,5 +42,12 @@ public class AircraftController {
                 dto.numSeatsFirst,
                 dto.numSeatsBusiness,
                 dto.numSeatsEconomy);
+    }
+
+    @Transactional
+    @DeleteMapping("/type/{model}")
+    public void deleteType(@Validated @PathVariable String model) {
+        aircraftService.deleteByType(model);
+        typeService.delete(model);
     }
 }
