@@ -37,4 +37,9 @@ public class TypeService {
     public TypeEntity findTypeEntityByModelName(String modelName) {
         return typeRepository.findByModelName(modelName).orElseThrow(RuntimeException::new);
     }
+
+    public void delete(String model) {
+        var type = typeRepository.findByModelName(model).orElseThrow();
+        typeRepository.delete(type);
+    }
 }
