@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class FlightplanService {
-    private final SpringFlightplanRepository fightplanRepository;
+    private final SpringFlightplanRepository flightplanRepository;
     private final FlightPlanEntityFactory flightPlanEntityFactory;
     private final FlightplanFactory flightplanFactory;
 
@@ -21,6 +21,10 @@ public class FlightplanService {
         AirportEntity destination = null;
         var entity = flightPlanEntityFactory.create(code, duration, arrival, destination);
 
-        return this.flightplanFactory.from(this.fightplanRepository.save(entity));
+        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+    }
+
+    public Flightplan get(String code) {
+        return this.flightplanFactory.from(this.flightplanRepository.findByCode(code).get());
     }
 }
