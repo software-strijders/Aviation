@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nl.prbed.hu.aviation.domain.City;
 
 import javax.persistence.*;
 
@@ -22,7 +23,6 @@ public class AirportEntity {
     private Float longitude;
     private Float latitude;
 
-    //TODO fix CityEntity
-//    @OneToOne
-//    private CityEntity city;
+    @ManyToOne
+    private CityEntity city;
 }
