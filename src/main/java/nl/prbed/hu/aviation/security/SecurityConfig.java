@@ -32,7 +32,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public final static String LOGIN_PATH = "/login";
-    public final static String REGISTER_PATH = "/register";
+    public final static String REGISTER_PATH = "/register/**";
 
     @Value("${security.jwt.secret}")
     private String jwtSecret;
