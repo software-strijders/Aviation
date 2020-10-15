@@ -8,7 +8,7 @@ import lombok.Data;
 public class Airport {
     private float latitude;
     private float longitude;
-    private float code;
+    private String code;
     private City city;
     private Fleet fleet;
 }
