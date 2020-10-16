@@ -9,5 +9,5 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 public class ResponseFindAllFlightplanDto {
-    private final List<Flightplan> Flightplans;
+    private final List<Flightplan> flightplans;
 }
