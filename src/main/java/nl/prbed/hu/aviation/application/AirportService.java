@@ -1,6 +1,7 @@
 package nl.prbed.hu.aviation.application;
 
 import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.application.exception.AirportAlreadyExistsException;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.data.airport.factory.AirportEntityFactory;
@@ -16,6 +17,8 @@ public class AirportService {
     private final AirportFactory airportFactory;
 
     public void create(String code, float longitude, float latitude, String cityName) {
+        if (airportRepository.findByCode(code).isPresent())
+            throw new AirportAlreadyExistsException(code);
         airportRepository.save(
                 airportEntityFactory.create(
                         code,

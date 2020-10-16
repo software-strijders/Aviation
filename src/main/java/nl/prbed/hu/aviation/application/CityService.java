@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.application;
 
 import lombok.AllArgsConstructor;
-import nl.prbed.hu.aviation.data.airport.AirportEntity;
+import nl.prbed.hu.aviation.application.exception.CityAlreadyExistsException;
 import nl.prbed.hu.aviation.data.airport.CityEntity;
 import nl.prbed.hu.aviation.data.airport.SpringCityRepository;
 import nl.prbed.hu.aviation.data.airport.factory.CityEntityFactory;
@@ -19,18 +19,14 @@ public class CityService {
             String name,
             String country
     ) {
+        if (cityRepository.findByName(name).isPresent())
+            throw new CityAlreadyExistsException(name);
         cityRepository.save(new CityEntity(
                 null,
                 name,
                 country,
                 new ArrayList<>()
         ));
-    }
-
-    public void addAirportToCity(AirportEntity airportEntity, String cityName) {
-        var city = cityRepository.findByName(cityName).orElseThrow(RuntimeException::new);
-        city.addAirport(airportEntity);
-        cityRepository.save(city);
     }
 
     public CityEntity findCityByName(String cityName) {
