@@ -22,7 +22,7 @@ public class FlightplanService {
     public Flightplan create(Long duration, String code) {
         AirportEntity arrival = null;
         AirportEntity destination = null;
-        var entity = flightplanEntityFactory.create(code, duration, arrival, destination);
+        var entity = this.flightplanEntityFactory.create(code, duration, arrival, destination);
 
         return this.flightplanFactory.from(this.flightplanRepository.save(entity));
     }
@@ -37,7 +37,8 @@ public class FlightplanService {
     }
 
     public void deleteByCode(String code) {
-        flightplanRepository.delete(this.flightplanRepository.findByCode(code)
-                .orElseThrow(() -> new FlightplanNotFoundException(code)));
+        this.flightplanRepository.findByCode(code)
+                .orElseThrow(() -> new FlightplanNotFoundException(code));
+        this.flightplanRepository.deleteFlightplanEntityByCode(code);
     }
 }
