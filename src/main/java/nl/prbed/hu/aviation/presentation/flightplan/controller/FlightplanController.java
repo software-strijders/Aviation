@@ -32,4 +32,9 @@ public class FlightplanController {
         var flightplan = flightplanService.findByCode(code);
         return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
+
+    @DeleteMapping("/{code}")
+    public void deleteByCode(@PathVariable String code) {
+        flightplanService.deleteByCode(code);
+    }
 }
