@@ -16,20 +16,25 @@ public class FlightplanController {
     //TODO: fix destination and arrival
     @PostMapping
     public ResponseFindByCodeFlightplanDto create(@RequestBody CreateFlightplanDto dto) {
-        var flightplan = flightplanService.create(dto.duration, dto.code);
+        var flightplan = this.flightplanService.create(dto.duration, dto.code);
         return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 
     @GetMapping
     public ResponseFindAllFlightplanDto findAll() {
-        var flightplans = flightplanService.findAll();
+        var flightplans = this.flightplanService.findAll();
         return new ResponseFindAllFlightplanDto(flightplans);
     }
 
     //TODO: fix destination and arrival
     @GetMapping("/{code}")
     public ResponseFindByCodeFlightplanDto findByCode(@PathVariable String code) {
-        var flightplan = flightplanService.findByCode(code);
+        var flightplan = this.flightplanService.findByCode(code);
         return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
+    }
+
+    @DeleteMapping("/{code}")
+    public void deleteByCode(@PathVariable String code) {
+        this.flightplanService.deleteByCode(code);
     }
 }
