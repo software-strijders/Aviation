@@ -1,6 +1,7 @@
 package nl.prbed.hu.aviation.application;
 
 import lombok.AllArgsConstructor;
+import nl.prbed.hu.aviation.application.exception.FlightplanNotFoundException;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.data.flightplan.SpringFlightplanRepository;
 import nl.prbed.hu.aviation.data.flightplan.factory.FlightPlanEntityFactory;
@@ -36,6 +37,7 @@ public class FlightplanService {
     }
 
     public void deleteByCode(String code) {
-        flightplanRepository.delete(this.flightplanRepository.findByCode(code).get());
+        flightplanRepository.delete(this.flightplanRepository.findByCode(code)
+                .orElseThrow(() -> new FlightplanNotFoundException(code)));
     }
 }
