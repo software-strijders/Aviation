@@ -53,8 +53,9 @@ public class UserService implements UserDetailsService {
     }
 
     private void checkIfUserExists(String username) {
-        this.userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserAlreadyExistsException(username));
+        var user = this.userRepository.findByUsername(username);
+        if (user.isPresent())
+            throw new UserAlreadyExistsException(username);
     }
 
     private void save(User user) {
