@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.application.AirportService;
 import nl.prbed.hu.aviation.application.CityService;
 import nl.prbed.hu.aviation.presentation.airport.dto.*;
+import nl.prbed.hu.aviation.presentation.dto.UpdateAirportDto;
+import nl.prbed.hu.aviation.presentation.dto.UpdateAirportResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +38,12 @@ public class AirportController {
     public CityResponseDto create(@Validated @RequestBody CreateCityDto dto) {
         var city = this.cityService.create(dto.name, dto.country);
         return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
+    }
+
+    @PutMapping("/{code}")
+    public UpdateAirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAirportDto dto) {
+        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName);
+        return new UpdateAirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
     }
 
     @GetMapping

@@ -51,4 +51,14 @@ public class AirportService {
                 .orElseThrow(() -> new AirportNotFoundException(name));
         return this.airportFactory.from(entities);
     }
+
+    public Airport update(String oldCode, String newCode, float longitude, float latitude, String city) {
+        var entitiy = this.airportRepository.findByCode(oldCode)
+                .orElseThrow(() -> new AirportNotFoundException(oldCode));
+        entitiy.setCode(newCode);
+        entitiy.setLongitude(longitude);
+        entitiy.setLatitude(latitude);
+        entitiy.setCity(cityService.findCityByName(city));
+        return airportFactory.createFromEntity(airportRepository.save(entitiy));
+    }
 }
