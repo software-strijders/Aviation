@@ -3,6 +3,7 @@ package nl.prbed.hu.aviation.application;
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.application.exception.FlightplanNotFoundException;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
+import nl.prbed.hu.aviation.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.data.flightplan.SpringFlightplanRepository;
 import nl.prbed.hu.aviation.data.flightplan.factory.FlightPlanEntityFactory;
 import nl.prbed.hu.aviation.domain.Flightplan;
@@ -23,6 +24,20 @@ public class FlightplanService {
         AirportEntity arrival = null;
         AirportEntity destination = null;
         var entity = this.flightplanEntityFactory.create(code, duration, arrival, destination);
+
+        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+    }
+
+    //TODO: fix destination and arrival
+    public Flightplan update(String code, Long duration) {
+        AirportEntity arrival = null;
+        AirportEntity destination = null;
+        var entity = flightplanRepository.findByCode(code)
+                .orElseThrow(() -> new FlightplanNotFoundException(code));
+
+        entity.setDuration(duration);
+        entity.setArrival(arrival);
+        entity.setDestination(destination);
 
         return this.flightplanFactory.from(this.flightplanRepository.save(entity));
     }
