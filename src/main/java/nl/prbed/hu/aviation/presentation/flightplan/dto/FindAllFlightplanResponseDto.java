@@ -8,6 +8,6 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class ResponseFindAllFlightplanDto {
-    private final List<Flightplan> flightplans;
+public class FindAllFlightplanResponseDto {
+    private final List<Flightplan> Flightplans;
 }

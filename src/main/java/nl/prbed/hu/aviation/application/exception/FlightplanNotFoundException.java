@@ -5,5 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
 public class FlightplanNotFoundException extends RuntimeException{
-    public FlightplanNotFoundException(String code) { super(String.format("Could not find Flightplan by code '%s'", code)); }
+    public FlightplanNotFoundException(String code) {
+        super(String.format("Could not find Flightplan with code '%s'", code)); }
 }

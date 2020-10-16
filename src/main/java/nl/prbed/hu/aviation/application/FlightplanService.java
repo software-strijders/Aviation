@@ -32,14 +32,14 @@ public class FlightplanService {
     public Flightplan update(String code, Long duration) {
         AirportEntity arrival = null;
         AirportEntity destination = null;
-        var entity = flightplanRepository.findByCode(code)
+        var flightplanEntity = flightplanRepository.findByCode(code)
                 .orElseThrow(() -> new FlightplanNotFoundException(code));
 
-        entity.setDuration(duration);
-        entity.setArrival(arrival);
-        entity.setDestination(destination);
+        flightplanEntity.setDuration(duration);
+        flightplanEntity.setArrival(arrival);
+        flightplanEntity.setDestination(destination);
 
-        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+        return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }
 
     public Flightplan findByCode(String code) {

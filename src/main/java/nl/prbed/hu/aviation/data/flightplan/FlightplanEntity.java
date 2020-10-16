@@ -12,8 +12,7 @@ import javax.persistence.*;
 @Table(name = "flightplan")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 public class FlightplanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
