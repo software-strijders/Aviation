@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class ResponseAirportDto {
+public class AirportResponseDto {
     private final String code;
     private final float latitude;
     private final float longitude;

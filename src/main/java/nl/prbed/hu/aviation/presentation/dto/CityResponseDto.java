@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class ResponseCityDto {
+public class CityResponseDto {
     private final String name;
     private final String country;
     private final List<Airport> airports;
