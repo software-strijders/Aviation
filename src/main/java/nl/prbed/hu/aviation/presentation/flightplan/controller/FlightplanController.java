@@ -2,9 +2,9 @@ package nl.prbed.hu.aviation.presentation.flightplan.controller;
 
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.application.FlightplanService;
-import nl.prbed.hu.aviation.presentation.flightplan.dto.CreateFlightplanDto;
-import nl.prbed.hu.aviation.presentation.flightplan.dto.ResponseFindAllFlightplanDto;
-import nl.prbed.hu.aviation.presentation.flightplan.dto.ResponseFindByCodeFlightplanDto;
+import nl.prbed.hu.aviation.presentation.flightplan.dto.FlightplanDto;
+import nl.prbed.hu.aviation.presentation.flightplan.dto.FindAllFlightplanResponseDto;
+import nl.prbed.hu.aviation.presentation.flightplan.dto.FlightplanFindByCodeResponseDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,22 +15,29 @@ public class FlightplanController {
 
     //TODO: fix destination and arrival
     @PostMapping
-    public ResponseFindByCodeFlightplanDto create(@RequestBody CreateFlightplanDto dto) {
+    public FlightplanFindByCodeResponseDto create(@RequestBody FlightplanDto dto) {
         var flightplan = this.flightplanService.create(dto.duration, dto.code);
-        return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
+        return new FlightplanFindByCodeResponseDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 
     @GetMapping
-    public ResponseFindAllFlightplanDto findAll() {
+    public FindAllFlightplanResponseDto findAll() {
         var flightplans = this.flightplanService.findAll();
-        return new ResponseFindAllFlightplanDto(flightplans);
+        return new FindAllFlightplanResponseDto(flightplans);
     }
 
     //TODO: fix destination and arrival
     @GetMapping("/{code}")
-    public ResponseFindByCodeFlightplanDto findByCode(@PathVariable String code) {
+    public FlightplanFindByCodeResponseDto findByCode(@PathVariable String code) {
         var flightplan = this.flightplanService.findByCode(code);
-        return new ResponseFindByCodeFlightplanDto(flightplan.getCode(), flightplan.getDuration(), null, null);
+        return new FlightplanFindByCodeResponseDto(flightplan.getCode(), flightplan.getDuration(), null, null);
+    }
+
+    //TODO: fix destination and arrival
+    @PutMapping
+    public FlightplanFindByCodeResponseDto update(@RequestBody FlightplanDto dto) {
+        var flightplan = this.flightplanService.update(dto.code, dto.duration);
+        return new FlightplanFindByCodeResponseDto(flightplan.getCode(), flightplan.getDuration(), null, null);
     }
 
     @DeleteMapping("/{code}")

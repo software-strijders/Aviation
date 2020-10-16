@@ -3,6 +3,7 @@ package nl.prbed.hu.aviation.data.flightplan;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "flightplan")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Getter @Setter
 public class FlightplanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

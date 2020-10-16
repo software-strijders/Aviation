@@ -1,6 +1,6 @@
 package nl.prbed.hu.aviation.presentation.flightplan.dto;
 
-public class CreateFlightplanDto {
+public class FlightplanDto {
     public String code;
     public Long duration;
 }
