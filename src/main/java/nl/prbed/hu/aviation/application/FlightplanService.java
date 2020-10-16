@@ -14,14 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 public class FlightplanService {
     private final SpringFlightplanRepository flightplanRepository;
-    private final FlightPlanEntityFactory flightPlanEntityFactory;
+    private final FlightPlanEntityFactory flightplanEntityFactory;
     private final FlightplanFactory flightplanFactory;
 
     //TODO: fix destination and arrival
     public Flightplan create(Long duration, String code) {
         AirportEntity arrival = null;
         AirportEntity destination = null;
-        var entity = flightPlanEntityFactory.create(code, duration, arrival, destination);
+        var entity = flightplanEntityFactory.create(code, duration, arrival, destination);
 
         return this.flightplanFactory.from(this.flightplanRepository.save(entity));
     }
@@ -33,5 +33,9 @@ public class FlightplanService {
     public List<Flightplan> findAll() {
         var entities = this.flightplanRepository.findAll();
         return this.flightplanFactory.from(entities);
+    }
+
+    public void deleteByCode(String code) {
+        flightplanRepository.delete(this.flightplanRepository.findByCode(code).get());
     }
 }
