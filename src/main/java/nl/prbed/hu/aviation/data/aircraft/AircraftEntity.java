@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "aircraft")
+@Setter
 @NoArgsConstructor
 public class AircraftEntity {
     @Id

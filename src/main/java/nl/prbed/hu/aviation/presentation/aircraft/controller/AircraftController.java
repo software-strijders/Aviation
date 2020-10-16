@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.application.AircraftService;
 import nl.prbed.hu.aviation.application.TypeService;
 import nl.prbed.hu.aviation.presentation.aircraft.dto.*;
+import org.springframework.lang.NonNull;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.*;
 public class AircraftController {
     private final AircraftService aircraftService;
     private final TypeService typeService;
+
+    @PutMapping({"/{code}"})
+    public UpdateAircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
+        var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
+        return new UpdateAircraftResponseDto(aircraft.getCode(), aircraft.getType());
+    }
 
     @DeleteMapping("/{code}")
     public void delete(@Validated @PathVariable String code) {

@@ -26,6 +26,15 @@ public class AircraftService {
         return this.aircraftFactory.from(this.aircraftRepository.save(entity));
     }
 
+    //Fleet isn't implemented yet, that's the reason it isn't given as a parameter.
+    public Aircraft update(String oldCode, String newCode, String modelName) {
+        var entity = this.aircraftRepository.findAircraftEntityByCode(oldCode)
+                .orElseThrow(() -> new AircraftNotFoundException(oldCode));
+        entity.setCode(newCode);
+        entity.setType(typeService.findTypeEntityByModelName(modelName));
+        return aircraftFactory.from(aircraftRepository.save(entity));
+    }
+
     public void delete(String code) {
         var aircraft = aircraftRepository.findAircraftEntityByCode(code)
                 .orElseThrow(() -> new AircraftNotFoundException(code));
