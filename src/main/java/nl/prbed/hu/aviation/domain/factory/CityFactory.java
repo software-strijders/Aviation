@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CityFactory {
+    AirportFactory airportFactory;
     public City createFromEntity(CityEntity entity) {
         return new City(
                 entity.getName(),
                 entity.getCountry(),
-                null // check if 1on1 bidirectional is necessary
+                airportFactory.from(entity.getAirportEntities())
         );
     }
 }

@@ -52,13 +52,13 @@ public class AirportService {
         return this.airportFactory.from(entities);
     }
 
-    public Airport update(String oldCode, String newCode, float longitude, float latitude, String city) {
-        var entitiy = this.airportRepository.findByCode(oldCode)
+    public Airport update(String oldCode, String newCode, double longitude, double latitude, String city) {
+        var entity = this.airportRepository.findByCode(oldCode)
                 .orElseThrow(() -> new AirportNotFoundException(oldCode));
-        entitiy.setCode(newCode);
-        entitiy.setLongitude(longitude);
-        entitiy.setLatitude(latitude);
-        entitiy.setCity(cityService.findCityByName(city));
-        return airportFactory.createFromEntity(airportRepository.save(entitiy));
+        entity.setCode(newCode);
+        entity.setLongitude(longitude);
+        entity.setLatitude(latitude);
+        entity.setCity(cityService.findCityEntityByName(city));
+        return airportFactory.from(airportRepository.save(entity));
     }
 }

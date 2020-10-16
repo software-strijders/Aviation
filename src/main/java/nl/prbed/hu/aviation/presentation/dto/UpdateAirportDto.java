@@ -8,10 +8,10 @@ public class UpdateAirportDto {
     public String code;
 
     @NotNull
-    public float latitude;
+    public double latitude;
 
     @NotNull
-    public float longitude;
+    public double longitude;
 
     @NotBlank
     public String cityName;
