@@ -13,9 +13,14 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class FlightplanFactory {
-    //TODO: fix destination and arrival
+    private final AirportFactory airportFactory;
+
     public Flightplan from(FlightplanEntity flightplanEntity) {
-        return new Flightplan(flightplanEntity.getCode(), flightplanEntity.getDuration(), null, null);
+        return new Flightplan(
+                flightplanEntity.getCode(),
+                flightplanEntity.getDuration(),
+                airportFactory.createFromEntity(flightplanEntity.getArrival()),
+                airportFactory.createFromEntity(flightplanEntity.getDestination()));
     }
 
     public List<Flightplan> from(List<FlightplanEntity> entities) {
