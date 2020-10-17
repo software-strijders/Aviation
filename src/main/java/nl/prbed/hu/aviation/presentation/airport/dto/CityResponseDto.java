@@ -1,8 +1,7 @@
-package nl.prbed.hu.aviation.presentation.dto;
+package nl.prbed.hu.aviation.presentation.airport.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.domain.Airport;
 
 import java.util.List;
