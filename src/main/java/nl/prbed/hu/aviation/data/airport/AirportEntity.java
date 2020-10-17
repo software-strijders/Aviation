@@ -1,18 +1,13 @@
 package nl.prbed.hu.aviation.data.airport;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nl.prbed.hu.aviation.domain.City;
+import nl.prbed.hu.aviation.domain.Airport;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Getter @Setter
 @Table(name = "airport")
 public class AirportEntity {
     @Id
@@ -22,6 +17,14 @@ public class AirportEntity {
     private String code;
     private Float longitude;
     private Float latitude;
+
+    public AirportEntity() {}
+    public AirportEntity(String code, Float longitude, Float latitude, CityEntity city) {
+        this.code = code;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.city = city;
+    }
 
     @ManyToOne
     private CityEntity city;
