@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation;
+package nl.prbed.hu.aviation.swagger;
 
 import org.assertj.core.util.Lists;
 import org.slf4j.LoggerFactory;
@@ -32,6 +32,17 @@ public class SwaggerConfiguration {
     public static final String AUTHORIZATION_HEADER = "Authorization";
     public static final String DEFAULT_INCLUDE_PATTERN = "/.*";
 
+    @Bean
+    public Docket swaggerSpringfoxDocket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("nl.prbed.hu.aviation"))
+                .build()
+                .apiInfo(apiInfo())
+                .securityContexts(Lists.newArrayList(securityContext()))
+                .securitySchemes(Lists.newArrayList(apiKey()));
+    }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Aviation Documentation")
@@ -39,19 +50,6 @@ public class SwaggerConfiguration {
                 .version("1.0")
                 .build();
     }
-
-    @Bean
-    public Docket swaggerSpringfoxDocket() {
-        Docket docket = new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .securityContexts(Lists.newArrayList(securityContext()))
-                .securitySchemes(Lists.newArrayList(apiKey()));
-
-        docket = docket.select()
-                .build();
-        return docket;
-    }
-
 
     private ApiKey apiKey() {
         return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
