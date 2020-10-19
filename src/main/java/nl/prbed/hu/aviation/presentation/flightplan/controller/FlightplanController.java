@@ -20,7 +20,8 @@ public class FlightplanController {
                 dto.code,
                 dto.duration,
                 dto.arrival,
-                dto.destination));
+                dto.destination
+        ));
     }
 
     @GetMapping
@@ -40,7 +41,8 @@ public class FlightplanController {
                 dto.code,
                 dto.duration,
                 dto.arrival,
-                dto.destination));
+                dto.destination
+        ));
     }
 
     @DeleteMapping("/{code}")
@@ -53,6 +55,7 @@ public class FlightplanController {
                 flightplan.getCode(),
                 flightplan.getDuration(),
                 flightplan.getArrival(),
-                flightplan.getDestination());
+                flightplan.getDestination()
+        );
     }
 }

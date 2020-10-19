@@ -30,7 +30,8 @@ public class FlightplanService {
                 code,
                 duration,
                 this.airportService.findByCode(arrival),
-                this.airportService.findByCode(destination));
+                this.airportService.findByCode(destination)
+        );
 
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }

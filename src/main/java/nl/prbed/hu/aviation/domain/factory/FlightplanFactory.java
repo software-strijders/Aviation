@@ -20,7 +20,8 @@ public class FlightplanFactory {
                 flightplanEntity.getCode(),
                 flightplanEntity.getDuration(),
                 airportFactory.createFromEntity(flightplanEntity.getArrival()),
-                airportFactory.createFromEntity(flightplanEntity.getDestination()));
+                airportFactory.createFromEntity(flightplanEntity.getDestination())
+        );
     }
 
     public List<Flightplan> from(List<FlightplanEntity> entities) {
