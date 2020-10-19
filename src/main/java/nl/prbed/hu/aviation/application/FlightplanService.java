@@ -1,8 +1,10 @@
 package nl.prbed.hu.aviation.application;
 
 import lombok.AllArgsConstructor;
+import nl.prbed.hu.aviation.application.exception.AirportNotFoundException;
 import nl.prbed.hu.aviation.application.exception.AirportsNotUniqueException;
 import nl.prbed.hu.aviation.application.exception.FlightplanNotFoundException;
+import nl.prbed.hu.aviation.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.data.flightplan.SpringFlightplanRepository;
 import nl.prbed.hu.aviation.domain.Flightplan;
@@ -16,7 +18,7 @@ import java.util.List;
 public class FlightplanService {
     private final SpringFlightplanRepository flightplanRepository;
     private final FlightplanFactory flightplanFactory;
-    private final AirportService airportService;
+    private final SpringAirportRepository airportRepository;
 
     public Flightplan create(String code, Long duration, String arrival, String destination) {
         if (arrival.equals(destination)) {
@@ -27,8 +29,10 @@ public class FlightplanService {
                 null,
                 code,
                 duration,
-                this.airportService.findByCode(arrival),
-                this.airportService.findByCode(destination)
+                this.airportRepository.findByCode(arrival)
+                        .orElseThrow(() -> new AirportNotFoundException(arrival)),
+                this.airportRepository.findByCode(destination)
+                        .orElseThrow(() -> new AirportNotFoundException(destination))
         );
 
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
@@ -43,8 +47,10 @@ public class FlightplanService {
                 .orElseThrow(() -> new FlightplanNotFoundException(code));
 
         flightplanEntity.setDuration(duration);
-        flightplanEntity.setArrival(this.airportService.findByCode(arrival));
-        flightplanEntity.setDestination(this.airportService.findByCode(destination));
+        flightplanEntity.setArrival(this.airportRepository.findByCode(arrival)
+                .orElseThrow(() -> new AirportNotFoundException(arrival)));
+        flightplanEntity.setDestination(this.airportRepository.findByCode(destination)
+                .orElseThrow(() -> new AirportNotFoundException(destination)));
 
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }
