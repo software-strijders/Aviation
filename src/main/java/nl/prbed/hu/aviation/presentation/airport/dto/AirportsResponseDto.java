@@ -8,6 +8,6 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class FindAllAirportResponseDto {
+public class AirportsResponseDto {
     private final List<Airport> airports;
 }

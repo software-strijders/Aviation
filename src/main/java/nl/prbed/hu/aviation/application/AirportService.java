@@ -47,7 +47,7 @@ public class AirportService {
     }
 
     public List<Airport> findByCity(String name) {
-        var entities = this.airportRepository.findAirportEntitiesByCity_Name(name)
+        var entities = this.airportRepository.findAirportEntitiesByCityName(name)
                 .orElseThrow(() -> new AirportNotFoundException(name));
         return this.airportFactory.from(entities);
     }

@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface SpringAirportRepository extends JpaRepository<AirportEntity, Long> {
     Optional<AirportEntity> findByCode(String code);
-    Optional<List<AirportEntity>> findAirportEntitiesByCity_Name(String name);
+    Optional<List<AirportEntity>> findAirportEntitiesByCityName(String name);
 }
