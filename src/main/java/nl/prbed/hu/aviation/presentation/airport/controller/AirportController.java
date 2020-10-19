@@ -3,10 +3,7 @@ package nl.prbed.hu.aviation.presentation.airport.controller;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.application.AirportService;
 import nl.prbed.hu.aviation.application.CityService;
-import nl.prbed.hu.aviation.presentation.airport.dto.AirportResponseDto;
-import nl.prbed.hu.aviation.presentation.airport.dto.CityResponseDto;
-import nl.prbed.hu.aviation.presentation.airport.dto.CreateAirportDto;
-import nl.prbed.hu.aviation.presentation.airport.dto.CreateCityDto;
+import nl.prbed.hu.aviation.presentation.airport.dto.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +36,22 @@ public class AirportController {
     public CityResponseDto create(@Validated @RequestBody CreateCityDto dto) {
         var city = this.cityService.create(dto.name, dto.country);
         return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
+    }
+
+    @GetMapping
+    public AirportsResponseDto findAll() {
+        return new AirportsResponseDto(this.airportService.findAll());
+    }
+
+    @GetMapping("/{code}")
+    public AirportResponseDto findByCode(@PathVariable String code) {
+        var airport = this.airportService.findByCode(code);
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(),
+                airport.getCity().getName());
+    }
+
+    @GetMapping("/city/{cityName}")
+    public AirportsResponseDto findByCity(@PathVariable String cityName) {
+        return new AirportsResponseDto(this.airportService.findByCity(cityName));
     }
 }
