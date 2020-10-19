@@ -5,9 +5,12 @@ import nl.prbed.hu.aviation.application.exception.AirportAlreadyExistsException;
 import nl.prbed.hu.aviation.application.exception.AirportNotFoundException;
 import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.data.airport.SpringAirportRepository;
+import nl.prbed.hu.aviation.data.airport.SpringCityRepository;
 import nl.prbed.hu.aviation.domain.Airport;
 import nl.prbed.hu.aviation.domain.factory.AirportFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +39,16 @@ public class AirportService {
     private AirportEntity findEntityByCode(String code) {
         return airportRepository.findByCode(code)
                 .orElseThrow(() -> new AirportNotFoundException(code));
+    }
+
+    public List<Airport> findAll() {
+        var entities = this.airportRepository.findAll();
+        return this.airportFactory.from(entities);
+    }
+
+    public List<Airport> findByCity(String name) {
+        var entities = this.airportRepository.findAirportEntitiesByCity_Name(name)
+                .orElseThrow(() -> new AirportNotFoundException(name));
+        return this.airportFactory.from(entities);
     }
 }
