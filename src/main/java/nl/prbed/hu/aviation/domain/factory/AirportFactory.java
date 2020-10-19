@@ -5,6 +5,9 @@ import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.domain.Airport;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class AirportFactory {
@@ -18,5 +21,9 @@ public class AirportFactory {
                 cityFactory.createFromEntity(entity.getCity()),
                 null
         );
+    }
+
+    public List<Airport> from(List<AirportEntity> entities) {
+        return entities.stream().map(this::from).collect(Collectors.toList());
     }
 }
