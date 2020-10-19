@@ -1,12 +1,10 @@
 package nl.prbed.hu.aviation.application;
 
 import lombok.AllArgsConstructor;
-import nl.prbed.hu.aviation.application.exception.AirportsEqualException;
+import nl.prbed.hu.aviation.application.exception.AirportsNotUniqueException;
 import nl.prbed.hu.aviation.application.exception.FlightplanNotFoundException;
-import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.data.flightplan.SpringFlightplanRepository;
-import nl.prbed.hu.aviation.data.flightplan.factory.FlightPlanEntityFactory;
 import nl.prbed.hu.aviation.domain.Flightplan;
 import nl.prbed.hu.aviation.domain.factory.FlightplanFactory;
 import org.springframework.stereotype.Service;
@@ -17,16 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 public class FlightplanService {
     private final SpringFlightplanRepository flightplanRepository;
-    private final FlightPlanEntityFactory flightplanEntityFactory;
     private final FlightplanFactory flightplanFactory;
     private final AirportService airportService;
 
     public Flightplan create(String code, Long duration, String arrival, String destination) {
         if (arrival.equals(destination)) {
-            throw new AirportsEqualException();
+            throw new AirportsNotUniqueException();
         }
 
-        var flightplanEntity = this.flightplanEntityFactory.create(
+        var flightplanEntity = new FlightplanEntity(
+                null,
                 code,
                 duration,
                 this.airportService.findByCode(arrival),
@@ -38,7 +36,7 @@ public class FlightplanService {
 
     public Flightplan update(String code, Long duration, String arrival, String destination) {
         if (arrival.equals(destination)) {
-            throw new AirportsEqualException();
+            throw new AirportsNotUniqueException();
         }
 
         var flightplanEntity = flightplanRepository.findByCode(code)
