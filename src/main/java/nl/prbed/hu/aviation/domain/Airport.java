@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Airport {
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private String code;
     private City city;
     private Fleet fleet;
