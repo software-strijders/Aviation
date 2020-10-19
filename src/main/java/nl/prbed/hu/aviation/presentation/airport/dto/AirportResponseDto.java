@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.presentation.dto;
+package nl.prbed.hu.aviation.presentation.airport.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
