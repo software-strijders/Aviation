@@ -4,8 +4,8 @@ import nl.prbed.hu.aviation.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.domain.Airport;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class AirportFactory {
@@ -21,10 +21,6 @@ public class AirportFactory {
     }
 
     public List<Airport> from(List<AirportEntity> entities) {
-        var airports = new ArrayList<Airport>();
-        for (var entity : entities) {
-            airports.add(from(entity));
-        }
-        return airports;
+        return entities.stream().map(this::from).collect(Collectors.toList());
     }
 }
