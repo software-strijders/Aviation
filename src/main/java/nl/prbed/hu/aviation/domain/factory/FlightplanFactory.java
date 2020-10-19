@@ -19,8 +19,8 @@ public class FlightplanFactory {
         return new Flightplan(
                 flightplanEntity.getCode(),
                 flightplanEntity.getDuration(),
-                airportFactory.createFromEntity(flightplanEntity.getArrival()),
-                airportFactory.createFromEntity(flightplanEntity.getDestination())
+                airportFactory.from(flightplanEntity.getArrival()),
+                airportFactory.from(flightplanEntity.getDestination())
         );
     }
 
