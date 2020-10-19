@@ -16,7 +16,7 @@ public class AirportService {
     private final CityService cityService;
     private final AirportFactory airportFactory;
 
-    public Airport create(String code, float longitude, float latitude, String cityName) {
+    public Airport create(String code, double longitude, double latitude, String cityName) {
         if (airportRepository.findByCode(code).isPresent())
             throw new AirportAlreadyExistsException(code);
 

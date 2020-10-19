@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AirportResponseDto {
     private final String code;
-    private final float latitude;
-    private final float longitude;
+    private final double latitude;
+    private final double longitude;
     private final String cityName;
 }

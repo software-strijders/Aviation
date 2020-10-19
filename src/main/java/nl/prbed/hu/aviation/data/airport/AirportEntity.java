@@ -2,7 +2,6 @@ package nl.prbed.hu.aviation.data.airport;
 
 import lombok.Getter;
 import lombok.Setter;
-import nl.prbed.hu.aviation.domain.Airport;
 
 import javax.persistence.*;
 
@@ -15,11 +14,11 @@ public class AirportEntity {
     private Long id;
     @Column
     private String code;
-    private Float longitude;
-    private Float latitude;
+    private double latitude;
+    private double longitude;
 
     public AirportEntity() {}
-    public AirportEntity(String code, Float longitude, Float latitude, CityEntity city) {
+    public AirportEntity(String code, double latitude, double longitude, CityEntity city) {
         this.code = code;
         this.longitude = longitude;
         this.latitude = latitude;
