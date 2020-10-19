@@ -55,14 +55,14 @@ public class AirportService {
     }
 
     public Airport update(String oldCode, String newCode, double longitude, double latitude, String city) {
-        var entity = this.airportRepository.findByCode(oldCode)
+        var airportEntity = this.airportRepository.findByCode(oldCode)
                 .orElseThrow(() -> new AirportNotFoundException(oldCode));
-        entity.setCode(newCode);
-        entity.setLongitude(longitude);
-        entity.setLatitude(latitude);
+        airportEntity.setCode(newCode);
+        airportEntity.setLongitude(longitude);
+        airportEntity.setLatitude(latitude);
         var cityEntity = cityService.findCityEntityByName(city);
-        entity.setCity(cityEntity);
-        var airport = airportFactory.from(airportRepository.save(entity));
+        airportEntity.setCity(cityEntity);
+        var airport = airportFactory.from(airportRepository.save(airportEntity));
         airport.setCity(cityFactory.createFromEntity(cityEntity));
         return airport;
     }
