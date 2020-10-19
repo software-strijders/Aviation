@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.CONFLICT)
-public class AirportsEqualException extends RuntimeException {
-    public AirportsEqualException() {
+public class AirportsNotUniqueException extends RuntimeException {
+    public AirportsNotUniqueException() {
         super("Arrival and destination cannot be the same");
     }
 }
