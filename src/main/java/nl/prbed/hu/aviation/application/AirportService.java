@@ -8,6 +8,7 @@ import nl.prbed.hu.aviation.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.data.airport.SpringCityRepository;
 import nl.prbed.hu.aviation.domain.Airport;
 import nl.prbed.hu.aviation.domain.factory.AirportFactory;
+import nl.prbed.hu.aviation.domain.factory.CityFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AirportService {
     private final SpringAirportRepository airportRepository;
-    private final CityService cityService;
     private final AirportFactory airportFactory;
+    private final CityService cityService;
+    private final CityFactory cityFactory;
 
     public Airport create(String code, double longitude, double latitude, String cityName) {
         if (airportRepository.findByCode(code).isPresent())
@@ -50,5 +52,18 @@ public class AirportService {
         var entities = this.airportRepository.findAirportEntitiesByCityName(name)
                 .orElseThrow(() -> new AirportNotFoundException(name));
         return this.airportFactory.from(entities);
+    }
+
+    public Airport update(String oldCode, String newCode, double longitude, double latitude, String city) {
+        var airportEntity = this.airportRepository.findByCode(oldCode)
+                .orElseThrow(() -> new AirportNotFoundException(oldCode));
+        airportEntity.setCode(newCode);
+        airportEntity.setLongitude(longitude);
+        airportEntity.setLatitude(latitude);
+        var cityEntity = cityService.findCityEntityByName(city);
+        airportEntity.setCity(cityEntity);
+        var airport = airportFactory.from(airportRepository.save(airportEntity));
+        airport.setCity(cityFactory.createFromEntity(cityEntity));
+        return airport;
     }
 }
