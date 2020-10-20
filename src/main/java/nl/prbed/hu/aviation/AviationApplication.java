@@ -1,8 +1,5 @@
 package nl.prbed.hu.aviation;
 
-import nl.prbed.hu.aviation.application.AircraftService;
-import nl.prbed.hu.aviation.domain.Type;
-import nl.prbed.hu.aviation.domain.factory.TypeFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
