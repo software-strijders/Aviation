@@ -1,22 +1,26 @@
 package nl.prbed.hu.aviation.management.domain.factory;
 
+import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.management.domain.Airport;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class AirportFactory {
+    private final AircraftFactory aircraftFactory;
 
     public Airport from(AirportEntity entity) {
         return new Airport(
                 entity.getLatitude(),
                 entity.getLongitude(),
                 entity.getCode(),
-                null,
-                null
+                null, // This will be set later
+                this.aircraftFactory.from(entity.getAircraftEntities())
         );
     }
 

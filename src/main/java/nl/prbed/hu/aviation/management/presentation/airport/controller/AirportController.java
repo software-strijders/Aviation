@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.presentation.airport.controller;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
@@ -70,7 +71,7 @@ public class AirportController {
 
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
-        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), airport.getAircraft());
     }
 }

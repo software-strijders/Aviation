@@ -3,6 +3,8 @@ package nl.prbed.hu.aviation.management.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 public class Airport {
@@ -10,5 +12,5 @@ public class Airport {
     private double longitude;
     private String code;
     private City city;
-    private Fleet fleet;
+    private List<Aircraft> aircraft;
 }

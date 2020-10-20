@@ -2,8 +2,10 @@ package nl.prbed.hu.aviation.management.data.airport;
 
 import lombok.Getter;
 import lombok.Setter;
+import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -20,11 +22,15 @@ public class AirportEntity {
     @ManyToOne
     private CityEntity city;
 
+    @OneToMany
+    private List<AircraftEntity> aircraftEntities;
+
     public AirportEntity() {}
-    public AirportEntity(String code, double latitude, double longitude, CityEntity city) {
+    public AirportEntity(String code, double latitude, double longitude, CityEntity city, List<AircraftEntity> aircraftEntities) {
         this.code = code;
         this.longitude = longitude;
         this.latitude = latitude;
         this.city = city;
+        this.aircraftEntities = aircraftEntities;
     }
 }
