@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.security.presentation.controller;
 
+import io.swagger.annotations.ApiOperation;
 import nl.prbed.hu.aviation.security.application.UserService;
 import nl.prbed.hu.aviation.security.presentation.dto.CustomerRegistrationDto;
 import nl.prbed.hu.aviation.security.presentation.dto.EmployeeRegisterationDto;
@@ -18,6 +19,7 @@ public class RegistrationController {
         this.userService = userService;
     }
 
+    @ApiOperation(value = "Create a customer")
     @PostMapping("/customer")
     public void registerCustomer(@Validated @RequestBody CustomerRegistrationDto registrationDto) {
         this.userService.registerCustomer(
@@ -32,6 +34,7 @@ public class RegistrationController {
         );
     }
 
+    @ApiOperation(value = "Create an employee")
     @PostMapping("/employee")
     public void register(@Validated @RequestBody EmployeeRegisterationDto registrationDto) {
         this.userService.registerEmployee(
