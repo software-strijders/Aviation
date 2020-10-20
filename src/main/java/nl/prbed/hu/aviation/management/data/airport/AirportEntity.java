@@ -17,6 +17,9 @@ public class AirportEntity {
     private double latitude;
     private double longitude;
 
+    @ManyToOne
+    private CityEntity city;
+
     public AirportEntity() {}
     public AirportEntity(String code, double latitude, double longitude, CityEntity city) {
         this.code = code;
@@ -24,7 +27,4 @@ public class AirportEntity {
         this.latitude = latitude;
         this.city = city;
     }
-
-    @ManyToOne
-    private CityEntity city;
 }
