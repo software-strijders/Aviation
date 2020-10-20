@@ -28,8 +28,10 @@ This project is an assignment for the course `prbed` in the field of study Softw
 For documentation, we've implemented a domain diagram that will be updated over the course of this project. We've also added the most important dependencies we will use in this project.
 
 ### Domain model
-![Domain diagram](diagram/Aviation%20domain%20diagram.png)
+![Domain diagram](diagram/domain_diagram.png)
 
+These are the classes we use in our project.
+The classes marked with red are not yet implemented but will be when the project is done.
 ### Dependencies
 For this project, we use the following dependencies (the most important ones):
 - [Spring](https://spring.io "Spring framework")
