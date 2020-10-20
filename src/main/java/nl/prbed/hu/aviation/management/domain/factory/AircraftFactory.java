@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -23,9 +24,6 @@ public class AircraftFactory {
     }
 
     public List<Aircraft> from(List<AircraftEntity> entities) {
-        var list = new ArrayList<Aircraft>();
-        for (var entity : entities)
-            list.add(this.from(entity));
-        return list;
+        return entities.stream().map(this::from).collect(Collectors.toList());
     }
 }

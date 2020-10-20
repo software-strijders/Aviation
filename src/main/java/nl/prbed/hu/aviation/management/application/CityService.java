@@ -22,7 +22,7 @@ public class CityService {
             throw new CityAlreadyExistsException(name);
 
         var entity = cityRepository.save(new CityEntity(name, country, new ArrayList<>()));
-        return this.cityFactory.createFromEntity(entity);
+        return this.cityFactory.from(entity);
     }
 
     public void delete(String cityName) {

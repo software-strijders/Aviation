@@ -56,7 +56,7 @@ public class AirportService {
         var cityEntity = this.cityService.findCityEntityByName(city);
         airportEntity.setCity(cityEntity);
         var airport = this.airportFactory.from(airportRepository.save(airportEntity));
-        airport.setCity(this.cityFactory.createFromEntity(cityEntity));
+        airport.setCity(this.cityFactory.from(cityEntity));
         return airport;
     }
     private AirportEntity findAirportEntityByCode(String code) {

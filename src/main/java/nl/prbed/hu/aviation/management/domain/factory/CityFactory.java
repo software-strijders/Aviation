@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CityFactory {
     private final AirportFactory airportFactory;
 
-    public City createFromEntity(CityEntity entity) {
+    public City from(CityEntity entity) {
         return new City(
                 entity.getName(),
                 entity.getCountry(),
