@@ -19,6 +19,6 @@ public class AirportResponseDto {
     @ApiModelProperty(notes = "The longitude of the airport in signed degrees format")
     private final double longitude;
 
-    @ApiModelProperty(notes = "The longitude of the airport in signed degrees format")
+    @ApiModelProperty(notes = "The city where the airport is located in")
     private final City cityName;
 }
