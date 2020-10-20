@@ -20,8 +20,8 @@ public class CityService {
     public City create(String name, String country) {
         if (cityRepository.findByName(name).isPresent())
             throw new CityAlreadyExistsException(name);
-        var entity = cityRepository.save(new CityEntity(name, country, new ArrayList<>()));
 
+        var entity = cityRepository.save(new CityEntity(name, country, new ArrayList<>()));
         return this.cityFactory.createFromEntity(entity);
     }
 

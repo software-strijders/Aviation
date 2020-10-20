@@ -30,16 +30,11 @@ public class AirportService {
     }
 
     public void delete(String code) {
-        this.airportRepository.delete(this.findEntityByCode(code));
+        this.airportRepository.delete(this.findAirportEntityByCode(code));
     }
 
     public Airport findByCode(String code) {
-        return this.airportFactory.from(this.findEntityByCode(code));
-    }
-
-    private AirportEntity findEntityByCode(String code) {
-        return airportRepository.findByCode(code)
-                .orElseThrow(() -> new AirportNotFoundException(code));
+        return this.airportFactory.from(this.findAirportEntityByCode(code));
     }
 
     public List<Airport> findAll() {
@@ -54,15 +49,18 @@ public class AirportService {
     }
 
     public Airport update(String oldCode, String newCode, double longitude, double latitude, String city) {
-        var airportEntity = this.airportRepository.findByCode(oldCode)
-                .orElseThrow(() -> new AirportNotFoundException(oldCode));
+        var airportEntity = this.findAirportEntityByCode(oldCode);
         airportEntity.setCode(newCode);
         airportEntity.setLongitude(longitude);
         airportEntity.setLatitude(latitude);
-        var cityEntity = cityService.findCityEntityByName(city);
+        var cityEntity = this.cityService.findCityEntityByName(city);
         airportEntity.setCity(cityEntity);
-        var airport = airportFactory.from(airportRepository.save(airportEntity));
-        airport.setCity(cityFactory.createFromEntity(cityEntity));
+        var airport = this.airportFactory.from(airportRepository.save(airportEntity));
+        airport.setCity(this.cityFactory.createFromEntity(cityEntity));
         return airport;
+    }
+    private AirportEntity findAirportEntityByCode(String code) {
+        return this.airportRepository.findByCode(code)
+                .orElseThrow(() -> new AirportNotFoundException(code));
     }
 }

@@ -38,14 +38,14 @@ public class TypeService {
         return this.typeFactory.from(entity);
     }
 
+    public void delete(String modelName) {
+        var type = typeRepository.findByModelName(modelName)
+                .orElseThrow(() -> new TypeNotFoundException(modelName));
+        typeRepository.delete(type);
+    }
+
     public TypeEntity findTypeEntityByModelName(String modelName) {
         return this.typeRepository.findByModelName(modelName)
                 .orElseThrow(() -> new TypeNotFoundException(modelName));
-    }
-
-    // TODO: This should throw an exception if there are aircrafts connected to the type
-    public void delete(String model) {
-        var type = typeRepository.findByModelName(model).orElseThrow();
-        typeRepository.delete(type);
     }
 }
