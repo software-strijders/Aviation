@@ -1,0 +1,1276 @@
+{
+	"info": {
+		"_postman_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+		"name": "Luchtvaart systeem Test Suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "Register Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c51d61be-dcf0-476e-8d78-4edc438a4a6d",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{customerUsername}}\",\r\n    \"password\": \"{{customerPassword}}\",\r\n    \"firstName\": \"{{customerFirstName}}\",\r\n    \"lastName\": \"{{customerLastname}}\",\r\n    \"nationality\": \"{{customerNationality}}\",\r\n    \"birthDate\": \"{{customerBirthDate}}\",\r\n    \"email\": \"{{customerEmail}}\",\r\n    \"phoneNumber\": {{customerPhoneNumber}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register/customer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e457655d-ed8e-41be-af08-1e0cef49545c",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"firstName\": \"Em\",\r\n    \"lastName\": \"Ployee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register/employee",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ade71552-eae4-4fe7-97f2-1e95619add17",
+								"exec": [
+									"// Make authorization easier:\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", token);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8539ff2f-28fd-4bbb-b5ca-3b70c46f9161",
+								"exec": [
+									"// A bit cumbersome, but to 'logout' the only thing we can do is to remove the authtoken from Postman.\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", \"\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{logoutPath}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{logoutPath}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "aircraft",
+			"item": [
+				{
+					"name": "Create Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c197e60-a3d3-4988-9618-dcb7cee10013",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modelName\": \"{{type}}\",\r\n    \"manufacturer\": \"Airbus\",\r\n    \"fuelCapacity\": 10000,\r\n    \"fuelConsumption\": 500,\r\n    \"numSeatsFirst\": 10,\r\n    \"numSeatsBusiness\": 50,\r\n    \"numSeatsEconomy\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft/type",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft",
+								"type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aircraft",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a931a9ab-2dd6-4ca7-840f-34bfebb26dc5",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modelName\": \"{{type}}\",\r\n    \"code\": \"{{aircraft}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Aircraft by Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84ae5a72-ec21-4684-a45a-d53aa6db67f3",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\").but.not.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraft\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft should be of type array\", () => {\r",
+									"    pm.expect(response.aircraft).to.be.an(\"array\").but.not.an(\"object\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft/{{type}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft",
+								"{{type}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Aircraft",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9135e5c2-de16-4127-ad11-fbf2ac64b802",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ModelName should be updated\"), () => {\r",
+									"    pm.expect(pm.environment.get(\"modelName\").to.equal(\"newModelName\"))\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Code should be updated\"), () => {\r",
+									"    pm.expect(pm.environment.get(\"aircraft\").to.equal(\"type\"))\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{updatedAircraft}}\",\r\n    \"modelName\": \"{{type}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft/{{aircraft}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft",
+								"{{aircraft}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Aircraft",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bc35d762-bf91-430c-a154-43de5a40f58e",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\").but.not.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraft\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft should be of type array\", () => {\r",
+									"    pm.expect(response.aircraft).to.be.an(\"array\").but.not.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modelName\": \"{{type}}\",\r\n    \"manufacturer\": \"Airbus\",\r\n    \"fuelCapacity\": 10000,\r\n    \"fuelConsumption\": 500,\r\n    \"numSeatsFirst\": 10,\r\n    \"numSeatsBusiness\": 50,\r\n    \"numSeatsEconomy\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Aircraft",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "14f0a526-aa2f-4974-bfc9-182c6ca59049",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft/{{updatedAircraft}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft",
+								"{{updatedAircraft}}"
+							]
+						},
+						"description": "Delete an aircraft by an ID.\r\nPut the ID as a path variable at the end of the url and it will be removed."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c738c1ec-896e-4111-bf14-ecb11f680915",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/aircraft/type/{{type}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"aircraft",
+								"type",
+								"{{type}}"
+							]
+						},
+						"description": "Delete an aircraft by an ID.\r\nPut the ID as a path variable at the end of the url and it will be removed."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "airport",
+			"item": [
+				{
+					"name": "Create City",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85223a99-2325-49cf-810b-a167c7810ae0",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"name property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"name\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct name\", () => {\r",
+									"    pm.expect(response.name).to.eql('Amsterdam');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{cityName}}\",\r\n    \"country\": \"The Netherlands\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/city",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c5b35dc-21aa-4ff6-8422-95f164c330cf",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct code\", () => {\r",
+									"    pm.expect(response.code).to.eql('AMS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{airportCode}}\",\r\n    \"latitude\": \"52.3105386\",\r\n    \"longitude\": \"4.7682744\",\r\n    \"cityName\": \"{{cityName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Airport 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92f39397-ee63-4612-84d2-ae90b71734b1",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct code\", () => {\r",
+									"    pm.expect(response.code).to.eql('BER');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{airportCode2}}\",\r\n    \"latitude\": \"52.3105386\",\r\n    \"longitude\": \"4.7682744\",\r\n    \"cityName\": \"{{cityName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airport By Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70805cb3-e168-410e-aa73-859911c285ef",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct code\", () => {\r",
+									"    pm.expect(response.code).to.eql('AMS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/airport/{{airportCode}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"{{airportCode}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airports By Cityname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34751a89-7122-4165-8789-c5d08564a0ee",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type array\", () => {\r",
+									"    pm.expect(response.airports).to.be.an(\"array\").but.not.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/airport/city/{{cityName}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"city",
+								"{{cityName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Airport",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{airportCode2}}\",\r\n    \"latitude\": 4.90023,\r\n    \"longitude\": 51.93862,\r\n    \"cityName\": \"{{cityName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/{{airportCode}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"{{airportCode}}"
+							]
+						},
+						"description": "Updates airport.\r\nAll parameters in the body can be updated."
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Airports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccf864d0-a835-435d-b5a4-4a9d375be106",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type array\", () => {\r",
+									"    pm.expect(response.airports).to.be.an(\"array\").but.not.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/airport",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete City",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "470eb348-2e03-4541-a5b3-8191fcb938ef",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/city/{{cityName}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"city",
+								"{{cityName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31955ed2-6a5a-4fc5-bea3-c9cd6597c730",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/{{airportCode2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"{{airportCode2}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Flightplan",
+			"item": [
+				{
+					"name": "Create Flightplan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1da9ce74-ea09-4d64-bcd4-94d9216af882",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct code\", () => {\r",
+									"    pm.expect(response.code).to.eql(pm.variables.get(\"flightplanCode\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct duration\",  () => {\r",
+									"    pm.expect(response. duration).to.eql(90);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": {{flightPlanDuration}},\r\n    \"arrival\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flightplan",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flightplan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flightplan By Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc6defc3-c465-473f-a743-958e0e90bf94",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has the correct code\", () => {\r",
+									"    pm.expect(response.code).to.eql('AMS-BER-01');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flightplan/{{flightplanCode}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flightplan",
+								"{{flightplanCode}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update flightplan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de6fd5ca-f20a-45c3-bcd8-591679d459f4",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": 1000,\r\n    \"arrival\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flightplan/{{flightplanCode}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flightplan",
+								"{{flightplanCode}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Flightplan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57a861ab-9d2e-4998-b76a-88f63ede7579",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type array\", () => {\r",
+									"    pm.expect(response.flightplans).to.be.an(\"array\").but.not.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"properties should exist\", () => {\r",
+									"//     pm.expect(response.flightplans[0]).to.have.keys(\"code\", \"duration\", \"destination\", \"arrival\");\r",
+									"// });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flightplan",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flightplan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Flightplan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "545811c6-af27-405a-a362-446470bcac8c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flightplan/{{updatedFlightplanCode}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flightplan",
+								"{{updatedFlightplanCode}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "swagger",
+			"item": [
+				{
+					"name": "Get Documentation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b0c802bf-c63c-4a8c-9d05-8f6677f6e344",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "77388604-4744-4199-b232-af0c83530440",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "12fa061a-2862-4a3f-877e-f3d9c77efae7",
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"id": "73c79b24-ae4a-48ad-8ccc-9d822d5f1280",
+			"key": "authToken",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
