@@ -32,6 +32,7 @@ For documentation, we've implemented a domain diagram that will be updated over 
 
 These are the classes we use in our project.
 The classes marked with red are not yet implemented but will be when the project is done.
+
 ### Dependencies
 For this project, we use the following dependencies (the most important ones):
 - [Spring](https://spring.io "Spring framework")
