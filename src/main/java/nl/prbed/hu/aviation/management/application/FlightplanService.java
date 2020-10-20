@@ -49,11 +49,12 @@ public class FlightplanService {
         return this.flightplanFactory.from(entities);
     }
 
-    public Flightplan update(String code, Long duration, String arrival, String destination) {
+    public Flightplan update(String oldCode, String code, Long duration, String arrival, String destination) {
         if (arrival.equals(destination))
             throw new AirportsNotUniqueException();
 
-        var flightplanEntity = this.findFlightplanByCode(code);
+        var flightplanEntity = this.findFlightplanByCode(oldCode);
+        flightplanEntity.setCode(code);
         flightplanEntity.setDuration(duration);
         flightplanEntity.setArrival(this.airportService.findAirportEntityByCode(arrival));
         flightplanEntity.setDestination(this.airportService.findAirportEntityByCode(destination));
