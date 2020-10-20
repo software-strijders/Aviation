@@ -2,7 +2,6 @@ package nl.prbed.hu.aviation.management.presentation.airport.controller;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
@@ -44,7 +43,7 @@ public class AirportController {
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
     }
 
     @GetMapping("/city/{cityName}")
@@ -59,7 +58,7 @@ public class AirportController {
     @PostMapping
     public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
     }
 
     @ApiOperation(value = "Create a city")

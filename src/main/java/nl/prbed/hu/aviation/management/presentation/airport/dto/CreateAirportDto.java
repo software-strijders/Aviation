@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @ApiModel(description = "Details about the airport")
 public class CreateAirportDto {
@@ -23,4 +24,7 @@ public class CreateAirportDto {
     @NotBlank
     @ApiModelProperty(notes = "The name of the city")
     public String cityName;
+
+    @ApiModelProperty(notes = "The list of aircraftCodes to add")
+    public List<String> aircraftCodes;
 }

@@ -20,7 +20,7 @@ public class AirportFactory {
                 entity.getLongitude(),
                 entity.getCode(),
                 null, // This will be set later
-                this.aircraftFactory.from(entity.getAircraftEntities())
+                entity.getAircraftEntities() != null ? aircraftFactory.from(entity.getAircraftEntities()) : null
         );
     }
 
