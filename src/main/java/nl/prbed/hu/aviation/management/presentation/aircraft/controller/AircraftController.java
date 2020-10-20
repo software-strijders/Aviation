@@ -11,22 +11,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/aircraft")
-@Secured("ROLE_EMPLOYEE")
 @AllArgsConstructor
+@Secured("ROLE_EMPLOYEE")
+@RequestMapping("/aircraft")
 public class AircraftController {
     private final AircraftService aircraftService;
     private final TypeService typeService;
-
-    @ApiOperation(
-            value = "Update aircraft information",
-            notes = "Provide a code to update specific information about an aircraft."
-    )
-    @PutMapping({"/{code}"})
-    public UpdateAircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
-        var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
-        return new UpdateAircraftResponseDto(aircraft.getCode(), aircraft.getType());
-    }
 
     @ApiOperation(
             value = "Delete an aircraft",
@@ -58,8 +48,8 @@ public class AircraftController {
             notes = "Provide a model name of the aircraft to look up a specific aircraft in the database."
     )
     @GetMapping("/{modelName}")
-    public AircraftOverviewByTypeResponseDto findAllByModel(@PathVariable String modelName) {
-        return new AircraftOverviewByTypeResponseDto(modelName, this.aircraftService.findAllByType(modelName));
+    public AircraftOverviewResponseDto findAllByModel(@PathVariable String modelName) {
+        return new AircraftOverviewResponseDto(this.aircraftService.findAllByType(modelName));
     }
 
     @ApiOperation(
@@ -68,9 +58,9 @@ public class AircraftController {
                     "Note that the type must exist before you can make an aircraft of it."
     )
     @PostMapping
-    public CreateAircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
+    public AircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
         var aircraft = this.aircraftService.create(dto.code, dto.modelName);
-        return new CreateAircraftResponseDto(aircraft.getCode(), aircraft.getType());
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType());
     }
 
     @ApiOperation(
@@ -78,7 +68,7 @@ public class AircraftController {
             notes = "Provide the details of a type to create one."
     )
     @PostMapping("/type")
-    public CreateTypeResponseDto create(@Validated @RequestBody CreateTypeDto dto) {
+    public TypeResponseDto create(@Validated @RequestBody CreateTypeDto dto) {
         var type = this.typeService.create(
                 dto.modelName,
                 dto.manufacturer,
@@ -88,6 +78,16 @@ public class AircraftController {
                 dto.numSeatsBusiness,
                 dto.numSeatsEconomy
         );
-        return new CreateTypeResponseDto(type);
+        return new TypeResponseDto(type);
+    }
+
+    @ApiOperation(
+            value = "Update aircraft information",
+            notes = "Provide a code to update specific information about an aircraft."
+    )
+    @PutMapping({"/{code}"})
+    public AircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
+        var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType());
     }
 }

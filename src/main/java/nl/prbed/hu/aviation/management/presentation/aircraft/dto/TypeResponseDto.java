@@ -9,7 +9,7 @@ import nl.prbed.hu.aviation.management.domain.Type;
 @Getter
 @RequiredArgsConstructor
 @ApiModel(description = "The aircraft type")
-public class CreateTypeResponseDto {
+public class TypeResponseDto {
     @ApiModelProperty(notes = "The type")
     private final Type type;
 }

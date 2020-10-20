@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 @ApiModel(description = "All flightplans in the database")
-public class FindAllFlightplanResponseDto {
+public class FlightplansResponseDto {
     @ApiModelProperty(notes = "the list of flightplans")
     private final List<Flightplan> Flightplans;
 }

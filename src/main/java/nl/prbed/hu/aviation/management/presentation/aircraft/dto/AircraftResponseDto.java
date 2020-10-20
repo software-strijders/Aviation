@@ -9,7 +9,7 @@ import nl.prbed.hu.aviation.management.domain.Type;
 @Getter
 @RequiredArgsConstructor
 @ApiModel(description = "The aircraft")
-public class CreateAircraftResponseDto {
+public class AircraftResponseDto {
     @ApiModelProperty(notes = "The code of the aircraft. Something like: KLM0001")
     private final String code;
 

@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightplanService;
 import nl.prbed.hu.aviation.management.domain.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
-import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FindAllFlightplanResponseDto;
-import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanFindByCodeResponseDto;
+import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanResponseDto;
+import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplansResponseDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,50 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class FlightplanController {
     private final FlightplanService flightplanService;
-
-    //TODO: fix destination and arrival
-    @ApiOperation(
-            value = "Create a flightplan",
-            notes = "Note that the cities provided must exist before the flightplan can be created."
-    )
-    @PostMapping
-    public FlightplanFindByCodeResponseDto create(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.create(
-                dto.code,
-                dto.duration,
-                dto.arrival,
-                dto.destination
-        ));
-    }
-
-    @ApiOperation(value = "Get all flightplans")
-    @GetMapping
-    public FindAllFlightplanResponseDto findAll() {
-        var flightplans = this.flightplanService.findAll();
-        return new FindAllFlightplanResponseDto(flightplans);
-    }
-
-    //TODO: fix destination and arrival
-    @ApiOperation(
-            value = "Get a flightplan",
-            notes = "Provide a code to find a specific flightplan."
-    )
-    @GetMapping("/{code}")
-    public FlightplanFindByCodeResponseDto findByCode(@PathVariable String code) {
-        return createFlightplanResponseDto(this.flightplanService.findByCode(code));
-    }
-
-    @ApiOperation(value = "Update a flightplan")
-    //TODO: fix destination and arrival
-    @PutMapping
-    public FlightplanFindByCodeResponseDto update(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.update(
-                dto.code,
-                dto.duration,
-                dto.arrival,
-                dto.destination
-        ));
-    }
 
     @ApiOperation(
             value = "Delete a flightplan",
@@ -68,8 +24,49 @@ public class FlightplanController {
         this.flightplanService.deleteByCode(code);
     }
 
-    private FlightplanFindByCodeResponseDto createFlightplanResponseDto(Flightplan flightplan) {
-        return new FlightplanFindByCodeResponseDto(
+    @ApiOperation(value = "Get all flightplans")
+    @GetMapping
+    public FlightplansResponseDto findAll() {
+        var flightplans = this.flightplanService.findAll();
+        return new FlightplansResponseDto(flightplans);
+    }
+
+    @ApiOperation(
+            value = "Get a flightplan",
+            notes = "Provide a code to find a specific flightplan."
+    )
+    @GetMapping("/{code}")
+    public FlightplanResponseDto findByCode(@PathVariable String code) {
+        return this.createFlightplanResponseDto(this.flightplanService.findByCode(code));
+    }
+
+    @ApiOperation(
+            value = "Create a flightplan",
+            notes = "Note that the cities provided must exist before the flightplan can be created."
+    )
+    @PostMapping
+    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
+        return createFlightplanResponseDto(this.flightplanService.create(
+                dto.code,
+                dto.duration,
+                dto.arrival,
+                dto.destination
+        ));
+    }
+
+    @ApiOperation(value = "Update a flightplan")
+    @PutMapping
+    public FlightplanResponseDto update(@RequestBody FlightplanDto dto) {
+        return this.createFlightplanResponseDto(this.flightplanService.update(
+                dto.code,
+                dto.duration,
+                dto.arrival,
+                dto.destination
+        ));
+    }
+
+    private FlightplanResponseDto createFlightplanResponseDto(Flightplan flightplan) {
+        return new FlightplanResponseDto(
                 flightplan.getCode(),
                 flightplan.getDuration(),
                 flightplan.getArrival(),

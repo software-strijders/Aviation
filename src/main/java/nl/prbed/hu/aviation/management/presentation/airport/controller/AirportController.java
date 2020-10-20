@@ -5,8 +5,6 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
-import nl.prbed.hu.aviation.management.presentation.airport.dto.UpdateAirportDto;
-import nl.prbed.hu.aviation.management.presentation.airport.dto.UpdateAirportResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +35,22 @@ public class AirportController {
         this.cityService.delete(cityName);
     }
 
+    @GetMapping
+    public AirportsResponseDto findAll() {
+        return new AirportsResponseDto(this.airportService.findAll());
+    }
+
+    @GetMapping("/{code}")
+    public AirportResponseDto findByCode(@PathVariable String code) {
+        var airport = this.airportService.findByCode(code);
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+    }
+
+    @GetMapping("/city/{cityName}")
+    public AirportsResponseDto findByCity(@PathVariable String cityName) {
+        return new AirportsResponseDto(this.airportService.findByCity(cityName));
+    }
+
     @ApiOperation(
             value = "Create an airport",
             notes = "Note that the city provided must exist before the airport can be created."
@@ -44,8 +58,7 @@ public class AirportController {
     @PostMapping
     public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(),
-                airport.getCity().getName());
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
     }
 
     @ApiOperation(value = "Create a city")
@@ -56,25 +69,8 @@ public class AirportController {
     }
 
     @PutMapping("/{code}")
-    public UpdateAirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAirportDto dto) {
+    public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new UpdateAirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
-    }
-
-    @GetMapping
-    public AirportsResponseDto findAll() {
-        return new AirportsResponseDto(this.airportService.findAll());
-    }
-
-    @GetMapping("/{code}")
-    public AirportResponseDto findByCode(@PathVariable String code) {
-        var airport = this.airportService.findByCode(code);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(),
-                airport.getCity().getName());
-    }
-
-    @GetMapping("/city/{cityName}")
-    public AirportsResponseDto findByCity(@PathVariable String cityName) {
-        return new AirportsResponseDto(this.airportService.findByCity(cityName));
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
     }
 }
