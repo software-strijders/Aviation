@@ -11,5 +11,4 @@ public class Aircraft {
     private Type type;
     private Flight current;
     private List<Flight> past;
-    private Fleet fleet;
 }

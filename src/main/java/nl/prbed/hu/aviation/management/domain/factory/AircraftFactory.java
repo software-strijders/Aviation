@@ -19,8 +19,8 @@ public class AircraftFactory {
                 entity.getCode(),
                 this.typeFactory.from(entity.getType()),
                 null,
-                null,
-                null);
+                null
+                );
     }
 
     public List<Aircraft> from(List<AircraftEntity> entities) {

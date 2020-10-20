@@ -23,7 +23,7 @@ public class AircraftService {
 
     public Aircraft create(String code, String modelName) {
         var type = this.typeService.findTypeEntityByModelName(modelName);
-        var entity = new AircraftEntity(code, type);
+        var entity = new AircraftEntity(code, type, null);
         return this.aircraftFactory.from(this.aircraftRepository.save(entity));
     }
 

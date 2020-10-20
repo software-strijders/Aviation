@@ -1,10 +1,8 @@
 package nl.prbed.hu.aviation.management.data.aircraft;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
+import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 
 @Entity
 @Getter @Setter
@@ -21,9 +19,14 @@ public class AircraftEntity {
     @JoinColumn(referencedColumnName = "id")
     private TypeEntity type;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(referencedColumnName = "id")
+    @Getter private AirportEntity airport;
+
     public AircraftEntity() {}
-    public AircraftEntity(String code, TypeEntity type) {
+    public AircraftEntity(String code, TypeEntity type, AirportEntity airport) {
         this.code = code;
         this.type = type;
+        this.airport = airport;
     }
 }

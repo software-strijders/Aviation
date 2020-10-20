@@ -43,7 +43,7 @@ public class AirportController {
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
     }
 
     @GetMapping("/city/{cityName}")
@@ -58,7 +58,7 @@ public class AirportController {
     @PostMapping
     public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
     }
 
     @ApiOperation(value = "Create a city")
@@ -70,7 +70,7 @@ public class AirportController {
 
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
-        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity());
+        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
+        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), airport.getAircraft());
     }
 }
