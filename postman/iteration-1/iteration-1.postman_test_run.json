@@ -1,0 +1,780 @@
+{
+	"id": "0c71b30a-2479-40e2-b957-85064877e3aa",
+	"name": "Luchtvaart systeem Test Suite",
+	"timestamp": "2020-10-20T12:10:20.883Z",
+	"collection_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+	"folder_id": 0,
+	"environment_id": "8c324227-78db-41e1-90ca-0d7c3f57b5f1",
+	"totalPass": 41,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b494b482-057e-4693-80d7-32f13528c461",
+			"name": "Register Customer",
+			"url": "http://localhost:8080/api/register/customer",
+			"time": 530,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				530
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9950d793-ede8-49be-96fd-e1c9b9c2ca7f",
+			"name": "Register Employee",
+			"url": "http://localhost:8080/api/register/employee",
+			"time": 158,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				158
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+			"name": "Login",
+			"url": "http://localhost:8080/api/login",
+			"time": 234,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				234
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2420553b-54f2-4f39-a7a0-4b7d88b368d5",
+			"name": "Create Type",
+			"url": "http://localhost:8080/api/aircraft/type",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "66789787-fc1f-4057-a9b2-aebba3f4d3ba",
+			"name": "Create Aircraft",
+			"url": "http://localhost:8080/api/aircraft",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f19dd36a-8a9e-4cae-9f44-ee1820268b58",
+			"name": "Create City",
+			"url": "http://localhost:8080/api/airport/city",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"name property should exist": true,
+				"The response has the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"name property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"name property should exist": true,
+					"The response has the correct name": true
+				}
+			]
+		},
+		{
+			"id": "846b04ee-a601-408f-882f-3f0f8607abed",
+			"name": "Create Airport",
+			"url": "http://localhost:8080/api/airport",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Code property should exist": true,
+				"The response has the correct code": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Code property should exist": true,
+					"The response has the correct code": true
+				}
+			]
+		},
+		{
+			"id": "ae0753aa-1757-4b77-8822-920c2afa9cab",
+			"name": "Create Airport 2",
+			"url": "http://localhost:8080/api/airport",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Code property should exist": true,
+				"The response has the correct code": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Code property should exist": true,
+					"The response has the correct code": true
+				}
+			]
+		},
+		{
+			"id": "ad604588-d65e-4784-ad8f-7109cdca5e13",
+			"name": "Create Flightplan",
+			"url": "http://localhost:8080/api/flightplan",
+			"time": 84,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"The response has the correct code": true,
+				"The response has the correct duration": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct duration": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				84
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"The response has the correct code": true,
+					"The response has the correct duration": true
+				}
+			]
+		},
+		{
+			"id": "51674bd8-2e5b-4143-977c-4acd99c36ebf",
+			"name": "Get Flightplan By Code",
+			"url": "http://localhost:8080/api/flightplan/AMS-BER-01",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Code property should exist": true,
+				"The response has the correct code": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Code property should exist": true,
+					"The response has the correct code": true
+				}
+			]
+		},
+		{
+			"id": "05bd81d9-910a-4205-8522-669f1f68b20a",
+			"name": "Update flightplan",
+			"url": "http://localhost:8080/api/flightplan/AMS-BER-01",
+			"time": 157,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				157
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "321e8725-b5d5-43bc-90bb-d03ad8d92a6e",
+			"name": "Get all Flightplan",
+			"url": "http://localhost:8080/api/flightplan",
+			"time": 36,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				36
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "61045057-4f61-40d2-9dcb-757737d91a27",
+			"name": "Get all Aircraft by Type",
+			"url": "http://localhost:8080/api/aircraft/A380",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true,
+				"Aircraft property should exist": true,
+				"Aircraft should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true,
+					"Aircraft property should exist": true,
+					"Aircraft should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "d84d31ed-fd7b-4a00-83e3-a5fa320e2d24",
+			"name": "Update Aircraft",
+			"url": "http://localhost:8080/api/aircraft/KLM003",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"ModelName should be updated": true,
+				"Code should be updated": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"ModelName should be updated": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code should be updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"ModelName should be updated": true,
+					"Code should be updated": true
+				}
+			]
+		},
+		{
+			"id": "0e0bf628-7824-4820-912c-23d3be7b3d7c",
+			"name": "Get all Airports",
+			"url": "http://localhost:8080/api/airport",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "3ef504f0-9c8c-44db-aa7a-4f82576b033b",
+			"name": "Get all Aircraft",
+			"url": "http://localhost:8080/api/aircraft",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true,
+				"Aircraft property should exist": true,
+				"Aircraft should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true,
+					"Aircraft property should exist": true,
+					"Aircraft should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "6d98d861-dbec-4be4-83af-0b87760435f8",
+			"name": "Get Airport By Code",
+			"url": "http://localhost:8080/api/airport/AMS",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Code property should exist": true,
+				"The response has the correct code": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The response has the correct code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Code property should exist": true,
+					"The response has the correct code": true
+				}
+			]
+		},
+		{
+			"id": "7f2c23b9-a26f-4981-a40c-ddae08928c2d",
+			"name": "Update Airport",
+			"url": "http://localhost:8080/api/airport/AMS",
+			"time": 69,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				69
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cc22d892-208b-4cf1-b9a9-44e8cc0fcb13",
+			"name": "Get Airports By Cityname",
+			"url": "http://localhost:8080/api/airport/city/Amsterdam",
+			"time": 39,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "d3743967-494b-4597-b3d7-df44b85531bd",
+			"name": "Delete Aircraft",
+			"url": "http://localhost:8080/api/aircraft/KLM445",
+			"time": 57,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "df686343-dfb3-455a-b7cc-36095dd715a1",
+			"name": "Delete Type",
+			"url": "http://localhost:8080/api/aircraft/type/A380",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				42
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1870,
+	"collection": {
+		"requests": [
+			{
+				"id": "b494b482-057e-4693-80d7-32f13528c461",
+				"method": "POST"
+			},
+			{
+				"id": "9950d793-ede8-49be-96fd-e1c9b9c2ca7f",
+				"method": "POST"
+			},
+			{
+				"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+				"method": "POST"
+			},
+			{
+				"id": "2420553b-54f2-4f39-a7a0-4b7d88b368d5",
+				"method": "POST"
+			},
+			{
+				"id": "66789787-fc1f-4057-a9b2-aebba3f4d3ba",
+				"method": "POST"
+			},
+			{
+				"id": "f19dd36a-8a9e-4cae-9f44-ee1820268b58",
+				"method": "POST"
+			},
+			{
+				"id": "846b04ee-a601-408f-882f-3f0f8607abed",
+				"method": "POST"
+			},
+			{
+				"id": "ae0753aa-1757-4b77-8822-920c2afa9cab",
+				"method": "POST"
+			},
+			{
+				"id": "ad604588-d65e-4784-ad8f-7109cdca5e13",
+				"method": "POST"
+			},
+			{
+				"id": "51674bd8-2e5b-4143-977c-4acd99c36ebf",
+				"method": "GET"
+			},
+			{
+				"id": "05bd81d9-910a-4205-8522-669f1f68b20a",
+				"method": "PUT"
+			},
+			{
+				"id": "321e8725-b5d5-43bc-90bb-d03ad8d92a6e",
+				"method": "GET"
+			},
+			{
+				"id": "61045057-4f61-40d2-9dcb-757737d91a27",
+				"method": "GET"
+			},
+			{
+				"id": "d84d31ed-fd7b-4a00-83e3-a5fa320e2d24",
+				"method": "PUT"
+			},
+			{
+				"id": "0e0bf628-7824-4820-912c-23d3be7b3d7c",
+				"method": "GET"
+			},
+			{
+				"id": "3ef504f0-9c8c-44db-aa7a-4f82576b033b",
+				"method": "GET"
+			},
+			{
+				"id": "6d98d861-dbec-4be4-83af-0b87760435f8",
+				"method": "GET"
+			},
+			{
+				"id": "7f2c23b9-a26f-4981-a40c-ddae08928c2d",
+				"method": "PUT"
+			},
+			{
+				"id": "cc22d892-208b-4cf1-b9a9-44e8cc0fcb13",
+				"method": "GET"
+			},
+			{
+				"id": "d3743967-494b-4597-b3d7-df44b85531bd",
+				"method": "DELETE"
+			},
+			{
+				"id": "df686343-dfb3-455a-b7cc-36095dd715a1",
+				"method": "DELETE"
+			}
+		]
+	}
+}
