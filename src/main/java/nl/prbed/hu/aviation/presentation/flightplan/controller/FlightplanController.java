@@ -60,7 +60,7 @@ public class FlightplanController {
     }
 
     @ApiOperation(
-            value = "Delete a flight plan",
+            value = "Delete a flightplan",
             notes = "Provide the code of the flightplan to delete it."
     )
     @DeleteMapping("/{code}")
