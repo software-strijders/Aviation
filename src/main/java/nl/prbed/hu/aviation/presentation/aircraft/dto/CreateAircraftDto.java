@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "Details about the aircraft")
 public class CreateAircraftDto {
-    @ApiModelProperty(notes = "The aircraft's modelName")
+    @ApiModelProperty(notes = "The model name of the aircraft")
     public String modelName;
-    @ApiModelProperty(notes = "The aircraft's code. Something like: KLM0001")
+    @ApiModelProperty(notes = "The code of the aircraft. Something like: KLM0001")
     public String code;
 }

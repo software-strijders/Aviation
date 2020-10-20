@@ -19,7 +19,7 @@ public class AircraftController {
     private final TypeService typeService;
 
     @ApiOperation(
-            value = "Dpdate aircraft information",
+            value = "Update aircraft information",
             notes = "Provide a code to update specific information about an aircraft."
     )
     @PutMapping({"/{code}"})
@@ -30,7 +30,7 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Delete an aircraft",
-            notes = "Provide a code to delete a specific aircraft from te database."
+            notes = "Provide a code to delete a specific aircraft from the database."
     )
     @DeleteMapping("/{code}")
     public void delete(@Validated @PathVariable String code) {
@@ -64,7 +64,7 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Create an aircraft",
-            notes = "Provide the details of an aircraft to create an aicraft of a type. " +
+            notes = "Provide the details of an aircraft to create an aircraft of a type. " +
                     "Note that the type must exist before you can make an aircraft of it."
     )
     @PostMapping

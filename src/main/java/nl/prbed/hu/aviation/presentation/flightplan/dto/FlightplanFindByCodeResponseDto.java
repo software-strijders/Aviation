@@ -8,14 +8,14 @@ import nl.prbed.hu.aviation.domain.Airport;
 
 @Getter
 @RequiredArgsConstructor
-@ApiModel(description = "Details about the flight plan")
+@ApiModel(description = "Details about the flightplan")
 public class FlightplanFindByCodeResponseDto {
-    @ApiModelProperty(notes = "The code of the flight plan")
+    @ApiModelProperty(notes = "The code of the flightplan")
     private final String code;
-    @ApiModelProperty(notes = "The duration of the flight plan")
+    @ApiModelProperty(notes = "The duration of the flightplan")
     private final Long duration;
-    @ApiModelProperty(notes = "The arrival airport of the flight plan")
+    @ApiModelProperty(notes = "The arrival airport")
     private final Airport arrival;
-    @ApiModelProperty(notes = "The destination airport of the flight plan")
+    @ApiModelProperty(notes = "The destination airport")
     private final Airport destination;
 }

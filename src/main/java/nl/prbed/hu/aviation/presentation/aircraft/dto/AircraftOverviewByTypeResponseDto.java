@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @ApiModel(description = "All aircraft of a certain aircraft type")
 public class AircraftOverviewByTypeResponseDto {
-    @ApiModelProperty(notes = "The aircraft type")
+    @ApiModelProperty(notes = "The type of the aircraft")
     private final String type;
     @ApiModelProperty(notes = "The list of aircraft")
     private final List<Aircraft> aircraft;

@@ -17,8 +17,8 @@ public class FlightplanController {
 
     //TODO: fix destination and arrival
     @ApiOperation(
-            value = "Create a flight plan",
-            notes = "Note that the cities provided must exist before the flight plan can be created."
+            value = "Create a flightplan",
+            notes = "Note that the cities provided must exist before the flightplan can be created."
     )
     @PostMapping
     public FlightplanFindByCodeResponseDto create(@RequestBody FlightplanDto dto) {
@@ -30,7 +30,7 @@ public class FlightplanController {
         ));
     }
 
-    @ApiOperation(value = "Get all flight plans")
+    @ApiOperation(value = "Get all flightplans")
     @GetMapping
     public FindAllFlightplanResponseDto findAll() {
         var flightplans = this.flightplanService.findAll();
@@ -39,15 +39,15 @@ public class FlightplanController {
 
     //TODO: fix destination and arrival
     @ApiOperation(
-            value = "Get a flight plan",
-            notes = "Provide a code to find a specific flight plan."
+            value = "Get a flightplan",
+            notes = "Provide a code to find a specific flightplan."
     )
     @GetMapping("/{code}")
     public FlightplanFindByCodeResponseDto findByCode(@PathVariable String code) {
         return createFlightplanResponseDto(this.flightplanService.findByCode(code));
     }
 
-    @ApiOperation(value = "Update a flight plan")
+    @ApiOperation(value = "Update a flightplan")
     //TODO: fix destination and arrival
     @PutMapping
     public FlightplanFindByCodeResponseDto update(@RequestBody FlightplanDto dto) {
@@ -61,7 +61,7 @@ public class FlightplanController {
 
     @ApiOperation(
             value = "Delete a flight plan",
-            notes = "Provide the code of the flight plan to delete it."
+            notes = "Provide the code of the flightplan to delete it."
     )
     @DeleteMapping("/{code}")
     public void deleteByCode(@PathVariable String code) {
