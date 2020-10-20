@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.TypeNotFoundException;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringTypeRepository;
 import nl.prbed.hu.aviation.management.data.aircraft.TypeEntity;
-import nl.prbed.hu.aviation.management.data.aircraft.factory.TypeEntityFactory;
 import nl.prbed.hu.aviation.management.domain.Type;
 import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class TypeService {
     private final SpringTypeRepository typeRepository;
-    private final TypeEntityFactory typeEntityFactory;
     private final TypeFactory typeFactory;
 
     public Type create(
@@ -29,7 +27,6 @@ public class TypeService {
             int numSeatsEconomy
     ) {
         var entity = typeRepository.save(new TypeEntity(
-                null,
                 modelName,
                 manufacturer,
                 fuelCapacity,
@@ -45,7 +42,6 @@ public class TypeService {
         return this.typeRepository.findByModelName(modelName)
                 .orElseThrow(() -> new TypeNotFoundException(modelName));
     }
-
 
     // TODO: This should throw an exception if there are aircrafts connected to the type
     public void delete(String model) {

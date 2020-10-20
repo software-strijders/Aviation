@@ -9,10 +9,8 @@ import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "flightplan")
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter @Setter
+@Table(name = "flightplan")
 public class FlightplanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -29,4 +27,12 @@ public class FlightplanEntity {
 
     @OneToOne
     private AirportEntity destination;
+
+    public FlightplanEntity() {}
+    public FlightplanEntity(String code, Long duration, AirportEntity arrival, AirportEntity destination) {
+        this.code = code;
+        this.duration = duration;
+        this.arrival = arrival;
+        this.destination = destination;
+    }
 }

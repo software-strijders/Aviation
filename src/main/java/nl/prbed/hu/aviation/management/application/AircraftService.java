@@ -2,8 +2,8 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AircraftNotFoundException;
+import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
-import nl.prbed.hu.aviation.management.data.aircraft.factory.AircraftEntityFactory;
 import nl.prbed.hu.aviation.management.domain.Aircraft;
 import nl.prbed.hu.aviation.management.domain.factory.AircraftFactory;
 import org.springframework.stereotype.Service;
@@ -18,11 +18,10 @@ public class AircraftService {
     private final SpringAircraftRepository aircraftRepository;
     private final TypeService typeService;
     private final AircraftFactory aircraftFactory;
-    private final AircraftEntityFactory aircraftEntityFactory;
 
     public Aircraft create(String code, String modelName) {
         var type = this.typeService.findTypeEntityByModelName(modelName);
-        var entity = this.aircraftEntityFactory.create(code, type);
+        var entity = new AircraftEntity(code, type);
         return this.aircraftFactory.from(this.aircraftRepository.save(entity));
     }
 
