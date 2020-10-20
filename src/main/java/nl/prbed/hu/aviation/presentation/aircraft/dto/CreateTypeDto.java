@@ -7,16 +7,22 @@ import io.swagger.annotations.ApiModelProperty;
 public class CreateTypeDto {
     @ApiModelProperty(notes = "The model name")
     public String modelName;
+
     @ApiModelProperty(notes = "The manufacturer")
     public String manufacturer;
+
     @ApiModelProperty(notes = "The total fuel capacity")
     public int fuelCapacity;
+
     @ApiModelProperty(notes = "The fuel consumption in kilograms per kilometer")
     public int fuelConsumption;
+
     @ApiModelProperty(notes = "The seats of first class")
     public int numSeatsFirst;
+
     @ApiModelProperty(notes = "The seats of business class")
     public int numSeatsBusiness;
+
     @ApiModelProperty(notes = "The seats of economy class")
     public int numSeatsEconomy;
 }

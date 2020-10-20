@@ -14,8 +14,10 @@ import java.util.List;
 public class CityResponseDto {
     @ApiModelProperty(notes = "The name of the city")
     private final String name;
+
     @ApiModelProperty(notes = "The country in which the city is located")
     private final String country;
+
     @ApiModelProperty(notes = "The list of airports in the city")
     private final List<Airport> airports;
 }

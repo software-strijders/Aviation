@@ -12,10 +12,13 @@ import nl.prbed.hu.aviation.domain.Airport;
 public class FlightplanFindByCodeResponseDto {
     @ApiModelProperty(notes = "The code of the flightplan")
     private final String code;
+
     @ApiModelProperty(notes = "The duration of the flightplan")
     private final Long duration;
+
     @ApiModelProperty(notes = "The arrival airport")
     private final Airport arrival;
+
     @ApiModelProperty(notes = "The destination airport")
     private final Airport destination;
 }

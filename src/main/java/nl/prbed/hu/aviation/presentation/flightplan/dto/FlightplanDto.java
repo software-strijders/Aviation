@@ -7,8 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 public class FlightplanDto {
     @ApiModelProperty(notes = "The code of the flightplan")
     public String code;
+
     @ApiModelProperty(notes = "The duration of the flightplan")
     public Long duration;
+
+    @ApiModelProperty(notes = "The arrival airport")
     public String arrival;
+
+    @ApiModelProperty(notes = "The destination airport")
     public String destination;
 }

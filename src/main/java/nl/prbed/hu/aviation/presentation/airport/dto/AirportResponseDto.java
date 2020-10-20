@@ -11,10 +11,13 @@ import lombok.RequiredArgsConstructor;
 public class AirportResponseDto {
     @ApiModelProperty(notes = "The code of the airport")
     private final String code;
+
     @ApiModelProperty(notes = "The latitude of the airport in signed degrees format")
     private final double latitude;
+
     @ApiModelProperty(notes = "The longitude of the airport in signed degrees format")
     private final double longitude;
+
     @ApiModelProperty(notes = "The longitude of the airport in signed degrees format")
     private final String cityName;
 }

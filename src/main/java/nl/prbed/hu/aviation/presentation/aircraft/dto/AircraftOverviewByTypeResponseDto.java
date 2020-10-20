@@ -14,6 +14,7 @@ import java.util.List;
 public class AircraftOverviewByTypeResponseDto {
     @ApiModelProperty(notes = "The type of the aircraft")
     private final String type;
+
     @ApiModelProperty(notes = "The list of aircraft")
     private final List<Aircraft> aircraft;
 }

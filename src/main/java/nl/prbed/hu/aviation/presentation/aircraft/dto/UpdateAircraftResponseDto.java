@@ -12,6 +12,7 @@ import nl.prbed.hu.aviation.domain.Type;
 public class UpdateAircraftResponseDto {
     @ApiModelProperty(notes = "The code of the aircraft")
     private final String code;
+
     @ApiModelProperty(notes = "The type of the aircraft")
     private final Type type;
 }

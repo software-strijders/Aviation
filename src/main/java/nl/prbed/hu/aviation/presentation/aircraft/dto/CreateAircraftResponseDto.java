@@ -12,6 +12,7 @@ import nl.prbed.hu.aviation.domain.Type;
 public class CreateAircraftResponseDto {
     @ApiModelProperty(notes = "The code of the aircraft. Something like: KLM0001")
     private final String code;
+
     @ApiModelProperty(notes = "The model name of the type")
     private final Type modelName;
 }

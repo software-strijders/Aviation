@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class CreateCityDto {
     @ApiModelProperty(notes = "The name of the city")
     public String name;
+
     @ApiModelProperty(notes = "The name of the country the city is located in")
     public String country;
 }
