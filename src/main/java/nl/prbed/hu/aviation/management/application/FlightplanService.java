@@ -1,10 +1,8 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.AllArgsConstructor;
-import nl.prbed.hu.aviation.management.application.exception.AirportNotFoundException;
 import nl.prbed.hu.aviation.management.application.exception.AirportsNotUniqueException;
-import nl.prbed.hu.aviation.management.application.exception.FlightplanNotFoundException;
-import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
+import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.management.data.flightplan.SpringFlightplanRepository;
@@ -17,9 +15,12 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class FlightplanService {
+    private static final String ERROR_MSG = "Could not find flightplan with code '%s'";
+
+    private final AirportService airportService;
+    private final SpringAirportRepository airportRepository;
     private final SpringFlightplanRepository flightplanRepository;
     private final FlightplanFactory flightplanFactory;
-    private final SpringAirportRepository airportRepository;
 
     public Flightplan create(String code, Long duration, String arrival, String destination) {
         if (arrival.equals(destination))
@@ -28,8 +29,8 @@ public class FlightplanService {
         var flightplanEntity = new FlightplanEntity(
                 code,
                 duration,
-                this.findAirportByCode(arrival),
-                this.findAirportByCode(destination)
+                this.airportService.findAirportEntityByCode(arrival),
+                this.airportService.findAirportEntityByCode(destination)
         );
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }
@@ -54,18 +55,13 @@ public class FlightplanService {
 
         var flightplanEntity = this.findFlightplanByCode(code);
         flightplanEntity.setDuration(duration);
-        flightplanEntity.setArrival(this.findAirportByCode(arrival));
-        flightplanEntity.setDestination(this.findAirportByCode(destination));
+        flightplanEntity.setArrival(this.airportService.findAirportEntityByCode(arrival));
+        flightplanEntity.setDestination(this.airportService.findAirportEntityByCode(destination));
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
-    }
-
-    private AirportEntity findAirportByCode(String code) {
-        return this.airportRepository.findByCode(code)
-                .orElseThrow(() -> new AirportNotFoundException(code));
     }
 
     private FlightplanEntity findFlightplanByCode(String code) {
         return this.flightplanRepository.findByCode(code)
-                .orElseThrow(() -> new FlightplanNotFoundException(code));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 }

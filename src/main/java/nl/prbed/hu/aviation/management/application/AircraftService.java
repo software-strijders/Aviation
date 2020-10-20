@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.application.exception.AircraftNotFoundException;
+import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
 import nl.prbed.hu.aviation.management.domain.Aircraft;
@@ -15,6 +15,8 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class AircraftService {
+    private static final String ERROR_MSG = "Could not find aircraft with model '%s'";
+
     private final SpringAircraftRepository aircraftRepository;
     private final TypeService typeService;
     private final AircraftFactory aircraftFactory;
@@ -26,14 +28,13 @@ public class AircraftService {
     }
 
     public void delete(String code) {
-        var aircraft = aircraftRepository.findAircraftEntityByCode(code)
-                .orElseThrow(() -> new AircraftNotFoundException(code));
-        aircraftRepository.delete(aircraft);
+        var aircraft = this.findAircraftEntityByCode(code);
+        this.aircraftRepository.delete(aircraft);
     }
 
     public void deleteByType(String model) {
-        var type = typeService.findTypeEntityByModelName(model);
-        aircraftRepository.deleteAircraftEntitiesByType(type);
+        var type = this.typeService.findTypeEntityByModelName(model);
+        this.aircraftRepository.deleteAircraftEntitiesByType(type);
     }
 
     public List<Aircraft> findAllByType(String modelName) {
@@ -49,10 +50,14 @@ public class AircraftService {
 
     // Fleet isn't implemented yet, that's the reason it isn't given as a parameter.
     public Aircraft update(String oldCode, String newCode, String modelName) {
-        var entity = this.aircraftRepository.findAircraftEntityByCode(oldCode)
-                .orElseThrow(() -> new AircraftNotFoundException(oldCode));
+        var entity = this.findAircraftEntityByCode(oldCode);
         entity.setCode(newCode);
-        entity.setType(typeService.findTypeEntityByModelName(modelName));
-        return aircraftFactory.from(aircraftRepository.save(entity));
+        entity.setType(this.typeService.findTypeEntityByModelName(modelName));
+        return this.aircraftFactory.from(aircraftRepository.save(entity));
+    }
+
+    private AircraftEntity findAircraftEntityByCode(String code) {
+        return this.aircraftRepository.findAircraftEntityByCode(code)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 }

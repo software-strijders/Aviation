@@ -1,8 +1,7 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.application.exception.AirportAlreadyExistsException;
-import nl.prbed.hu.aviation.management.application.exception.AirportNotFoundException;
+import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.management.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.management.domain.Airport;
@@ -15,14 +14,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AirportService {
+    private static final String ERROR_MSG = "Could not find airport with code '%s'";
+    private static final String DUPLICATE_ERROR_MSG = "Airport with code: '%s' already exists";
+
     private final SpringAirportRepository airportRepository;
     private final AirportFactory airportFactory;
     private final CityService cityService;
     private final CityFactory cityFactory;
 
     public Airport create(String code, double longitude, double latitude, String cityName) {
-        if (airportRepository.findByCode(code).isPresent())
-            throw new AirportAlreadyExistsException(code);
+        if (this.airportRepository.findByCode(code).isPresent())
+            throw new EntityNotFoundException(String.format(DUPLICATE_ERROR_MSG, code));
 
         var city = this.cityService.findCityEntityByName(cityName);
         var entity = airportRepository.save(new AirportEntity(code, longitude, latitude, city));
@@ -43,8 +45,7 @@ public class AirportService {
     }
 
     public List<Airport> findByCity(String name) {
-        var entities = this.airportRepository.findAirportEntitiesByCityName(name)
-                .orElseThrow(() -> new AirportNotFoundException(name));
+        var entities = this.airportRepository.findAirportEntitiesByCityName(name);
         return this.airportFactory.from(entities);
     }
 
@@ -59,8 +60,9 @@ public class AirportService {
         airport.setCity(this.cityFactory.from(cityEntity));
         return airport;
     }
-    private AirportEntity findAirportEntityByCode(String code) {
+
+    public AirportEntity findAirportEntityByCode(String code) {
         return this.airportRepository.findByCode(code)
-                .orElseThrow(() -> new AirportNotFoundException(code));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 }
