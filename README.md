@@ -22,6 +22,7 @@ This project is an assignment for the course `prbed` in the field of study Softw
   - [Java](#java)
   - [Git](#git)
 - [Integration Tests](#integration-tests)
+  - [Postman Collections](#postman-collections)
 
 ## Documentation
 For documentation, we've implemented a domain diagram that will be updated over the course of this project. We've also added the most important dependencies we will use in this project.
@@ -174,3 +175,8 @@ To keep our git history clean, we don't use the `git merge` command by ourselves
 Integration tests are done with [Postman](https://www.postman.com/). We've setup an environment to run all of our integration tests, this way our requests will always be up to date for everyone.
 
 For each request we will add an appropriate test script. These tests are written in Javascript with access to Postman specific functions, that help with testing certain conditions (checking for HTTP codes, etc.).
+
+### Postman Collections
+To get around Postman's limitations of a maximum amount of requests (25), we export our collection **per** iteration. Not only do we export the Postman collection, we also export the (succesfull) Postman test run. 
+
+These files are located [here](postman/).
