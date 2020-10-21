@@ -15,6 +15,7 @@ This project is an assignment for the course `prbed` in the field of study Softw
 - [Documentation](#documentation)
   - [Domain model](#domain-model)
   - [Dependencies](#dependencies)
+  - [Swagger](#swagger-ui)
 - [The team](#the-team)
 - [Git strategy](#git-strategy)
 - [Scrum](#scrum)
@@ -38,6 +39,13 @@ For this project, we use the following dependencies (the most important ones):
 - [Spring](https://spring.io "Spring framework")
 - [Lombok](https://projectlombok.org/ "Project Lombok")
 - [Jackson](https://github.com/FasterXML/jackson "Jackson Github")
+
+### Swagger UI
+To document our API, we use [Swagger UI](https://swagger.io/tools/swagger-ui/). With Swagger we can document our API quite easily, most of it is automatically done by Swagger. But to make the API more descriptive, we added additional information to our API endpoints and models.
+
+We have two different instances of Swagger. To access them, you can click on the following:
+- [Development](http://localhost:8080/api/swagger-ui/#/) (for developers only)
+- [Heroku](replace-me) (for anybody else)
 
 ## The team
 This project will be made by a group of five, each with their different strengths and weaknesses that complement eachother.
