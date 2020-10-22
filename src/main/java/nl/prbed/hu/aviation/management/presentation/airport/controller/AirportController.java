@@ -49,7 +49,7 @@ public class AirportController {
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        return createAirportResponseDto(airport);
+        return this.createAirportResponseDto(airport);
     }
 
     @ApiOperation(
@@ -68,7 +68,7 @@ public class AirportController {
     @PostMapping
     public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return createAirportResponseDto(airport);
+        return this.createAirportResponseDto(airport);
     }
 
     @ApiOperation(value = "Create a city")
@@ -85,23 +85,27 @@ public class AirportController {
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
-        return createAirportResponseDto(airport);
+        return this.createAirportResponseDto(airport);
     }
 
     @ApiOperation(
             value = "Add aircraft to airport",
             notes = "Provide codes of all aircrafts and a code of the airport"
     )
-    @PutMapping({"/{airportcode}/addaircrafts"})
-    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AircraftsDto dto) {
-        var airport = airportService.addAircraftsToAirport(airportcode, dto.aircraftCodes);
-        return createAirportResponseDto(airport);
+    @PutMapping("/{airportcode}/aircraft")
+    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AircraftListDto dto) {
+        var airport = this.airportService.addAircraftsToAirport(airportcode, dto.aircraftCodes);
+        return this.createAirportResponseDto(airport);
     }
 
-    @DeleteMapping({"/{airportcode}/deleteaircraft"})
+    @ApiOperation(
+            value = "Delete aircraft from airport",
+            notes = "Provide code of airport and code of aircraft"
+    )
+    @DeleteMapping("/{airportcode}/aircraft")
     public AirportResponseDto deleteAircraftFromAirport(@PathVariable String airportcode, @RequestBody AircraftDto dto) {
-        var airport = airportService.removeAircraftFromAirport(airportcode, dto.aircraftcode);
-        return createAirportResponseDto(airport);
+        var airport = this.airportService.removeAircraftFromAirport(airportcode, dto.aircraftcode);
+        return this.createAirportResponseDto(airport);
     }
 
     private AirportResponseDto createAirportResponseDto(Airport airport) {
