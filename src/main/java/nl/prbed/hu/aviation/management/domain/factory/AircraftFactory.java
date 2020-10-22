@@ -16,13 +16,11 @@ public class AircraftFactory {
     private final SeatFactory seatFactory;
 
     public Aircraft from(AircraftEntity entity) {
-        return new Aircraft(
-                entity.getCode(),
-                this.typeFactory.from(entity.getType()),
-                entity.getSeats().stream().map(seatFactory::from).collect(Collectors.toList()),
-                null,
-                null
-                );
+        return Aircraft.create()
+                .code(entity.getCode())
+                .type(this.typeFactory.from(entity.getType()))
+                .seats(entity.getSeats().stream().map(seatFactory::from).collect(Collectors.toList()))
+                .build();
     }
 
     public List<Aircraft> from(List<AircraftEntity> entities) {

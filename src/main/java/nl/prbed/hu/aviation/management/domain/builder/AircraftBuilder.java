@@ -43,6 +43,12 @@ public class AircraftBuilder implements Builder {
     }
 
     @Override
+    public Builder seats(List<Seat> seats) {
+        this.seats = seats;
+        return this;
+    }
+
+    @Override
     public Builder type(Type type) {
         this.type = type;
         return this;
