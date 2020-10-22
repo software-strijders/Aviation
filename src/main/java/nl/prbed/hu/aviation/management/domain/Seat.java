@@ -9,5 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 public class Seat {
     private SeatType seatType;
-    private List<Passenger> passengers; //not sure why this needs to be a List?
+    private Passenger passenger;
 }

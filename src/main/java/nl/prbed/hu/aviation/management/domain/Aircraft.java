@@ -9,6 +9,7 @@ import java.util.List;
 public class Aircraft {
     private String code;
     private Type type;
+    private List<Seat> seats;
     private Flight current;
     private List<Flight> past;
 }
