@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.security.application;
 
 import nl.prbed.hu.aviation.security.application.exception.UserAlreadyExistsException;
-import nl.prbed.hu.aviation.security.data.Customer;
+import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.security.data.Employee;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
     ) {
         this.checkIfUserExists(username);
         var encodedPassword = this.passwordEncoder.encode(password);
-        var customer = new Customer(username, encodedPassword, firstName, lastName, nationality, birthDate, email, phoneNumber);
+        var customer = new CustomerEntity(username, encodedPassword, firstName, lastName, nationality, birthDate, email, phoneNumber);
         this.save(customer);
     }
 
