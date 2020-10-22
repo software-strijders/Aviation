@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.presentation.user.controller;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.CustomerService;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerOverviewResponseDto;
@@ -15,11 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     private final CustomerService service;
 
+    @ApiOperation(value = "Find all customers")
     @GetMapping
     public CustomerOverviewResponseDto findAll() {
         return new CustomerOverviewResponseDto(this.service.findAllCustomers());
     }
 
+    @ApiOperation(
+            value = "Find a customer",
+            notes = "Provide an id of a specific customer"
+    )
     @GetMapping("/{id}")
     public CustomerResponseDto findbyFirstName(@PathVariable("id") Long id) {
         var customer = this.service.findById(id);
