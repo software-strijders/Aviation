@@ -35,17 +35,26 @@ public class AirportController {
         this.cityService.delete(cityName);
     }
 
+    @ApiOperation(value = "Find all airports")
     @GetMapping
     public AirportsResponseDto findAll() {
         return new AirportsResponseDto(this.airportService.findAll());
     }
 
+    @ApiOperation(
+            value = "Find an airport",
+            notes = "Provide a code of a specific airport"
+    )
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
         return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
     }
 
+    @ApiOperation(
+            value = "Find all airports by city",
+            notes = "Provide a city name"
+    )
     @GetMapping("/city/{cityName}")
     public AirportsResponseDto findByCity(@PathVariable String cityName) {
         return new AirportsResponseDto(this.airportService.findByCity(cityName));
@@ -68,6 +77,10 @@ public class AirportController {
         return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
     }
 
+    @ApiOperation(
+            value = "Update a city",
+            notes = "Provide a code of the city that needs to be updated."
+    )
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);

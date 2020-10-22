@@ -24,7 +24,7 @@ public class FlightplanController {
         this.flightplanService.deleteByCode(code);
     }
 
-    @ApiOperation(value = "Get all flightplans")
+    @ApiOperation(value = "Find all flightplans")
     @GetMapping
     public FlightplansResponseDto findAll() {
         var flightplans = this.flightplanService.findAll();
@@ -32,7 +32,7 @@ public class FlightplanController {
     }
 
     @ApiOperation(
-            value = "Get a flightplan",
+            value = "Find a flightplan",
             notes = "Provide a code to find a specific flightplan."
     )
     @GetMapping("/{code}")
