@@ -13,11 +13,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AircraftFactory {
     private final TypeFactory typeFactory;
+    private final SeatFactory seatFactory;
 
     public Aircraft from(AircraftEntity entity) {
         return new Aircraft(
                 entity.getCode(),
                 this.typeFactory.from(entity.getType()),
+                entity.getSeats().stream().map(seatFactory::from).collect(Collectors.toList()),
                 null,
                 null
                 );
