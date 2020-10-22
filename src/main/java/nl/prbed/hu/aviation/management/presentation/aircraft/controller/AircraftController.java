@@ -59,8 +59,9 @@ public class AircraftController {
     )
     @PostMapping
     public AircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
-        var aircraft = this.aircraftService.create(dto.code, dto.modelName);
-        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType());
+        var aircraft = this.aircraftService.create(dto.code, dto.modelName, dto.seatsFirst,
+                dto.seatsBusiness, dto.seatsEconomy, dto.airportCode);
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }
 
     @ApiOperation(
@@ -88,6 +89,6 @@ public class AircraftController {
     @PutMapping({"/{code}"})
     public AircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
         var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
-        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType());
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }
 }
