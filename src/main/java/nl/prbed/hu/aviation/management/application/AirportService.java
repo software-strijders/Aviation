@@ -79,9 +79,9 @@ public class AirportService {
         return aircraftEntities;
     }
 
-    public Airport addAircraftToAirport(String airportcode, List<String> aircraftcodes){
-        var airport = findAirportEntityByCode(airportcode);
-        airport.getAircraftEntities().addAll(findByAircraftCodes(aircraftcodes));
+    public Airport addAircraftsToAirport(String airportCode, List<String> aircraftCodes){
+        var airport = findAirportEntityByCode(airportCode);
+        airport.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
 
         return this.airportFactory.from(this.airportRepository.save(airport));
     }
