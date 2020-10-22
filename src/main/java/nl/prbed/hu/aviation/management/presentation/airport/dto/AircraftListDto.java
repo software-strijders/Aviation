@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 
 @ApiModel(description = "All aircraft codes")
-public class AircraftsDto {
+public class AircraftListDto {
     @ApiModelProperty(notes = "List of aircraft codes")
     public List<String> aircraftCodes;
 }
