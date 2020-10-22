@@ -8,6 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Flight {
+    private String code;
     private double priceEconomy;
     private double priceBusiness;
     private double priceFirst;
