@@ -72,17 +72,18 @@ public class AirportService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 
-    private List<AircraftEntity> findByAircraftCodes(List<String> aircraftCodes) {
-        var aircraftEntities = new ArrayList<AircraftEntity>();
-        for (var code : aircraftCodes)
-            aircraftEntities.add(aircraftRepository.findAircraftEntityByCode(code).orElseThrow());
-        return aircraftEntities;
-    }
-
     public Airport addAircraftsToAirport(String airportCode, List<String> aircraftCodes){
         var airport = findAirportEntityByCode(airportCode);
         airport.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
 
         return this.airportFactory.from(this.airportRepository.save(airport));
+    }
+
+    private List<AircraftEntity> findByAircraftCodes(List<String> aircraftCodes) {
+        var aircraftEntities = new ArrayList<AircraftEntity>();
+        for (var code : aircraftCodes)
+            aircraftEntities.add(aircraftRepository.findAircraftEntityByCode(code)
+                    .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code))));
+        return aircraftEntities;
     }
 }
