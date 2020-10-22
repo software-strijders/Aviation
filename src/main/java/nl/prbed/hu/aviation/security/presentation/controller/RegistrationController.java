@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import nl.prbed.hu.aviation.security.application.UserService;
 import nl.prbed.hu.aviation.security.presentation.dto.CustomerRegistrationDto;
 import nl.prbed.hu.aviation.security.presentation.dto.EmployeeRegisterationDto;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ public class RegistrationController {
     }
 
     @ApiOperation(value = "Create a customer")
+    @Secured("ROLE_EMPLOYEE")
     @PostMapping("/customer")
     public void registerCustomer(@Validated @RequestBody CustomerRegistrationDto registrationDto) {
         this.userService.registerCustomer(
