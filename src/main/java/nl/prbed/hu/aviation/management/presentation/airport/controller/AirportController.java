@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
+import nl.prbed.hu.aviation.management.domain.Airport;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,7 @@ public class AirportController {
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), airport.getAircraft());
+        return createAirportResponseDto(airport);
     }
 
     @ApiOperation(
@@ -67,7 +68,7 @@ public class AirportController {
     @PostMapping
     public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return new AirportResponseDto(airport.getCode(), airport.getLatitude(), airport.getLongitude(), airport.getCity(), null);
+        return createAirportResponseDto(airport);
     }
 
     @ApiOperation(value = "Create a city")
@@ -84,13 +85,7 @@ public class AirportController {
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
-        return new AirportResponseDto(
-                airport.getCode(),
-                airport.getLatitude(),
-                airport.getLongitude(),
-                airport.getCity(),
-                airport.getAircraft()
-        );
+        return createAirportResponseDto(airport);
     }
 
     @ApiOperation(
@@ -98,8 +93,18 @@ public class AirportController {
             notes = "Provide codes of all aircrafts and a code of the airport"
     )
     @PutMapping({"/{airportcode}/addaircrafts"})
-    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AddAircraftDto dto) {
+    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AircraftsDto dto) {
         var airport = airportService.addAircraftsToAirport(airportcode, dto.aircraftCodes);
+        return createAirportResponseDto(airport);
+    }
+
+    @DeleteMapping({"/{airportcode}/deleteaircraft"})
+    public AirportResponseDto deleteAircraftFromAirport(@PathVariable String airportcode, @RequestBody AircraftDto dto) {
+        var airport = airportService.removeAircraftFromAirport(airportcode, dto.aircraftcode);
+        return createAirportResponseDto(airport);
+    }
+
+    private AirportResponseDto createAirportResponseDto(Airport airport) {
         return new AirportResponseDto(
                 airport.getCode(),
                 airport.getLatitude(),
