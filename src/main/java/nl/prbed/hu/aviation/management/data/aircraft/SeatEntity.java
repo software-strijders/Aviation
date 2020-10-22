@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.data.aircraft;
 
 import lombok.Getter;
 import lombok.Setter;
+import nl.prbed.hu.aviation.management.domain.Seat;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 
 import javax.persistence.*;
@@ -17,10 +18,13 @@ public class SeatEntity {
     @Column
     private SeatType seatType;
 
-    @ManyToOne
-    private AircraftEntity aircraft;
-
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private PassengerEntity passenger;
+
+    public SeatEntity(){}
+    public SeatEntity(SeatType seatType, PassengerEntity passenger) {
+        this.seatType = seatType;
+        this.passenger = passenger;
+    }
 
 }

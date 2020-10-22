@@ -22,7 +22,7 @@ public class AircraftEntity {
     @JoinColumn(referencedColumnName = "id")
     private TypeEntity type;
 
-    @OneToMany(mappedBy = "seats")
+    @OneToMany(cascade=CascadeType.ALL)
     private List<SeatEntity> seats;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -30,9 +30,10 @@ public class AircraftEntity {
     private AirportEntity airport;
 
     public AircraftEntity() {}
-    public AircraftEntity(String code, TypeEntity type, AirportEntity airport) {
+    public AircraftEntity(String code, TypeEntity type, List<SeatEntity> seats, AirportEntity airport) {
         this.code = code;
         this.type = type;
+        this.seats = seats;
         this.airport = airport;
     }
 }
