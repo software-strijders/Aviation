@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.CustomerService;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerOverviewResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerResponseDto;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Secured("ROLE_EMPLOYEE")
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService service;
