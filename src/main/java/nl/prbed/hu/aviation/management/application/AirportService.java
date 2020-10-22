@@ -72,10 +72,17 @@ public class AirportService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 
-    public Airport addAircraftsToAirport(String airportCode, List<String> aircraftCodes){
+    public Airport addAircraftsToAirport(String airportCode, List<String> aircraftCodes) {
         var airport = findAirportEntityByCode(airportCode);
         airport.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
 
+        return this.airportFactory.from(this.airportRepository.save(airport));
+    }
+
+    public Airport removeAircraftFromAirport(String airportCode, String aircraftCode) {
+        var airport = findAirportEntityByCode(airportCode);
+        airport.getAircraftEntities().remove(aircraftRepository.findAircraftEntityByCode(aircraftCode)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, aircraftCode))));
         return this.airportFactory.from(this.airportRepository.save(airport));
     }
 
