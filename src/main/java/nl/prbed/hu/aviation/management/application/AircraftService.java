@@ -55,6 +55,11 @@ public class AircraftService {
         this.aircraftRepository.deleteAircraftEntitiesByType(type);
     }
 
+    public Aircraft findByCode(String code) {
+        var entity = findAircraftEntityByCode(code);
+        return aircraftFactory.from(entity);
+    }
+
     public List<Aircraft> findAllByType(String modelName) {
         var type = this.typeService.findTypeEntityByModelName(modelName);
         var entities = this.aircraftRepository.findAircraftEntitiesByType(type);
