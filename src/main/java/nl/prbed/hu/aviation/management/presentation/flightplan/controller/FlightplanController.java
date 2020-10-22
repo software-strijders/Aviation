@@ -33,7 +33,7 @@ public class FlightplanController {
 
     @ApiOperation(
             value = "Find a flightplan",
-            notes = "Provide a code to find a specific flightplan."
+            notes = "Provide the code to find a specific flightplan."
     )
     @GetMapping("/{code}")
     public FlightplanResponseDto findByCode(@PathVariable String code) {

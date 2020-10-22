@@ -43,7 +43,7 @@ public class AirportController {
 
     @ApiOperation(
             value = "Find an airport",
-            notes = "Provide a code of a specific airport"
+            notes = "Provide the code of a specific airport"
     )
     @GetMapping("/{code}")
     public AirportResponseDto findByCode(@PathVariable String code) {
@@ -79,7 +79,7 @@ public class AirportController {
 
     @ApiOperation(
             value = "Update a city",
-            notes = "Provide a code of the city that needs to be updated."
+            notes = "Provide the code of the city that needs to be updated."
     )
     @PutMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {

@@ -29,7 +29,7 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Delete an aircraft type",
-            notes = "Provide a model name of the type. This will also delete all aircraft of this type."
+            notes = "Provide the model name of the type. This will also delete all aircraft of this type."
     )
     @DeleteMapping("/type/{model}")
     public void deleteType(@Validated @PathVariable String model) {

@@ -26,7 +26,7 @@ public class CustomerController {
 
     @ApiOperation(
             value = "Find a customer",
-            notes = "Provide an id of a specific customer"
+            notes = "Provide the id of a specific customer"
     )
     @GetMapping("/{id}")
     public CustomerResponseDto findbyFirstName(@PathVariable("id") Long id) {
