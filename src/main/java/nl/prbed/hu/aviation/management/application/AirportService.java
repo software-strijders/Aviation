@@ -72,7 +72,7 @@ public class AirportService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 
-    public Airport addAircraftsToAirport(String airportCode, List<String> aircraftCodes) {
+    public Airport addAircraftToAirport(String airportCode, List<String> aircraftCodes) {
         var airport = findAirportEntityByCode(airportCode);
         airport.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
 

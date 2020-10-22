@@ -94,7 +94,7 @@ public class AirportController {
     )
     @PutMapping("/{airportcode}/aircraft")
     public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AircraftListDto dto) {
-        var airport = this.airportService.addAircraftsToAirport(airportcode, dto.aircraftCodes);
+        var airport = this.airportService.addAircraftToAirport(airportcode, dto.aircraftCodes);
         return this.createAirportResponseDto(airport);
     }
 
