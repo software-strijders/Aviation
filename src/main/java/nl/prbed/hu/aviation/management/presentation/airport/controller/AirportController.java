@@ -81,11 +81,11 @@ public class AirportController {
     }
 
     @ApiOperation(
-            value = "Add aircrafts to airport",
+            value = "Add aircraft to airport",
             notes = "Provide codes of all aircrafts and a code of the airport"
     )
     @PutMapping({"/{airportcode}/addaircrafts"})
-    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AddAircraftsDto dto) {
+    public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AddAircraftDto dto) {
         var airport = airportService.addAircraftsToAirport(airportcode, dto.aircraftCodes);
         return new AirportResponseDto(
                 airport.getCode(),
