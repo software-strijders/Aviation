@@ -29,7 +29,7 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Delete an aircraft type",
-            notes = "Provide a model name of the type. This will also delete all aircraft of this type."
+            notes = "Provide the model name of the type. This will also delete all aircraft of this type."
     )
     @DeleteMapping("/type/{model}")
     public void deleteType(@Validated @PathVariable String model) {
@@ -37,14 +37,14 @@ public class AircraftController {
         this.typeService.delete(model);
     }
 
-    @ApiOperation(value = "Get an overview of all aircraft")
+    @ApiOperation(value = "Find all aircraft")
     @GetMapping
     public AircraftOverviewResponseDto findAll() {
         return new AircraftOverviewResponseDto(this.aircraftService.findAll());
     }
 
     @ApiOperation(
-            value = "Get aircraft information",
+            value = "Find all aircraft by model",
             notes = "Provide a model name of the aircraft to look up a specific aircraft in the database."
     )
     @GetMapping("/{modelName}")
