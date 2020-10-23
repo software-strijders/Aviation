@@ -1,7 +1,5 @@
 package nl.prbed.hu.aviation.security.data;
 
-import nl.prbed.hu.aviation.management.data.user.EmployeeEntity;
-import nl.prbed.hu.aviation.management.domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +18,9 @@ public interface SpringUserRepository extends JpaRepository<User, Long> {
 
     @Query("FROM User u WHERE TYPE(u) = CustomerEntity AND u.id = :id")
     Optional<User> findByIdAndCustomer(@Param("id") Long id);
+
+    @Query("FROM User u WHERE TYPE(u) = EmployeeEntity AND u.id = :id")
+    Optional<User> findByIdAndEmployee(@Param("id") Long id);
 
     @Query("FROM User u WHERE TYPE(u) = CustomerEntity AND u.username = :username")
     Optional<User> findByUsernameAndCustomer(@Param("username") String username);
