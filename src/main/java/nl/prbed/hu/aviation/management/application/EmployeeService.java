@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,9 +33,9 @@ public class EmployeeService {
     }
 
     public List<Employee> findAll() {
-        var employeeEntities = new ArrayList<EmployeeEntity>();
-        this.userRepository.findAllEmployees().forEach( user -> employeeEntities.add(map(user)));
-        return this.employeeFactory.from(employeeEntities);
+        var entities = this.userRepository.findAllEmployees().stream()
+                .map(this::map).collect(Collectors.toList());
+        return this.employeeFactory.from(entities);
     }
 
     private EmployeeEntity map(User user) {
