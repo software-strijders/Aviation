@@ -41,6 +41,7 @@ public class CustomerController {
         return this.createResponseDto(this.service.findById(id));
     }
 
+    @ApiOperation(value = "Update a customer")
     @PatchMapping("/{username}")
     public CustomerResponseDto update(@PathVariable String username, @Valid @RequestBody CustomerUpdateDto dto) {
         return this.createResponseDto(this.service.update(
