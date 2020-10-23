@@ -3,11 +3,15 @@ package nl.prbed.hu.aviation.management.presentation.user.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.CustomerService;
+import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerOverviewResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerResponseDto;
+import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerUpdateDto;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,6 +19,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService service;
+
+    @ApiOperation(value = "Delete a customer")
+    @DeleteMapping("/{username}")
+    public void delete(@PathVariable String username) {
+        this.service.deleteCustomer(username);
+    }
 
     @ApiOperation(value = "Find all customers")
     @GetMapping
@@ -28,7 +38,23 @@ public class CustomerController {
     )
     @GetMapping("/{id}")
     public CustomerResponseDto findbyFirstName(@PathVariable("id") Long id) {
-        var customer = this.service.findById(id);
+        return this.createResponseDto(this.service.findById(id));
+    }
+
+    @PatchMapping("/{username}")
+    public CustomerResponseDto update(@PathVariable String username, @Valid @RequestBody CustomerUpdateDto dto) {
+        return this.createResponseDto(this.service.update(
+                username,
+                dto.firstName,
+                dto.lastName,
+                dto.nationality,
+                dto.birthDate,
+                dto.email,
+                dto.phoneNumber
+        ));
+    }
+
+    private CustomerResponseDto createResponseDto(Customer customer) {
         return new CustomerResponseDto(
                 customer.getUserId(),
                 customer.getFirstName(),
@@ -38,11 +64,5 @@ public class CustomerController {
                 customer.getEmail(),
                 customer.getPhoneNumber()
         );
-    }
-
-    @ApiOperation(value = "Delete a customer")
-    @DeleteMapping("/{username}")
-    public void deleteCustomer(@PathVariable String username) {
-        this.service.deleteCustomer(username);
     }
 }
