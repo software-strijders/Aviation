@@ -9,6 +9,7 @@ import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,10 @@ public class CustomerService {
 
     private final SpringUserRepository userRepository;
     private final CustomerFactory factory;
+
+    public void deleteCustomer(String username) {
+        this.userRepository.delete(this.findByCustomerUsername(username));
+    }
 
     public List<Customer> findAllCustomers() {
         var entities = this.userRepository.findAllCustomers().stream()
@@ -33,10 +38,28 @@ public class CustomerService {
         return this.factory.from(this.map(entity));
     }
 
-    public void deleteCustomer(String username) {
-        var customer = this.map(this.userRepository.findByUsernameAndCustomer(username)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
-        this.userRepository.delete(customer);
+    public Customer update(
+            String username,
+            String firstName,
+            String lastName,
+            String nationality,
+            LocalDate birthDate,
+            String email,
+            int phoneNumber
+    ) {
+        var customer = this.findByCustomerUsername(username);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setNationality(nationality);
+        customer.setBirthDate(birthDate);
+        customer.setEmail(email);
+        customer.setPhoneNumber(phoneNumber);
+        return this.factory.from(this.userRepository.save(customer));
+    }
+
+    private CustomerEntity findByCustomerUsername(String username) {
+        return this.map(this.userRepository.findByUsernameAndCustomer(username)
+                        .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
     }
 
     private CustomerEntity map(User user) {
