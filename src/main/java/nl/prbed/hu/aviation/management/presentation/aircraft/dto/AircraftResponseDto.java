@@ -4,7 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.domain.Type;
+import nl.prbed.hu.aviation.management.domain.Seat;
+
+import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
@@ -14,5 +16,8 @@ public class AircraftResponseDto {
     private final String code;
 
     @ApiModelProperty(notes = "The model name of the type")
-    private final Type modelName;
+    private final String modelName;
+
+    @ApiModelProperty(notes = "The seats in the aircraft")
+    private final List<Seat> seats;
 }

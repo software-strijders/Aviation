@@ -2,10 +2,9 @@ package nl.prbed.hu.aviation.management.domain.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
-import nl.prbed.hu.aviation.management.domain.Aircraft;
+import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,14 +12,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AircraftFactory {
     private final TypeFactory typeFactory;
+    private final SeatFactory seatFactory;
 
     public Aircraft from(AircraftEntity entity) {
-        return new Aircraft(
-                entity.getCode(),
-                this.typeFactory.from(entity.getType()),
-                null,
-                null
-                );
+        return Aircraft.create()
+                .code(entity.getCode())
+                .type(this.typeFactory.from(entity.getType()))
+                .seats(entity.getSeats().stream().map(seatFactory::from).collect(Collectors.toList()))
+                .build();
     }
 
     public List<Aircraft> from(List<AircraftEntity> entities) {

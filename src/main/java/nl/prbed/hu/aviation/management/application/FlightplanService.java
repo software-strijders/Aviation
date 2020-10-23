@@ -36,12 +36,12 @@ public class FlightplanService {
     }
 
     public void deleteByCode(String code) {
-        var flightplan = this.findFlightplanByCode(code);
+        var flightplan = this.findFlightplanEntityByCode(code);
         this.flightplanRepository.delete(flightplan);
     }
 
-    public Flightplan findByCode(String code) {
-        return this.flightplanFactory.from(this.findFlightplanByCode(code));
+    public Flightplan findFlightplanByCode(String code) {
+        return this.flightplanFactory.from(this.findFlightplanEntityByCode(code));
     }
 
     public List<Flightplan> findAll() {
@@ -53,7 +53,7 @@ public class FlightplanService {
         if (arrival.equals(destination))
             throw new AirportsNotUniqueException();
 
-        var flightplanEntity = this.findFlightplanByCode(oldCode);
+        var flightplanEntity = this.findFlightplanEntityByCode(oldCode);
         flightplanEntity.setCode(code);
         flightplanEntity.setDuration(duration);
         flightplanEntity.setArrival(this.airportService.findAirportEntityByCode(arrival));
@@ -61,7 +61,7 @@ public class FlightplanService {
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }
 
-    private FlightplanEntity findFlightplanByCode(String code) {
+    public FlightplanEntity findFlightplanEntityByCode(String code) {
         return this.flightplanRepository.findByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }

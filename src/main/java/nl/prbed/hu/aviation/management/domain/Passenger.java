@@ -11,7 +11,7 @@ import java.util.List;
 public class Passenger {
     private String firstName;
     private String surName;
-    private LocalDate birtdate;
+    private LocalDate birthdate;
     private String nationality;
     private List<Booking> bookings;
     private Seat seat;
