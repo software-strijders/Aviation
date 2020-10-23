@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/register")
+@Secured("ROLE_EMPLOYEE")
 public class RegistrationController {
     private final UserService userService;
 
@@ -21,7 +22,6 @@ public class RegistrationController {
     }
 
     @ApiOperation(value = "Create a customer")
-    @Secured("ROLE_EMPLOYEE")
     @PostMapping("/customer")
     public void registerCustomer(@Validated @RequestBody CustomerRegistrationDto registrationDto) {
         this.userService.registerCustomer(
