@@ -2,7 +2,7 @@ package nl.prbed.hu.aviation.security.application;
 
 import nl.prbed.hu.aviation.security.application.exception.UserAlreadyExistsException;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
-import nl.prbed.hu.aviation.security.data.Employee;
+import nl.prbed.hu.aviation.management.data.user.EmployeeEntity;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -48,7 +48,7 @@ public class UserService implements UserDetailsService {
     public void registerEmployee(String username, String password, String firstName, String lastName) {
         this.checkIfUserExists(username);
         var encodedPassword = this.passwordEncoder.encode(password);
-        var employee = new Employee(username, encodedPassword, firstName, lastName);
+        var employee = new EmployeeEntity(username, encodedPassword, firstName, lastName);
         this.save(employee);
     }
 
