@@ -18,4 +18,7 @@ public interface SpringUserRepository extends JpaRepository<User, Long> {
 
     @Query("FROM User u WHERE TYPE(u) = CustomerEntity AND u.username = :username")
     Optional<User> findByUsernameAndCustomer(@Param("username") String username);
+
+    @Query("FROM User u WHERE TYPE(u) = Employee AND u.username = :username")
+    Optional<User> findByUsernameAndEmployee(@Param("username") String username);
 }
