@@ -37,7 +37,7 @@ public class FlightplanController {
     )
     @GetMapping("/{code}")
     public FlightplanResponseDto findByCode(@PathVariable String code) {
-        return this.createFlightplanResponseDto(this.flightplanService.findByCode(code));
+        return this.createFlightplanResponseDto(this.flightplanService.findFlightplanByCode(code));
     }
 
     @ApiOperation(

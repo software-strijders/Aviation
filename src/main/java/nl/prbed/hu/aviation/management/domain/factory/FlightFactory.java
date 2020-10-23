@@ -12,7 +12,14 @@ public class FlightFactory {
     private final FlightplanFactory flightplanFactory;
 
     public Flight from(FlightEntity entity) {
-        return new Flight(entity.getCode(), entity.getPriceEconomy(), entity.getPriceBusiness(), entity.getPriceFirst(),
-        null, aircraftFactory.from(entity.getAircraft()), flightplanFactory.from(entity.getFlightplan()));
+        return new Flight(
+                entity.getCode(),
+                entity.getPriceEconomy(),
+                entity.getPriceBusiness(),
+                entity.getPriceFirst(),
+                null,
+                aircraftFactory.from(entity.getAircraft()),
+                flightplanFactory.from(entity.getFlightplan())
+        );
     }
 }

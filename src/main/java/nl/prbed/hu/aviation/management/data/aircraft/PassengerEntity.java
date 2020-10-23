@@ -10,11 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @Table(name = "passenger")
 public class PassengerEntity {
-
     @Id
     @GeneratedValue
     private Long id;

@@ -2,10 +2,9 @@ package nl.prbed.hu.aviation.management.domain.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
-import nl.prbed.hu.aviation.management.domain.Aircraft;
+import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

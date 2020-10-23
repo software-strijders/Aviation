@@ -26,5 +26,4 @@ public class SeatEntity {
         this.seatType = seatType;
         this.passenger = passenger;
     }
-
 }

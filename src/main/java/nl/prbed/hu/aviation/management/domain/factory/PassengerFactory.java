@@ -1,6 +1,5 @@
 package nl.prbed.hu.aviation.management.domain.factory;
 
-import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.PassengerEntity;
 import nl.prbed.hu.aviation.management.domain.Passenger;
 import org.springframework.stereotype.Component;
@@ -14,6 +13,7 @@ public class PassengerFactory {
                 entity.getBirthdate(),
                 entity.getNationality(),
                 null,
-                null);
+                null
+        );
     }
 }

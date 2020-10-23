@@ -5,10 +5,9 @@ import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundExcep
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
-import nl.prbed.hu.aviation.management.domain.Aircraft;
-import nl.prbed.hu.aviation.management.domain.Seat;
+import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.factory.AircraftFactory;
-import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
 import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +32,12 @@ public class AircraftService {
         var aircraft = Aircraft.create()
                 .code(code)
                 .type(this.typeFactory.from(type))
-                .firstSeats(seatsFirst)
-                .businessSeats(seatsBusiness)
-                .economySeats(seatsEconomy)
+                .addSeats(seatsFirst, SeatType.FIRST)
+                .addSeats(seatsBusiness, SeatType.BUSINESS)
+                .addSeats(seatsEconomy, SeatType.ECONOMY)
                 .build();
 
-        var seats= aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null)).collect(Collectors.toList());
+        var seats = aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null)).collect(Collectors.toList());
         var airport = airportService.findAirportEntityByCode(airportCode);
         var entity = new AircraftEntity(code, type, seats, airport);
 
@@ -53,11 +52,6 @@ public class AircraftService {
     public void deleteByType(String model) {
         var type = this.typeService.findTypeEntityByModelName(model);
         this.aircraftRepository.deleteAircraftEntitiesByType(type);
-    }
-
-    public Aircraft findByCode(String code) {
-        var entity = findAircraftEntityByCode(code);
-        return aircraftFactory.from(entity);
     }
 
     public List<Aircraft> findAllByType(String modelName) {

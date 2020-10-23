@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/flight")
 @RequiredArgsConstructor
+@RequestMapping("/flight")
 public class FlightController {
     private final FlightService flightService;
 
@@ -23,9 +23,21 @@ public class FlightController {
     )
     @PostMapping
     public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
-        var flight = this.flightService.create(dto.code, dto.priceFirst, dto.priceBusiness, dto.priceEconomy,
-                dto.aircraftCode, dto.flightPlanCode);
-        return new FlightResponseDto(flight.getCode(), flight.getPriceFirst(), flight.getPriceBusiness(), flight.getPriceEconomy(),
-                flight.getAircraft().getCode(), flight.getFlightplan().getCode());
+        var flight = this.flightService.create(
+                dto.code,
+                dto.priceFirst,
+                dto.priceBusiness,
+                dto.priceEconomy,
+                dto.aircraftCode,
+                dto.flightPlanCode
+        );
+        return new FlightResponseDto(
+                flight.getCode(),
+                flight.getPriceFirst(),
+                flight.getPriceBusiness(),
+                flight.getPriceEconomy(),
+                flight.getAircraft().getCode(),
+                flight.getFlightplan().getCode()
+        );
     }
 }

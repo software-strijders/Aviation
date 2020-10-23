@@ -16,13 +16,17 @@ public class FlightService {
     private final FlightplanService flightplanService;
     private final FlightFactory flightFactory;
 
-    public Flight create(String code, double priceFirst, double priceBusiness, double priceEconomy,
-                         String aircraftCode, String flightPlanCode) {
+    public Flight create(
+            String code,
+            double priceFirst,
+            double priceBusiness,
+            double priceEconomy,
+            String aircraftCode,
+            String flightPlanCode
+    ) {
         var aircraft = this.aircraftService.findAircraftEntityByCode(aircraftCode);
         var flightplan = this.flightplanService.findFlightplanEntityByCode(flightPlanCode);
         var entity = new FlightEntity(code, priceEconomy, priceBusiness, priceFirst, aircraft, flightplan);
-
         return flightFactory.from(flightRepository.save(entity));
     }
-
 }

@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "Details about the flight")
 public class FlightDto {
-
     @ApiModelProperty(notes = "The code of the flight")
     public String code;
 

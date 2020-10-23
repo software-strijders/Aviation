@@ -1,7 +1,8 @@
-package nl.prbed.hu.aviation.management.domain.builder;
+package nl.prbed.hu.aviation.management.domain.aircraft.builder;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.domain.*;
+import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
 
 import java.util.ArrayList;
@@ -17,7 +18,6 @@ public class AircraftBuilder implements Builder {
     private Type type;
     private Flight flight;
 
-
     @Override
     public Builder code(String code) {
         this.code = code;
@@ -25,20 +25,8 @@ public class AircraftBuilder implements Builder {
     }
 
     @Override
-    public Builder firstSeats(int num) {
-        this.seats.addAll(seatFactory.from(num, SeatType.FIRST));
-        return this;
-    }
-
-    @Override
-    public Builder businessSeats(int num) {
-        this.seats.addAll(seatFactory.from(num, SeatType.BUSINESS));
-        return this;
-    }
-
-    @Override
-    public Builder economySeats(int num) {
-        this.seats.addAll(seatFactory.from(num, SeatType.ECONOMY));
+    public Builder addSeats(int num, SeatType type) {
+        this.seats.addAll(seatFactory.from(num, type));
         return this;
     }
 

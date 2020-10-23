@@ -4,20 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
-import nl.prbed.hu.aviation.management.domain.Aircraft;
-import nl.prbed.hu.aviation.management.domain.Booking;
-import nl.prbed.hu.aviation.management.domain.Flightplan;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter @Setter
 @Table(name = "flight")
 public class FlightEntity {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -31,6 +26,7 @@ public class FlightEntity {
 
     @OneToOne
     private AircraftEntity aircraft;
+
     @OneToOne
     private FlightplanEntity flightplan;
 

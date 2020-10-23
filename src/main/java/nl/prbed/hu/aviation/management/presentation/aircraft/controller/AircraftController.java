@@ -59,8 +59,14 @@ public class AircraftController {
     )
     @PostMapping
     public AircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
-        var aircraft = this.aircraftService.create(dto.code, dto.modelName, dto.seatsFirst,
-                dto.seatsBusiness, dto.seatsEconomy, dto.airportCode);
+        var aircraft = this.aircraftService.create(
+                dto.code,
+                dto.modelName,
+                dto.seatsFirst,
+                dto.seatsBusiness,
+                dto.seatsEconomy,
+                dto.airportCode
+        );
         return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }
 

@@ -22,7 +22,6 @@ public class SeatFactory {
         return new Seat(entity.getSeatType(), passengerFactory.from(entity.getPassenger()));
     }
 
-    //TODO maybe use stream for this.
     public List<Seat> from(int num, SeatType type) {
         var seats = new ArrayList<Seat>();
         for(int i = 0; i < num; i++) {

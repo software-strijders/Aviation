@@ -40,7 +40,7 @@ public class FlightplanService {
         this.flightplanRepository.delete(flightplan);
     }
 
-    public Flightplan findByCode(String code) {
+    public Flightplan findFlightplanByCode(String code) {
         return this.flightplanFactory.from(this.findFlightplanEntityByCode(code));
     }
 
