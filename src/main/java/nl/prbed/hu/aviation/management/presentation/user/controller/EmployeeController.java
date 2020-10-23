@@ -20,7 +20,7 @@ public class EmployeeController {
             notes = "Provide the username of the user."
     )
     @DeleteMapping("/{username}")
-    public void deleteCustomer(@PathVariable String username) {
+    public void delete(@PathVariable String username) {
         this.employeeService.deleteEmployee(username);
     }
 

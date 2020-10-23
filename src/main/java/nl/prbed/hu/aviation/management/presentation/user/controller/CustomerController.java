@@ -8,7 +8,6 @@ import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerOverviewRes
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerUpdateDto;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,8 +36,14 @@ public class CustomerController {
             notes = "Provide the id of a specific customer"
     )
     @GetMapping("/{id}")
-    public CustomerResponseDto findbyFirstName(@PathVariable("id") Long id) {
+    public CustomerResponseDto findbyId(@PathVariable("id") Long id) {
         return this.createResponseDto(this.service.findById(id));
+    }
+
+    @ApiOperation(value = "Delete a customer")
+    @DeleteMapping("/{username}")
+    public void deleteCustomer(@PathVariable String username) {
+        this.service.deleteCustomer(username);
     }
 
     @ApiOperation(value = "Update a customer")
