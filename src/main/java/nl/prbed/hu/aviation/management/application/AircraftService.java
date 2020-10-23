@@ -79,7 +79,7 @@ public class AircraftService {
         return this.aircraftFactory.from(aircraftRepository.save(entity));
     }
 
-    private AircraftEntity findAircraftEntityByCode(String code) {
+    public AircraftEntity findAircraftEntityByCode(String code) {
         return this.aircraftRepository.findAircraftEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }

@@ -12,8 +12,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @Table(name = "flight")
 public class FlightEntity {
 
@@ -35,4 +34,13 @@ public class FlightEntity {
     @OneToOne
     private FlightplanEntity flightplan;
 
+    public FlightEntity(String code, double priceEconomy, double priceBusiness, double priceFirst,
+                        AircraftEntity aircraft, FlightplanEntity flightplan) {
+        this.code = code;
+        this.priceEconomy = priceEconomy;
+        this.priceBusiness = priceBusiness;
+        this.priceFirst = priceFirst;
+        this.aircraft = aircraft;
+        this.flightplan = flightplan;
+    }
 }
