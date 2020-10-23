@@ -33,6 +33,12 @@ public class CustomerService {
         return this.factory.from(this.map(entity));
     }
 
+    public void deleteCustomer(String username) {
+        var customer = this.map(this.userRepository.findByUsernameAndCustomer(username)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
+        this.userRepository.delete(customer);
+    }
+
     private CustomerEntity map(User user) {
         return (CustomerEntity) user;
     }
