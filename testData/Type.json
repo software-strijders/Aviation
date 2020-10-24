@@ -1,0 +1,119 @@
+[
+  {
+    "modelName": "A330-200",
+    "manufacturer": "Airbus",
+    "fuelCapacity": 139090,
+    "fuelConsumption": 7.79,
+    "numSeatsBusiness": 18,
+    "numSeatsComfortEconomy": 36,
+    "numSeatsEconomy": 214
+  },
+  {
+    "modelName": "A330-300",
+    "manufacturer": "Airbus",
+    "fuelCapacity": 139090,
+    "fuelConsumption": 8.69,
+    "numSeatsBusiness": 30,
+    "numSeatsComfortEconomy": 40,
+    "numSeatsEconomy": 222
+  },
+  {
+    "modelName": "737-700",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26020,
+    "fuelConsumption": 4.46,
+    "numSeatsBusiness": 20,
+    "numSeatsComfortEconomy": 6,
+    "numSeatsEconomy": 106
+  },
+  {
+    "modelName": "737-800",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26020,
+    "fuelConsumption": 4.99,
+    "numSeatsBusiness": 20,
+    "numSeatsComfortEconomy": 6,
+    "numSeatsEconomy": 150
+  },
+  {
+    "modelName": "737-900",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26030,
+    "fuelConsumption": 4.75,
+    "numSeatsBusiness": 28,
+    "numSeatsComfortEconomy": 18,
+    "numSeatsEconomy": 132
+  },
+  {
+    "modelName": "747-400",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 216840,
+    "fuelConsumption": 15.45,
+    "numSeatsBusiness": 32,
+    "numSeatsComfortEconomy": 40,
+    "numSeatsEconomy": 332
+  },
+  {
+    "modelName": "777-200ER",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 171170,
+    "fuelConsumption": 10.34,
+    "numSeatsBusiness": 34,
+    "numSeatsComfortEconomy": 40,
+    "numSeatsEconomy": 242
+  },
+  {
+    "modelName": "777-300ER",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 181200,
+    "fuelConsumption": 11.80,
+    "numSeatsBusiness": 34,
+    "numSeatsComfortEconomy": 40,
+    "numSeatsEconomy": 334
+  },
+  {
+    "modelName": "787-9",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 126370,
+    "fuelConsumption": 8.02,
+    "numSeatsBusiness": 30,
+    "numSeatsComfortEconomy": 48,
+    "numSeatsEconomy": 216
+  },
+  {
+    "modelName": "787-10",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 126370,
+    "fuelConsumption": 10.69,
+    "numSeatsBusiness": 38,
+    "numSeatsComfortEconomy": 36,
+    "numSeatsEconomy": 270
+  },
+  {
+    "modelName": "175",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 11840,
+    "fuelConsumption": 3.89,
+    "numSeatsBusiness": 20,
+    "numSeatsComfortEconomy": 8,
+    "numSeatsEconomy": 60
+  },
+  {
+    "modelName": "190",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 16250,
+    "fuelConsumption": 4.50,
+    "numSeatsBusiness": 36,
+    "numSeatsComfortEconomy": 8,
+    "numSeatsEconomy": 56
+  },
+  {
+    "modelName": "E195-E2",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 19040,
+    "fuelConsumption": 4.27,
+    "numSeatsBusiness": 12,
+    "numSeatsComfortEconomy": 24,
+    "numSeatsEconomy": 84
+  }
+]
