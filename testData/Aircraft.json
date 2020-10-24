@@ -1,0 +1,674 @@
+[
+  {
+    "modelName": "A330-200",
+    "code": "KLM001"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM002"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM003"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM004"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM005"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM006"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM007"
+  },
+  {
+    "modelName": "A330-200",
+    "code": "KLM008"
+  },
+  {
+    "modelName": "A330-300",
+    "code": "KLM009"
+  },
+  {
+    "modelName": "A330-300",
+    "code": "KLM010"
+  },
+  {
+    "modelName": "A330-300",
+    "code": "KLM011"
+  },
+  {
+    "modelName": "A330-300",
+    "code": "KLM012"
+  },
+  {
+    "modelName": "A330-300",
+    "code": "KLM013"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM014"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM015"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM016"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM017"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM018"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM019"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM020"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM021"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM022"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM023"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM024"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM025"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM026"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM027"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM028"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM029"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM030"
+  },
+  {
+    "modelName": "737-700",
+    "code": "KLM031"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM032"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM033"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM034"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM035"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM036"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM037"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM038"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM039"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM040"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM041"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM042"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM043"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM044"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM045"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM046"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM047"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM048"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM049"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM050"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM051"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM052"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM053"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM054"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM055"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM056"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM057"
+  },
+  {
+    "modelName": "737-800",
+    "code": "KLM058"
+  },
+  {
+    "modelName": "737-900",
+    "code": "KLM059"
+  },
+  {
+    "modelName": "737-900",
+    "code": "KLM060"
+  },
+  {
+    "modelName": "737-900",
+    "code": "KLM061"
+  },
+  {
+    "modelName": "737-900",
+    "code": "KLM062"
+  },
+  {
+    "modelName": "737-900",
+    "code": "KLM063"
+  },
+  {
+    "modelName": "747-400",
+    "code": "KLM064"
+  },
+  {
+    "modelName": "747-400",
+    "code": "KLM065"
+  },
+  {
+    "modelName": "747-400",
+    "code": "KLM066"
+  },
+  {
+    "modelName": "747-400",
+    "code": "KLM067"
+  },
+  {
+    "modelName": "747-400",
+    "code": "KLM068"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM069"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM070"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM071"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM072"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM073"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM074"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM075"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM076"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM077"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM078"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM079"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM080"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM081"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM082"
+  },
+  {
+    "modelName": "777-200ER",
+    "code": "KLM083"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM084"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM085"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM086"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM087"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM088"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM089"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM090"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM091"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM092"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM093"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM094"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM095"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM096"
+  },
+  {
+    "modelName": "777-300ER",
+    "code": "KLM097"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM098"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM099"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM100"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM101"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM102"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM103"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM104"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM105"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM106"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM107"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM108"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM109"
+  },
+  {
+    "modelName": "787-9",
+    "code": "KLM110"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM111"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM112"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM113"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM114"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM115"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM116"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM117"
+  },
+  {
+    "modelName": "787-10",
+    "code": "KLM118"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM119"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM120"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM121"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM122"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM123"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM124"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM125"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM126"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM127"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM128"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM129"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM130"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM131"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM132"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM133"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM134"
+  },
+  {
+    "modelName": "175",
+    "code": "KLM135"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM136"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM137"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM138"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM139"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM140"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM141"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM142"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM143"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM144"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM145"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM146"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM147"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM148"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM149"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM150"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM151"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM152"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM153"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM154"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM155"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM156"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM157"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM158"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM159"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM160"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM161"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM162"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM163"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM164"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM165"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM166"
+  },
+  {
+    "modelName": "E190",
+    "code": "KLM167"
+  },
+  {
+    "modelName": "E195-E2",
+    "code": "KLM168"
+  }
+]
