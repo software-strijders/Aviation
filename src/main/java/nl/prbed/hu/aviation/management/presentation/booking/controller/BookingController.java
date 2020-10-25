@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.presentation.booking.controller;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.BookingService;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
@@ -20,13 +21,13 @@ public class BookingController {
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
     private final BookingService service;
 
+    @ApiOperation(value = "Create a booking")
     @PostMapping
     public BookingResponseDto create(@RequestBody CreateBookingDto dto) {
         var booking = this.service.create(this.mapper.toBookingStruct(dto));
         return this.createResponseDto(booking);
     }
 
-    // TODO: Might want to use a mapper instead
     private BookingResponseDto createResponseDto(Booking booking) {
         return new BookingResponseDto(
                 booking.getPrice(),
