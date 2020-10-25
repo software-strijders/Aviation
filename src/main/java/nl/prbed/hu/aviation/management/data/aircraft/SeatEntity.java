@@ -2,10 +2,11 @@ package nl.prbed.hu.aviation.management.data.aircraft;
 
 import lombok.Getter;
 import lombok.Setter;
-import nl.prbed.hu.aviation.management.domain.Seat;
+import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -18,12 +19,12 @@ public class SeatEntity {
     @Column
     private SeatType seatType;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    private PassengerEntity passenger;
+    @OneToMany(mappedBy = "seat")
+    private List<FlightSeatEntity> flightSeats;
 
     public SeatEntity(){}
-    public SeatEntity(SeatType seatType, PassengerEntity passenger) {
+    public SeatEntity(SeatType seatType, List<FlightSeatEntity> flightSeats) {
         this.seatType = seatType;
-        this.passenger = passenger;
+        this.flightSeats = flightSeats;
     }
 }
