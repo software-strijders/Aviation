@@ -1,7 +1,8 @@
-package nl.prbed.hu.aviation.management.domain;
+package nl.prbed.hu.aviation.management.domain.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import nl.prbed.hu.aviation.management.domain.Airport;
 
 @Data
 @AllArgsConstructor

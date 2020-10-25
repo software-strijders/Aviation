@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.domain.*;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
+import nl.prbed.hu.aviation.management.domain.flight.Flight;
 
 import java.util.ArrayList;
 import java.util.List;

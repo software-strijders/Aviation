@@ -10,4 +10,8 @@ import java.util.List;
 public class Seat {
     private SeatType seatType;
     private Passenger passenger;
+
+    public boolean doesNotHavePassenger() {
+        return this.passenger == null;
+    }
 }

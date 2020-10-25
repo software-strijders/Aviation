@@ -1,6 +1,6 @@
 package nl.prbed.hu.aviation.management.domain.aircraft.builder;
 
-import nl.prbed.hu.aviation.management.domain.Flight;
+import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.domain.Seat;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.Type;
