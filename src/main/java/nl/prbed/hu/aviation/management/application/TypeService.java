@@ -19,23 +19,12 @@ public class TypeService {
     private final SpringTypeRepository typeRepository;
     private final TypeFactory typeFactory;
 
-    public Type create(
-            String modelName,
-            String manufacturer,
-            int fuelCapacity,
-            int fuelConsumption,
-            int numSeatsFirst,
-            int numSeatsBusiness,
-            int numSeatsEconomy
-    ) {
+    public Type create(String modelName, String manufacturer, int fuelCapacity, int fuelConsumption) {
         var entity = typeRepository.save(new TypeEntity(
                 modelName,
                 manufacturer,
                 fuelCapacity,
-                fuelConsumption,
-                numSeatsFirst,
-                numSeatsBusiness,
-                numSeatsEconomy
+                fuelConsumption
         ));
         return this.typeFactory.from(entity);
     }
