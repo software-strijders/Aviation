@@ -3,7 +3,7 @@ package nl.prbed.hu.aviation.management.presentation.flightplan.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightplanService;
-import nl.prbed.hu.aviation.management.domain.Flightplan;
+import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplansResponseDto;

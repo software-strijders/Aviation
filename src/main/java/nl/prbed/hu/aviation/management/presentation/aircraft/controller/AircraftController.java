@@ -80,10 +80,7 @@ public class AircraftController {
                 dto.modelName,
                 dto.manufacturer,
                 dto.fuelCapacity,
-                dto.fuelConsumption,
-                dto.numSeatsFirst,
-                dto.numSeatsBusiness,
-                dto.numSeatsEconomy
+                dto.fuelConsumption
         );
         return new TypeResponseDto(type);
     }

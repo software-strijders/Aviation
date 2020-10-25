@@ -16,13 +16,4 @@ public class CreateTypeDto {
 
     @ApiModelProperty(notes = "The fuel consumption in kilograms per kilometer")
     public int fuelConsumption;
-
-    @ApiModelProperty(notes = "The seats of first class")
-    public int numSeatsFirst;
-
-    @ApiModelProperty(notes = "The seats of business class")
-    public int numSeatsBusiness;
-
-    @ApiModelProperty(notes = "The seats of economy class")
-    public int numSeatsEconomy;
 }
