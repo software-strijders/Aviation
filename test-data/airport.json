@@ -33,7 +33,7 @@
     "latitude": 5.6051898,
     "longitude": -0.166786,
     "code": "ACC",
-    "cityName": "Accre"
+    "cityName": "Accra"
   },
   {
     "latitude": 36.98220062,
@@ -916,12 +916,6 @@
     "longitude": -94.36740112,
     "code": "FSM",
     "cityName": "Fort Smith"
-  },
-  {
-    "latitude": 33.58589935,
-    "longitude": 130.451004,
-    "code": "FUK",
-    "cityName": "Fukuoka"
   },
   {
     "latitude": -24.555201,
@@ -1872,12 +1866,6 @@
     "cityName": "Phnom Penh"
   },
   {
-    "latitude": -9.443380356,
-    "longitude": 147.2200012,
-    "code": "POM",
-    "cityName": "Papua New Guinea"
-  },
-  {
     "latitude": -17.553699,
     "longitude": -149.606995,
     "code": "PPT",
@@ -2008,12 +1996,6 @@
     "longitude": 46.69879913,
     "code": "RUH",
     "cityName": "Riyadh"
-  },
-  {
-    "latitude": 13.4409,
-    "longitude": -89.055702,
-    "code": "SAL",
-    "cityName": "San salvador"
   },
   {
     "latitude": 32.73360062,
@@ -2302,12 +2284,6 @@
     "longitude": 51.31340027,
     "code": "THR",
     "cityName": "Tehran"
-  },
-  {
-    "latitude": 41.41469955,
-    "longitude": 19.72060013,
-    "code": "TIA",
-    "cityName": "TiranaAl"
   },
   {
     "latitude": 32.54109955,
