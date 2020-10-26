@@ -58,6 +58,12 @@ public class FlightController {
         return null;
     }
 
+    @GetMapping("/destination/{code}")
+    public FlightResponseDto getFlightsByDestination(@PathVariable String code) {
+        var flights = this.flightService.getFlightsByDestination(code);
+        return null;
+    }
+
     @ApiOperation(
             value = "Delete a flight",
             notes = "Provide the code of the flight"

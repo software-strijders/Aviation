@@ -79,8 +79,15 @@ public class FlightService {
         return flightFactory.from(entities);
     }
 
+    public List<Flight> getFlightsByDestination(String code) {
+        var entities = this.flightRepository.findFlightEntitiesByFlightplanDestinationCode(code);
+        return flightFactory.from(entities);
+    }
+
     public void deleteByCode(String code) {
         this.flightRepository.delete(this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code))));
     }
+
+
 }
