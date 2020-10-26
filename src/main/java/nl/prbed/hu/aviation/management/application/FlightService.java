@@ -13,6 +13,7 @@ import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,6 +72,11 @@ public class FlightService {
         var entity = this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
         return flightFactory.from(entity);
+    }
+
+    public List<Flight> getFlightsByDeparture(String code) {
+        var entities = this.flightRepository.findFlightEntitiesByFlightplanDepartureCode(code);
+        return flightFactory.from(entities);
     }
 
     public void deleteByCode(String code) {
