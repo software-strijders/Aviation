@@ -152,7 +152,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(FLIGHTPLAN).toFile(), FlightplanDto[].class);
             for (var dto : dtos)
-                this.flightplanService.create(dto.code, dto.duration, dto.arrival, dto.destination);
+                this.flightplanService.create(dto.code, dto.duration, dto.departure, dto.destination);
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }
