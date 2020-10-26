@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
+import nl.prbed.hu.aviation.management.domain.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
 import org.springframework.validation.annotation.Validated;
@@ -29,14 +30,24 @@ public class FlightController {
                 dto.aircraftCode,
                 dto.flightPlanCode
         );
-        return new FlightResponseDto(
-                flight.getCode(),
-                flight.getPriceFirst(),
-                flight.getPriceBusiness(),
-                flight.getPriceEconomy(),
-                flight.getAircraft().getCode(),
-                flight.getFlightplan().getCode()
+        return createFlightResponseDto(flight);
+    }
+
+    @ApiOperation(
+            value = "Update a flight",
+            notes = "Flight information to update the flight"
+    )
+    @PatchMapping
+    public FlightResponseDto update(@Validated @RequestBody FlightDto dto) {
+        var flight = this.flightService.create(
+                dto.code,
+                dto.priceFirst,
+                dto.priceBusiness,
+                dto.priceEconomy,
+                dto.aircraftCode,
+                dto.flightPlanCode
         );
+        return createFlightResponseDto(flight);
     }
 
     @ApiOperation(
@@ -46,5 +57,16 @@ public class FlightController {
     @DeleteMapping("/{code}")
     public void deleteByCode(@PathVariable String code) {
         this.flightService.deleteByCode(code);
+    }
+
+    private FlightResponseDto createFlightResponseDto (Flight flight) {
+        return new FlightResponseDto(
+                flight.getCode(),
+                flight.getPriceFirst(),
+                flight.getPriceBusiness(),
+                flight.getPriceEconomy(),
+                flight.getAircraft().getCode(),
+                flight.getFlightplan().getCode()
+        );
     }
 }
