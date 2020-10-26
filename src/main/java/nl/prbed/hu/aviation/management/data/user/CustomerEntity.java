@@ -21,7 +21,7 @@ public class CustomerEntity extends User {
     private String nationality;
     private LocalDate birthDate;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
 
     @OneToMany
     private List<BookingEntity> bookings;
@@ -35,7 +35,7 @@ public class CustomerEntity extends User {
             String nationality,
             LocalDate birthDate,
             String email,
-            int phoneNumber
+            String phoneNumber
     ) {
         super(username, password, firstName, lastName);
         this.nationality = nationality;

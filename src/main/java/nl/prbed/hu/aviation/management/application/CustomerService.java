@@ -47,7 +47,7 @@ public class CustomerService {
             String nationality,
             LocalDate birthDate,
             String email,
-            int phoneNumber
+            String phoneNumber
     ) {
         var customer = this.findByCustomerUsername(username);
         customer.setFirstName(firstName);

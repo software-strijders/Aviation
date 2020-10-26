@@ -1,6 +1,10 @@
 package nl.prbed.hu.aviation.security.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
@@ -29,6 +33,8 @@ public class CustomerRegistrationDto {
     public String nationality;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     @ApiModelProperty(notes = "Birth date in yyyy-MM-dd format")
     public LocalDate birthDate;
 
@@ -37,5 +43,5 @@ public class CustomerRegistrationDto {
     public String email;
 
     @ApiModelProperty(notes = "Phone number. Following the: +1234567890 format")
-    public int phoneNumber;
+    public String phoneNumber;
 }

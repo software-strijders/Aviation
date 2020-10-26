@@ -23,6 +23,7 @@ public class FlightFactory {
     public Flight from(FlightEntity entity) {
         var seats = entity.getFlightSeats();
         return new Flight(
+                entity.getId(),
                 entity.getCode(),
                 entity.getPriceEconomy(),
                 entity.getPriceBusiness(),

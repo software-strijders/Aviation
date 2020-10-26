@@ -17,6 +17,6 @@ public class Customer {
     private String nationality;
     private LocalDate birthdate;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private List<Booking> bookings;
 }

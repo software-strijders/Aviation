@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @ApiModel(description = "Details about the flight")
 public class FlightResponseDto {
+    @ApiModelProperty(notes = "The id of the flight")
+    private final Long id; // TODO: We should refactor entities that shouldn't have an id (iteration 3)
+
     @ApiModelProperty(notes = "The code of the flight")
     private final String code;
 

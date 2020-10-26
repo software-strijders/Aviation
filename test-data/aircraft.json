@@ -2,1177 +2,1345 @@
   {
     "modelName": "A330-200",
     "code": "KLM001",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM002",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM003",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM004",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM005",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM006",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM007",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-200",
     "code": "KLM008",
-    "numSeatsBusiness": 18,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 214
+    "seatsBusiness": 18,
+    "seatsFirst": 36,
+    "seatsEconomy": 214,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-300",
     "code": "KLM009",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 222
+    "seatsBusiness": 30,
+    "seatsFirst": 40,
+    "seatsEconomy": 222,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-300",
     "code": "KLM010",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 222
+    "seatsBusiness": 30,
+    "seatsFirst": 40,
+    "seatsEconomy": 222,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-300",
     "code": "KLM011",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 222
+    "seatsBusiness": 30,
+    "seatsFirst": 40,
+    "seatsEconomy": 222,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-300",
     "code": "KLM012",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 222
+    "seatsBusiness": 30,
+    "seatsFirst": 40,
+    "seatsEconomy": 222,
+    "airportCode": "AMS"
   },
   {
     "modelName": "A330-300",
     "code": "KLM013",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 222
+    "seatsBusiness": 30,
+    "seatsFirst": 40,
+    "seatsEconomy": 222,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM014",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM015",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM016",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM017",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM018",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM019",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM020",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM021",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM022",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM023",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM024",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM025",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM026",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM027",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM028",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM029",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM030",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-700",
     "code": "KLM031",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 106
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 106,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM032",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM033",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM034",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM035",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM036",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM037",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM038",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM039",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM040",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM041",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM042",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM043",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM044",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM045",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM046",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM047",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM048",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM049",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM050",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM051",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM052",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM053",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM054",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM055",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM056",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM057",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-800",
     "code": "KLM058",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 6,
-    "numSeatsEconomy": 150
+    "seatsBusiness": 20,
+    "seatsFirst": 6,
+    "seatsEconomy": 150,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-900",
     "code": "KLM059",
-    "numSeatsBusiness": 28,
-    "numSeatsComfortEconomy": 18,
-    "numSeatsEconomy": 132
+    "seatsBusiness": 28,
+    "seatsFirst": 18,
+    "seatsEconomy": 132,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-900",
     "code": "KLM060",
-    "numSeatsBusiness": 28,
-    "numSeatsComfortEconomy": 18,
-    "numSeatsEconomy": 132
+    "seatsBusiness": 28,
+    "seatsFirst": 18,
+    "seatsEconomy": 132,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-900",
     "code": "KLM061",
-    "numSeatsBusiness": 28,
-    "numSeatsComfortEconomy": 18,
-    "numSeatsEconomy": 132
+    "seatsBusiness": 28,
+    "seatsFirst": 18,
+    "seatsEconomy": 132,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-900",
     "code": "KLM062",
-    "numSeatsBusiness": 28,
-    "numSeatsComfortEconomy": 18,
-    "numSeatsEconomy": 132
+    "seatsBusiness": 28,
+    "seatsFirst": 18,
+    "seatsEconomy": 132,
+    "airportCode": "AMS"
   },
   {
     "modelName": "737-900",
     "code": "KLM063",
-    "numSeatsBusiness": 28,
-    "numSeatsComfortEconomy": 18,
-    "numSeatsEconomy": 132
+    "seatsBusiness": 28,
+    "seatsFirst": 18,
+    "seatsEconomy": 132,
+    "airportCode": "AMS"
   },
   {
     "modelName": "747-400",
     "code": "KLM064",
-    "numSeatsBusiness": 32,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 332
+    "seatsBusiness": 32,
+    "seatsFirst": 40,
+    "seatsEconomy": 332,
+    "airportCode": "AMS"
   },
   {
     "modelName": "747-400",
     "code": "KLM065",
-    "numSeatsBusiness": 32,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 332
+    "seatsBusiness": 32,
+    "seatsFirst": 40,
+    "seatsEconomy": 332,
+    "airportCode": "AMS"
   },
   {
     "modelName": "747-400",
     "code": "KLM066",
-    "numSeatsBusiness": 32,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 332
+    "seatsBusiness": 32,
+    "seatsFirst": 40,
+    "seatsEconomy": 332,
+    "airportCode": "AMS"
   },
   {
     "modelName": "747-400",
     "code": "KLM067",
-    "numSeatsBusiness": 32,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 332
+    "seatsBusiness": 32,
+    "seatsFirst": 40,
+    "seatsEconomy": 332,
+    "airportCode": "AMS"
   },
   {
     "modelName": "747-400",
     "code": "KLM068",
-    "numSeatsBusiness": 32,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 332
+    "seatsBusiness": 32,
+    "seatsFirst": 40,
+    "seatsEconomy": 332,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM069",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM070",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM071",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM072",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM073",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM074",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM075",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM076",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM077",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM078",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM079",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM080",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM081",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM082",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-200ER",
     "code": "KLM083",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 242
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 242,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM084",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM085",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM086",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM087",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM088",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM089",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM090",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM091",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM092",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM093",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM094",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM095",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM096",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "777-300ER",
     "code": "KLM097",
-    "numSeatsBusiness": 34,
-    "numSeatsComfortEconomy": 40,
-    "numSeatsEconomy": 334
+    "seatsBusiness": 34,
+    "seatsFirst": 40,
+    "seatsEconomy": 334,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM098",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM099",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM100",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM101",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM102",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM103",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM104",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM105",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM106",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM107",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM108",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM109",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-9",
     "code": "KLM110",
-    "numSeatsBusiness": 30,
-    "numSeatsComfortEconomy": 48,
-    "numSeatsEconomy": 216
+    "seatsBusiness": 30,
+    "seatsFirst": 48,
+    "seatsEconomy": 216,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM111",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM112",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM113",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM114",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM115",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM116",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM117",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
     "modelName": "787-10",
     "code": "KLM118",
-    "numSeatsBusiness": 38,
-    "numSeatsComfortEconomy": 36,
-    "numSeatsEconomy": 270
+    "seatsBusiness": 38,
+    "seatsFirst": 36,
+    "seatsEconomy": 270,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM119",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM120",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM121",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM122",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM123",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM124",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM125",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM126",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM127",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM128",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM129",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM130",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM131",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM132",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM133",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E175",
     "code": "KLM134",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
-    "modelName": "175",
+    "modelName": "E175",
     "code": "KLM135",
-    "numSeatsBusiness": 20,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 60
+    "seatsBusiness": 20,
+    "seatsFirst": 8,
+    "seatsEconomy": 60,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM136",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM137",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM138",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM139",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM140",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM141",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM142",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM143",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM144",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM145",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM146",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM147",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM148",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM149",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM150",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM151",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM152",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM153",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM154",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM155",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM156",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM157",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM158",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM159",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM160",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM161",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM162",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM163",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM164",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM165",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM166",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E190",
     "code": "KLM167",
-    "numSeatsBusiness": 36,
-    "numSeatsComfortEconomy": 8,
-    "numSeatsEconomy": 56
+    "seatsBusiness": 36,
+    "seatsFirst": 8,
+    "seatsEconomy": 56,
+    "airportCode": "AMS"
   },
   {
     "modelName": "E195-E2",
     "code": "KLM168",
-    "numSeatsBusiness": 12,
-    "numSeatsComfortEconomy": 24,
-    "numSeatsEconomy": 84
+    "seatsBusiness": 12,
+    "seatsFirst": 24,
+    "seatsEconomy": 84,
+    "airportCode": "AMS"
   }
 ]

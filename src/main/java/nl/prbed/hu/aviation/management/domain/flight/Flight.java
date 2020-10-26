@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 public class Flight {
+    private Long id;
     private String code;
     private double priceEconomy;
     private double priceBusiness;

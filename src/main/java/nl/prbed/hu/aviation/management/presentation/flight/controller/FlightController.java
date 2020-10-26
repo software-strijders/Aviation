@@ -46,6 +46,7 @@ public class FlightController {
     public FlightResponseDto getFlightByCode(@PathVariable String code) {
         var flight = this.flightService.findFlightByCode(code);
         return new FlightResponseDto(
+                flight.getId(),
                 flight.getCode(),
                 flight.getPriceEconomy(),
                 flight.getPriceBusiness(),
