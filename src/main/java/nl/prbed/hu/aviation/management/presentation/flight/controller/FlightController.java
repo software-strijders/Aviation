@@ -30,6 +30,7 @@ public class FlightController {
                 dto.flightPlanCode
         );
         return new FlightResponseDto(
+                flight.getId(),
                 flight.getCode(),
                 flight.getPriceFirst(),
                 flight.getPriceBusiness(),
