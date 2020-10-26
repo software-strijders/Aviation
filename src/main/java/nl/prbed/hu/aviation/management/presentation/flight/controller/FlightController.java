@@ -45,15 +45,7 @@ public class FlightController {
     @GetMapping("/{code}")
     public FlightResponseDto getFlightByCode(@PathVariable String code) {
         var flight = this.flightService.findFlightByCode(code);
-        return new FlightResponseDto(
-                flight.getId(),
-                flight.getCode(),
-                flight.getPriceEconomy(),
-                flight.getPriceBusiness(),
-                flight.getPriceFirst(),
-                flight.getAircraft().getCode(),
-                flight.getFlightplan().getCode()
-        );
+        return createFlightResponseDto(flight);
     }
 
     @ApiOperation(
@@ -94,6 +86,7 @@ public class FlightController {
 
     private FlightResponseDto createFlightResponseDto (Flight flight) {
         return new FlightResponseDto(
+                flight.getId(),
                 flight.getCode(),
                 flight.getPriceFirst(),
                 flight.getPriceBusiness(),
