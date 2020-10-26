@@ -7,7 +7,7 @@ import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
-import nl.prbed.hu.aviation.management.domain.factory.AircraftFactory;
+import nl.prbed.hu.aviation.management.domain.aircraft.factory.AircraftFactory;
 import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AircraftService {
     private static final String ERROR_MSG = "Could not find aircraft with model '%s'";
+    private static final String AIRCRAFT_CODE_ERROR_MSG = "Could not find aircraft with code '%s'";
 
     private final SpringAircraftRepository aircraftRepository;
     private final TypeService typeService;
@@ -75,6 +76,6 @@ public class AircraftService {
 
     public AircraftEntity findAircraftEntityByCode(String code) {
         return this.aircraftRepository.findAircraftEntityByCode(code)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(AIRCRAFT_CODE_ERROR_MSG, code)));
     }
 }

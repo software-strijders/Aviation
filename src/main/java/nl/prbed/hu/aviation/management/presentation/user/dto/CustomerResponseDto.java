@@ -31,7 +31,4 @@ public class CustomerResponseDto {
 
     @ApiModelProperty(notes = "The phone number of the customer")
     private final int phoneNumber;
-
-//    TODO: Add bookings to user
-//    private List<Booking> bookings;
 }

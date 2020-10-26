@@ -10,7 +10,4 @@ public class Type {
     private String manufacturer;
     private int fuelCapacity;
     private int fuelConsumption;
-    private int numSeatsFirst;
-    private int numSeatsBusiness;
-    private int numSeatsEconomy;
 }

@@ -1,19 +1,21 @@
 package nl.prbed.hu.aviation.management.application;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AirportsNotUniqueException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.management.data.flightplan.SpringFlightplanRepository;
-import nl.prbed.hu.aviation.management.domain.Flightplan;
-import nl.prbed.hu.aviation.management.domain.factory.FlightplanFactory;
+import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
+import nl.prbed.hu.aviation.management.domain.flight.factory.FlightplanFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@Transactional
+@RequiredArgsConstructor
 public class FlightplanService {
     private static final String ERROR_MSG = "Could not find flightplan with code '%s'";
 

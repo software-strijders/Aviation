@@ -12,10 +12,12 @@ import nl.prbed.hu.aviation.management.domain.factory.AirportFactory;
 import nl.prbed.hu.aviation.management.domain.factory.CityFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class AirportService {
     private static final String ERROR_MSG = "Could not find airport with code '%s'";

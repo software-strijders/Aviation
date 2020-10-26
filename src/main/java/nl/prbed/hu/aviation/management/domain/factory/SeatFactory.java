@@ -2,6 +2,8 @@ package nl.prbed.hu.aviation.management.domain.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
+import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
+import nl.prbed.hu.aviation.management.domain.Passenger;
 import nl.prbed.hu.aviation.management.domain.Seat;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import org.springframework.security.core.parameters.P;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -16,10 +19,7 @@ public class SeatFactory {
     private final PassengerFactory passengerFactory;
 
     public Seat from(SeatEntity entity) {
-        if(entity.getPassenger() == null) {
-            return new Seat(entity.getSeatType(), null);
-        }
-        return new Seat(entity.getSeatType(), passengerFactory.from(entity.getPassenger()));
+        return new Seat(entity.getSeatType(), null);
     }
 
     public List<Seat> from(int num, SeatType type) {

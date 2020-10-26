@@ -18,26 +18,17 @@ public class TypeEntity {
     private String manufacturer;
     private int fuelCapacity;
     private int fuelConsumption;
-    private int numSeatsFirst;
-    private int numSeatsBusiness;
-    private int numSeatsEconomy;
 
     public TypeEntity() {}
     public TypeEntity(
             String modelName,
             String manufacturer,
             int fuelCapacity,
-            int fuelConsumption,
-            int numSeatsFirst,
-            int numSeatsBusiness,
-            int numSeatsEconomy)
-    {
+            int fuelConsumption
+    ) {
         this.modelName = modelName;
         this.manufacturer = manufacturer;
         this.fuelCapacity = fuelCapacity;
         this.fuelConsumption = fuelConsumption;
-        this.numSeatsFirst = numSeatsFirst;
-        this.numSeatsBusiness = numSeatsBusiness;
-        this.numSeatsEconomy = numSeatsEconomy;
     }
 }

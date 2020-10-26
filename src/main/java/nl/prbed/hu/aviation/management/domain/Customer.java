@@ -3,6 +3,7 @@ package nl.prbed.hu.aviation.management.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import nl.prbed.hu.aviation.management.domain.booking.Booking;
 
 import java.time.LocalDate;
 import java.util.List;

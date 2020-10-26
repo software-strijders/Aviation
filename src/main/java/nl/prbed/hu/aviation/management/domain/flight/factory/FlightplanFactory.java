@@ -1,8 +1,9 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.flight.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
-import nl.prbed.hu.aviation.management.domain.Flightplan;
+import nl.prbed.hu.aviation.management.domain.factory.AirportFactory;
+import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

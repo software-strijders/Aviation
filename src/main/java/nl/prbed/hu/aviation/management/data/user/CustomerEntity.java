@@ -2,13 +2,12 @@ package nl.prbed.hu.aviation.management.data.user;
 
 import lombok.Getter;
 import lombok.Setter;
+import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -23,6 +22,9 @@ public class CustomerEntity extends User {
     private LocalDate birthDate;
     private String email;
     private int phoneNumber;
+
+    @OneToMany
+    private List<BookingEntity> bookings;
 
     public CustomerEntity() {}
     public CustomerEntity(
@@ -42,8 +44,9 @@ public class CustomerEntity extends User {
         this.phoneNumber = phoneNumber;
     }
 
-    // TODO: Add this:
-    // private List<Booking> bookings;
+    public void addBooking(BookingEntity entity) {
+        this.bookings.add(entity);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
