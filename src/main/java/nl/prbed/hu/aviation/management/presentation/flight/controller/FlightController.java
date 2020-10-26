@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.presentation.flight.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
@@ -7,6 +8,7 @@ import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightsResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,15 +55,15 @@ public class FlightController {
     }
 
     @GetMapping("/departure/{code}")
-    public FlightResponseDto getFlightsByDeparture(@PathVariable String code) {
+    public FlightsResponseDto getFlightsByDeparture(@PathVariable String code) {
         var flights = this.flightService.getFlightsByDeparture(code);
-        return null;
+        return new FlightsResponseDto(flights);
     }
 
     @GetMapping("/destination/{code}")
-    public FlightResponseDto getFlightsByDestination(@PathVariable String code) {
+    public FlightsResponseDto getFlightsByDestination(@PathVariable String code) {
         var flights = this.flightService.getFlightsByDestination(code);
-        return null;
+        return new FlightsResponseDto(flights);
     }
 
     @ApiOperation(
