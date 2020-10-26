@@ -1,6 +1,7 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
@@ -28,17 +29,19 @@ public class FlightService {
     private final SpringFlightRepository flightRepository;
     private final SpringFlightSeatRepository flightSeatRepository;
 
-    public Flight create(
-            String code,
-            double priceFirst,
-            double priceBusiness,
-            double priceEconomy,
-            String aircraftCode,
-            String flightPlanCode
-    ) {
-        var aircraft = this.aircraftService.findAircraftEntityByCode(aircraftCode);
-        var flightplan = this.flightplanService.findFlightplanEntityByCode(flightPlanCode);
-        var entity = new FlightEntity(code, priceEconomy, priceBusiness, priceFirst, null, aircraft, flightplan, null);
+    public Flight create(FlightStruct flightStruct) {
+        var aircraft = this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode);
+        var flightplan = this.flightplanService.findFlightplanEntityByCode(flightStruct.flightPlanCode);
+        var entity = new FlightEntity(
+                flightStruct.code,
+                flightStruct.priceEconomy,
+                flightStruct.priceBusiness,
+                flightStruct.priceFirst,
+                null,
+                aircraft,
+                flightplan,
+                null
+        );
         var flight = this.flightRepository.save(entity);
         this.saveSeatsForFlight(flight, flight.getAircraft());
         return flightFactory.from(flight);
@@ -50,6 +53,18 @@ public class FlightService {
                         .map(seat -> new FlightSeatEntity(seat, null, flight)) // Passenger is set when creating a booking
                         .collect(Collectors.toList())
         );
+    }
+
+    public Flight update (String oldCode, FlightStruct flightStruct) {
+        var entity = flightRepository.findFlightEntityByCode(oldCode)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, oldCode)));
+        entity.setCode(flightStruct.code);
+        entity.setPriceFirst(flightStruct.priceFirst);
+        entity.setPriceBusiness(flightStruct.priceBusiness);
+        entity.setPriceEconomy(flightStruct.priceEconomy);
+        entity.setAircraft(this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode));
+        entity.setFlightplan(this.flightplanService.findFlightplanEntityByCode(flightStruct.flightPlanCode));
+        return flightFactory.from(flightRepository.save(entity));
     }
 
     public void deleteByCode(String code) {
