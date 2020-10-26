@@ -100,6 +100,16 @@
     "phoneNumber": "+31654016177"
   },
   {
+    "username": "henk.tenk@gmail.com",
+    "password": "1234",
+    "firstName": "Henk",
+    "lastName": "Tenk",
+    "nationality": "Netherlands",
+    "birthDate": "2000-04-24",
+    "email": "henk.tenk@gmail.com",
+    "phoneNumber": "+31696969420"
+  },
+  {
     "username": "aadi.martin@yahoo.com",
     "password": "1234",
     "firstName": "Aadi",
