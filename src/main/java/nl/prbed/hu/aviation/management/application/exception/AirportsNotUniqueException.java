@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(code = HttpStatus.CONFLICT)
 public class AirportsNotUniqueException extends RuntimeException {
     public AirportsNotUniqueException() {
-        super("Arrival and destination cannot be the same");
+        super("Departure and destination cannot be the same");
     }
 }

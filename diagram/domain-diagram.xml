@@ -125,7 +125,7 @@
             <mxPoint x="-8.71" y="3.7299999999999995" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="nZlrqzEIT1XqNLbH7dYi-38" value="-arrival" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="nZlrqzEIT1XqNLbH7dYi-36" vertex="1" connectable="0">
+        <mxCell id="nZlrqzEIT1XqNLbH7dYi-38" value="-departure" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="nZlrqzEIT1XqNLbH7dYi-36" vertex="1" connectable="0">
           <mxGeometry x="0.63" y="1" relative="1" as="geometry">
             <mxPoint x="31" y="-4.9399999999999995" as="offset"/>
           </mxGeometry>

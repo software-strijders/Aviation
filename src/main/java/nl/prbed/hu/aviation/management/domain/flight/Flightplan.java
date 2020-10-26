@@ -11,5 +11,5 @@ public class Flightplan {
     private Long duration;
     //TODO: Fix naming issues
     private Airport destination;
-    private Airport arrival;
+    private Airport departure;
 }

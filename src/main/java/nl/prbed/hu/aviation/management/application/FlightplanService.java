@@ -24,14 +24,14 @@ public class FlightplanService {
     private final SpringFlightplanRepository flightplanRepository;
     private final FlightplanFactory flightplanFactory;
 
-    public Flightplan create(String code, Long duration, String arrival, String destination) {
-        if (arrival.equals(destination))
+    public Flightplan create(String code, Long duration, String departure, String destination) {
+        if (departure.equals(destination))
             throw new AirportsNotUniqueException();
 
         var flightplanEntity = new FlightplanEntity(
                 code,
                 duration,
-                this.airportService.findAirportEntityByCode(arrival),
+                this.airportService.findAirportEntityByCode(departure),
                 this.airportService.findAirportEntityByCode(destination)
         );
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
@@ -51,14 +51,14 @@ public class FlightplanService {
         return this.flightplanFactory.from(entities);
     }
 
-    public Flightplan update(String oldCode, String code, Long duration, String arrival, String destination) {
-        if (arrival.equals(destination))
+    public Flightplan update(String oldCode, String code, Long duration, String departure, String destination) {
+        if (departure.equals(destination))
             throw new AirportsNotUniqueException();
 
         var flightplanEntity = this.findFlightplanEntityByCode(oldCode);
         flightplanEntity.setCode(code);
         flightplanEntity.setDuration(duration);
-        flightplanEntity.setArrival(this.airportService.findAirportEntityByCode(arrival));
+        flightplanEntity.setDeparture(this.airportService.findAirportEntityByCode(departure));
         flightplanEntity.setDestination(this.airportService.findAirportEntityByCode(destination));
         return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
     }

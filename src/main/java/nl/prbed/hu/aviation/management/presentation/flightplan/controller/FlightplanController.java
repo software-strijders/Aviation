@@ -49,7 +49,7 @@ public class FlightplanController {
         return createFlightplanResponseDto(this.flightplanService.create(
                 dto.code,
                 dto.duration,
-                dto.arrival,
+                dto.departure,
                 dto.destination
         ));
     }
@@ -61,7 +61,7 @@ public class FlightplanController {
                 code,
                 dto.code,
                 dto.duration,
-                dto.arrival,
+                dto.departure,
                 dto.destination
         ));
     }
@@ -70,7 +70,7 @@ public class FlightplanController {
         return new FlightplanResponseDto(
                 flightplan.getCode(),
                 flightplan.getDuration(),
-                flightplan.getArrival(),
+                flightplan.getDeparture(),
                 flightplan.getDestination()
         );
     }

@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface SpringFlightRepository extends JpaRepository<FlightEntity, Long> {
     Optional<FlightEntity> findFlightEntityByCode(String code);
-    FlightEntity findFlightEntitiesByFlightplanArrivalCode(String code);
+    FlightEntity findFlightEntitiesByFlightplanDepartureCode(String code);
     FlightEntity findFlightEntitiesByFlightplanDestinationCode(String code);
 }
