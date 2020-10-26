@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
@@ -74,17 +75,17 @@ public class FlightService {
         return flightFactory.from(entity);
     }
 
-    public List<Flight> getFlightsByDeparture(String code) {
+    public List<Flight> findFlightsByDeparture(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDepartureCode(code);
         return flightFactory.from(entities);
     }
 
-    public List<Flight> getFlightsByDestination(String code) {
+    public List<Flight> findFlightsByDestination(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDestinationCode(code);
         return flightFactory.from(entities);
     }
 
-    public List<Flight> findAll() {
+    public List<Flight> findAllFlights() {
         var entities = this.flightRepository.findAll();
         return flightFactory.from(entities);
     }

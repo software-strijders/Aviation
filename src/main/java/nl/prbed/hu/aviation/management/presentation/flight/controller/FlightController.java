@@ -1,6 +1,5 @@
 package nl.prbed.hu.aviation.management.presentation.flight.controller;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
@@ -11,8 +10,6 @@ import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDt
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightsResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 @RequiredArgsConstructor
@@ -63,8 +60,8 @@ public class FlightController {
             notes = "Provide a airport code to find all flights with that airport as it's departure."
     )
     @GetMapping("/departure/{code}")
-    public FlightsResponseDto getFlightsByDeparture(@PathVariable String code) {
-        var flights = this.flightService.getFlightsByDeparture(code);
+    public FlightsResponseDto findByDeparture(@PathVariable String code) {
+        var flights = this.flightService.findFlightsByDeparture(code);
         return new FlightsResponseDto(flights);
     }
 
@@ -73,15 +70,15 @@ public class FlightController {
             notes = "Provide a airport code to find all flights with that airport as it's destination."
     )
     @GetMapping("/destination/{code}")
-    public FlightsResponseDto getFlightsByDestination(@PathVariable String code) {
-        var flights = this.flightService.getFlightsByDestination(code);
+    public FlightsResponseDto findByDestination(@PathVariable String code) {
+        var flights = this.flightService.findFlightsByDestination(code);
         return new FlightsResponseDto(flights);
     }
 
     @ApiOperation(value = "Find all flights")
     @GetMapping
-    public FlightsResponseDto getAll() {
-        var flights = this.flightService.findAll();
+    public FlightsResponseDto findAll() {
+        var flights = this.flightService.findAllFlights();
         return new FlightsResponseDto(flights);
     }
 
