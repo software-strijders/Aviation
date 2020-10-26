@@ -9,7 +9,6 @@ import nl.prbed.hu.aviation.management.domain.Airport;
 public class Flightplan {
     private String code;
     private Long duration;
-    //TODO: Fix naming issues
     private Airport destination;
-    private Airport arrival;
+    private Airport departure;
 }

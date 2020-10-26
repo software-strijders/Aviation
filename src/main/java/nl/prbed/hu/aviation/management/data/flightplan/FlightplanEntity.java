@@ -23,16 +23,16 @@ public class FlightplanEntity {
     private Long duration;
 
     @OneToOne
-    private AirportEntity arrival;
+    private AirportEntity departure;
 
     @OneToOne
     private AirportEntity destination;
 
     public FlightplanEntity() {}
-    public FlightplanEntity(String code, Long duration, AirportEntity arrival, AirportEntity destination) {
+    public FlightplanEntity(String code, Long duration, AirportEntity departure, AirportEntity destination) {
         this.code = code;
         this.duration = duration;
-        this.arrival = arrival;
+        this.departure = departure;
         this.destination = destination;
     }
 }

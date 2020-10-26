@@ -17,8 +17,8 @@ public class FlightplanResponseDto {
     @ApiModelProperty(notes = "The duration of the flightplan")
     private final Long duration;
 
-    @ApiModelProperty(notes = "The arrival airport")
-    private final Airport arrival;
+    @ApiModelProperty(notes = "The departure airport")
+    private final Airport departure;
 
     @ApiModelProperty(notes = "The destination airport")
     private final Airport destination;

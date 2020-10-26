@@ -7,6 +7,7 @@ import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightsResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +36,50 @@ public class FlightController {
     public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
         var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
         return createFlightResponseDto(flight);
+    }
+
+    @ApiOperation(
+            value = "Find a flight by code",
+            notes = "Provide a code to get the flight."
+    )
+    @GetMapping("/{code}")
+    public FlightResponseDto getFlightByCode(@PathVariable String code) {
+        var flight = this.flightService.findFlightByCode(code);
+        return new FlightResponseDto(
+                flight.getCode(),
+                flight.getPriceEconomy(),
+                flight.getPriceBusiness(),
+                flight.getPriceFirst(),
+                flight.getAircraft().getCode(),
+                flight.getFlightplan().getCode()
+        );
+    }
+
+    @ApiOperation(
+            value = "Find flights with a specific departure airport",
+            notes = "Provide an airport code to find all flights with that airport as it's departure."
+    )
+    @GetMapping("/departure/{code}")
+    public FlightsResponseDto findByDeparture(@PathVariable String code) {
+        var flights = this.flightService.findFlightsByDeparture(code);
+        return new FlightsResponseDto(flights);
+    }
+
+    @ApiOperation(
+            value = "Find flights with a specific destination airport",
+            notes = "Provide an airport code to find all flights with that airport as it's destination."
+    )
+    @GetMapping("/destination/{code}")
+    public FlightsResponseDto findByDestination(@PathVariable String code) {
+        var flights = this.flightService.findFlightsByDestination(code);
+        return new FlightsResponseDto(flights);
+    }
+
+    @ApiOperation(value = "Find all flights")
+    @GetMapping
+    public FlightsResponseDto findAll() {
+        var flights = this.flightService.findAllFlights();
+        return new FlightsResponseDto(flights);
     }
 
     @ApiOperation(

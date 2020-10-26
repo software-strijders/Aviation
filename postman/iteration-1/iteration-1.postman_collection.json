@@ -1032,7 +1032,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": {{flightPlanDuration}},\r\n    \"arrival\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n}",
+							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": {{flightPlanDuration}},\r\n    \"departure\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1116,7 +1116,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": 1000,\r\n    \"arrival\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n\r\n}",
+							"raw": "{\r\n    \"code\": \"{{flightplanCode}}\",\r\n    \"duration\": 1000,\r\n    \"departure\": \"{{airportCode}}\",\r\n    \"destination\": \"{{airportCode2}}\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1155,7 +1155,7 @@
 									"});\r",
 									"\r",
 									"// pm.test(\"properties should exist\", () => {\r",
-									"//     pm.expect(response.flightplans[0]).to.have.keys(\"code\", \"duration\", \"destination\", \"arrival\");\r",
+									"//     pm.expect(response.flightplans[0]).to.have.keys(\"code\", \"duration\", \"destination\", \"departure\");\r",
 									"// });"
 								],
 								"type": "text/javascript"

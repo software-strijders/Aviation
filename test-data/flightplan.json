@@ -3,66 +3,66 @@
     "code": "AMS-TUS",
     "duration": 1117,
     "destination": "AMS",
-    "arrival": "TUS"
+    "departure": "TUS"
   },
   {
     "code": "LED-LEX",
     "duration": 1525,
     "destination": "LED",
-    "arrival": "LEX"
+    "departure": "LEX"
   },
   {
     "code": "IAD-EVN",
     "duration": 1480,
     "destination": "IAD",
-    "arrival": "EVN"
+    "departure": "EVN"
   },
   {
     "code": "CNX-BWN",
     "duration": 740,
     "destination": "CNX",
-    "arrival": "BWN"
+    "departure": "BWN"
   },
   {
     "code": "BCN-AYT",
     "duration": 455,
     "destination": "BCN",
-    "arrival": "AYT"
+    "departure": "AYT"
   },
   {
     "code": "BLL-BLQ",
     "duration": 260,
     "destination": "BLL",
-    "arrival": "BLQ"
+    "departure": "BLQ"
   },
   {
     "code": "BWN-CTS",
     "duration": 1290,
     "destination": "BWN",
-    "arrival": "CTS"
+    "departure": "CTS"
   },
   {
     "code": "FRA-LHR",
     "duration": 95,
     "destination": "FRA",
-    "arrival": "LHR"
+    "departure": "LHR"
   },
   {
     "code": "BRU-CPH",
     "duration": 305,
     "destination": "BRU",
-    "arrival": "CPH"
+    "departure": "CPH"
   },
   {
     "code": "EIN-BGY",
     "duration": 95,
     "destination": "EIN",
-    "arrival": "BGY"
+    "departure": "BGY"
   },
   {
     "code": "KBP-AMS",
     "duration": 185,
     "destination": "KBP",
-    "arrival": "AMS"
+    "departure": "AMS"
   }
 ]
