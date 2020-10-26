@@ -55,7 +55,7 @@ public class FlightplanController {
     }
 
     @ApiOperation(value = "Update a flightplan")
-    @PutMapping("/{code}")
+    @PatchMapping("/{code}")
     public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
         return this.createFlightplanResponseDto(this.flightplanService.update(
                 code,

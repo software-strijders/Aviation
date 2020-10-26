@@ -92,7 +92,7 @@ public class AircraftController {
             value = "Update aircraft information",
             notes = "Provide a code to update specific information about an aircraft."
     )
-    @PutMapping({"/{code}"})
+    @PatchMapping({"/{code}"})
     public AircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
         var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
         return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
