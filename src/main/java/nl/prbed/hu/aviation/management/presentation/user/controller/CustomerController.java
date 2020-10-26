@@ -40,12 +40,6 @@ public class CustomerController {
         return this.createResponseDto(this.service.findById(id));
     }
 
-    @ApiOperation(value = "Delete a customer")
-    @DeleteMapping("/{username}")
-    public void deleteCustomer(@PathVariable String username) {
-        this.service.deleteCustomer(username);
-    }
-
     @ApiOperation(value = "Update a customer")
     @PatchMapping("/{username}")
     public CustomerResponseDto update(@PathVariable String username, @Valid @RequestBody CustomerUpdateDto dto) {
