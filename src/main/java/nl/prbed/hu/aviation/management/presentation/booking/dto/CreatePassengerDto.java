@@ -8,7 +8,10 @@ import java.time.LocalDate;
 
 @ApiModel(description = "Passenger information")
 public class CreatePassengerDto {
-    @ApiModelProperty(notes = "The first name of the passenger")
+    @ApiModelProperty(notes = "Id of the customer")
+    public Long id;
+
+    @ApiModelProperty(notes = "First name of the passenger")
     public String firstName;
 
     @ApiModelProperty(notes = "The last name of the passenger")

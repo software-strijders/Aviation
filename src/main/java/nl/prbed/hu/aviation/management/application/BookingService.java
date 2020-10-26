@@ -6,20 +6,17 @@ import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundExcep
 import nl.prbed.hu.aviation.management.application.exception.SeatsUnavailableException;
 import nl.prbed.hu.aviation.management.application.struct.BookingStruct;
 import nl.prbed.hu.aviation.management.application.struct.PassengerStruct;
-import nl.prbed.hu.aviation.management.data.aircraft.SpringSeatRepository;
 import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
 import nl.prbed.hu.aviation.management.data.booking.PassengerEntity;
 import nl.prbed.hu.aviation.management.data.booking.SpringBookingRepository;
 import nl.prbed.hu.aviation.management.data.booking.SpringPassengerRepository;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
-import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
-import nl.prbed.hu.aviation.management.domain.factory.CustomerFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
@@ -55,7 +52,7 @@ public class BookingService {
             throw new SeatsUnavailableException(bookingStruct.seatType);
 
         var passengers = bookingStruct.passengers.stream()
-                .map(this::findPassengerByFirstName).collect(Collectors.toList());
+                .map(this::findPassengerById).collect(Collectors.toList());
         var bookingEntity = this.bookingRepository.save(
                 new BookingEntity(
                         flight.getPriceBySeatType(bookingStruct.seatType),
@@ -77,12 +74,12 @@ public class BookingService {
                 .anyMatch(flightEntity -> flightEntity.getCode().equals(flight.getCode()));
     }
 
-    private PassengerEntity findPassengerByFirstName(PassengerStruct passenger) {
-        // FIXME: What if two passengers have the same name?
-        var passengerEntity = this.passengerRepository.findByFirstName(passenger.firstName);
-        if (passengerEntity.isEmpty())
-            return this.createPassenger(passenger);
-        return passengerEntity.get();
+    private PassengerEntity findPassengerById(PassengerStruct struct) {
+        if (struct.id == null)
+            return this.createPassenger(struct);
+
+        return this.passengerRepository.findById(struct.id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, struct.id)));
     }
 
     private PassengerEntity createPassenger(PassengerStruct passenger) {
