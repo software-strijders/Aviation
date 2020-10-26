@@ -1,0 +1,2612 @@
+[
+  {
+    "latitude": 57.09275891,
+    "longitude": 9.849243164,
+    "code": "AAL",
+    "cityName": "Alborg"
+  },
+  {
+    "latitude": 35.040199,
+    "longitude": -106.609001,
+    "code": "ABQ",
+    "cityName": "Albuquerque"
+  },
+  {
+    "latitude": 9.006790161,
+    "longitude": 7.263169765,
+    "code": "ABV",
+    "cityName": "Abuja"
+  },
+  {
+    "latitude": 57.20190048,
+    "longitude": -2.197779894,
+    "code": "ABZ",
+    "cityName": "Aberdeen"
+  },
+  {
+    "latitude": 16.75709915,
+    "longitude": -99.7539978,
+    "code": "ACA",
+    "cityName": "Acapulco"
+  },
+  {
+    "latitude": 5.6051898,
+    "longitude": -0.166786,
+    "code": "ACC",
+    "cityName": "Accre"
+  },
+  {
+    "latitude": 36.98220062,
+    "longitude": 35.28039932,
+    "code": "ADA",
+    "cityName": "Adana"
+  },
+  {
+    "latitude": 38.29240036,
+    "longitude": 27.15699959,
+    "code": "ADB",
+    "cityName": "Izmir"
+  },
+  {
+    "latitude": 8.977890015,
+    "longitude": 38.79930115,
+    "code": "ADD",
+    "cityName": "Addis Ababa"
+  },
+  {
+    "latitude": -34.945,
+    "longitude": 138.531006,
+    "code": "ADL",
+    "cityName": "Adelaide"
+  },
+  {
+    "latitude": 43.449902,
+    "longitude": 39.9566,
+    "code": "AER",
+    "cityName": "Sochi"
+  },
+  {
+    "latitude": 36.67490005,
+    "longitude": -4.499110222,
+    "code": "AGP",
+    "cityName": "Malaga"
+  },
+  {
+    "latitude": 33.36989975,
+    "longitude": -81.96450043,
+    "code": "AGS",
+    "cityName": "Augusta"
+  },
+  {
+    "latitude": -37.0080986,
+    "longitude": 174.7920074,
+    "code": "AKL",
+    "cityName": "Auckland"
+  },
+  {
+    "latitude": 34.590401,
+    "longitude": 32.9879,
+    "code": "AKT",
+    "cityName": "Akrotiri"
+  },
+  {
+    "latitude": 43.35210037,
+    "longitude": 77.04049683,
+    "code": "ALA",
+    "cityName": "Almaty"
+  },
+  {
+    "latitude": 38.28219986,
+    "longitude": -0.558156013,
+    "code": "ALC",
+    "cityName": "Alicante"
+  },
+  {
+    "latitude": 36.691002,
+    "longitude": 3.21541,
+    "code": "ALG",
+    "cityName": "Algiers"
+  },
+  {
+    "latitude": 36.18069839,
+    "longitude": 37.22439957,
+    "code": "ALP",
+    "cityName": "Aleppo"
+  },
+  {
+    "latitude": 35.219398,
+    "longitude": -101.706001,
+    "code": "AMA",
+    "cityName": "Amarillo"
+  },
+  {
+    "latitude": 31.72260094,
+    "longitude": 35.99319839,
+    "code": "AMM",
+    "cityName": "Amman"
+  },
+  {
+    "latitude": 52.308601,
+    "longitude": 4.76389,
+    "code": "AMS",
+    "cityName": "Amsterdam"
+  },
+  {
+    "latitude": 61.17440033,
+    "longitude": -149.9960022,
+    "code": "ANC",
+    "cityName": "Anchorage"
+  },
+  {
+    "latitude": 59.65190125,
+    "longitude": 17.91860008,
+    "code": "ARN",
+    "cityName": "Stockholm"
+  },
+  {
+    "latitude": 37.986801,
+    "longitude": 58.361,
+    "code": "ASB",
+    "cityName": "Ashgabat"
+  },
+  {
+    "latitude": 37.93640137,
+    "longitude": 23.94449997,
+    "code": "ATH",
+    "cityName": "Athens"
+  },
+  {
+    "latitude": 33.6367,
+    "longitude": -84.428101,
+    "code": "ATL",
+    "cityName": "Atlanta"
+  },
+  {
+    "latitude": 31.70960045,
+    "longitude": 74.79730225,
+    "code": "ATQ",
+    "cityName": "Amritsar"
+  },
+  {
+    "latitude": 24.43300056,
+    "longitude": 54.65110016,
+    "code": "AUH",
+    "cityName": "Abu Dhabi"
+  },
+  {
+    "latitude": 30.19449997,
+    "longitude": -97.66989899,
+    "code": "AUS",
+    "cityName": "Austin"
+  },
+  {
+    "latitude": 35.436199,
+    "longitude": -82.541801,
+    "code": "AVL",
+    "cityName": "Asheville"
+  },
+  {
+    "latitude": 36.898701,
+    "longitude": 30.800501,
+    "code": "AYT",
+    "cityName": "Antalya"
+  },
+  {
+    "latitude": 41.2971,
+    "longitude": 2.07846,
+    "code": "BCN",
+    "cityName": "Barcelona"
+  },
+  {
+    "latitude": 41.93889999,
+    "longitude": -72.68319702,
+    "code": "BDL",
+    "cityName": "Hartford"
+  },
+  {
+    "latitude": 44.81840134,
+    "longitude": 20.3090992,
+    "code": "BEG",
+    "cityName": "Belgrade"
+  },
+  {
+    "latitude": -1.37925005,
+    "longitude": -48.47629929,
+    "code": "BEL",
+    "cityName": "Belfast"
+  },
+  {
+    "latitude": 33.82089996,
+    "longitude": 35.48839951,
+    "code": "BEY",
+    "cityName": "Beirut"
+  },
+  {
+    "latitude": 54.65750122,
+    "longitude": -6.215829849,
+    "code": "BFS",
+    "cityName": "Belfast"
+  },
+  {
+    "latitude": 60.29339981,
+    "longitude": 5.218140125,
+    "code": "BGO",
+    "cityName": "Bergen"
+  },
+  {
+    "latitude": 44.80739975,
+    "longitude": -68.82810211,
+    "code": "BGR",
+    "cityName": "Bangor"
+  },
+  {
+    "latitude": 33.26250076,
+    "longitude": 44.23460007,
+    "code": "BGW",
+    "cityName": "Baghdad"
+  },
+  {
+    "latitude": 45.673901,
+    "longitude": 9.70417,
+    "code": "BGY",
+    "cityName": "Milan"
+  },
+  {
+    "latitude": 54.61809921,
+    "longitude": -5.872499943,
+    "code": "BHD",
+    "cityName": "Belfast"
+  },
+  {
+    "latitude": 33.56290054,
+    "longitude": -86.75350189,
+    "code": "BHM",
+    "cityName": "Birmingham"
+  },
+  {
+    "latitude": 52.45389938,
+    "longitude": -1.748029947,
+    "code": "BHX",
+    "cityName": "Birmingham"
+  },
+  {
+    "latitude": 45.80770111,
+    "longitude": -108.5429993,
+    "code": "BIL",
+    "cityName": "Billings"
+  },
+  {
+    "latitude": 37.25059891,
+    "longitude": 27.66430092,
+    "code": "BJV",
+    "cityName": "Bodrum"
+  },
+  {
+    "latitude": 13.68109989,
+    "longitude": 100.7470016,
+    "code": "BKK",
+    "cityName": "Bangkok"
+  },
+  {
+    "latitude": 12.5335,
+    "longitude": -7.94994,
+    "code": "BKO",
+    "cityName": "Bamako"
+  },
+  {
+    "latitude": 55.74029922,
+    "longitude": 9.151780128,
+    "code": "BLL",
+    "cityName": "Billund"
+  },
+  {
+    "latitude": 44.5354,
+    "longitude": 11.2887,
+    "code": "BLQ",
+    "cityName": "Bologna"
+  },
+  {
+    "latitude": 13.1979,
+    "longitude": 77.706299,
+    "code": "BLR",
+    "cityName": "Bangalore"
+  },
+  {
+    "latitude": 40.47710037,
+    "longitude": -88.91590118,
+    "code": "BMI",
+    "cityName": "Bloomington"
+  },
+  {
+    "latitude": 36.12450027,
+    "longitude": -86.67819977,
+    "code": "BNA",
+    "cityName": "Nashville"
+  },
+  {
+    "latitude": -27.38419914,
+    "longitude": 153.1170044,
+    "code": "BNE",
+    "cityName": "Brisbane"
+  },
+  {
+    "latitude": 44.82830048,
+    "longitude": -0.715556026,
+    "code": "BOD",
+    "cityName": "Bordeaux"
+  },
+  {
+    "latitude": 4.70159,
+    "longitude": -74.1469,
+    "code": "BOG",
+    "cityName": "Bogota"
+  },
+  {
+    "latitude": 50.77999878,
+    "longitude": -1.842499971,
+    "code": "BOH",
+    "cityName": "Bournemouth"
+  },
+  {
+    "latitude": 43.5644,
+    "longitude": -116.223,
+    "code": "BOI",
+    "cityName": "Boise"
+  },
+  {
+    "latitude": 42.56959915,
+    "longitude": 27.51519966,
+    "code": "BOJ",
+    "cityName": "Burgas"
+  },
+  {
+    "latitude": 19.08869934,
+    "longitude": 72.86789703,
+    "code": "BOM",
+    "cityName": "Mumbai"
+  },
+  {
+    "latitude": 42.36429977,
+    "longitude": -71.00520325,
+    "code": "BOS",
+    "cityName": "Boston"
+  },
+  {
+    "latitude": 53.04750061,
+    "longitude": 8.786669731,
+    "code": "BRE",
+    "cityName": "Bremen"
+  },
+  {
+    "latitude": 41.138901,
+    "longitude": 16.760599,
+    "code": "BRI",
+    "cityName": "Bari"
+  },
+  {
+    "latitude": 51.382702,
+    "longitude": -2.71909,
+    "code": "BRS",
+    "cityName": "Bristol"
+  },
+  {
+    "latitude": 50.90140152,
+    "longitude": 4.48443985,
+    "code": "BRU",
+    "cityName": "Brussels"
+  },
+  {
+    "latitude": 30.54910088,
+    "longitude": 47.66210175,
+    "code": "BSR",
+    "cityName": "Basrah"
+  },
+  {
+    "latitude": 48.17020035,
+    "longitude": 17.21269989,
+    "code": "BTS",
+    "cityName": "Bratislava"
+  },
+  {
+    "latitude": 47.42976,
+    "longitude": 19.261093,
+    "code": "BUD",
+    "cityName": "Budapest"
+  },
+  {
+    "latitude": 42.94049835,
+    "longitude": -78.73220062,
+    "code": "BUF",
+    "cityName": "Buffalo"
+  },
+  {
+    "latitude": 39.1754,
+    "longitude": -76.668297,
+    "code": "BWI",
+    "cityName": "Baltimore"
+  },
+  {
+    "latitude": 4.944200039,
+    "longitude": 114.9280014,
+    "code": "BWN",
+    "cityName": "Bandar Seri Begawan"
+  },
+  {
+    "latitude": 17.53910065,
+    "longitude": -88.30819702,
+    "code": "BZE",
+    "cityName": "Belize City"
+  },
+  {
+    "latitude": 33.93880081,
+    "longitude": -81.11949921,
+    "code": "CAE",
+    "cityName": "Columbia"
+  },
+  {
+    "latitude": 39.251499,
+    "longitude": 9.05428,
+    "code": "CAG",
+    "cityName": "Cagliari"
+  },
+  {
+    "latitude": 30.12190056,
+    "longitude": 31.40559959,
+    "code": "CAI",
+    "cityName": "Cairo"
+  },
+  {
+    "latitude": 23.39240074,
+    "longitude": 113.2990036,
+    "code": "CAN",
+    "cityName": "Guangzhou"
+  },
+  {
+    "latitude": -35.30690002,
+    "longitude": 149.1950073,
+    "code": "CBR",
+    "cityName": "Canberra"
+  },
+  {
+    "latitude": 11.13679981,
+    "longitude": 75.95529938,
+    "code": "CCJ",
+    "cityName": "Calicut"
+  },
+  {
+    "latitude": 10.601194,
+    "longitude": -66.991222,
+    "code": "CCS",
+    "cityName": "Caracas"
+  },
+  {
+    "latitude": 22.65469933,
+    "longitude": 88.44670105,
+    "code": "CCU",
+    "cityName": "Kolkata"
+  },
+  {
+    "latitude": 49.012798,
+    "longitude": 2.55,
+    "code": "CDG",
+    "cityName": "Paris"
+  },
+  {
+    "latitude": -6.12556982,
+    "longitude": 106.6559982,
+    "code": "CGK",
+    "cityName": "Jakarta"
+  },
+  {
+    "latitude": 35.03530121,
+    "longitude": -85.20379639,
+    "code": "CHA",
+    "cityName": "Chattanooga"
+  },
+  {
+    "latitude": -43.48939896,
+    "longitude": 172.5319977,
+    "code": "CHC",
+    "cityName": "Christchurch"
+  },
+  {
+    "latitude": 32.89860153,
+    "longitude": -80.04049683,
+    "code": "CHS",
+    "cityName": "Charleston"
+  },
+  {
+    "latitude": 41.7994,
+    "longitude": 12.5949,
+    "code": "CIA",
+    "cityName": "Rome"
+  },
+  {
+    "latitude": 41.88470078,
+    "longitude": -91.71080017,
+    "code": "CID",
+    "cityName": "Cedar Rapids"
+  },
+  {
+    "latitude": 29.71920013,
+    "longitude": 106.6419983,
+    "code": "CKG",
+    "cityName": "Chongqing"
+  },
+  {
+    "latitude": 41.4117012,
+    "longitude": -81.84980011,
+    "code": "CLE",
+    "cityName": "Cleveland"
+  },
+  {
+    "latitude": 35.2140007,
+    "longitude": -80.94309998,
+    "code": "CLT",
+    "cityName": "Charlotte"
+  },
+  {
+    "latitude": 7.180759907,
+    "longitude": 79.88410187,
+    "code": "CMB",
+    "cityName": "Colombo"
+  },
+  {
+    "latitude": 39.998001,
+    "longitude": -82.891899,
+    "code": "CMH",
+    "cityName": "Columbus"
+  },
+  {
+    "latitude": 33.36750031,
+    "longitude": -7.589970112,
+    "code": "CMN",
+    "cityName": "Casablanca"
+  },
+  {
+    "latitude": -19.62444305,
+    "longitude": -43.9719429,
+    "code": "CNF",
+    "cityName": "Belo Horizonte"
+  },
+  {
+    "latitude": 18.76679993,
+    "longitude": 98.96260071,
+    "code": "CNX",
+    "cityName": "Chiang Mai"
+  },
+  {
+    "latitude": 38.805801,
+    "longitude": -104.700996,
+    "code": "COS",
+    "cityName": "Colorado Springs"
+  },
+  {
+    "latitude": 55.61790085,
+    "longitude": 12.65600014,
+    "code": "CPH",
+    "cityName": "Copenhagen"
+  },
+  {
+    "latitude": -33.96480179,
+    "longitude": 18.60169983,
+    "code": "CPT",
+    "cityName": "Cape Town"
+  },
+  {
+    "latitude": 27.77039909,
+    "longitude": -97.50119781,
+    "code": "CRP",
+    "cityName": "Corpus Christi"
+  },
+  {
+    "latitude": 38.37310028,
+    "longitude": -81.59320068,
+    "code": "CRW",
+    "cityName": "Charleston"
+  },
+  {
+    "latitude": 37.466801,
+    "longitude": 15.0664,
+    "code": "CTA",
+    "cityName": "Catania"
+  },
+  {
+    "latitude": 42.77519989,
+    "longitude": 141.6920013,
+    "code": "CTS",
+    "cityName": "Chitose"
+  },
+  {
+    "latitude": 30.57850075,
+    "longitude": 103.9469986,
+    "code": "CTU",
+    "cityName": "Chengdu"
+  },
+  {
+    "latitude": 39.048801,
+    "longitude": -84.667801,
+    "code": "CVG",
+    "cityName": "Cincinnati"
+  },
+  {
+    "latitude": -25.5284996,
+    "longitude": -49.17580032,
+    "code": "CWB",
+    "cityName": "Curitiba"
+  },
+  {
+    "latitude": 51.39670181,
+    "longitude": -3.343329906,
+    "code": "CWL",
+    "cityName": "Cardiff"
+  },
+  {
+    "latitude": 29.179899,
+    "longitude": -81.058098,
+    "code": "DAB",
+    "cityName": "Daytona Beach"
+  },
+  {
+    "latitude": 23.843347,
+    "longitude": 90.397783,
+    "code": "DAC",
+    "cityName": "Dhaka"
+  },
+  {
+    "latitude": 32.847099,
+    "longitude": -96.851799,
+    "code": "DAL",
+    "cityName": "Dallas"
+  },
+  {
+    "latitude": 33.41149902,
+    "longitude": 36.5155983,
+    "code": "DAM",
+    "cityName": "Damascus"
+  },
+  {
+    "latitude": -6.87811,
+    "longitude": 39.202599,
+    "code": "DAR",
+    "cityName": "Dar es Salam"
+  },
+  {
+    "latitude": 39.90240097,
+    "longitude": -84.2193985,
+    "code": "DAY",
+    "cityName": "Dayton"
+  },
+  {
+    "latitude": 42.40200043,
+    "longitude": -90.70950317,
+    "code": "DBQ",
+    "cityName": "Dubuque"
+  },
+  {
+    "latitude": 38.8521,
+    "longitude": -77.037697,
+    "code": "DCA",
+    "cityName": "Washington"
+  },
+  {
+    "latitude": 28.5665,
+    "longitude": 77.103104,
+    "code": "DEL",
+    "cityName": "Delhi"
+  },
+  {
+    "latitude": 39.86169815,
+    "longitude": -104.6729965,
+    "code": "DEN",
+    "cityName": "Denver"
+  },
+  {
+    "latitude": 32.896801,
+    "longitude": -97.038002,
+    "code": "DFW",
+    "cityName": "Fort Worth"
+  },
+  {
+    "latitude": -2.576950073,
+    "longitude": 140.5160065,
+    "code": "DJJ",
+    "cityName": "Jayapura"
+  },
+  {
+    "latitude": 14.73970032,
+    "longitude": -17.49020004,
+    "code": "DKR",
+    "cityName": "Dakar"
+  },
+  {
+    "latitude": 38.96569824,
+    "longitude": 121.5390015,
+    "code": "DLC",
+    "cityName": "Dalian"
+  },
+  {
+    "latitude": 46.84209824,
+    "longitude": -92.19360352,
+    "code": "DLH",
+    "cityName": "Duluth"
+  },
+  {
+    "latitude": 36.71310043,
+    "longitude": 28.79249954,
+    "code": "DLM",
+    "cityName": "Dalaman"
+  },
+  {
+    "latitude": 55.40879822,
+    "longitude": 37.90629959,
+    "code": "DME",
+    "cityName": "Moscow"
+  },
+  {
+    "latitude": 13.91259956,
+    "longitude": 100.6070023,
+    "code": "DMK",
+    "cityName": "Bangkok"
+  },
+  {
+    "latitude": 25.273056,
+    "longitude": 51.608056,
+    "code": "DOH",
+    "cityName": "Doha"
+  },
+  {
+    "latitude": -8.748169899,
+    "longitude": 115.1669998,
+    "code": "DPS",
+    "cityName": "Denpasar"
+  },
+  {
+    "latitude": 53.48053781,
+    "longitude": -1.010656357,
+    "code": "DSA",
+    "cityName": "Doncaster"
+  },
+  {
+    "latitude": 41.5340004,
+    "longitude": -93.6631012,
+    "code": "DSM",
+    "cityName": "Des Moines"
+  },
+  {
+    "latitude": 51.5182991,
+    "longitude": 7.612239838,
+    "code": "DTM",
+    "cityName": "Dortmund"
+  },
+  {
+    "latitude": 42.21239853,
+    "longitude": -83.35340118,
+    "code": "DTW",
+    "cityName": "Detroit"
+  },
+  {
+    "latitude": 53.421299,
+    "longitude": -6.27007,
+    "code": "DUB",
+    "cityName": "Dublin"
+  },
+  {
+    "latitude": -29.61444444,
+    "longitude": 31.11972222,
+    "code": "DUR",
+    "cityName": "Durban"
+  },
+  {
+    "latitude": 51.289501,
+    "longitude": 6.76678,
+    "code": "DUS",
+    "cityName": "Düsseldorf"
+  },
+  {
+    "latitude": 25.25279999,
+    "longitude": 55.36439896,
+    "code": "DXB",
+    "cityName": "Dubai"
+  },
+  {
+    "latitude": 55.95000076,
+    "longitude": -3.372499943,
+    "code": "EDI",
+    "cityName": "Edinburgh"
+  },
+  {
+    "latitude": 51.45009995,
+    "longitude": 5.374529839,
+    "code": "EIN",
+    "cityName": "Eindhoven"
+  },
+  {
+    "latitude": 52.83110046,
+    "longitude": -1.328060031,
+    "code": "EMA",
+    "cityName": "Nottingham"
+  },
+  {
+    "latitude": 42.08312701,
+    "longitude": -80.17386675,
+    "code": "ERI",
+    "cityName": "Erie"
+  },
+  {
+    "latitude": 39.95650101,
+    "longitude": 41.17020035,
+    "code": "ERZ",
+    "cityName": "Erzurum"
+  },
+  {
+    "latitude": 40.12810135,
+    "longitude": 32.99509811,
+    "code": "ESB",
+    "cityName": "Ankara"
+  },
+  {
+    "latitude": 40.14730072,
+    "longitude": 44.39590073,
+    "code": "EVN",
+    "cityName": "Yerevan"
+  },
+  {
+    "latitude": 40.69250107,
+    "longitude": -74.16870117,
+    "code": "EWR",
+    "cityName": "New York"
+  },
+  {
+    "latitude": 50.7344017,
+    "longitude": -3.413889885,
+    "code": "EXT",
+    "cityName": "Exeter"
+  },
+  {
+    "latitude": -34.8222,
+    "longitude": -58.5358,
+    "code": "EZE",
+    "cityName": "Buenos Aires"
+  },
+  {
+    "latitude": 37.01440048,
+    "longitude": -7.965909958,
+    "code": "FAO",
+    "cityName": "Faro"
+  },
+  {
+    "latitude": 41.8002778,
+    "longitude": 12.2388889,
+    "code": "FCO",
+    "cityName": "Rome"
+  },
+  {
+    "latitude": -4.38575,
+    "longitude": 15.4446,
+    "code": "FIH",
+    "cityName": "Kinshasa"
+  },
+  {
+    "latitude": 26.072599,
+    "longitude": -80.152702,
+    "code": "FLL",
+    "cityName": "Fort Lauderdale"
+  },
+  {
+    "latitude": 8.61644,
+    "longitude": -13.1955,
+    "code": "FNA",
+    "cityName": "Freetown"
+  },
+  {
+    "latitude": 50.033333,
+    "longitude": 8.570556,
+    "code": "FRA",
+    "cityName": "Frankfurt"
+  },
+  {
+    "latitude": 43.06129837,
+    "longitude": 74.4776001,
+    "code": "FRU",
+    "cityName": "Bishkek"
+  },
+  {
+    "latitude": 35.33660126,
+    "longitude": -94.36740112,
+    "code": "FSM",
+    "cityName": "Fort Smith"
+  },
+  {
+    "latitude": 33.58589935,
+    "longitude": 130.451004,
+    "code": "FUK",
+    "cityName": "Fukuoka"
+  },
+  {
+    "latitude": -24.555201,
+    "longitude": 25.9182,
+    "code": "GBE",
+    "cityName": "Gaborone"
+  },
+  {
+    "latitude": 20.52179909,
+    "longitude": -103.310997,
+    "code": "GDL",
+    "cityName": "Guadalajara"
+  },
+  {
+    "latitude": 47.61989975,
+    "longitude": -117.5339966,
+    "code": "GEG",
+    "cityName": "Spokane"
+  },
+  {
+    "latitude": -22.80999947,
+    "longitude": -43.25055695,
+    "code": "GIG",
+    "cityName": "Rio De Janeiro"
+  },
+  {
+    "latitude": 55.871899,
+    "longitude": -4.43306,
+    "code": "GLA",
+    "cityName": "Glasgow"
+  },
+  {
+    "latitude": 57.66279984,
+    "longitude": 12.27980042,
+    "code": "GOT",
+    "cityName": "Gothenburg"
+  },
+  {
+    "latitude": 30.40730095,
+    "longitude": -89.07009888,
+    "code": "GPT",
+    "cityName": "Gulfport"
+  },
+  {
+    "latitude": 44.48509979,
+    "longitude": -88.12960052,
+    "code": "GRB",
+    "cityName": "Green Bay"
+  },
+  {
+    "latitude": -34.0056,
+    "longitude": 22.378902,
+    "code": "GRJ",
+    "cityName": "George"
+  },
+  {
+    "latitude": 36.09780121,
+    "longitude": -79.93730164,
+    "code": "GSO",
+    "cityName": "Greensboro"
+  },
+  {
+    "latitude": 34.89569855,
+    "longitude": -82.21890259,
+    "code": "GSP",
+    "cityName": "Greenville"
+  },
+  {
+    "latitude": 14.5833,
+    "longitude": -90.527496,
+    "code": "GUA",
+    "cityName": "Guatemala City"
+  },
+  {
+    "latitude": 13.48340034,
+    "longitude": 144.7960052,
+    "code": "GUM",
+    "cityName": "Hagåtña"
+  },
+  {
+    "latitude": 46.23809814,
+    "longitude": 6.108950138,
+    "code": "GVA",
+    "cityName": "Geneva"
+  },
+  {
+    "latitude": 36.94720078,
+    "longitude": 37.47869873,
+    "code": "GZT",
+    "cityName": "Gaziantep"
+  },
+  {
+    "latitude": 52.46110153,
+    "longitude": 9.685079575,
+    "code": "HAJ",
+    "cityName": "Hannover"
+  },
+  {
+    "latitude": 53.63040161,
+    "longitude": 9.988229752,
+    "code": "HAM",
+    "cityName": "Hamburg"
+  },
+  {
+    "latitude": 21.22120094,
+    "longitude": 105.8069992,
+    "code": "HAN",
+    "cityName": "Hanoi"
+  },
+  {
+    "latitude": 22.98920059,
+    "longitude": -82.40910339,
+    "code": "HAV",
+    "cityName": "Havana"
+  },
+  {
+    "latitude": 35.33969879,
+    "longitude": 25.18029976,
+    "code": "HER",
+    "cityName": "Heraklion"
+  },
+  {
+    "latitude": 30.22949982,
+    "longitude": 120.4339981,
+    "code": "HGH",
+    "cityName": "Hangzhou"
+  },
+  {
+    "latitude": 47.38660049,
+    "longitude": -92.83899689,
+    "code": "HIB",
+    "cityName": "Hibbing"
+  },
+  {
+    "latitude": 22.308901,
+    "longitude": 113.915001,
+    "code": "HKG",
+    "cityName": "Hong Kong"
+  },
+  {
+    "latitude": 8.1132,
+    "longitude": 98.316902,
+    "code": "HKT",
+    "cityName": "Phuket"
+  },
+  {
+    "latitude": 29.09589958,
+    "longitude": -111.0479965,
+    "code": "HMO",
+    "cityName": "Hermosillo"
+  },
+  {
+    "latitude": 35.552299,
+    "longitude": 139.779999,
+    "code": "HND",
+    "cityName": "Tokyo"
+  },
+  {
+    "latitude": 21.32062,
+    "longitude": -157.924228,
+    "code": "HNL",
+    "cityName": "Honolulu"
+  },
+  {
+    "latitude": 29.64539909,
+    "longitude": -95.27890015,
+    "code": "HOU",
+    "cityName": "Houston"
+  },
+  {
+    "latitude": 45.62340164,
+    "longitude": 126.25,
+    "code": "HRB",
+    "cityName": "Harbin"
+  },
+  {
+    "latitude": -17.931801,
+    "longitude": 31.0928,
+    "code": "HRE",
+    "cityName": "Harare"
+  },
+  {
+    "latitude": 27.17830086,
+    "longitude": 33.79940033,
+    "code": "HRG",
+    "cityName": "Hurghada"
+  },
+  {
+    "latitude": 34.6371994,
+    "longitude": -86.77510071,
+    "code": "HSV",
+    "cityName": "Huntsville"
+  },
+  {
+    "latitude": 17.231318,
+    "longitude": 78.429855,
+    "code": "HYD",
+    "cityName": "Hyderabad"
+  },
+  {
+    "latitude": 38.94449997,
+    "longitude": -77.45580292,
+    "code": "IAD",
+    "cityName": "Washington"
+  },
+  {
+    "latitude": 29.9843998,
+    "longitude": -95.34140015,
+    "code": "IAH",
+    "cityName": "Houston"
+  },
+  {
+    "latitude": 37.46910095,
+    "longitude": 126.4509964,
+    "code": "ICN",
+    "cityName": "Seoul"
+  },
+  {
+    "latitude": 37.649899,
+    "longitude": -97.433098,
+    "code": "ICT",
+    "cityName": "Wichita"
+  },
+  {
+    "latitude": 39.7173,
+    "longitude": -86.294403,
+    "code": "IND",
+    "cityName": "Indianapolis"
+  },
+  {
+    "latitude": 33.549,
+    "longitude": 72.82566,
+    "code": "ISB",
+    "cityName": "Islamabad"
+  },
+  {
+    "latitude": 41.261297,
+    "longitude": 28.741951,
+    "code": "IST",
+    "cityName": "Istanbul"
+  },
+  {
+    "latitude": 34.78549957,
+    "longitude": 135.4380035,
+    "code": "ITM",
+    "cityName": "Osaka"
+  },
+  {
+    "latitude": 32.31119919,
+    "longitude": -90.07589722,
+    "code": "JAN",
+    "cityName": "Jackson"
+  },
+  {
+    "latitude": 30.49410057,
+    "longitude": -81.68789673,
+    "code": "JAX",
+    "cityName": "Jacksonville"
+  },
+  {
+    "latitude": 21.6796,
+    "longitude": 39.156502,
+    "code": "JED",
+    "cityName": "Jeddah"
+  },
+  {
+    "latitude": 40.639801,
+    "longitude": -73.7789,
+    "code": "JFK",
+    "cityName": "New York"
+  },
+  {
+    "latitude": 37.15179825,
+    "longitude": -94.49829865,
+    "code": "JLN",
+    "cityName": "Joplin"
+  },
+  {
+    "latitude": -26.1392,
+    "longitude": 28.246,
+    "code": "JNB",
+    "cityName": "Johannesburg"
+  },
+  {
+    "latitude": 4.872010231,
+    "longitude": 31.60110092,
+    "code": "JUB",
+    "cityName": "Juba"
+  },
+  {
+    "latitude": 50.34500122,
+    "longitude": 30.8946991,
+    "code": "KBP",
+    "cityName": "Kiev"
+  },
+  {
+    "latitude": 63.985001,
+    "longitude": -22.6056,
+    "code": "KEF",
+    "cityName": "Reykjavik"
+  },
+  {
+    "latitude": -1.96863,
+    "longitude": 30.1395,
+    "code": "KGL",
+    "cityName": "Kigali"
+  },
+  {
+    "latitude": 22.57710075,
+    "longitude": 120.3499985,
+    "code": "KHH",
+    "cityName": "Kaohsiung"
+  },
+  {
+    "latitude": 48.52799988,
+    "longitude": 135.1880035,
+    "code": "KHV",
+    "cityName": "Khabarovsk"
+  },
+  {
+    "latitude": 17.93569946,
+    "longitude": -76.78749847,
+    "code": "KIN",
+    "cityName": "Kingston"
+  },
+  {
+    "latitude": 34.4272995,
+    "longitude": 135.2440033,
+    "code": "KIX",
+    "cityName": "Osaka"
+  },
+  {
+    "latitude": 31.80340004,
+    "longitude": 130.7189941,
+    "code": "KOJ",
+    "cityName": "Kagoshima"
+  },
+  {
+    "latitude": 15.58950043,
+    "longitude": 32.55319977,
+    "code": "KRT",
+    "cityName": "Khartoum"
+  },
+  {
+    "latitude": 27.6966,
+    "longitude": 85.3591,
+    "code": "KTM",
+    "cityName": "Kathmandu"
+  },
+  {
+    "latitude": 53.50490189,
+    "longitude": 50.16429901,
+    "code": "KUF",
+    "cityName": "Samara"
+  },
+  {
+    "latitude": 2.745579958,
+    "longitude": 101.7099991,
+    "code": "KUL",
+    "cityName": "Kuala Lumpur"
+  },
+  {
+    "latitude": 55.60620117,
+    "longitude": 49.27870178,
+    "code": "KZN",
+    "cityName": "Kazan"
+  },
+  {
+    "latitude": -8.85837,
+    "longitude": 13.2312,
+    "code": "LAD",
+    "cityName": "Luanda"
+  },
+  {
+    "latitude": 36.08010101,
+    "longitude": -115.1520004,
+    "code": "LAS",
+    "cityName": "Las Vegas"
+  },
+  {
+    "latitude": 33.942501,
+    "longitude": -118.407997,
+    "code": "LAX",
+    "cityName": "Los Angeles"
+  },
+  {
+    "latitude": 53.86589813,
+    "longitude": -1.660570025,
+    "code": "LBA",
+    "cityName": "Leeds"
+  },
+  {
+    "latitude": 33.663601,
+    "longitude": -101.822998,
+    "code": "LBB",
+    "cityName": "Lubbock"
+  },
+  {
+    "latitude": 59.8003006,
+    "longitude": 30.26250076,
+    "code": "LED",
+    "cityName": "St. Petersburg"
+  },
+  {
+    "latitude": 38.03649902,
+    "longitude": -84.60590363,
+    "code": "LEX",
+    "cityName": "Lexington"
+  },
+  {
+    "latitude": 30.20529938,
+    "longitude": -91.98760223,
+    "code": "LFT",
+    "cityName": "Lafayette"
+  },
+  {
+    "latitude": 40.777199,
+    "longitude": -73.872597,
+    "code": "LGA",
+    "cityName": "New York"
+  },
+  {
+    "latitude": 50.63740158,
+    "longitude": 5.443220139,
+    "code": "LGG",
+    "cityName": "Liege"
+  },
+  {
+    "latitude": 51.148102,
+    "longitude": -0.190278,
+    "code": "LGW",
+    "cityName": "London"
+  },
+  {
+    "latitude": 51.4706,
+    "longitude": -0.461941,
+    "code": "LHR",
+    "cityName": "London"
+  },
+  {
+    "latitude": -12.0219,
+    "longitude": -77.114305,
+    "code": "LIM",
+    "cityName": "Lima"
+  },
+  {
+    "latitude": 38.7813,
+    "longitude": -9.13592,
+    "code": "LIS",
+    "cityName": "Lisbon"
+  },
+  {
+    "latitude": 34.72940063,
+    "longitude": -92.22429657,
+    "code": "LIT",
+    "cityName": "Little Rock"
+  },
+  {
+    "latitude": 46.223701,
+    "longitude": 14.4576,
+    "code": "LJU",
+    "cityName": "Ljubljana"
+  },
+  {
+    "latitude": 65.54380035,
+    "longitude": 22.12199974,
+    "code": "LLA",
+    "cityName": "Lulea"
+  },
+  {
+    "latitude": 6.577370167,
+    "longitude": 3.321160078,
+    "code": "LOS",
+    "cityName": "Lagos"
+  },
+  {
+    "latitude": 53.33359909,
+    "longitude": -2.849720001,
+    "code": "LPL",
+    "cityName": "Liverpool"
+  },
+  {
+    "latitude": 51.87469864,
+    "longitude": -0.368333012,
+    "code": "LTN",
+    "cityName": "London"
+  },
+  {
+    "latitude": -15.3308,
+    "longitude": 28.4526,
+    "code": "LUN",
+    "cityName": "Lusaka"
+  },
+  {
+    "latitude": 49.6233333,
+    "longitude": 6.2044444,
+    "code": "LUX",
+    "cityName": "Luxembourg"
+  },
+  {
+    "latitude": 25.671,
+    "longitude": 32.7066,
+    "code": "LXR",
+    "cityName": "Luxor"
+  },
+  {
+    "latitude": 45.725556,
+    "longitude": 5.081111,
+    "code": "LYS",
+    "cityName": "Lyon"
+  },
+  {
+    "latitude": 12.99000549,
+    "longitude": 80.16929626,
+    "code": "MAA",
+    "cityName": "Chennai"
+  },
+  {
+    "latitude": 40.471926,
+    "longitude": -3.56264,
+    "code": "MAD",
+    "cityName": "Madrid"
+  },
+  {
+    "latitude": 53.35369873,
+    "longitude": -2.274950027,
+    "code": "MAN",
+    "cityName": "Manchester"
+  },
+  {
+    "latitude": -3.03861,
+    "longitude": -60.049702,
+    "code": "MAO",
+    "cityName": "Manaus"
+  },
+  {
+    "latitude": -4.034830093,
+    "longitude": 39.59420013,
+    "code": "MBA",
+    "cityName": "Mombasa"
+  },
+  {
+    "latitude": 43.53290176,
+    "longitude": -84.07959747,
+    "code": "MBS",
+    "cityName": "Saginaw"
+  },
+  {
+    "latitude": 39.2976,
+    "longitude": -94.713898,
+    "code": "MCI",
+    "cityName": "Kansas City"
+  },
+  {
+    "latitude": 28.42939949,
+    "longitude": -81.30899811,
+    "code": "MCO",
+    "cityName": "Orlando"
+  },
+  {
+    "latitude": 23.59329987,
+    "longitude": 58.28440094,
+    "code": "MCT",
+    "cityName": "Muscat"
+  },
+  {
+    "latitude": 21.70219994,
+    "longitude": 95.97789764,
+    "code": "MDL",
+    "cityName": "Mandalay"
+  },
+  {
+    "latitude": 41.785999,
+    "longitude": -87.752403,
+    "code": "MDW",
+    "cityName": "Chicago"
+  },
+  {
+    "latitude": 24.5534,
+    "longitude": 39.705101,
+    "code": "MED",
+    "cityName": "Medina"
+  },
+  {
+    "latitude": -37.673302,
+    "longitude": 144.843002,
+    "code": "MEL",
+    "cityName": "Melbourne"
+  },
+  {
+    "latitude": 35.04240036,
+    "longitude": -89.97669983,
+    "code": "MEM",
+    "cityName": "Memphis"
+  },
+  {
+    "latitude": 19.4363,
+    "longitude": -99.072098,
+    "code": "MEX",
+    "cityName": "Mexico City"
+  },
+  {
+    "latitude": 22.149599,
+    "longitude": 113.592003,
+    "code": "MFM",
+    "cityName": "Macau"
+  },
+  {
+    "latitude": 32.30059814,
+    "longitude": -86.39399719,
+    "code": "MGM",
+    "cityName": "Montgomery"
+  },
+  {
+    "latitude": 42.932598,
+    "longitude": -71.435699,
+    "code": "MHT",
+    "cityName": "Manchester"
+  },
+  {
+    "latitude": 25.79319954,
+    "longitude": -80.29060364,
+    "code": "MIA",
+    "cityName": "Miami"
+  },
+  {
+    "latitude": 42.94720078,
+    "longitude": -87.89659882,
+    "code": "MKE",
+    "cityName": "Milwaukee"
+  },
+  {
+    "latitude": 41.44850159,
+    "longitude": -90.50749969,
+    "code": "MLI",
+    "cityName": "Moline"
+  },
+  {
+    "latitude": 32.51089859,
+    "longitude": -92.03769684,
+    "code": "MLU",
+    "cityName": "Monroe"
+  },
+  {
+    "latitude": 55.53630536,
+    "longitude": 13.37619781,
+    "code": "MMX",
+    "cityName": "Malmo"
+  },
+  {
+    "latitude": 30.69120026,
+    "longitude": -88.24279785,
+    "code": "MOB",
+    "cityName": "Mobile"
+  },
+  {
+    "latitude": -25.920799,
+    "longitude": 32.572601,
+    "code": "MPM",
+    "cityName": "Maputo"
+  },
+  {
+    "latitude": 43.43927192,
+    "longitude": 5.221424103,
+    "code": "MRS",
+    "cityName": "Marseille"
+  },
+  {
+    "latitude": 43.13990021,
+    "longitude": -89.33750153,
+    "code": "MSN",
+    "cityName": "Madison"
+  },
+  {
+    "latitude": 44.882,
+    "longitude": -93.221802,
+    "code": "MSP",
+    "cityName": "Minneapolis"
+  },
+  {
+    "latitude": 53.88249969,
+    "longitude": 28.03070068,
+    "code": "MSQ",
+    "cityName": "Minsk"
+  },
+  {
+    "latitude": 29.99340057,
+    "longitude": -90.25800323,
+    "code": "MSY",
+    "cityName": "New Orleans"
+  },
+  {
+    "latitude": 25.7784996,
+    "longitude": -100.1070023,
+    "code": "MTY",
+    "cityName": "Monterrey"
+  },
+  {
+    "latitude": 48.353802,
+    "longitude": 11.7861,
+    "code": "MUC",
+    "cityName": "Munich"
+  },
+  {
+    "latitude": -34.838402,
+    "longitude": -56.0308,
+    "code": "MVD",
+    "cityName": "Montevideo"
+  },
+  {
+    "latitude": 45.6306,
+    "longitude": 8.72811,
+    "code": "MXP",
+    "cityName": "Milan"
+  },
+  {
+    "latitude": 25.039,
+    "longitude": -77.466202,
+    "code": "NAS",
+    "cityName": "Nassau"
+  },
+  {
+    "latitude": -5.768056,
+    "longitude": -35.376111,
+    "code": "NAT",
+    "cityName": "Natal"
+  },
+  {
+    "latitude": -1.319239974,
+    "longitude": 36.92779922,
+    "code": "NBO",
+    "cityName": "Nairobi"
+  },
+  {
+    "latitude": 43.65840149,
+    "longitude": 7.215869904,
+    "code": "NCE",
+    "cityName": "Nice"
+  },
+  {
+    "latitude": 55.03749847,
+    "longitude": -1.691669941,
+    "code": "NCL",
+    "cityName": "Newcastle"
+  },
+  {
+    "latitude": 12.1337,
+    "longitude": 15.034,
+    "code": "NDJ",
+    "cityName": "N'Djamena"
+  },
+  {
+    "latitude": 13.4815,
+    "longitude": 2.18361,
+    "code": "NIM",
+    "cityName": "Niamey"
+  },
+  {
+    "latitude": 18.31,
+    "longitude": -15.9697222,
+    "code": "NKC",
+    "cityName": "Nouakchott"
+  },
+  {
+    "latitude": 22.60829926,
+    "longitude": 108.1719971,
+    "code": "NNG",
+    "cityName": "Nanning"
+  },
+  {
+    "latitude": 35.764702,
+    "longitude": 140.386002,
+    "code": "NRT",
+    "cityName": "Tokyo"
+  },
+  {
+    "latitude": 52.67580032,
+    "longitude": 1.282780051,
+    "code": "NWI",
+    "cityName": "Norwich"
+  },
+  {
+    "latitude": 37.721298,
+    "longitude": -122.221001,
+    "code": "OAK",
+    "cityName": "Oakland"
+  },
+  {
+    "latitude": 46.42679977,
+    "longitude": 30.67650032,
+    "code": "ODS",
+    "cityName": "Odessa"
+  },
+  {
+    "latitude": 26.19580078,
+    "longitude": 127.6460037,
+    "code": "OKA",
+    "cityName": "Naha"
+  },
+  {
+    "latitude": 35.39310074,
+    "longitude": -97.60070038,
+    "code": "OKC",
+    "cityName": "Oklahoma City"
+  },
+  {
+    "latitude": 41.3032,
+    "longitude": -95.894096,
+    "code": "OMA",
+    "cityName": "Omaha"
+  },
+  {
+    "latitude": 34.05599976,
+    "longitude": -117.6009979,
+    "code": "ONT",
+    "cityName": "Ontario"
+  },
+  {
+    "latitude": 41.24810028,
+    "longitude": -8.681389809,
+    "code": "OPO",
+    "cityName": "Porto"
+  },
+  {
+    "latitude": 41.9786,
+    "longitude": -87.9048,
+    "code": "ORD",
+    "cityName": "Chicago"
+  },
+  {
+    "latitude": 36.89459991,
+    "longitude": -76.20120239,
+    "code": "ORF",
+    "cityName": "Norfolk"
+  },
+  {
+    "latitude": 51.84130096,
+    "longitude": -8.491109848,
+    "code": "ORK",
+    "cityName": "Cork"
+  },
+  {
+    "latitude": 48.7233333,
+    "longitude": 2.3794444,
+    "code": "ORY",
+    "cityName": "Paris"
+  },
+  {
+    "latitude": 60.19390106,
+    "longitude": 11.10039997,
+    "code": "OSL",
+    "cityName": "Oslo"
+  },
+  {
+    "latitude": 44.5711111,
+    "longitude": 26.085,
+    "code": "OTP",
+    "cityName": "Bucharest"
+  },
+  {
+    "latitude": 12.3532,
+    "longitude": -1.51242,
+    "code": "OUA",
+    "cityName": "Ouagadougou"
+  },
+  {
+    "latitude": 55.01259995,
+    "longitude": 82.65070343,
+    "code": "OVB",
+    "cityName": "Novosibirsk"
+  },
+  {
+    "latitude": 26.68320084,
+    "longitude": -80.09559631,
+    "code": "PBI",
+    "cityName": "West Palm Beach"
+  },
+  {
+    "latitude": 37.74119949,
+    "longitude": -25.69790077,
+    "code": "PDL",
+    "cityName": "Ponta Delgada"
+  },
+  {
+    "latitude": 45.58869934,
+    "longitude": -122.5979996,
+    "code": "PDX",
+    "cityName": "Portland"
+  },
+  {
+    "latitude": -31.94029999,
+    "longitude": 115.9670029,
+    "code": "PER",
+    "cityName": "Perth"
+  },
+  {
+    "latitude": 34.7179985,
+    "longitude": 32.4856987,
+    "code": "PFO",
+    "cityName": "Paphos"
+  },
+  {
+    "latitude": 37.13190079,
+    "longitude": -76.49299622,
+    "code": "PHF",
+    "cityName": "Newport News"
+  },
+  {
+    "latitude": 39.87189865,
+    "longitude": -75.2410965,
+    "code": "PHL",
+    "cityName": "Philadelphia"
+  },
+  {
+    "latitude": 33.43429947,
+    "longitude": -112.012001,
+    "code": "PHX",
+    "cityName": "Phoenix"
+  },
+  {
+    "latitude": 40.66419983,
+    "longitude": -89.69329834,
+    "code": "PIA",
+    "cityName": "Bloomington"
+  },
+  {
+    "latitude": 40.49150085,
+    "longitude": -80.23290253,
+    "code": "PIT",
+    "cityName": "Pittsburgh"
+  },
+  {
+    "latitude": 39.55170059,
+    "longitude": 2.738810062,
+    "code": "PMI",
+    "cityName": "Palma De Mallorca"
+  },
+  {
+    "latitude": 38.175999,
+    "longitude": 13.091,
+    "code": "PMO",
+    "cityName": "Palermo"
+  },
+  {
+    "latitude": 11.54660034,
+    "longitude": 104.8440018,
+    "code": "PNH",
+    "cityName": "Phnom Penh"
+  },
+  {
+    "latitude": -9.443380356,
+    "longitude": 147.2200012,
+    "code": "POM",
+    "cityName": "Papua New Guinea"
+  },
+  {
+    "latitude": -17.553699,
+    "longitude": -149.606995,
+    "code": "PPT",
+    "cityName": "Papeete"
+  },
+  {
+    "latitude": 50.1008,
+    "longitude": 14.26,
+    "code": "PRG",
+    "cityName": "Prague"
+  },
+  {
+    "latitude": 43.683899,
+    "longitude": 10.3927,
+    "code": "PSA",
+    "cityName": "Pisa"
+  },
+  {
+    "latitude": 16.265301,
+    "longitude": -61.531799,
+    "code": "PTP",
+    "cityName": "Pointe a Pitre"
+  },
+  {
+    "latitude": 9.071359634,
+    "longitude": -79.38349915,
+    "code": "PTY",
+    "cityName": "Tocumen"
+  },
+  {
+    "latitude": 18.56739998,
+    "longitude": -68.36340332,
+    "code": "PUJ",
+    "cityName": "Punta Cana"
+  },
+  {
+    "latitude": 41.732601,
+    "longitude": -71.420403,
+    "code": "PVD",
+    "cityName": "Providence"
+  },
+  {
+    "latitude": 31.14340019,
+    "longitude": 121.8050003,
+    "code": "PVG",
+    "cityName": "Shanghai"
+  },
+  {
+    "latitude": 20.68009949,
+    "longitude": -105.2539978,
+    "code": "PVR",
+    "cityName": "Puerto Vallarta"
+  },
+  {
+    "latitude": 43.646198,
+    "longitude": -70.309303,
+    "code": "PWM",
+    "cityName": "Portland"
+  },
+  {
+    "latitude": 35.87760162,
+    "longitude": -78.78749847,
+    "code": "RDU",
+    "cityName": "Raleigh/Durham"
+  },
+  {
+    "latitude": 42.19540024,
+    "longitude": -89.09719849,
+    "code": "RFD",
+    "cityName": "Rockford"
+  },
+  {
+    "latitude": 16.90730095,
+    "longitude": 96.1332016,
+    "code": "RGN",
+    "cityName": "Yangon"
+  },
+  {
+    "latitude": 37.50519943,
+    "longitude": -77.31970215,
+    "code": "RIC",
+    "cityName": "Richmond"
+  },
+  {
+    "latitude": 56.92359924,
+    "longitude": 23.97109985,
+    "code": "RIX",
+    "cityName": "Riga"
+  },
+  {
+    "latitude": 39.49909973,
+    "longitude": -119.7679977,
+    "code": "RNO",
+    "cityName": "Reno"
+  },
+  {
+    "latitude": 37.3255,
+    "longitude": -79.975403,
+    "code": "ROA",
+    "cityName": "Roanoke"
+  },
+  {
+    "latitude": 6.23379,
+    "longitude": -10.3623,
+    "code": "ROB",
+    "cityName": "Liberia"
+  },
+  {
+    "latitude": 43.1189003,
+    "longitude": -77.67240143,
+    "code": "ROC",
+    "cityName": "Rochester"
+  },
+  {
+    "latitude": 43.90829849,
+    "longitude": -92.5,
+    "code": "RST",
+    "cityName": "Rochester"
+  },
+  {
+    "latitude": 26.53619957,
+    "longitude": -81.75520325,
+    "code": "RSW",
+    "cityName": "Fort Myers"
+  },
+  {
+    "latitude": 24.95759964,
+    "longitude": 46.69879913,
+    "code": "RUH",
+    "cityName": "Riyadh"
+  },
+  {
+    "latitude": 13.4409,
+    "longitude": -89.055702,
+    "code": "SAL",
+    "cityName": "San salvador"
+  },
+  {
+    "latitude": 32.73360062,
+    "longitude": -117.1900024,
+    "code": "SAN",
+    "cityName": "San Diego"
+  },
+  {
+    "latitude": 29.533701,
+    "longitude": -98.469803,
+    "code": "SAT",
+    "cityName": "San Antonio"
+  },
+  {
+    "latitude": 32.12760162,
+    "longitude": -81.20210266,
+    "code": "SAV",
+    "cityName": "Savannah"
+  },
+  {
+    "latitude": 40.898602,
+    "longitude": 29.3092,
+    "code": "SAW",
+    "cityName": "Istanbul"
+  },
+  {
+    "latitude": 41.70869827,
+    "longitude": -86.31729889,
+    "code": "SBN",
+    "cityName": "South Bend"
+  },
+  {
+    "latitude": -33.39300156,
+    "longitude": -70.78579712,
+    "code": "SCL",
+    "cityName": "Santiago"
+  },
+  {
+    "latitude": 42.89630127,
+    "longitude": -8.415140152,
+    "code": "SCQ",
+    "cityName": "Santiago de Compostela"
+  },
+  {
+    "latitude": 38.1744,
+    "longitude": -85.736,
+    "code": "SDF",
+    "cityName": "Louisville"
+  },
+  {
+    "latitude": 18.42970085,
+    "longitude": -69.66889954,
+    "code": "SDQ",
+    "cityName": "Santo Domingo"
+  },
+  {
+    "latitude": 47.449001,
+    "longitude": -122.308998,
+    "code": "SEA",
+    "cityName": "Seattle"
+  },
+  {
+    "latitude": 37.61899948,
+    "longitude": -122.375,
+    "code": "SFO",
+    "cityName": "San Francisco"
+  },
+  {
+    "latitude": 37.24570084,
+    "longitude": -93.38860321,
+    "code": "SGF",
+    "cityName": "Springfield"
+  },
+  {
+    "latitude": 10.81879997,
+    "longitude": 106.6520004,
+    "code": "SGN",
+    "cityName": "Ho Chi Minh City"
+  },
+  {
+    "latitude": 41.63980103,
+    "longitude": 123.4830017,
+    "code": "SHE",
+    "cityName": "Shenyang"
+  },
+  {
+    "latitude": 25.32859993,
+    "longitude": 55.51720047,
+    "code": "SHJ",
+    "cityName": "Sharjah"
+  },
+  {
+    "latitude": 1.35019,
+    "longitude": 103.994003,
+    "code": "SIN",
+    "cityName": "Singapore"
+  },
+  {
+    "latitude": 45.0522,
+    "longitude": 33.975101,
+    "code": "SIP",
+    "cityName": "Simferopol"
+  },
+  {
+    "latitude": 37.362598,
+    "longitude": -121.929001,
+    "code": "SJC",
+    "cityName": "San Jose"
+  },
+  {
+    "latitude": 23.15180016,
+    "longitude": -109.7210007,
+    "code": "SJD",
+    "cityName": "San Jose Cabo"
+  },
+  {
+    "latitude": 43.82460022,
+    "longitude": 18.3314991,
+    "code": "SJJ",
+    "cityName": "Sarajevo"
+  },
+  {
+    "latitude": 18.43939972,
+    "longitude": -66.00180054,
+    "code": "SJU",
+    "cityName": "San Juan"
+  },
+  {
+    "latitude": 40.5196991,
+    "longitude": 22.97089958,
+    "code": "SKG",
+    "cityName": "Thessaloniki"
+  },
+  {
+    "latitude": 41.961601,
+    "longitude": 21.621401,
+    "code": "SKP",
+    "cityName": "Skopje"
+  },
+  {
+    "latitude": 40.78839874,
+    "longitude": -111.9779968,
+    "code": "SLC",
+    "cityName": "Salt Lake City"
+  },
+  {
+    "latitude": 38.69540024,
+    "longitude": -121.5910034,
+    "code": "SMF",
+    "cityName": "Sacramento"
+  },
+  {
+    "latitude": 33.67570114,
+    "longitude": -117.8679962,
+    "code": "SNA",
+    "cityName": "Santa Ana"
+  },
+  {
+    "latitude": 52.702,
+    "longitude": -8.92482,
+    "code": "SNN",
+    "cityName": "Shannon"
+  },
+  {
+    "latitude": 42.69669342,
+    "longitude": 23.41143608,
+    "code": "SOF",
+    "cityName": "Sofia"
+  },
+  {
+    "latitude": 50.95029831,
+    "longitude": -1.35679996,
+    "code": "SOU",
+    "cityName": "Southampton"
+  },
+  {
+    "latitude": 28.626499,
+    "longitude": -17.7556,
+    "code": "SPC",
+    "cityName": "Santa Cruz"
+  },
+  {
+    "latitude": 39.84410095,
+    "longitude": -89.67790222,
+    "code": "SPI",
+    "cityName": "Springfield"
+  },
+  {
+    "latitude": 33.9888,
+    "longitude": -98.491898,
+    "code": "SPS",
+    "cityName": "Wichita Falls"
+  },
+  {
+    "latitude": 27.39539909,
+    "longitude": -82.55439758,
+    "code": "SRQ",
+    "cityName": "Sarasota/Bradenton"
+  },
+  {
+    "latitude": -12.9086113,
+    "longitude": -38.32249832,
+    "code": "SSA",
+    "cityName": "Salvador"
+  },
+  {
+    "latitude": 51.88499832,
+    "longitude": 0.234999999,
+    "code": "STN",
+    "cityName": "London"
+  },
+  {
+    "latitude": 48.68989944,
+    "longitude": 9.221960068,
+    "code": "STR",
+    "cityName": "Stuttgart"
+  },
+  {
+    "latitude": 58.87670135,
+    "longitude": 5.63778019,
+    "code": "SVG",
+    "cityName": "Stavanger"
+  },
+  {
+    "latitude": 55.972599,
+    "longitude": 37.4146,
+    "code": "SVO",
+    "cityName": "Moscow"
+  },
+  {
+    "latitude": 56.74309921,
+    "longitude": 60.80270004,
+    "code": "SVX",
+    "cityName": "Yekaterinburg"
+  },
+  {
+    "latitude": -33.94609833,
+    "longitude": 151.177002,
+    "code": "SYD",
+    "cityName": "Sydney"
+  },
+  {
+    "latitude": 43.11119843,
+    "longitude": -76.10630035,
+    "code": "SYR",
+    "cityName": "Syracuse"
+  },
+  {
+    "latitude": 22.63929939,
+    "longitude": 113.810997,
+    "code": "SZX",
+    "cityName": "Shenzhen"
+  },
+  {
+    "latitude": 41.25790024,
+    "longitude": 69.28119659,
+    "code": "TAS",
+    "cityName": "Tashkent"
+  },
+  {
+    "latitude": 41.6692009,
+    "longitude": 44.95470047,
+    "code": "TBS",
+    "cityName": "Tbilisi"
+  },
+  {
+    "latitude": 28.48270035,
+    "longitude": -16.34149933,
+    "code": "TFN",
+    "cityName": "Tenerife"
+  },
+  {
+    "latitude": 28.04450035,
+    "longitude": -16.57250023,
+    "code": "TFS",
+    "cityName": "Tenerife"
+  },
+  {
+    "latitude": 42.359402,
+    "longitude": 19.2519,
+    "code": "TGD",
+    "cityName": "Podgorica"
+  },
+  {
+    "latitude": 35.68920135,
+    "longitude": 51.31340027,
+    "code": "THR",
+    "cityName": "Tehran"
+  },
+  {
+    "latitude": 41.41469955,
+    "longitude": 19.72060013,
+    "code": "TIA",
+    "cityName": "TiranaAl"
+  },
+  {
+    "latitude": 32.54109955,
+    "longitude": -116.9700012,
+    "code": "TIJ",
+    "cityName": "Tijuana"
+  },
+  {
+    "latitude": 32.66350174,
+    "longitude": 13.1590004,
+    "code": "TIP",
+    "cityName": "Tripoli"
+  },
+  {
+    "latitude": 30.39649963,
+    "longitude": -84.35030365,
+    "code": "TLH",
+    "cityName": "Tallahassee"
+  },
+  {
+    "latitude": 43.629101,
+    "longitude": 1.36382,
+    "code": "TLS",
+    "cityName": "Toulouse"
+  },
+  {
+    "latitude": 32.01139832,
+    "longitude": 34.88669968,
+    "code": "TLV",
+    "cityName": "Tel Aviv"
+  },
+  {
+    "latitude": 36.85720062,
+    "longitude": 117.2160034,
+    "code": "TNA",
+    "cityName": "Jinan"
+  },
+  {
+    "latitude": -18.7969,
+    "longitude": 47.478802,
+    "code": "TNR",
+    "cityName": "Antananarivo"
+  },
+  {
+    "latitude": 41.58679962,
+    "longitude": -83.80780029,
+    "code": "TOL",
+    "cityName": "Toledo"
+  },
+  {
+    "latitude": 27.97550011,
+    "longitude": -82.53320313,
+    "code": "TPA",
+    "cityName": "Tampa"
+  },
+  {
+    "latitude": 25.0777,
+    "longitude": 121.233002,
+    "code": "TPE",
+    "cityName": "Taipei"
+  },
+  {
+    "latitude": 63.4578018,
+    "longitude": 10.9239998,
+    "code": "TRD",
+    "cityName": "Trondheim"
+  },
+  {
+    "latitude": 8.48211956,
+    "longitude": 76.92009735,
+    "code": "TRV",
+    "cityName": "Thiruvananthapuram"
+  },
+  {
+    "latitude": 51.02220154,
+    "longitude": 71.46690369,
+    "code": "TSE",
+    "cityName": "Astana"
+  },
+  {
+    "latitude": 45.648399,
+    "longitude": 12.1944,
+    "code": "TSF",
+    "cityName": "Treviso"
+  },
+  {
+    "latitude": 39.12440109,
+    "longitude": 117.3460007,
+    "code": "TSN",
+    "cityName": "Tianjin"
+  },
+  {
+    "latitude": 36.19839859,
+    "longitude": -95.88809967,
+    "code": "TUL",
+    "cityName": "Tulsa"
+  },
+  {
+    "latitude": 36.85100174,
+    "longitude": 10.22719955,
+    "code": "TUN",
+    "cityName": "Tunis"
+  },
+  {
+    "latitude": 32.115004,
+    "longitude": -110.938053,
+    "code": "TUS",
+    "cityName": "Tucson"
+  },
+  {
+    "latitude": 52.5597,
+    "longitude": 13.2877,
+    "code": "TXL",
+    "cityName": "Berlin"
+  },
+  {
+    "latitude": 37.74689865,
+    "longitude": 112.6279984,
+    "code": "TYN",
+    "cityName": "Taiyuan"
+  },
+  {
+    "latitude": 35.81100082,
+    "longitude": -83.9940033,
+    "code": "TYS",
+    "cityName": "Knoxville"
+  },
+  {
+    "latitude": 40.99509811,
+    "longitude": 39.78969955,
+    "code": "TZX",
+    "cityName": "Trabzon"
+  },
+  {
+    "latitude": 54.55749893,
+    "longitude": 55.87440109,
+    "code": "UFA",
+    "cityName": "Ufa"
+  },
+  {
+    "latitude": -0.129166667,
+    "longitude": -78.3575,
+    "code": "UIO",
+    "cityName": "Quito"
+  },
+  {
+    "latitude": 47.843102,
+    "longitude": 106.766998,
+    "code": "ULN",
+    "cityName": "Ulaanbaatar"
+  },
+  {
+    "latitude": -5.061629772,
+    "longitude": 119.5540009,
+    "code": "UPG",
+    "cityName": "Ujung Pandang"
+  },
+  {
+    "latitude": 43.232101,
+    "longitude": 27.8251,
+    "code": "VAR",
+    "cityName": "Varna"
+  },
+  {
+    "latitude": 45.505299,
+    "longitude": 12.3519,
+    "code": "VCE",
+    "cityName": "Venice"
+  },
+  {
+    "latitude": 48.11029816,
+    "longitude": 16.56970024,
+    "code": "VIE",
+    "cityName": "Vienna"
+  },
+  {
+    "latitude": 55.59149933,
+    "longitude": 37.26150131,
+    "code": "VKO",
+    "cityName": "Moscow"
+  },
+  {
+    "latitude": 54.634102,
+    "longitude": 25.285801,
+    "code": "VNO",
+    "cityName": "Vilnius"
+  },
+  {
+    "latitude": 30.4832,
+    "longitude": -86.525398,
+    "code": "VPS",
+    "cityName": "Fort Wayne"
+  },
+  {
+    "latitude": 23.03440094,
+    "longitude": -81.43530273,
+    "code": "VRA",
+    "cityName": "Varadero"
+  },
+  {
+    "latitude": 52.16569901,
+    "longitude": 20.96710014,
+    "code": "WAW",
+    "cityName": "Warsaw"
+  },
+  {
+    "latitude": -22.4799,
+    "longitude": 17.4709,
+    "code": "WDH",
+    "cityName": "Windhoek"
+  },
+  {
+    "latitude": -41.32720184,
+    "longitude": 174.8049927,
+    "code": "WLG",
+    "cityName": "Wellington"
+  },
+  {
+    "latitude": 30.7838,
+    "longitude": 114.208,
+    "code": "WUH",
+    "cityName": "Wuhan"
+  },
+  {
+    "latitude": 34.447102,
+    "longitude": 108.751999,
+    "code": "XIY",
+    "cityName": "Xi'an"
+  },
+  {
+    "latitude": 24.54400063,
+    "longitude": 118.1279984,
+    "code": "XMN",
+    "cityName": "Xiamen"
+  },
+  {
+    "latitude": 53.30970001,
+    "longitude": -113.5800018,
+    "code": "YEG",
+    "cityName": "Edmonton"
+  },
+  {
+    "latitude": 44.88079834,
+    "longitude": -63.50859833,
+    "code": "YHZ",
+    "cityName": "Halifax"
+  },
+  {
+    "latitude": 45.32249832,
+    "longitude": -75.66919708,
+    "code": "YOW",
+    "cityName": "Ottawa"
+  },
+  {
+    "latitude": 49.19390106,
+    "longitude": -123.1839981,
+    "code": "YVR",
+    "cityName": "Vancouver"
+  },
+  {
+    "latitude": 49.90999985,
+    "longitude": -97.23989868,
+    "code": "YWG",
+    "cityName": "Winnipeg"
+  },
+  {
+    "latitude": 51.11389923,
+    "longitude": -114.0199966,
+    "code": "YYC",
+    "cityName": "Calgary"
+  },
+  {
+    "latitude": 48.64690018,
+    "longitude": -123.4260025,
+    "code": "YYL",
+    "cityName": "Victoria"
+  },
+  {
+    "latitude": 47.61859894,
+    "longitude": -52.75189972,
+    "code": "YYT",
+    "cityName": "St. John's"
+  },
+  {
+    "latitude": 43.67720032,
+    "longitude": -79.63059998,
+    "code": "YYZ",
+    "cityName": "Toronto"
+  },
+  {
+    "latitude": 45.74290085,
+    "longitude": 16.06879997,
+    "code": "ZAG",
+    "cityName": "Zagreb"
+  },
+  {
+    "latitude": 47.464699,
+    "longitude": 8.54917,
+    "code": "ZRH",
+    "cityName": "Zurich"
+  }
+]

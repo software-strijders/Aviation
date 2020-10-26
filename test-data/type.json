@@ -1,0 +1,80 @@
+[
+  {
+    "modelName": "A330-200",
+    "manufacturer": "Airbus",
+    "fuelCapacity": 139090,
+    "fuelConsumption": 7.79
+  },
+  {
+    "modelName": "A330-300",
+    "manufacturer": "Airbus",
+    "fuelCapacity": 139090,
+    "fuelConsumption": 8.69
+  },
+  {
+    "modelName": "737-700",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26020,
+    "fuelConsumption": 4.46
+  },
+  {
+    "modelName": "737-800",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26020,
+    "fuelConsumption": 4.99
+  },
+  {
+    "modelName": "737-900",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 26030,
+    "fuelConsumption": 4.75
+  },
+  {
+    "modelName": "747-400",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 216840,
+    "fuelConsumption": 15.45
+  },
+  {
+    "modelName": "777-200ER",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 171170,
+    "fuelConsumption": 10.34
+  },
+  {
+    "modelName": "777-300ER",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 181200,
+    "fuelConsumption": 11.80
+  },
+  {
+    "modelName": "787-9",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 126370,
+    "fuelConsumption": 8.02
+  },
+  {
+    "modelName": "787-10",
+    "manufacturer": "Boeing",
+    "fuelCapacity": 126370,
+    "fuelConsumption": 10.69
+  },
+  {
+    "modelName": "E175",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 11840,
+    "fuelConsumption": 3.89
+  },
+  {
+    "modelName": "E190",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 16250,
+    "fuelConsumption": 4.50
+  },
+  {
+    "modelName": "E195-E2",
+    "manufacturer": "Embraer",
+    "fuelCapacity": 19040,
+    "fuelConsumption": 4.27
+  }
+]

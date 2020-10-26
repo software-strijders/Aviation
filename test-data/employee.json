@@ -1,0 +1,68 @@
+[
+  {
+    "username": "admin",
+    "password": "admin",
+    "firstName": "Em",
+    "lastName": "Ployee"
+  },
+  {
+    "username": "jort.willemsen@aviation.com",
+    "password": "1234",
+    "firstName": "Jort",
+    "lastName": "Willemsen"
+  },
+  {
+    "username": "xander.vedder@aviation.com",
+    "password": "1234",
+    "firstName": "Xander",
+    "lastName": "Vedder"
+  },
+  {
+    "username": "arjen.norbart@aviation.com",
+    "password": "kaas",
+    "firstName": "Arjen",
+    "lastName": "Norbart"
+  },
+  {
+    "username": "ruben.van.den.brink@aviation.com",
+    "password": "1234",
+    "firstName": "Ruben",
+    "lastName": "van den Brink"
+  },
+  {
+    "username": "milan.dol@aviation.com",
+    "password": "1234",
+    "firstName": "Milan",
+    "lastName": "Dol"
+  },
+  {
+    "username": "henk.tenk@aviation.com",
+    "password": "1234",
+    "firstName": "Henk",
+    "lastName": "Tenk"
+  },
+  {
+    "username": "martin.jenser@aviation.com",
+    "password": "1234",
+    "firstName": "Martin",
+    "lastName": "Jenser"
+  },
+  {
+    "username": "hugo.helder@aviation.com",
+    "password": "1234",
+    "firstName": "Hugo",
+    "lastName": "Helder"
+  },
+  {
+    "username": "jos.van.reenen@aviation.com",
+    "password": "1234",
+    "firstName": "Jos",
+    "lastName": "van Reenen"
+  },
+  {
+    "username": "andre.van.donk@aviation.com",
+    "password": "1234",
+    "firstName": "Andre",
+    "lastName": "van Donk"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "code": "AMS-TUS",
+    "duration": 1117,
+    "destination": "AMS",
+    "arrival": "TUS"
+  },
+  {
+    "code": "LED-LEX",
+    "duration": 1525,
+    "destination": "LED",
+    "arrival": "LEX"
+  },
+  {
+    "code": "IAD-EVN",
+    "duration": 1480,
+    "destination": "IAD",
+    "arrival": "EVN"
+  },
+  {
+    "code": "CNX-BWN",
+    "duration": 740,
+    "destination": "CNX",
+    "arrival": "BWN"
+  },
+  {
+    "code": "BCN-AYT",
+    "duration": 455,
+    "destination": "BCN",
+    "arrival": "AYT"
+  },
+  {
+    "code": "BLL-BLQ",
+    "duration": 260,
+    "destination": "BLL",
+    "arrival": "BLQ"
+  },
+  {
+    "code": "BWN-CTS",
+    "duration": 1290,
+    "destination": "BWN",
+    "arrival": "CTS"
+  },
+  {
+    "code": "FRA-LHR",
+    "duration": 95,
+    "destination": "FRA",
+    "arrival": "LHR"
+  },
+  {
+    "code": "BRU-CPH",
+    "duration": 305,
+    "destination": "BRU",
+    "arrival": "CPH"
+  },
+  {
+    "code": "EIN-BGY",
+    "duration": 95,
+    "destination": "EIN",
+    "arrival": "BGY"
+  },
+  {
+    "code": "KBP-AMS",
+    "duration": 185,
+    "destination": "KBP",
+    "arrival": "AMS"
+  }
+]
