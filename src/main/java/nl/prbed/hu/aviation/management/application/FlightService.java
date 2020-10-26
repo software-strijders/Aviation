@@ -61,12 +61,8 @@ public class FlightService {
             String aircraftCode,
             String flightPlanCode
     ) {
-        System.out.println(oldCode + newCode);
-
-
         var entity = flightRepository.findFlightEntityByCode(oldCode)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, oldCode)));
-
         entity.setCode(newCode);
         entity.setPriceFirst(priceFirst);
         entity.setPriceBusiness(priceBusiness);
