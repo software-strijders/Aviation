@@ -82,7 +82,7 @@ public class AirportController {
             value = "Update a city",
             notes = "Provide the code of the city that needs to be updated."
     )
-    @PutMapping("/{code}")
+    @PatchMapping("/{code}")
     public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
         var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
         return this.createAirportResponseDto(airport);
@@ -92,7 +92,7 @@ public class AirportController {
             value = "Add aircraft to airport",
             notes = "Provide codes of all aircrafts and a code of the airport"
     )
-    @PutMapping("/{airportcode}/aircraft")
+    @PatchMapping("/{airportcode}/aircraft")
     public AirportResponseDto addAircraftToAirport(@PathVariable String airportcode, @RequestBody AircraftListDto dto) {
         var airport = this.airportService.addAircraftToAirport(airportcode, dto.aircraftCodes);
         return this.createAirportResponseDto(airport);
