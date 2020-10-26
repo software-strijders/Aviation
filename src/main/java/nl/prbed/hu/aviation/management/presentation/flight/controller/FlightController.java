@@ -3,9 +3,10 @@ package nl.prbed.hu.aviation.management.presentation.flight.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
-import nl.prbed.hu.aviation.management.domain.Flight;
+import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
+import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/flight")
 public class FlightController {
+    private final CreateFlightDtoMapper mapper = CreateFlightDtoMapper.instance;
     private final FlightService flightService;
 
     @ApiOperation(
@@ -21,14 +23,7 @@ public class FlightController {
     )
     @PostMapping
     public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
-        var flight = this.flightService.create(
-                dto.code,
-                dto.priceFirst,
-                dto.priceBusiness,
-                dto.priceEconomy,
-                dto.aircraftCode,
-                dto.flightPlanCode
-        );
+        var flight = this.flightService.create(this.mapper.toFlightStruct(dto));
         return createFlightResponseDto(flight);
     }
 
@@ -38,15 +33,7 @@ public class FlightController {
     )
     @PatchMapping("/{code}")
     public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
-        var flight = this.flightService.update(
-                code,
-                dto.code,
-                dto.priceFirst,
-                dto.priceBusiness,
-                dto.priceEconomy,
-                dto.aircraftCode,
-                dto.flightPlanCode
-        );
+        var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
         return createFlightResponseDto(flight);
     }
 
