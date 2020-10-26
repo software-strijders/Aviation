@@ -10,6 +10,8 @@ import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDt
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/flight")
@@ -35,6 +37,19 @@ public class FlightController {
     public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
         var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
         return createFlightResponseDto(flight);
+    }
+
+    @GetMapping("/{code}")
+    public FlightResponseDto getFlightByCode(@PathVariable String code) {
+        var flight = this.flightService.getFlightByCode(code);
+        return new FlightResponseDto(
+                flight.getCode(),
+                flight.getPriceEconomy(),
+                flight.getPriceBusiness(),
+                flight.getPriceFirst(),
+                flight.getAircraft().getCode(),
+                flight.getFlightplan().getCode()
+        );
     }
 
     @ApiOperation(
