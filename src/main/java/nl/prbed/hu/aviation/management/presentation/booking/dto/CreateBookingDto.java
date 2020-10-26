@@ -8,15 +8,15 @@ import java.util.List;
 
 @ApiModel(description = "Booking information")
 public class CreateBookingDto {
-    @ApiModelProperty(notes = "Customer id of the booking")
+    @ApiModelProperty(notes = "The customer id of the booking")
     public Long customerId;
 
-    @ApiModelProperty(notes = "Flight id of the booking")
+    @ApiModelProperty(notes = "The flight id of the booking")
     public Long flightId;
 
-    @ApiModelProperty(notes = "Seat type of the booking")
+    @ApiModelProperty(notes = "The seat type of the booking")
     public SeatType seatType;
 
-    @ApiModelProperty(notes = "Passengers of the booking")
+    @ApiModelProperty(notes = "The passengers of the booking")
     public List<CreatePassengerDto> passengers;
 }

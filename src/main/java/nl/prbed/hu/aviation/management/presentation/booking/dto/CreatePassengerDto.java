@@ -8,16 +8,16 @@ import java.time.LocalDate;
 
 @ApiModel(description = "Passenger information")
 public class CreatePassengerDto {
-    @ApiModelProperty(notes = "First name of the passenger")
+    @ApiModelProperty(notes = "The first name of the passenger")
     public String firstName;
 
-    @ApiModelProperty(notes = "Last name of the passenger")
+    @ApiModelProperty(notes = "The last name of the passenger")
     public String lastName;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @ApiModelProperty(notes = "Birth date of the passenger")
+    @ApiModelProperty(notes = "The birth date of the passenger")
     public LocalDate birthDate;
 
-    @ApiModelProperty(notes = "Nationality of the passenger")
+    @ApiModelProperty(notes = "The nationality of the passenger")
     public String nationality;
 }
