@@ -44,7 +44,7 @@ public class FlightController {
     )
     @GetMapping("/{code}")
     public FlightResponseDto getFlightByCode(@PathVariable String code) {
-        var flight = this.flightService.getFlightByCode(code);
+        var flight = this.flightService.findFlightByCode(code);
         return new FlightResponseDto(
                 flight.getCode(),
                 flight.getPriceEconomy(),
@@ -56,8 +56,8 @@ public class FlightController {
     }
 
     @ApiOperation(
-            value = "Find flights with a certain departure airport",
-            notes = "Provide a airport code to find all flights with that airport as it's departure."
+            value = "Find flights with a specific departure airport",
+            notes = "Provide an airport code to find all flights with that airport as it's departure."
     )
     @GetMapping("/departure/{code}")
     public FlightsResponseDto findByDeparture(@PathVariable String code) {
@@ -66,8 +66,8 @@ public class FlightController {
     }
 
     @ApiOperation(
-            value = "Find flights with a certain destination airport",
-            notes = "Provide a airport code to find all flights with that airport as it's destination."
+            value = "Find flights with a specific destination airport",
+            notes = "Provide an airport code to find all flights with that airport as it's destination."
     )
     @GetMapping("/destination/{code}")
     public FlightsResponseDto findByDestination(@PathVariable String code) {

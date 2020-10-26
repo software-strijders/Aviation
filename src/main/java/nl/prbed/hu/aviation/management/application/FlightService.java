@@ -69,25 +69,25 @@ public class FlightService {
         return flightFactory.from(flightRepository.save(entity));
     }
 
-    public Flight getFlightByCode(String code) {
+    public Flight findFlightByCode(String code) {
         var entity = this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
-        return flightFactory.from(entity);
+        return this.flightFactory.from(entity);
     }
 
     public List<Flight> findFlightsByDeparture(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDepartureCode(code);
-        return flightFactory.from(entities);
+        return this.flightFactory.from(entities);
     }
 
     public List<Flight> findFlightsByDestination(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDestinationCode(code);
-        return flightFactory.from(entities);
+        return this.flightFactory.from(entities);
     }
 
     public List<Flight> findAllFlights() {
         var entities = this.flightRepository.findAll();
-        return flightFactory.from(entities);
+        return this.flightFactory.from(entities);
     }
 
     public void deleteByCode(String code) {
