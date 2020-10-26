@@ -9,8 +9,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @Table(name = "booking")
 public class BookingEntity {
     @Id
