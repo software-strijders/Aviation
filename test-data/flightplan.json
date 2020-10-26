@@ -58,5 +58,11 @@
     "duration": 95,
     "destination": "EIN",
     "arrival": "BGY"
+  },
+  {
+    "code": "KBP-AMS",
+    "duration": 185,
+    "destination": "KBP",
+    "arrival": "AMS"
   }
 ]
