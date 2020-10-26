@@ -52,6 +52,30 @@ public class FlightService {
         );
     }
 
+    public Flight update (
+            String oldCode,
+            String newCode,
+            double priceFirst,
+            double priceBusiness,
+            double priceEconomy,
+            String aircraftCode,
+            String flightPlanCode
+    ) {
+        System.out.println(oldCode + newCode);
+
+
+        var entity = flightRepository.findFlightEntityByCode(oldCode)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, oldCode)));
+
+        entity.setCode(newCode);
+        entity.setPriceFirst(priceFirst);
+        entity.setPriceBusiness(priceBusiness);
+        entity.setPriceEconomy(priceEconomy);
+        entity.setAircraft(this.aircraftService.findAircraftEntityByCode(aircraftCode));
+        entity.setFlightplan(this.flightplanService.findFlightplanEntityByCode(flightPlanCode));
+        return flightFactory.from(flightRepository.save(entity));
+    }
+
     public void deleteByCode(String code) {
         this.flightRepository.delete(this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code))));
