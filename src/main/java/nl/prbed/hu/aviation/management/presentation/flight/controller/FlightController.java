@@ -66,6 +66,12 @@ public class FlightController {
         return new FlightsResponseDto(flights);
     }
 
+    @GetMapping
+    public FlightsResponseDto getAll() {
+        var flights = this.flightService.findAll();
+        return new FlightsResponseDto(flights);
+    }
+
     @ApiOperation(
             value = "Delete a flight",
             notes = "Provide the code of the flight"
