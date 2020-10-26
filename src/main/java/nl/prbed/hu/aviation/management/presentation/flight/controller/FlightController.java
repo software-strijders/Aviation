@@ -1,6 +1,5 @@
 package nl.prbed.hu.aviation.management.presentation.flight.controller;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
@@ -18,7 +17,7 @@ public class FlightController {
 
     @ApiOperation(
             value = "Create a flight",
-            notes = "A flight information to create a new flight."
+            notes = "Provide flight information to create a new flight."
     )
     @PostMapping
     public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
@@ -35,11 +34,12 @@ public class FlightController {
 
     @ApiOperation(
             value = "Update a flight",
-            notes = "Flight information to update the flight"
+            notes = "Provide flight information to update the flight"
     )
-    @PatchMapping
-    public FlightResponseDto update(@Validated @RequestBody FlightDto dto) {
-        var flight = this.flightService.create(
+    @PatchMapping("/{code}")
+    public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
+        var flight = this.flightService.update(
+                code,
                 dto.code,
                 dto.priceFirst,
                 dto.priceBusiness,
