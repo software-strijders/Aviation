@@ -30,5 +30,5 @@ public class CustomerUpdateDto {
     public String email;
 
     @ApiModelProperty(notes = "The phone number of the customer")
-    public int phoneNumber;
+    public String phoneNumber;
 }

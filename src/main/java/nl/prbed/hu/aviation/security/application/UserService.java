@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
             String nationality,
             LocalDate birthDate,
             String email,
-            int phoneNumber
+            String phoneNumber
     ) {
         this.checkIfUserExists(username);
         var encodedPassword = this.passwordEncoder.encode(password);
