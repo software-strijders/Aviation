@@ -1,5 +1,6 @@
-package nl.prbed.hu.aviation.security.data;
+package nl.prbed.hu.aviation.management.data.user;
 
+import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -10,9 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "employee")
-public class Employee extends User {
-    public Employee() {}
-    public Employee(String username, String password, String firstName, String lastName) {
+public class EmployeeEntity extends User {
+    public EmployeeEntity() {}
+    public EmployeeEntity(String username, String password, String firstName, String lastName) {
         super(username, password, firstName, lastName);
     }
 
