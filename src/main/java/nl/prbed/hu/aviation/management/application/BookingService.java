@@ -46,6 +46,7 @@ public class BookingService {
         var flightEntity = this.findFlightEntityById(bookingStruct.flightId);
         var flight = this.flightFactory.from(flightEntity);
         var customer = this.findCustomerEntityById(bookingStruct.customerId);
+        // TODO: this should also check for passengers that already have a seat (next iteration):
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
         else if (!flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
