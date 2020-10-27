@@ -22,7 +22,7 @@ public class AircraftEntity {
     @JoinColumn(referencedColumnName = "id")
     private TypeEntity type;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<SeatEntity> seats;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
