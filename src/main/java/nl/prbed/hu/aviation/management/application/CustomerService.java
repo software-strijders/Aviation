@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.application.struct.CustomerStruct;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.management.domain.factory.CustomerFactory;
@@ -9,7 +10,6 @@ import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,22 +40,14 @@ public class CustomerService {
         return this.factory.from(this.map(entity));
     }
 
-    public Customer update(
-            String username,
-            String firstName,
-            String lastName,
-            String nationality,
-            LocalDate birthDate,
-            String email,
-            String phoneNumber
-    ) {
+    public Customer update(String username, CustomerStruct struct) {
         var entity = this.findByCustomerUsername(username);
-        entity.setFirstName(firstName);
-        entity.setLastName(lastName);
-        entity.setNationality(nationality);
-        entity.setBirthDate(birthDate);
-        entity.setEmail(email);
-        entity.setPhoneNumber(phoneNumber);
+        entity.setFirstName(struct.firstName);
+        entity.setLastName(struct.lastName);
+        entity.setNationality(struct.nationality);
+        entity.setBirthDate(struct.birthDate);
+        entity.setEmail(struct.email);
+        entity.setPhoneNumber(struct.phoneNumber);
         return this.factory.from(this.repository.save(entity));
     }
 
