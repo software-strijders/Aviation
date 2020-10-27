@@ -5,9 +5,15 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.*;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.CreateAircraftDto;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.CreateTypeDto;
+import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateAircraftDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateTypeDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.AirportDto;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.CreateCityDto;
+import nl.prbed.hu.aviation.management.presentation.airport.mapper.CreateAirportDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
+import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapperImpl;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
+import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
 import nl.prbed.hu.aviation.security.application.UserService;
 import nl.prbed.hu.aviation.security.presentation.dto.CustomerRegistrationDto;
 import nl.prbed.hu.aviation.security.presentation.dto.EmployeeRegisterationDto;
@@ -36,6 +42,10 @@ public class DataInserter {
 
     private final Logger logger = LoggerFactory.getLogger(DataInserter.class);
     private final ObjectMapper mapper = new ObjectMapper();
+    private final CreateAirportDtoMapper createAirportDtoMapper = CreateAirportDtoMapper.instance;
+    private final CreateTypeDtoMapper createTypeDtoMapper = CreateTypeDtoMapper.instance;
+    private final CreateAircraftDtoMapper createAircraftDtoMapper = CreateAircraftDtoMapper.instance;
+    private final FlightplanDtoMapper flightplanDtoMapper = FlightplanDtoMapper.instance;
 
     private final AircraftService aircraftService;
     private final AirportService airportService;
@@ -115,7 +125,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class);
             for (var dto : dtos)
-                this.airportService.create(dto.code, dto.longitude, dto.latitude, dto.cityName);
+                this.airportService.create(this.createAirportDtoMapper.toAirportStruct(dto));
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }
@@ -127,7 +137,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(TYPE).toFile(), CreateTypeDto[].class);
             for (var dto : dtos)
-                this.typeService.create(dto.modelName, dto.manufacturer, dto.fuelCapacity, dto.fuelConsumption);
+                this.typeService.create(this.createTypeDtoMapper.toTypeStruct(dto));
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }
@@ -139,14 +149,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(AIRCRAFT).toFile(), CreateAircraftDto[].class);
             for (var dto : dtos)
-                this.aircraftService.create(
-                        dto.code,
-                        dto.modelName,
-                        dto.seatsFirst,
-                        dto.seatsBusiness,
-                        dto.seatsEconomy,
-                        dto.airportCode
-                );
+                this.aircraftService.create(this.createAircraftDtoMapper.toAircraftStruct(dto));
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }
@@ -158,7 +161,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(FLIGHTPLAN).toFile(), FlightplanDto[].class);
             for (var dto : dtos)
-                this.flightplanService.create(dto.code, dto.duration, dto.departure, dto.destination);
+                this.flightplanService.create(this.flightplanDtoMapper.toFlightplanStruct(dto));
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }

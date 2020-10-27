@@ -85,7 +85,7 @@ public class AircraftController {
     )
     @PostMapping("/type")
     public TypeResponseDto create(@Validated @RequestBody CreateTypeDto dto) {
-        var type = this.typeService.create(this.typeMapper.toAircraftStruct(dto));
+        var type = this.typeService.create(this.typeMapper.toTypeStruct(dto));
         return new TypeResponseDto(type);
     }
 }
