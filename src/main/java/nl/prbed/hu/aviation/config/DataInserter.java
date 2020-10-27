@@ -58,7 +58,6 @@ public class DataInserter {
             this.insertAircraft();
             this.insertFlightplans();
         } catch (Exception e) {
-            e.printStackTrace();
             this.logger.warn(e.getMessage());
             message = "Data already present, skipping...";
         }
