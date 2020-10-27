@@ -20,24 +20,24 @@ import java.util.stream.Collectors;
 public class CustomerService {
     private static final String ERROR_MSG = "Could not find customer with id: '%s'";
 
-    private final SpringUserRepository userRepository;
+    private final SpringUserRepository repository;
 
-    private final CustomerFactory customerFactory;
+    private final CustomerFactory factory;
 
     public void deleteCustomer(String username) {
-        this.userRepository.delete(this.findByCustomerUsername(username));
+        this.repository.delete(this.findByCustomerUsername(username));
     }
 
     public List<Customer> findAllCustomers() {
-        var entities = this.userRepository.findAllCustomers().stream()
+        var entities = this.repository.findAllCustomers().stream()
                 .map(this::map).collect(Collectors.toList());
-        return this.customerFactory.from(entities);
+        return this.factory.from(entities);
     }
 
     public Customer findById(Long id) {
-        var entity = this.userRepository.findByIdAndCustomer(id)
+        var entity = this.repository.findByIdAndCustomer(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, id)));
-        return this.customerFactory.from(this.map(entity));
+        return this.factory.from(this.map(entity));
     }
 
     public Customer update(
@@ -56,11 +56,11 @@ public class CustomerService {
         entity.setBirthDate(birthDate);
         entity.setEmail(email);
         entity.setPhoneNumber(phoneNumber);
-        return this.customerFactory.from(this.userRepository.save(entity));
+        return this.factory.from(this.repository.save(entity));
     }
 
     private CustomerEntity findByCustomerUsername(String username) {
-        return this.map(this.userRepository.findByUsernameAndCustomer(username)
+        return this.map(this.repository.findByUsernameAndCustomer(username)
                         .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
     }
 

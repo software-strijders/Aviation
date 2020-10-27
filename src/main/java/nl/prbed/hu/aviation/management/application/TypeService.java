@@ -16,27 +16,27 @@ import javax.transaction.Transactional;
 public class TypeService {
     private static final String ERROR_MSG = "Could not find type with model name: '%s'";
 
-    private final SpringTypeRepository typeRepository;
+    private final SpringTypeRepository repository;
 
-    private final TypeFactory typeFactory;
+    private final TypeFactory factory;
 
     public Type create(String modelName, String manufacturer, int fuelCapacity, int fuelConsumption) {
-        var entity = typeRepository.save(new TypeEntity(
+        var entity = repository.save(new TypeEntity(
                 modelName,
                 manufacturer,
                 fuelCapacity,
                 fuelConsumption
         ));
-        return this.typeFactory.from(entity);
+        return this.factory.from(entity);
     }
 
     public void deleteByName(String name) {
         var entity = this.findTypeEntityByName(name);
-        typeRepository.delete(entity);
+        repository.delete(entity);
     }
 
     public TypeEntity findTypeEntityByName(String name) {
-        return this.typeRepository.findByModelName(name)
+        return this.repository.findByModelName(name)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, name)));
     }
 }

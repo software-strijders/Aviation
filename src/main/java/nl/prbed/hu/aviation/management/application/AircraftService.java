@@ -21,19 +21,19 @@ import java.util.stream.Collectors;
 public class AircraftService {
     private static final String AIRCRAFT_CODE_ERROR_MSG = "Could not find aircraft with code: '%s'";
 
-    private final SpringAircraftRepository aircraftRepository;
+    private final SpringAircraftRepository repository;
 
     private final TypeService typeService;
     private final AirportService airportService;
     private final AircraftFactory aircraftFactory;
 
-    private final TypeFactory typeFactory;
+    private final TypeFactory factory;
 
     public Aircraft create(String code, String modelName, int seatsFirst, int seatsBusiness, int seatsEconomy, String airportCode) {
         var type = this.typeService.findTypeEntityByName(modelName);
         var aircraft = Aircraft.create()
                 .code(code)
-                .type(this.typeFactory.from(type))
+                .type(this.factory.from(type))
                 .addSeats(seatsFirst, SeatType.FIRST)
                 .addSeats(seatsBusiness, SeatType.BUSINESS)
                 .addSeats(seatsEconomy, SeatType.ECONOMY)
@@ -42,27 +42,27 @@ public class AircraftService {
         var seats = aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null)).collect(Collectors.toList());
         var airport = airportService.findAirportEntityByCode(airportCode);
         var entity = new AircraftEntity(code, type, seats, airport);
-        return this.aircraftFactory.from(this.aircraftRepository.save(entity));
+        return this.aircraftFactory.from(this.repository.save(entity));
     }
 
     public void deleteByCode(String code) {
         var entity = this.findAircraftEntityByCode(code);
-        this.aircraftRepository.delete(entity);
+        this.repository.delete(entity);
     }
 
     public void deleteByType(String modelName) {
         var entity = this.typeService.findTypeEntityByName(modelName);
-        this.aircraftRepository.deleteAircraftEntitiesByType(entity);
+        this.repository.deleteAircraftEntitiesByType(entity);
     }
 
     public List<Aircraft> findAllByType(String modelName) {
         var type = this.typeService.findTypeEntityByName(modelName);
-        var entities = this.aircraftRepository.findAircraftEntitiesByType(type);
+        var entities = this.repository.findAircraftEntitiesByType(type);
         return this.aircraftFactory.from(entities);
     }
 
     public List<Aircraft> findAll() {
-        var entities = this.aircraftRepository.findAll();
+        var entities = this.repository.findAll();
         return this.aircraftFactory.from(entities);
     }
 
@@ -71,11 +71,11 @@ public class AircraftService {
         var entity = this.findAircraftEntityByCode(oldCode);
         entity.setCode(newCode);
         entity.setType(this.typeService.findTypeEntityByName(modelName));
-        return this.aircraftFactory.from(aircraftRepository.save(entity));
+        return this.aircraftFactory.from(repository.save(entity));
     }
 
     public AircraftEntity findAircraftEntityByCode(String code) {
-        return this.aircraftRepository.findAircraftEntityByCode(code)
+        return this.repository.findAircraftEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(AIRCRAFT_CODE_ERROR_MSG, code)));
     }
 }

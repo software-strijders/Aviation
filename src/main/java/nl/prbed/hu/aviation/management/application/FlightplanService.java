@@ -18,11 +18,11 @@ import java.util.List;
 public class FlightplanService {
     private static final String ERROR_MSG = "Could not find flightplan with code: '%s'";
 
-    private final SpringFlightplanRepository flightplanRepository;
+    private final SpringFlightplanRepository repository;
 
     private final AirportService airportService;
 
-    private final FlightplanFactory flightplanFactory;
+    private final FlightplanFactory factory;
 
     public Flightplan create(String code, Long duration, String departure, String destination) {
         if (departure.equals(destination))
@@ -34,21 +34,21 @@ public class FlightplanService {
                 this.airportService.findAirportEntityByCode(departure),
                 this.airportService.findAirportEntityByCode(destination)
         );
-        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+        return this.factory.from(this.repository.save(entity));
     }
 
     public void deleteByCode(String code) {
         var entity = this.findFlightplanEntityByCode(code);
-        this.flightplanRepository.delete(entity);
+        this.repository.delete(entity);
     }
 
     public Flightplan findFlightplanByCode(String code) {
-        return this.flightplanFactory.from(this.findFlightplanEntityByCode(code));
+        return this.factory.from(this.findFlightplanEntityByCode(code));
     }
 
     public List<Flightplan> findAll() {
-        var entities = this.flightplanRepository.findAll();
-        return this.flightplanFactory.from(entities);
+        var entities = this.repository.findAll();
+        return this.factory.from(entities);
     }
 
     public Flightplan update(String oldCode, String newCode, Long duration, String departure, String destination) {
@@ -60,11 +60,11 @@ public class FlightplanService {
         entity.setDuration(duration);
         entity.setDeparture(this.airportService.findAirportEntityByCode(departure));
         entity.setDestination(this.airportService.findAirportEntityByCode(destination));
-        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
+        return this.factory.from(this.repository.save(entity));
     }
 
     public FlightplanEntity findFlightplanEntityByCode(String code) {
-        return this.flightplanRepository.findByCode(code)
+        return this.repository.findByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 }

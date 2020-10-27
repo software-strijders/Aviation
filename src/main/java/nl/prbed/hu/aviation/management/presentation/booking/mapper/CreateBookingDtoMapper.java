@@ -8,5 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface CreateBookingDtoMapper {
     CreateBookingDtoMapper instance = Mappers.getMapper(CreateBookingDtoMapper.class);
+    
     BookingStruct toBookingStruct(CreateBookingDto dto);
 }

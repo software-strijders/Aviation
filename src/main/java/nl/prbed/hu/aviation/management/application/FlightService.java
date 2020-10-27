@@ -28,7 +28,7 @@ public class FlightService {
     private final AircraftService aircraftService;
     private final FlightplanService flightplanService;
 
-    private final FlightFactory flightFactory;
+    private final FlightFactory factory;
 
     public Flight create(FlightStruct flightStruct) {
         var aircraft = this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode);
@@ -45,7 +45,7 @@ public class FlightService {
         );
         var flight = this.flightRepository.save(entity);
         this.saveSeatsForFlight(flight, flight.getAircraft());
-        return flightFactory.from(flight);
+        return factory.from(flight);
     }
 
     public void deleteByCode(String code) {
@@ -63,28 +63,28 @@ public class FlightService {
         entity.setPriceEconomy(flightStruct.priceEconomy);
         entity.setAircraft(this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode));
         entity.setFlightplan(this.flightplanService.findFlightplanEntityByCode(flightStruct.flightPlanCode));
-        return flightFactory.from(flightRepository.save(entity));
+        return factory.from(flightRepository.save(entity));
     }
 
     public Flight findFlightByCode(String code) {
         var entity = this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
-        return this.flightFactory.from(entity);
+        return this.factory.from(entity);
     }
 
     public List<Flight> findFlightsByDeparture(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDepartureCode(code);
-        return this.flightFactory.from(entities);
+        return this.factory.from(entities);
     }
 
     public List<Flight> findFlightsByDestination(String code) {
         var entities = this.flightRepository.findFlightEntitiesByFlightplanDestinationCode(code);
-        return this.flightFactory.from(entities);
+        return this.factory.from(entities);
     }
 
     public List<Flight> findAllFlights() {
         var entities = this.flightRepository.findAll();
-        return this.flightFactory.from(entities);
+        return this.factory.from(entities);
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {

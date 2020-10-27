@@ -27,8 +27,8 @@ public class AirportService {
     private final SpringAircraftRepository aircraftRepository;
 
     private final CityService cityService;
-    private final CityFactory cityFactory;
 
+    private final CityFactory cityFactory;
     private final AirportFactory airportFactory;
 
     public Airport addAircraftToAirport(String airportCode, List<String> aircraftCodes) {
@@ -94,9 +94,9 @@ public class AirportService {
 
     private List<AircraftEntity> findByAircraftCodes(List<String> aircraftCodes) {
         var entities = new ArrayList<AircraftEntity>();
-        for (var aircraftCode : aircraftCodes)
-            entities.add(aircraftRepository.findAircraftEntityByCode(aircraftCode)
-                    .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, aircraftCode))));
+        for (var code : aircraftCodes)
+            entities.add(aircraftRepository.findAircraftEntityByCode(code)
+                    .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code))));
         return entities;
     }
 }
