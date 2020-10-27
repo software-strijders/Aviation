@@ -1,8 +1,6 @@
 package nl.prbed.hu.aviation.management.data.flightplan;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 

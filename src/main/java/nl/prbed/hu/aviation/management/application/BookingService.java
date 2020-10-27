@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class BookingService {
-    private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id '%s'";
-    private static final String FLIGHT_ERROR_MSG = "Could not find flight with id '%s'";
+    private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id: '%s'";
+    private static final String FLIGHT_ERROR_MSG = "Could not find flight with id: '%s'";
 
     private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
@@ -54,18 +54,35 @@ public class BookingService {
 
         var passengers = bookingStruct.passengers.stream()
                 .map(this::findPassengerById).collect(Collectors.toList());
-        var bookingEntity = this.bookingRepository.save(
+        var entity = this.bookingRepository.save(
                 new BookingEntity(
                         flight.getPriceBySeatType(bookingStruct.seatType),
                         this.findCustomerEntityById(bookingStruct.customerId),
                         flightEntity,
                         passengers
-                )
-        );
+                ));
 
         this.addPassengersToFlightSeat(passengers, flightEntity, bookingStruct.seatType);
-        this.addBookingToCustomer(bookingEntity, bookingStruct.customerId);
-        return this.bookingFactory.from(bookingEntity);
+        this.addBookingToCustomer(entity, bookingStruct.customerId);
+        return this.bookingFactory.from(entity);
+    }
+
+    private void addBookingToCustomer(BookingEntity entity, Long id) {
+        var customer = this.findCustomerEntityById(id);
+        customer.addBooking(entity);
+        this.userRepository.save(customer);
+    }
+
+    private void addPassengersToFlightSeat(List<PassengerEntity> passengers, FlightEntity flightEntity, SeatType type) {
+        var unoccupiedFlightSeats = flightEntity.getFlightSeats().stream()
+                .filter(flightSeatEntity -> flightSeatEntity.getPassenger() == null &&
+                        flightSeatEntity.getSeat().getSeatType().equals(type))
+                .limit(passengers.size())
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < unoccupiedFlightSeats.size(); i++)
+            unoccupiedFlightSeats.get(i).setPassenger(passengers.get(i));
+        this.flightSeatRepository.saveAll(unoccupiedFlightSeats);
     }
 
     private boolean customerHasBookingOnFlight(CustomerEntity customer, FlightEntity flight) {
@@ -73,14 +90,6 @@ public class BookingService {
         return bookings.size() != 0 && bookings.stream()
                 .map(BookingEntity::getFlight)
                 .anyMatch(flightEntity -> flightEntity.getCode().equals(flight.getCode()));
-    }
-
-    private PassengerEntity findPassengerById(PassengerStruct struct) {
-        if (struct.id == null)
-            return this.createPassenger(struct);
-
-        return this.passengerRepository.findById(struct.id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, struct.id)));
     }
 
     private PassengerEntity createPassenger(PassengerStruct passenger) {
@@ -92,6 +101,14 @@ public class BookingService {
                 // This will be set later:
                 null
         ));
+    }
+
+    private PassengerEntity findPassengerById(PassengerStruct struct) {
+        if (struct.id == null)
+            return this.createPassenger(struct);
+
+        return this.passengerRepository.findById(struct.id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, struct.id)));
     }
 
     private CustomerEntity findCustomerEntityById(Long id) {
@@ -106,23 +123,5 @@ public class BookingService {
 
     private CustomerEntity map(User user) {
         return (CustomerEntity) user;
-    }
-
-    private void addPassengersToFlightSeat(List<PassengerEntity> passengers, FlightEntity flightEntity, SeatType type) {
-        var unnocupiedFlightSeats = flightEntity.getFlightSeats().stream()
-                .filter(flightSeatEntity -> flightSeatEntity.getPassenger() == null &&
-                        flightSeatEntity.getSeat().getSeatType().equals(type))
-                .limit(passengers.size())
-                .collect(Collectors.toList());
-
-        for (int i = 0; i < unnocupiedFlightSeats.size(); i++)
-            unnocupiedFlightSeats.get(i).setPassenger(passengers.get(i));
-        this.flightSeatRepository.saveAll(unnocupiedFlightSeats);
-    }
-
-    private void addBookingToCustomer(BookingEntity entity, Long id) {
-        var customer = this.findCustomerEntityById(id);
-        customer.addBooking(entity);
-        this.userRepository.save(customer);
     }
 }

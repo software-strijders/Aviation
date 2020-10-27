@@ -17,7 +17,7 @@ public class FlightplanController {
 
     @ApiOperation(
             value = "Delete a flightplan",
-            notes = "Provide the code of the flightplan to delete it."
+            notes = "Provide the code of the flightplan."
     )
     @DeleteMapping("/{code}")
     public void deleteByCode(@PathVariable String code) {
@@ -33,7 +33,7 @@ public class FlightplanController {
 
     @ApiOperation(
             value = "Find a flightplan",
-            notes = "Provide the code to find a specific flightplan."
+            notes = "Provide the code of the flightplan."
     )
     @GetMapping("/{code}")
     public FlightplanResponseDto findByCode(@PathVariable String code) {
@@ -41,12 +41,13 @@ public class FlightplanController {
     }
 
     @ApiOperation(
-            value = "Create a flightplan",
-            notes = "Note that the cities provided must exist before the flightplan can be created."
+            value = "Update a flightplan",
+            notes = "Provide the code of the flightplan."
     )
-    @PostMapping
-    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.create(
+    @PatchMapping("/{code}")
+    public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
+        return this.createFlightplanResponseDto(this.flightplanService.update(
+                code,
                 dto.code,
                 dto.duration,
                 dto.departure,
@@ -54,11 +55,14 @@ public class FlightplanController {
         ));
     }
 
-    @ApiOperation(value = "Update a flightplan")
-    @PatchMapping("/{code}")
-    public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
-        return this.createFlightplanResponseDto(this.flightplanService.update(
-                code,
+    @ApiOperation(
+            value = "Create a flightplan",
+            notes = "Provide the details of the flightplan. " +
+                    "Note that the cities provided must exist before the flightplan can be created."
+    )
+    @PostMapping
+    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
+        return createFlightplanResponseDto(this.flightplanService.create(
                 dto.code,
                 dto.duration,
                 dto.departure,

@@ -18,25 +18,25 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class CustomerService {
-    private static final String ERROR_MSG = "Could not find customer with id '%s'";
+    private static final String ERROR_MSG = "Could not find customer with id: '%s'";
 
-    private final SpringUserRepository userRepository;
+    private final SpringUserRepository repository;
+
     private final CustomerFactory factory;
 
     public void deleteCustomer(String username) {
-        this.userRepository.delete(this.findByCustomerUsername(username));
+        this.repository.delete(this.findByCustomerUsername(username));
     }
 
     public List<Customer> findAllCustomers() {
-        var entities = this.userRepository.findAllCustomers().stream()
+        var entities = this.repository.findAllCustomers().stream()
                 .map(this::map).collect(Collectors.toList());
         return this.factory.from(entities);
     }
 
     public Customer findById(Long id) {
-        var entity = this.userRepository.findByIdAndCustomer(id)
+        var entity = this.repository.findByIdAndCustomer(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, id)));
-
         return this.factory.from(this.map(entity));
     }
 
@@ -49,18 +49,18 @@ public class CustomerService {
             String email,
             String phoneNumber
     ) {
-        var customer = this.findByCustomerUsername(username);
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setNationality(nationality);
-        customer.setBirthDate(birthDate);
-        customer.setEmail(email);
-        customer.setPhoneNumber(phoneNumber);
-        return this.factory.from(this.userRepository.save(customer));
+        var entity = this.findByCustomerUsername(username);
+        entity.setFirstName(firstName);
+        entity.setLastName(lastName);
+        entity.setNationality(nationality);
+        entity.setBirthDate(birthDate);
+        entity.setEmail(email);
+        entity.setPhoneNumber(phoneNumber);
+        return this.factory.from(this.repository.save(entity));
     }
 
     private CustomerEntity findByCustomerUsername(String username) {
-        return this.map(this.userRepository.findByUsernameAndCustomer(username)
+        return this.map(this.repository.findByUsernameAndCustomer(username)
                         .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
     }
 

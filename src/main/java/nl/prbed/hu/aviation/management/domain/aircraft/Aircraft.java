@@ -1,13 +1,14 @@
 package nl.prbed.hu.aviation.management.domain.aircraft;
 
-import lombok.*;
-import nl.prbed.hu.aviation.management.domain.flight.Flight;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import nl.prbed.hu.aviation.management.domain.Seat;
 import nl.prbed.hu.aviation.management.domain.Type;
 import nl.prbed.hu.aviation.management.domain.aircraft.builder.AircraftBuilder;
 import nl.prbed.hu.aviation.management.domain.aircraft.builder.Builder;
 import nl.prbed.hu.aviation.management.domain.factory.PassengerFactory;
 import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
+import nl.prbed.hu.aviation.management.domain.flight.Flight;
 
 import java.util.List;
 

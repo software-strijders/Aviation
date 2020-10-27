@@ -20,6 +20,6 @@ public class CreateAircraftDto {
     @ApiModelProperty(notes = "The number of economy class seats inside the aircraft")
     public int seatsEconomy;
 
-    @ApiModelProperty(notes = "The code of the airport the aircraft is stationed")
+    @ApiModelProperty(notes = "The code of the airport where the aircraft is stationed")
     public String airportCode;
 }

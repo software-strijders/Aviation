@@ -25,6 +25,6 @@ public class CreateAirportDto {
     @ApiModelProperty(notes = "The name of the city")
     public String cityName;
 
-    @ApiModelProperty(notes = "The list of aircraftCodes to add")
+    @ApiModelProperty(notes = "The list of codes from aircraft to add")
     public List<String> aircraftCodes;
 }

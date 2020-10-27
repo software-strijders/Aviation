@@ -42,8 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private Integer jwtExpirationInMs;
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/v3/api-docs",
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers(
+                "/v3/api-docs",
                 "/v2/api-docs",
                 "/configuration/ui",
                 "/swagger-resources/**",

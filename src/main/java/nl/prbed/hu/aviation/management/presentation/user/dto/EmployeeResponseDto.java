@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-@ApiModel(description = "Details of an employee")
+@ApiModel(description = "Details of the employee")
 public class EmployeeResponseDto {
     @ApiModelProperty(notes = "The username of the employee")
     private final String username;

@@ -8,7 +8,7 @@ import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import java.util.List;
 
 @AllArgsConstructor
-@ApiModel(description = "List of all flights")
+@ApiModel(description = "All flights")
 public class FlightsResponseDto {
     @ApiModelProperty("List of all flights")
     public List<Flight> flights;

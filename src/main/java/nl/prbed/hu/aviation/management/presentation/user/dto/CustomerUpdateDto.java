@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
-@ApiModel("Details about the customer")
+@ApiModel("Details of the customer")
 public class CustomerUpdateDto {
     @NotBlank
     @ApiModelProperty(notes = "The first name of the customer")

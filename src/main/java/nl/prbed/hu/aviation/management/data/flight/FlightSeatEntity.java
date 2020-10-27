@@ -6,7 +6,6 @@ import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.data.booking.PassengerEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter @Setter

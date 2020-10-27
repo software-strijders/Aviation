@@ -21,7 +21,10 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @ApiOperation(value = "Create a customer")
+    @ApiOperation(
+            value = "Create a customer",
+            notes = "Provide the details of the customer."
+    )
     @PostMapping("/customer")
     public void registerCustomer(@Validated @RequestBody CustomerRegistrationDto registrationDto) {
         this.userService.registerCustomer(
@@ -36,7 +39,10 @@ public class RegistrationController {
         );
     }
 
-    @ApiOperation(value = "Create an employee")
+    @ApiOperation(
+            value = "Create an employee",
+            notes = "Provide the details of the employee."
+    )
     @PostMapping("/employee")
     public void register(@Validated @RequestBody EmployeeRegisterationDto registrationDto) {
         this.userService.registerEmployee(

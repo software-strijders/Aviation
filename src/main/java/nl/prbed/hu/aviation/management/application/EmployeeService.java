@@ -17,37 +17,39 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class EmployeeService {
-    private static final String ERROR_MSG = "Could not find employee with id '%s'";
+    private static final String ERROR_MSG = "Could not find employee with id: '%s'";
 
-    private final SpringUserRepository userRepository;
+    private final SpringUserRepository repository;
+
     private final EmployeeFactory factory;
 
-    public void deleteEmployee(String username) {
-        var employee = this.map(this.userRepository.findByUsernameAndEmployee(username)
+    public void deleteByUsername(String username) {
+        var entity = this.map(this.repository.findByUsernameAndEmployee(username)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
-        this.userRepository.delete(employee);
+        this.repository.delete(entity);
     }
 
     public Employee findByUsername(String username) {
-        return this.factory.from(this.map(this.userRepository.findByUsernameAndEmployee(username)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username)))));
+        var entity = this.map(this.repository.findByUsernameAndEmployee(username)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
+        return this.factory.from(entity);
     }
 
     public List<Employee> findAll() {
-        var entities = this.userRepository.findAllEmployees().stream()
+        var entities = this.repository.findAllEmployees().stream()
                 .map(this::map).collect(Collectors.toList());
         return this.factory.from(entities);
     }
 
     public Employee update(String username, String firstName, String lastName) {
-        var employee = this.findEntityByUsername(username);
-        employee.setFirstName(firstName);
-        employee.setLastName(lastName);
-        return this.factory.from(this.userRepository.save(employee));
+        var entity = this.findEntityByUsername(username);
+        entity.setFirstName(firstName);
+        entity.setLastName(lastName);
+        return this.factory.from(this.repository.save(entity));
     }
 
     public EmployeeEntity findEntityByUsername(String username) {
-        return this.map(this.userRepository.findByUsernameAndEmployee(username)
+        return this.map(this.repository.findByUsernameAndEmployee(username)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
     }
 

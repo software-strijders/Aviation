@@ -1,10 +1,10 @@
 package nl.prbed.hu.aviation.management.data.aircraft;
 
-import lombok.*;
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
-import nl.prbed.hu.aviation.management.domain.Seat;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity

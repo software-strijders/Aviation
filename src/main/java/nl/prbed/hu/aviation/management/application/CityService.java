@@ -16,26 +16,28 @@ import java.util.ArrayList;
 @Transactional
 @RequiredArgsConstructor
 public class CityService {
-    private static final String ERROR_MSG = "Could not find city with name '%s'";
+    private static final String ERROR_MSG = "Could not find city with name: '%s'";
     private static final String DUPLICATE_ERROR_MSG = "City with name: '%s' already exists";
 
-    private final SpringCityRepository cityRepository;
-    private final CityFactory cityFactory;
+    private final SpringCityRepository repository;
+
+    private final CityFactory factory;
 
     public City create(String name, String country) {
-        if (cityRepository.findByName(name).isPresent())
+        if (repository.findByName(name).isPresent())
             throw new EntityAlreadyExistsException(String.format(DUPLICATE_ERROR_MSG, name));
 
-        var entity = cityRepository.save(new CityEntity(name, country, new ArrayList<>()));
-        return this.cityFactory.from(entity);
+        var entity = repository.save(new CityEntity(name, country, new ArrayList<>()));
+        return this.factory.from(entity);
     }
 
-    public void delete(String cityName) {
-        this.cityRepository.delete(this.findCityEntityByName(cityName));
+    public void deleteByName(String name) {
+        var entity = this.findCityEntityByName(name);
+        this.repository.delete(entity);
     }
 
-    public CityEntity findCityEntityByName(String cityName) {
-        return cityRepository.findByName(cityName)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, cityName)));
+    public CityEntity findCityEntityByName(String name) {
+        return repository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, name)));
     }
 }

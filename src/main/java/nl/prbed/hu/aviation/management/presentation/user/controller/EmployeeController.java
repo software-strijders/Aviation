@@ -21,16 +21,16 @@ public class EmployeeController {
 
     @ApiOperation(
             value = "Delete an employee",
-            notes = "Provide the username of the user."
+            notes = "Provide the username of the employee."
     )
     @DeleteMapping("/{username}")
-    public void delete(@PathVariable String username) {
-        this.service.deleteEmployee(username);
+    public void deleteByUsername(@PathVariable String username) {
+        this.service.deleteByUsername(username);
     }
 
     @ApiOperation(
             value = "Find an employee",
-            notes = "Provide the username of the user."
+            notes = "Provide the username of the employee."
     )
     @GetMapping("/{username}")
     public EmployeeResponseDto findByUsername(@PathVariable String username) {
@@ -45,7 +45,10 @@ public class EmployeeController {
         return new EmployeeOverviewResponseDto(employees);
     }
 
-    @ApiOperation(value = "Update an employee")
+    @ApiOperation(
+            value = "Update an employee",
+            notes = "Provide the username of the employee"
+    )
     @PatchMapping("/{username}")
     public EmployeeResponseDto update(@PathVariable String username, @Valid @RequestBody EmployeeUpdateDto dto) {
         return this.createResponseDto(this.service.update(username, dto.firstName, dto.lastName));

@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 
-@ApiModel("Details about the employee")
+@ApiModel("Details of the employee")
 public class EmployeeUpdateDto {
     @NotBlank
     @ApiModelProperty(notes = "The first name of the employee")
