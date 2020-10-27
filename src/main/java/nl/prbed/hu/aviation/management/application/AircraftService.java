@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.application.struct.AircraftStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
@@ -29,19 +30,19 @@ public class AircraftService {
 
     private final TypeFactory factory;
 
-    public Aircraft create(String code, String modelName, int seatsFirst, int seatsBusiness, int seatsEconomy, String airportCode) {
-        var type = this.typeService.findTypeEntityByName(modelName);
+    public Aircraft create(AircraftStruct struct) {
+        var type = this.typeService.findTypeEntityByName(struct.modelName);
         var aircraft = Aircraft.create()
-                .code(code)
+                .code(struct.code)
                 .type(this.factory.from(type))
-                .addSeats(seatsFirst, SeatType.FIRST)
-                .addSeats(seatsBusiness, SeatType.BUSINESS)
-                .addSeats(seatsEconomy, SeatType.ECONOMY)
+                .addSeats(struct.seatsFirst, SeatType.FIRST)
+                .addSeats(struct.seatsBusiness, SeatType.BUSINESS)
+                .addSeats(struct.seatsEconomy, SeatType.ECONOMY)
                 .build();
 
         var seats = aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null)).collect(Collectors.toList());
-        var airport = airportService.findAirportEntityByCode(airportCode);
-        var entity = new AircraftEntity(code, type, seats, airport);
+        var airport = airportService.findAirportEntityByCode(struct.airportCode);
+        var entity = new AircraftEntity(struct.code, type, seats, airport);
         return this.aircraftFactory.from(this.repository.save(entity));
     }
 

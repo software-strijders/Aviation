@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.application.struct.TypeStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringTypeRepository;
 import nl.prbed.hu.aviation.management.data.aircraft.TypeEntity;
 import nl.prbed.hu.aviation.management.domain.Type;
@@ -20,12 +21,12 @@ public class TypeService {
 
     private final TypeFactory factory;
 
-    public Type create(String modelName, String manufacturer, int fuelCapacity, int fuelConsumption) {
+    public Type create(TypeStruct struct) {
         var entity = repository.save(new TypeEntity(
-                modelName,
-                manufacturer,
-                fuelCapacity,
-                fuelConsumption
+                struct.modelName,
+                struct.manufacturer,
+                struct.fuelCapacity,
+                struct.fuelConsumption
         ));
         return this.factory.from(entity);
     }
