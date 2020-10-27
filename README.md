@@ -1,4 +1,7 @@
 # Avation project - Hogeschool Utrecht
+
+![Logo](logo/2x/witLogo-1@2x.png)
+
 This project mimicks an entire airline system which is capable of the following:
 - Managing bookings
 - Managing airports
