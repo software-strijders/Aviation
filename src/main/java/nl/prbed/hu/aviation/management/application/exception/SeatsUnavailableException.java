@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class SeatsUnavailableException extends RuntimeException {
     public SeatsUnavailableException(SeatType type) {
-        super(String.format("There are no seats avaiable for the class '%s'", type));
+        super(String.format("There are no seats available for the class: '%s'", type));
     }
 }

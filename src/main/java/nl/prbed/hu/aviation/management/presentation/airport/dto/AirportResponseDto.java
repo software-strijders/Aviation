@@ -25,6 +25,6 @@ public class AirportResponseDto {
     @ApiModelProperty(notes = "The city where the airport is located in")
     private final City cityName;
 
-    @ApiModelProperty(notes = "The list of aircraft")
+    @ApiModelProperty(notes = "The list of all aircraft from the airport")
     private final List<Aircraft> aircraft;
 }

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @RequiredArgsConstructor
-@ApiModel(description = "Details about a customer")
+@ApiModel(description = "Details of the customer")
 public class CustomerResponseDto {
     @ApiModelProperty(notes = "The id of the customer")
     private final Long id;

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.TypeService;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.*;
-import org.springframework.lang.NonNull;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,36 +19,39 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Delete an aircraft",
-            notes = "Provide a code to delete a specific aircraft from the database."
+            notes = "Provide the code of the aircraft."
     )
     @DeleteMapping("/{code}")
-    public void delete(@Validated @PathVariable String code) {
-        this.aircraftService.delete(code);
+    public void deleteByCode(@Validated @PathVariable String code) {
+        this.aircraftService.deleteByCode(code);
     }
 
     @ApiOperation(
             value = "Delete an aircraft type",
             notes = "Provide the model name of the type. This will also delete all aircraft of this type."
     )
-    @DeleteMapping("/type/{model}")
-    public void deleteType(@Validated @PathVariable String model) {
-        this.aircraftService.deleteByType(model);
-        this.typeService.delete(model);
+    @DeleteMapping("/type/{modelName}")
+    public void deleteTypeByModel(@Validated @PathVariable String modelName) {
+        this.aircraftService.deleteByType(modelName);
+        this.typeService.deleteByName(modelName);
     }
+
 
     @ApiOperation(value = "Find all aircraft")
     @GetMapping
     public AircraftOverviewResponseDto findAll() {
-        return new AircraftOverviewResponseDto(this.aircraftService.findAll());
+        var aircraft = this.aircraftService.findAll();
+        return new AircraftOverviewResponseDto(aircraft);
     }
 
     @ApiOperation(
             value = "Find all aircraft by model",
-            notes = "Provide a model name of the aircraft to look up a specific aircraft in the database."
+            notes = "Provide the model name of the aircraft."
     )
     @GetMapping("/{modelName}")
     public AircraftOverviewResponseDto findAllByModel(@PathVariable String modelName) {
-        return new AircraftOverviewResponseDto(this.aircraftService.findAllByType(modelName));
+        var aircraft = this.aircraftService.findAllByType(modelName);
+        return new AircraftOverviewResponseDto(aircraft);
     }
 
     @ApiOperation(
@@ -72,7 +74,7 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Create an aircraft type",
-            notes = "Provide the details of a type to create one."
+            notes = "Provide the details of the type."
     )
     @PostMapping("/type")
     public TypeResponseDto create(@Validated @RequestBody CreateTypeDto dto) {
@@ -87,10 +89,10 @@ public class AircraftController {
 
     @ApiOperation(
             value = "Update aircraft information",
-            notes = "Provide a code to update specific information about an aircraft."
+            notes = "Provide the code of the aircraft."
     )
     @PatchMapping({"/{code}"})
-    public AircraftResponseDto update(@Validated @PathVariable @NonNull String code, @Validated @RequestBody UpdateAircraftDto dto) {
+    public AircraftResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAircraftDto dto) {
         var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
         return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }

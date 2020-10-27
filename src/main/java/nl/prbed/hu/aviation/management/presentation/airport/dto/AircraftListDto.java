@@ -8,5 +8,5 @@ import java.util.List;
 @ApiModel(description = "All aircraft codes")
 public class AircraftListDto {
     @ApiModelProperty(notes = "List of aircraft codes")
-    public List<String> aircraftCodes;
+    public List<String> codes;
 }

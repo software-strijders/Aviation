@@ -30,7 +30,7 @@ public class FlightController {
 
     @ApiOperation(
             value = "Update a flight",
-            notes = "Provide flight information to update the flight"
+            notes = "Provide flight information to update the flight."
     )
     @PatchMapping("/{code}")
     public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
@@ -40,17 +40,17 @@ public class FlightController {
 
     @ApiOperation(
             value = "Find a flight by code",
-            notes = "Provide a code to get the flight."
+            notes = "Provide the code of the flight."
     )
     @GetMapping("/{code}")
-    public FlightResponseDto getFlightByCode(@PathVariable String code) {
+    public FlightResponseDto findFlightByCode(@PathVariable String code) {
         var flight = this.flightService.findFlightByCode(code);
         return createFlightResponseDto(flight);
     }
 
     @ApiOperation(
             value = "Find flights with a specific departure airport",
-            notes = "Provide an airport code to find all flights with that airport as it's departure."
+            notes = "Provide an airport code."
     )
     @GetMapping("/departure/{code}")
     public FlightsResponseDto findByDeparture(@PathVariable String code) {
@@ -60,7 +60,7 @@ public class FlightController {
 
     @ApiOperation(
             value = "Find flights with a specific destination airport",
-            notes = "Provide an airport code to find all flights with that airport as it's destination."
+            notes = "Provide an airport code."
     )
     @GetMapping("/destination/{code}")
     public FlightsResponseDto findByDestination(@PathVariable String code) {
@@ -77,14 +77,14 @@ public class FlightController {
 
     @ApiOperation(
             value = "Delete a flight",
-            notes = "Provide the code of the flight"
+            notes = "Provide the code of the flight."
     )
     @DeleteMapping("/{code}")
     public void deleteByCode(@PathVariable String code) {
         this.flightService.deleteByCode(code);
     }
 
-    private FlightResponseDto createFlightResponseDto (Flight flight) {
+    private FlightResponseDto createFlightResponseDto(Flight flight) {
         return new FlightResponseDto(
                 flight.getId(),
                 flight.getCode(),

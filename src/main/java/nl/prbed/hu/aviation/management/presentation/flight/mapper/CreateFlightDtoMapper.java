@@ -8,6 +8,5 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface CreateFlightDtoMapper {
     CreateFlightDtoMapper instance = Mappers.getMapper(CreateFlightDtoMapper.class);
-
     FlightStruct toFlightStruct(FlightDto dto);
 }

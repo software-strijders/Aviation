@@ -3,7 +3,6 @@ package nl.prbed.hu.aviation.management.application;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AirportsNotUniqueException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
-import nl.prbed.hu.aviation.management.data.airport.SpringAirportRepository;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
 import nl.prbed.hu.aviation.management.data.flightplan.SpringFlightplanRepository;
 import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
@@ -17,29 +16,30 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class FlightplanService {
-    private static final String ERROR_MSG = "Could not find flightplan with code '%s'";
+    private static final String ERROR_MSG = "Could not find flightplan with code: '%s'";
+
+    private final SpringFlightplanRepository flightplanRepository;
 
     private final AirportService airportService;
-    private final SpringAirportRepository airportRepository;
-    private final SpringFlightplanRepository flightplanRepository;
+
     private final FlightplanFactory flightplanFactory;
 
     public Flightplan create(String code, Long duration, String departure, String destination) {
         if (departure.equals(destination))
             throw new AirportsNotUniqueException();
 
-        var flightplanEntity = new FlightplanEntity(
+        var entity = new FlightplanEntity(
                 code,
                 duration,
                 this.airportService.findAirportEntityByCode(departure),
                 this.airportService.findAirportEntityByCode(destination)
         );
-        return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
+        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
     }
 
     public void deleteByCode(String code) {
-        var flightplan = this.findFlightplanEntityByCode(code);
-        this.flightplanRepository.delete(flightplan);
+        var entity = this.findFlightplanEntityByCode(code);
+        this.flightplanRepository.delete(entity);
     }
 
     public Flightplan findFlightplanByCode(String code) {
@@ -51,16 +51,16 @@ public class FlightplanService {
         return this.flightplanFactory.from(entities);
     }
 
-    public Flightplan update(String oldCode, String code, Long duration, String departure, String destination) {
+    public Flightplan update(String oldCode, String newCode, Long duration, String departure, String destination) {
         if (departure.equals(destination))
             throw new AirportsNotUniqueException();
 
-        var flightplanEntity = this.findFlightplanEntityByCode(oldCode);
-        flightplanEntity.setCode(code);
-        flightplanEntity.setDuration(duration);
-        flightplanEntity.setDeparture(this.airportService.findAirportEntityByCode(departure));
-        flightplanEntity.setDestination(this.airportService.findAirportEntityByCode(destination));
-        return this.flightplanFactory.from(this.flightplanRepository.save(flightplanEntity));
+        var entity = this.findFlightplanEntityByCode(oldCode);
+        entity.setCode(newCode);
+        entity.setDuration(duration);
+        entity.setDeparture(this.airportService.findAirportEntityByCode(departure));
+        entity.setDestination(this.airportService.findAirportEntityByCode(destination));
+        return this.flightplanFactory.from(this.flightplanRepository.save(entity));
     }
 
     public FlightplanEntity findFlightplanEntityByCode(String code) {

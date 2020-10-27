@@ -1,9 +1,8 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
-import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
@@ -21,15 +20,15 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class FlightService {
-    private static final String ERROR_MSG = "Could not find flight with code '%s'";
+    private static final String ERROR_MSG = "Could not find flight with code: '%s'";
 
-    private final FlightFactory flightFactory;
+    private final SpringFlightRepository flightRepository;
+    private final SpringFlightSeatRepository flightSeatRepository;
 
     private final AircraftService aircraftService;
     private final FlightplanService flightplanService;
 
-    private final SpringFlightRepository flightRepository;
-    private final SpringFlightSeatRepository flightSeatRepository;
+    private final FlightFactory flightFactory;
 
     public Flight create(FlightStruct flightStruct) {
         var aircraft = this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode);
@@ -57,7 +56,7 @@ public class FlightService {
         );
     }
 
-    public Flight update (String oldCode, FlightStruct flightStruct) {
+    public Flight update(String oldCode, FlightStruct flightStruct) {
         var entity = flightRepository.findFlightEntityByCode(oldCode)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, oldCode)));
         entity.setCode(flightStruct.code);
@@ -91,7 +90,8 @@ public class FlightService {
     }
 
     public void deleteByCode(String code) {
-        this.flightRepository.delete(this.flightRepository.findFlightEntityByCode(code)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code))));
+        var entity = this.flightRepository.findFlightEntityByCode(code)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
+        this.flightRepository.delete(entity);
     }
 }

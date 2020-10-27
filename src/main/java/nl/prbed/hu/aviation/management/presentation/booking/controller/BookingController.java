@@ -19,12 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/booking")
 public class BookingController {
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
-    private final BookingService service;
+    private final BookingService bookingService;
 
-    @ApiOperation(value = "Create a booking")
+    @ApiOperation(
+            value = "Create a booking",
+            notes = "Provide the details of an booking."
+    )
     @PostMapping
     public BookingResponseDto create(@RequestBody CreateBookingDto dto) {
-        var booking = this.service.create(this.mapper.toBookingStruct(dto));
+        var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
         return this.createResponseDto(booking);
     }
 

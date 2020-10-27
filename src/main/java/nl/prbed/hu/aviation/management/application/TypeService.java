@@ -14,9 +14,10 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class TypeService {
-    private static final String ERROR_MSG = "Could not find type with model name '%s'";
+    private static final String ERROR_MSG = "Could not find type with model name: '%s'";
 
     private final SpringTypeRepository typeRepository;
+
     private final TypeFactory typeFactory;
 
     public Type create(String modelName, String manufacturer, int fuelCapacity, int fuelConsumption) {
@@ -29,13 +30,13 @@ public class TypeService {
         return this.typeFactory.from(entity);
     }
 
-    public void delete(String modelName) {
-        var type = this.findTypeEntityByModelName(modelName);
-        typeRepository.delete(type);
+    public void deleteByName(String name) {
+        var entity = this.findTypeEntityByName(name);
+        typeRepository.delete(entity);
     }
 
-    public TypeEntity findTypeEntityByModelName(String modelName) {
-        return this.typeRepository.findByModelName(modelName)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, modelName)));
+    public TypeEntity findTypeEntityByName(String name) {
+        return this.typeRepository.findByModelName(name)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, name)));
     }
 }

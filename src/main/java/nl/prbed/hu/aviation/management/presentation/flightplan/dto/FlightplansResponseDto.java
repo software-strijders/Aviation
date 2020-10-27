@@ -10,8 +10,8 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-@ApiModel(description = "All flightplans in the database")
+@ApiModel(description = "All flightplans")
 public class FlightplansResponseDto {
-    @ApiModelProperty(notes = "the list of flightplans")
+    @ApiModelProperty(notes = "The list of flightplans")
     private final List<Flightplan> Flightplans;
 }
