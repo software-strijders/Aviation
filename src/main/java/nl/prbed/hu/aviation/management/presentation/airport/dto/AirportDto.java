@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @ApiModel(description = "Details about the airport")
-public class CreateAirportDto {
+public class AirportDto {
     @NotBlank
     @ApiModelProperty(notes = "The code of the airport following the IATA format")
     public String code;

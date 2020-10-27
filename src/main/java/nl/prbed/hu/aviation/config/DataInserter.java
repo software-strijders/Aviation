@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.*;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.CreateAircraftDto;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.CreateTypeDto;
-import nl.prbed.hu.aviation.management.presentation.airport.dto.CreateAirportDto;
+import nl.prbed.hu.aviation.management.presentation.airport.dto.AirportDto;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.CreateCityDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.security.application.UserService;
@@ -113,7 +113,7 @@ public class DataInserter {
     private void insertAirports() {
         this.logger.info("Inserting airports...");
         try {
-            var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), CreateAirportDto[].class);
+            var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class);
             for (var dto : dtos)
                 this.airportService.create(dto.code, dto.longitude, dto.latitude, dto.cityName);
         } catch (IOException e) {

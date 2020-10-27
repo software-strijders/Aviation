@@ -6,7 +6,7 @@ import nl.prbed.hu.aviation.management.application.FlightService;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
-import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.flight.mapper.FlightDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightsResponseDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/flight")
 public class FlightController {
-    private final CreateFlightDtoMapper mapper = CreateFlightDtoMapper.instance;
+    private final FlightDtoMapper mapper = FlightDtoMapper.instance;
     private final FlightService flightService;
 
     @ApiOperation(
