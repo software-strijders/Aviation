@@ -14,6 +14,7 @@ public class Passenger {
     private String lastName;
     private LocalDate birthdate;
     private String nationality;
+    private String email;
     private List<Seat> seats;
     private List<Booking> bookings;
 }

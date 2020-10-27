@@ -14,15 +14,19 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
+import nl.prbed.hu.aviation.management.domain.Passenger;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
+import nl.prbed.hu.aviation.management.domain.factory.PassengerFactory;
+import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +36,8 @@ import java.util.stream.Collectors;
 public class BookingService {
     private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id: '%s'";
     private static final String FLIGHT_ERROR_MSG = "Could not find flight with id: '%s'";
+    private static final String PASSENGER_ERROR_MSG = "Could not find passenger with email: '%s'";
+    private static final String BOOKING_ERROR_MSG = "Could not find booking with customer: '%s'";
 
     private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
@@ -42,6 +48,8 @@ public class BookingService {
     private final BookingFactory bookingFactory;
     private final FlightFactory flightFactory;
 
+    private final FlightService flightService;
+
     public Booking create(BookingStruct bookingStruct) {
         var flightEntity = this.findFlightEntityById(bookingStruct.flightId);
         var flight = this.flightFactory.from(flightEntity);
@@ -49,7 +57,7 @@ public class BookingService {
         // TODO: this should also check for passengers that already have a seat (next iteration):
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
-        else if (!flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
+        else if (! flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
             throw new SeatsUnavailableException(bookingStruct.seatType);
 
         var passengers = bookingStruct.passengers.stream()
@@ -98,9 +106,22 @@ public class BookingService {
                 passenger.lastName,
                 passenger.birthDate,
                 passenger.nationality,
+                passenger.email,
                 // This will be set later:
                 null
         ));
+    }
+
+    public List<Booking> findAll() {
+        return this.bookingFactory.from(this.bookingRepository.findAll());
+    }
+
+    public List<Booking> findByCustomer(Long id) {
+        var userEntities = this.userRepository.findByIdAndCustomer(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, id)));
+        CustomerEntity customerEntity = (CustomerEntity) userEntities;
+        var bookingEntities = this.bookingRepository.findByCustomer(customerEntity);
+        return this.bookingFactory.from(bookingEntities);
     }
 
     private PassengerEntity findPassengerById(PassengerStruct struct) {

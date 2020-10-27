@@ -21,6 +21,7 @@ public class PassengerEntity {
     private String lastName;
     private LocalDate birthdate;
     private String nationality;
+    private String email;
 
     @OneToMany(mappedBy = "passenger")
     private List<FlightSeatEntity> flightSeats;
@@ -31,12 +32,14 @@ public class PassengerEntity {
             String lastName,
             LocalDate birthdate,
             String nationality,
+            String email,
             List<FlightSeatEntity> flightSeats
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.nationality = nationality;
+        this.email = email;
         this.flightSeats = flightSeats;
     }
 

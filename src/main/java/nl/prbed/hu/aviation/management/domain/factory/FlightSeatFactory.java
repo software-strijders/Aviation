@@ -19,6 +19,7 @@ public class FlightSeatFactory {
                     passengerEntity.getLastName(),
                     passengerEntity.getBirthdate(),
                     passengerEntity.getNationality(),
+                    passengerEntity.getEmail(),
                     null,
                     null
             );

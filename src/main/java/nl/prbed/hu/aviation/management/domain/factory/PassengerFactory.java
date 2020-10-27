@@ -15,6 +15,7 @@ public class PassengerFactory {
                 entity.getLastName(),
                 entity.getBirthdate(),
                 entity.getNationality(),
+                entity.getEmail(),
                 null,
                 null
         );

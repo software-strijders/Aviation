@@ -23,4 +23,7 @@ public class CreatePassengerDto {
 
     @ApiModelProperty(notes = "The nationality of the passenger")
     public String nationality;
+
+    @ApiModelProperty(notes = "The email of the passenger")
+    public String email;
 }

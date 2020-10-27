@@ -8,4 +8,5 @@ public class PassengerStruct {
     public String lastName;
     public LocalDate birthDate;
     public String nationality;
+    public String email;
 }
