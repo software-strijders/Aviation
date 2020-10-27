@@ -12,6 +12,8 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class SeatFactory {
+    private final PassengerFactory passengerFactory;
+
     public Seat from(SeatEntity entity) {
         return new Seat(entity.getSeatType(), null);
     }
