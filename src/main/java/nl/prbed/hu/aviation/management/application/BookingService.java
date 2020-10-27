@@ -67,19 +67,29 @@ public class BookingService {
         return this.bookingFactory.from(entity);
     }
 
+    private void addBookingToCustomer(BookingEntity entity, Long id) {
+        var customer = this.findCustomerEntityById(id);
+        customer.addBooking(entity);
+        this.userRepository.save(customer);
+    }
+
+    private void addPassengersToFlightSeat(List<PassengerEntity> passengers, FlightEntity flightEntity, SeatType type) {
+        var unoccupiedFlightSeats = flightEntity.getFlightSeats().stream()
+                .filter(flightSeatEntity -> flightSeatEntity.getPassenger() == null &&
+                        flightSeatEntity.getSeat().getSeatType().equals(type))
+                .limit(passengers.size())
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < unoccupiedFlightSeats.size(); i++)
+            unoccupiedFlightSeats.get(i).setPassenger(passengers.get(i));
+        this.flightSeatRepository.saveAll(unoccupiedFlightSeats);
+    }
+
     private boolean customerHasBookingOnFlight(CustomerEntity customer, FlightEntity flight) {
         var bookings = customer.getBookings();
         return bookings.size() != 0 && bookings.stream()
                 .map(BookingEntity::getFlight)
                 .anyMatch(flightEntity -> flightEntity.getCode().equals(flight.getCode()));
-    }
-
-    private PassengerEntity findPassengerById(PassengerStruct struct) {
-        if (struct.id == null)
-            return this.createPassenger(struct);
-
-        return this.passengerRepository.findById(struct.id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, struct.id)));
     }
 
     private PassengerEntity createPassenger(PassengerStruct passenger) {
@@ -93,6 +103,14 @@ public class BookingService {
         ));
     }
 
+    private PassengerEntity findPassengerById(PassengerStruct struct) {
+        if (struct.id == null)
+            return this.createPassenger(struct);
+
+        return this.passengerRepository.findById(struct.id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, struct.id)));
+    }
+
     private CustomerEntity findCustomerEntityById(Long id) {
         return this.map(this.userRepository.findByIdAndCustomer(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, id))));
@@ -101,24 +119,6 @@ public class BookingService {
     private FlightEntity findFlightEntityById(Long id) {
         return this.flightRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(FLIGHT_ERROR_MSG, id)));
-    }
-
-    private void addPassengersToFlightSeat(List<PassengerEntity> passengers, FlightEntity flightEntity, SeatType type) {
-        var unnocupiedFlightSeats = flightEntity.getFlightSeats().stream()
-                .filter(flightSeatEntity -> flightSeatEntity.getPassenger() == null &&
-                        flightSeatEntity.getSeat().getSeatType().equals(type))
-                .limit(passengers.size())
-                .collect(Collectors.toList());
-
-        for (int i = 0; i < unnocupiedFlightSeats.size(); i++)
-            unnocupiedFlightSeats.get(i).setPassenger(passengers.get(i));
-        this.flightSeatRepository.saveAll(unnocupiedFlightSeats);
-    }
-
-    private void addBookingToCustomer(BookingEntity entity, Long id) {
-        var customer = this.findCustomerEntityById(id);
-        customer.addBooking(entity);
-        this.userRepository.save(customer);
     }
 
     private CustomerEntity map(User user) {

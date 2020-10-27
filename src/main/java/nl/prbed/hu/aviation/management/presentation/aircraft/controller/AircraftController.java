@@ -55,6 +55,16 @@ public class AircraftController {
     }
 
     @ApiOperation(
+            value = "Update aircraft information",
+            notes = "Provide the code of the aircraft."
+    )
+    @PatchMapping({"/{code}"})
+    public AircraftResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAircraftDto dto) {
+        var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
+    }
+
+    @ApiOperation(
             value = "Create an aircraft",
             notes = "Provide the details of an aircraft to create an aircraft of a type. " +
                     "Note that the type must exist before you can make an aircraft of it."
@@ -85,15 +95,5 @@ public class AircraftController {
                 dto.fuelConsumption
         );
         return new TypeResponseDto(type);
-    }
-
-    @ApiOperation(
-            value = "Update aircraft information",
-            notes = "Provide the code of the aircraft."
-    )
-    @PatchMapping({"/{code}"})
-    public AircraftResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAircraftDto dto) {
-        var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
-        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }
 }

@@ -31,6 +31,12 @@ public class AirportService {
 
     private final AirportFactory airportFactory;
 
+    public Airport addAircraftToAirport(String airportCode, List<String> aircraftCodes) {
+        var entity = findAirportEntityByCode(airportCode);
+        entity.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
+        return this.airportFactory.from(this.airportRepository.save(entity));
+    }
+
     public Airport create(String code, double longitude, double latitude, String cityName) {
         if (this.airportRepository.findByCode(code).isPresent())
             throw new EntityAlreadyExistsException(String.format(DUPLICATE_ERROR_MSG, code));
@@ -43,6 +49,11 @@ public class AirportService {
     public void deleteByCode(String code) {
         var entity = this.findAirportEntityByCode(code);
         this.airportRepository.delete(entity);
+    }
+
+    public AirportEntity findAirportEntityByCode(String code) {
+        return this.airportRepository.findByCode(code)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
     }
 
     public Airport findByCode(String code) {
@@ -60,6 +71,7 @@ public class AirportService {
         return this.airportFactory.from(entities);
     }
 
+
     public Airport update(String oldCode, String newCode, double longitude, double latitude, String cityCode, List<String> airportCodes) {
         var entity = this.findAirportEntityByCode(oldCode);
         entity.setCode(newCode);
@@ -71,17 +83,6 @@ public class AirportService {
         var airport = this.airportFactory.from(airportRepository.save(entity));
         airport.setCity(this.cityFactory.from(city));
         return airport;
-    }
-
-    public AirportEntity findAirportEntityByCode(String code) {
-        return this.airportRepository.findByCode(code)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
-    }
-
-    public Airport addAircraftToAirport(String airportCode, List<String> aircraftCodes) {
-        var entity = findAirportEntityByCode(airportCode);
-        entity.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
-        return this.airportFactory.from(this.airportRepository.save(entity));
     }
 
     public Airport removeAircraftFromAirport(String code, String aircraftCode) {

@@ -41,13 +41,13 @@ public class FlightplanController {
     }
 
     @ApiOperation(
-            value = "Create a flightplan",
-            notes = "Provide the details of the flightplan. " +
-                    "Note that the cities provided must exist before the flightplan can be created."
+            value = "Update a flightplan",
+            notes = "Provide the code of the flightplan."
     )
-    @PostMapping
-    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.create(
+    @PatchMapping("/{code}")
+    public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
+        return this.createFlightplanResponseDto(this.flightplanService.update(
+                code,
                 dto.code,
                 dto.duration,
                 dto.departure,
@@ -56,13 +56,13 @@ public class FlightplanController {
     }
 
     @ApiOperation(
-            value = "Update a flightplan",
-            notes = "Provide the code of the flightplan."
+            value = "Create a flightplan",
+            notes = "Provide the details of the flightplan. " +
+                    "Note that the cities provided must exist before the flightplan can be created."
     )
-    @PatchMapping("/{code}")
-    public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
-        return this.createFlightplanResponseDto(this.flightplanService.update(
-                code,
+    @PostMapping
+    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
+        return createFlightplanResponseDto(this.flightplanService.create(
                 dto.code,
                 dto.duration,
                 dto.departure,

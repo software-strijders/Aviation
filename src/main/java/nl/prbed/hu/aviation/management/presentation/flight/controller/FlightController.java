@@ -19,23 +19,12 @@ public class FlightController {
     private final FlightService flightService;
 
     @ApiOperation(
-            value = "Create a flight",
-            notes = "Provide flight information to create a new flight."
+            value = "Delete a flight",
+            notes = "Provide the code of the flight."
     )
-    @PostMapping
-    public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
-        var flight = this.flightService.create(this.mapper.toFlightStruct(dto));
-        return createFlightResponseDto(flight);
-    }
-
-    @ApiOperation(
-            value = "Update a flight",
-            notes = "Provide flight information to update the flight."
-    )
-    @PatchMapping("/{code}")
-    public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
-        var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
-        return createFlightResponseDto(flight);
+    @DeleteMapping("/{code}")
+    public void deleteByCode(@PathVariable String code) {
+        this.flightService.deleteByCode(code);
     }
 
     @ApiOperation(
@@ -76,12 +65,23 @@ public class FlightController {
     }
 
     @ApiOperation(
-            value = "Delete a flight",
-            notes = "Provide the code of the flight."
+            value = "Update a flight",
+            notes = "Provide flight information to update the flight."
     )
-    @DeleteMapping("/{code}")
-    public void deleteByCode(@PathVariable String code) {
-        this.flightService.deleteByCode(code);
+    @PatchMapping("/{code}")
+    public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
+        var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
+        return createFlightResponseDto(flight);
+    }
+
+    @ApiOperation(
+            value = "Create a flight",
+            notes = "Provide flight information to create a new flight."
+    )
+    @PostMapping
+    public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
+        var flight = this.flightService.create(this.mapper.toFlightStruct(dto));
+        return createFlightResponseDto(flight);
     }
 
     private FlightResponseDto createFlightResponseDto(Flight flight) {

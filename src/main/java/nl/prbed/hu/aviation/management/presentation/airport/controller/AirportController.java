@@ -36,6 +36,16 @@ public class AirportController {
         this.cityService.deleteByName(cityName);
     }
 
+    @ApiOperation(
+            value = "Delete aircraft from airport",
+            notes = "Provide the code of the airport and the code of the aircraft."
+    )
+    @DeleteMapping("/{code}/aircraft")
+    public AirportResponseDto removeAircraftFromAirport(@PathVariable String code, @RequestBody AircraftDto dto) {
+        var airport = this.airportService.removeAircraftFromAirport(code, dto.code);
+        return this.createAirportResponseDto(airport);
+    }
+
     @ApiOperation(value = "Find all airports")
     @GetMapping
     public AirportsResponseDto findAll() {
@@ -62,27 +72,6 @@ public class AirportController {
     }
 
     @ApiOperation(
-            value = "Create an airport",
-            notes = "Provide the details of the booking. " +
-                    "Note that the city provided must exist before the airport can be created."
-    )
-    @PostMapping
-    public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
-        var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
-        return this.createAirportResponseDto(airport);
-    }
-
-    @ApiOperation(
-            value = "Create a city",
-            notes = "Provide the details of the city."
-    )
-    @PostMapping("/city")
-    public CityResponseDto create(@Validated @RequestBody CreateCityDto dto) {
-        var city = this.cityService.create(dto.name, dto.country);
-        return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
-    }
-
-    @ApiOperation(
             value = "Update a city",
             notes = "Provide the code of the city that needs to be updated."
     )
@@ -103,13 +92,24 @@ public class AirportController {
     }
 
     @ApiOperation(
-            value = "Delete aircraft from airport",
-            notes = "Provide the code of the airport and the code of the aircraft."
+            value = "Create an airport",
+            notes = "Provide the details of the booking. " +
+                    "Note that the city provided must exist before the airport can be created."
     )
-    @DeleteMapping("/{code}/aircraft")
-    public AirportResponseDto removeAircraftFromAirport(@PathVariable String code, @RequestBody AircraftDto dto) {
-        var airport = this.airportService.removeAircraftFromAirport(code, dto.code);
+    @PostMapping
+    public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
+        var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
         return this.createAirportResponseDto(airport);
+    }
+
+    @ApiOperation(
+            value = "Create a city",
+            notes = "Provide the details of the city."
+    )
+    @PostMapping("/city")
+    public CityResponseDto create(@Validated @RequestBody CreateCityDto dto) {
+        var city = this.cityService.create(dto.name, dto.country);
+        return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
     }
 
     private AirportResponseDto createAirportResponseDto(Airport airport) {

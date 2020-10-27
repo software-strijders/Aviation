@@ -48,12 +48,10 @@ public class FlightService {
         return flightFactory.from(flight);
     }
 
-    private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
-        this.flightSeatRepository.saveAll(
-                aircraft.getSeats().stream()
-                        .map(seat -> new FlightSeatEntity(seat, null, flight)) // Passenger is set when creating a booking
-                        .collect(Collectors.toList())
-        );
+    public void deleteByCode(String code) {
+        var entity = this.flightRepository.findFlightEntityByCode(code)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
+        this.flightRepository.delete(entity);
     }
 
     public Flight update(String oldCode, FlightStruct flightStruct) {
@@ -89,9 +87,11 @@ public class FlightService {
         return this.flightFactory.from(entities);
     }
 
-    public void deleteByCode(String code) {
-        var entity = this.flightRepository.findFlightEntityByCode(code)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
-        this.flightRepository.delete(entity);
+    private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
+        this.flightSeatRepository.saveAll(
+                aircraft.getSeats().stream()
+                        .map(seat -> new FlightSeatEntity(seat, null, flight)) // Passenger is set when creating a booking
+                        .collect(Collectors.toList())
+        );
     }
 }
