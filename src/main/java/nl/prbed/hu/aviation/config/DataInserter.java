@@ -19,6 +19,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
 
 @Component
 @RequiredArgsConstructor
@@ -45,6 +47,8 @@ public class DataInserter {
     @EventListener(ApplicationReadyEvent.class)
     public void insertData() {
         this.logger.info("Starting entity insertion, this might take a while...");
+        var start = Instant.now();
+        var message = "Data insertion complete!";
         try {
             this.insertEmployees();
             this.insertCustomers();
@@ -54,9 +58,12 @@ public class DataInserter {
             this.insertAircraft();
             this.insertFlightplans();
         } catch (Exception e) {
+            e.printStackTrace();
             this.logger.warn(e.getMessage());
-            this.logger.info("Data already present, skipping...");
+            message = "Data already present, skipping...";
         }
+        this.logger.info(message);
+        this.logger.info(String.format("Elapsed time: %ds", Duration.between(start, Instant.now()).toSeconds()));
     }
 
     private void insertEmployees() {
