@@ -6,27 +6,25 @@ import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundExcep
 import nl.prbed.hu.aviation.management.application.exception.SeatsUnavailableException;
 import nl.prbed.hu.aviation.management.application.struct.BookingStruct;
 import nl.prbed.hu.aviation.management.application.struct.PassengerStruct;
+import nl.prbed.hu.aviation.management.application.struct.UpdateBookingStruct;
 import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
 import nl.prbed.hu.aviation.management.data.booking.PassengerEntity;
 import nl.prbed.hu.aviation.management.data.booking.SpringBookingRepository;
 import nl.prbed.hu.aviation.management.data.booking.SpringPassengerRepository;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
+import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
-import nl.prbed.hu.aviation.management.domain.Passenger;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
-import nl.prbed.hu.aviation.management.domain.factory.PassengerFactory;
-import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,6 +70,41 @@ public class BookingService {
         return this.bookingFactory.from(entity);
     }
 
+    public void deleteById(Long id) {
+        var entity = this.bookingRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));
+        var customer = entity.getCustomer();
+        customer.getBookings().remove(entity);
+        this.removeFlightSeatReferences(entity.getFlight().getFlightSeats(), entity.getPassengers());
+        this.userRepository.save(customer);
+        this.bookingRepository.delete(entity);
+    }
+
+    public List<Booking> findAll() {
+        return this.bookingFactory.from(this.bookingRepository.findAll());
+    }
+
+    public List<Booking> findByCustomer(Long id) {
+        var customer = this.findCustomerEntityById(id);
+        var entities = this.bookingRepository.findByCustomer(customer);
+        return this.bookingFactory.from(entities);
+    }
+
+    public Booking update(Long id, UpdateBookingStruct struct) {
+        var booking = this.bookingRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));
+
+        this.removeFlightSeatReferences(booking.getFlight().getFlightSeats(), booking.getPassengers());
+        booking.setPassengers(
+                struct.passengers.stream()
+                        .map(this::findPassengerById)
+                        .collect(Collectors.toList())
+        );
+        this.addPassengersToFlightSeat(booking.getPassengers(), booking.getFlight(), struct.seatType);
+
+        return this.bookingFactory.from(this.bookingRepository.save(booking));
+    }
+
     private void addBookingToCustomer(BookingEntity entity, Long id) {
         var customer = this.findCustomerEntityById(id);
         customer.addBooking(entity);
@@ -109,17 +142,6 @@ public class BookingService {
         ));
     }
 
-    public List<Booking> findAll() {
-        return this.bookingFactory.from(this.bookingRepository.findAll());
-    }
-
-    public List<Booking> findByCustomer(Long id) {
-        var customer = (CustomerEntity) this.userRepository.findByIdAndCustomer(id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, id)));
-        var entities = this.bookingRepository.findByCustomer(customer);
-        return this.bookingFactory.from(entities);
-    }
-
     private PassengerEntity findPassengerById(PassengerStruct struct) {
         if (struct.id == null)
             return this.createPassenger(struct);
@@ -142,21 +164,15 @@ public class BookingService {
         return (CustomerEntity) user;
     }
 
-    public void deleteById(Long id) {
-        var entity = this.bookingRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));
-        var customer = entity.getCustomer();
-        customer.getBookings().remove(entity);
-        for (var flightSeat : entity.getFlight().getFlightSeats()) {
+    private void removeFlightSeatReferences(List<FlightSeatEntity> flightSeats, List<PassengerEntity> passengers) {
+        for (var flightSeat : flightSeats) {
             if (flightSeat.getPassenger() == null)
                 continue;
+
             var passengerId = flightSeat.getPassenger().getId();
-            for (var passenger : entity.getPassengers()) {
+            for (var passenger : passengers)
                 if (passenger.getId().equals(passengerId))
                     flightSeat.setPassenger(null);
-            }
         }
-        this.userRepository.save(customer);
-        this.bookingRepository.delete(entity);
     }
 }
