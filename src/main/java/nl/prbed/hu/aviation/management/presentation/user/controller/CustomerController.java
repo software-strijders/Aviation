@@ -7,6 +7,7 @@ import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerOverviewResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.CustomerUpdateDto;
+import nl.prbed.hu.aviation.management.presentation.user.mapper.CustomerUpdateDtoMapper;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 @Secured("ROLE_EMPLOYEE")
 @RequestMapping("/customer")
 public class CustomerController {
+    private final CustomerUpdateDtoMapper mapper = CustomerUpdateDtoMapper.instance;
     private final CustomerService customerService;
 
     @ApiOperation(
@@ -49,15 +51,7 @@ public class CustomerController {
     )
     @PatchMapping("/{username}")
     public CustomerResponseDto update(@PathVariable String username, @Valid @RequestBody CustomerUpdateDto dto) {
-        return this.createResponseDto(this.customerService.update(
-                username,
-                dto.firstName,
-                dto.lastName,
-                dto.nationality,
-                dto.birthDate,
-                dto.email,
-                dto.phoneNumber
-        ));
+        return this.createResponseDto(this.customerService.update(username, this.mapper.toCustomerStruct(dto)));
     }
 
     private CustomerResponseDto createResponseDto(Customer customer) {

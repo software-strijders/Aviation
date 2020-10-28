@@ -6,6 +6,7 @@ import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.domain.Airport;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
+import nl.prbed.hu.aviation.management.presentation.airport.mapper.AirportDtoMapper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/airport")
 @RequiredArgsConstructor
 public class AirportController {
+    private final AirportDtoMapper mapper = AirportDtoMapper.instance;
     private final AirportService airportService;
     // TODO: This should probably go into its own controller:
     private final CityService cityService;
@@ -76,8 +78,8 @@ public class AirportController {
             notes = "Provide the code of the city that needs to be updated."
     )
     @PatchMapping("/{code}")
-    public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody CreateAirportDto dto) {
-        var airport = this.airportService.update(code, dto.code, dto.latitude, dto.longitude, dto.cityName, dto.aircraftCodes);
+    public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody AirportDto dto) {
+        var airport = this.airportService.update(code, this.mapper.toAirportStruct(dto));
         return this.createAirportResponseDto(airport);
     }
 
@@ -97,8 +99,8 @@ public class AirportController {
                     "Note that the city provided must exist before the airport can be created."
     )
     @PostMapping
-    public AirportResponseDto create(@Validated @RequestBody CreateAirportDto dto) {
-        var airport = this.airportService.create(dto.code, dto.latitude, dto.longitude, dto.cityName);
+    public AirportResponseDto create(@Validated @RequestBody AirportDto dto) {
+        var airport = this.airportService.create(this.mapper.toAirportStruct(dto));
         return this.createAirportResponseDto(airport);
     }
 

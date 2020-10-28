@@ -7,12 +7,14 @@ import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplansResponseDto;
+import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/flightplan")
 @AllArgsConstructor
 public class FlightplanController {
+    private final FlightplanDtoMapper mapper = FlightplanDtoMapper.instance;
     private final FlightplanService flightplanService;
 
     @ApiOperation(
@@ -46,13 +48,7 @@ public class FlightplanController {
     )
     @PatchMapping("/{code}")
     public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
-        return this.createFlightplanResponseDto(this.flightplanService.update(
-                code,
-                dto.code,
-                dto.duration,
-                dto.departure,
-                dto.destination
-        ));
+        return this.createFlightplanResponseDto(this.flightplanService.update(code, this.mapper.toFlightplanStruct(dto)));
     }
 
     @ApiOperation(
@@ -62,12 +58,7 @@ public class FlightplanController {
     )
     @PostMapping
     public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.create(
-                dto.code,
-                dto.duration,
-                dto.departure,
-                dto.destination
-        ));
+        return createFlightplanResponseDto(this.flightplanService.create(this.mapper.toFlightplanStruct(dto)));
     }
 
     private FlightplanResponseDto createFlightplanResponseDto(Flightplan flightplan) {

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.TypeService;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.*;
+import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateAircraftDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateTypeDtoMapper;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @Secured("ROLE_EMPLOYEE")
 @RequestMapping("/aircraft")
 public class AircraftController {
+    private final CreateAircraftDtoMapper aircraftMapper = CreateAircraftDtoMapper.instance;
+    private final CreateTypeDtoMapper typeMapper = CreateTypeDtoMapper.instance;
     private final AircraftService aircraftService;
     private final TypeService typeService;
 
@@ -71,14 +75,7 @@ public class AircraftController {
     )
     @PostMapping
     public AircraftResponseDto create(@Validated @RequestBody CreateAircraftDto dto) {
-        var aircraft = this.aircraftService.create(
-                dto.code,
-                dto.modelName,
-                dto.seatsFirst,
-                dto.seatsBusiness,
-                dto.seatsEconomy,
-                dto.airportCode
-        );
+        var aircraft = this.aircraftService.create(this.aircraftMapper.toAircraftStruct(dto));
         return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName(), aircraft.getSeats());
     }
 
@@ -88,12 +85,7 @@ public class AircraftController {
     )
     @PostMapping("/type")
     public TypeResponseDto create(@Validated @RequestBody CreateTypeDto dto) {
-        var type = this.typeService.create(
-                dto.modelName,
-                dto.manufacturer,
-                dto.fuelCapacity,
-                dto.fuelConsumption
-        );
+        var type = this.typeService.create(this.typeMapper.toTypeStruct(dto));
         return new TypeResponseDto(type);
     }
 }
