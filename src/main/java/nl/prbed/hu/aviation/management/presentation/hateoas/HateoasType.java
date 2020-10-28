@@ -4,5 +4,6 @@ public enum HateoasType {
     CREATE,
     UPDATE,
     FIND_ALL,
-    FIND_ONE
+    FIND_ONE,
+    NONE
 }
