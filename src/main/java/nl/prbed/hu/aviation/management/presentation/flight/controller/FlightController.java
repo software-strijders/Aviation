@@ -8,8 +8,15 @@ import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flight.mapper.FlightDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightsResponseDto;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class FlightController {
     private final FlightDtoMapper mapper = FlightDtoMapper.instance;
     private final FlightService flightService;
+    private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     @ApiOperation(
             value = "Delete a flight",
@@ -32,9 +40,10 @@ public class FlightController {
             notes = "Provide the code of the flight."
     )
     @GetMapping("/{code}")
-    public FlightResponseDto findFlightByCode(@PathVariable String code) {
+    public EntityModel<FlightResponseDto> findFlightByCode(@PathVariable String code) {
         var flight = this.flightService.findFlightByCode(code);
-        return createFlightResponseDto(flight);
+        var response = createFlightResponseDto(flight);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.FIND_ONE, flight.getCode()));
     }
 
     @ApiOperation(
@@ -42,9 +51,13 @@ public class FlightController {
             notes = "Provide an airport code."
     )
     @GetMapping("/departure/{code}")
-    public FlightsResponseDto findByDeparture(@PathVariable String code) {
+    public CollectionModel<EntityModel<FlightResponseDto>> findByDeparture(@PathVariable String code) {
         var flights = this.flightService.findFlightsByDeparture(code);
-        return new FlightsResponseDto(flights);
+        var response = flights.stream()
+                .map(this::createFlightResponseDto)
+                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, "departure", ""));
     }
 
     @ApiOperation(
@@ -52,16 +65,24 @@ public class FlightController {
             notes = "Provide an airport code."
     )
     @GetMapping("/destination/{code}")
-    public FlightsResponseDto findByDestination(@PathVariable String code) {
+    public CollectionModel<EntityModel<FlightResponseDto>> findByDestination(@PathVariable String code) {
         var flights = this.flightService.findFlightsByDestination(code);
-        return new FlightsResponseDto(flights);
+        var response = flights.stream()
+                .map(this::createFlightResponseDto)
+                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, "destination", ""));
     }
 
     @ApiOperation(value = "Find all flights")
     @GetMapping
-    public FlightsResponseDto findAll() {
+    public CollectionModel<EntityModel<FlightResponseDto>> findAll() {
         var flights = this.flightService.findAllFlights();
-        return new FlightsResponseDto(flights);
+        var response = flights.stream()
+                .map(this::createFlightResponseDto)
+                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -69,9 +90,10 @@ public class FlightController {
             notes = "Provide flight information to update the flight."
     )
     @PatchMapping("/{code}")
-    public FlightResponseDto update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
+    public EntityModel<FlightResponseDto> update(@Validated @RequestBody FlightDto dto, @Validated @PathVariable String code) {
         var flight = this.flightService.update(code, this.mapper.toFlightStruct(dto));
-        return createFlightResponseDto(flight);
+        var response = createFlightResponseDto(flight);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -79,9 +101,10 @@ public class FlightController {
             notes = "Provide flight information to create a new flight."
     )
     @PostMapping
-    public FlightResponseDto create(@Validated @RequestBody FlightDto dto) {
+    public EntityModel<FlightResponseDto> create(@Validated @RequestBody FlightDto dto) {
         var flight = this.flightService.create(this.mapper.toFlightStruct(dto));
-        return createFlightResponseDto(flight);
+        var response = createFlightResponseDto(flight);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     private FlightResponseDto createFlightResponseDto(Flight flight) {
