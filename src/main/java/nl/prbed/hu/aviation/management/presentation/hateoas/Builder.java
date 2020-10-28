@@ -2,9 +2,6 @@ package nl.prbed.hu.aviation.management.presentation.hateoas;
 
 import org.springframework.hateoas.Link;
 
-import java.util.List;
-import java.util.function.Function;
-
 public interface Builder {
     public Builder create(Class<?> context, String addon, String parameter);
     public Builder create(Class<?> context, String parameter);

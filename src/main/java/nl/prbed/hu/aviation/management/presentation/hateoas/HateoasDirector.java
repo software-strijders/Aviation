@@ -28,7 +28,6 @@ public class HateoasDirector {
             case CREATE -> builder.findOneLink().findAllLink().updateLink().deleteLink();
             case UPDATE -> builder.findOneLink().findAllLink().deleteLink();
             case FIND_ONE -> builder.findAllLink().updateLink().deleteLink();
-            case FIND_ALL -> builder;
             default -> builder;
         };
     }

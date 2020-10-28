@@ -63,9 +63,9 @@ public class AirportController {
         var airports = this.airportService.findAll();
         var response = airports.stream()
                 .map(this::createAirportResponseDto)
-                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -75,8 +75,8 @@ public class AirportController {
     @GetMapping("/{code}")
     public EntityModel<AirportResponseDto> findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        var response = createAirportResponseDto(airport);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
+        var response = this.createAirportResponseDto(airport);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
     }
 
     @ApiOperation(
@@ -88,9 +88,9 @@ public class AirportController {
         var airports = this.airportService.findByCity(cityName);
         var response = airports.stream()
                 .map(this::createAirportResponseDto)
-                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -100,8 +100,8 @@ public class AirportController {
     @PatchMapping("/{code}")
     public EntityModel<AirportResponseDto> update(@Validated @PathVariable String code, @Validated @RequestBody AirportDto dto) {
         var airport = this.airportService.update(code, this.mapper.toAirportStruct(dto));
-        var response = createAirportResponseDto(airport);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
+        var response = this.createAirportResponseDto(airport);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -111,8 +111,8 @@ public class AirportController {
     @PatchMapping("/{code}/aircraft")
     public EntityModel<AirportResponseDto> addAircraftToAirport(@PathVariable String code, @RequestBody AircraftListDto dto) {
         var airport = this.airportService.addAircraftToAirport(code, dto.codes);
-        var response = createAirportResponseDto(airport);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode(), "aircraft"));
+        var response = this.createAirportResponseDto(airport);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, response.getCode(), "aircraft"));
     }
 
     @ApiOperation(
@@ -123,8 +123,8 @@ public class AirportController {
     @PostMapping
     public EntityModel<AirportResponseDto> create(@Validated @RequestBody AirportDto dto) {
         var airport = this.airportService.create(this.mapper.toAirportStruct(dto));
-        var response = createAirportResponseDto(airport);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, response.getCode()));
+        var response = this.createAirportResponseDto(airport);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -134,8 +134,8 @@ public class AirportController {
     @PostMapping("/city")
     public EntityModel<CityResponseDto> create(@Validated @RequestBody CreateCityDto dto) {
         var city = this.cityService.create(dto.name, dto.country);
-        var response = createCityResponseDto(city);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, "city", response.getName()));
+        var response = this.createCityResponseDto(city);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, "city", response.getName()));
     }
 
     private AirportResponseDto createAirportResponseDto(Airport airport) {

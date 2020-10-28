@@ -6,7 +6,6 @@ import nl.prbed.hu.aviation.management.application.FlightplanService;
 import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanResponseDto;
-import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplansResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
@@ -40,10 +39,10 @@ public class FlightplanController {
         var flightplans = this.flightplanService.findAll();
         var response = flightplans.stream()
                 .map(this::createFlightplanResponseDto)
-                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -53,8 +52,8 @@ public class FlightplanController {
     @GetMapping("/{code}")
     public EntityModel<FlightplanResponseDto> findByCode(@PathVariable String code) {
         var flightplan = this.flightplanService.findFlightplanByCode(code);
-        var response = createFlightplanResponseDto(flightplan);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
     }
 
     @ApiOperation(
@@ -64,8 +63,8 @@ public class FlightplanController {
     @PatchMapping("/{code}")
     public EntityModel<FlightplanResponseDto> update(@PathVariable String code, @RequestBody FlightplanDto dto) {
         var flightplan = this.flightplanService.update(code, this.mapper.toFlightplanStruct(dto));
-        var response = createFlightplanResponseDto(flightplan);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -76,8 +75,8 @@ public class FlightplanController {
     @PostMapping
     public EntityModel<FlightplanResponseDto> create(@RequestBody FlightplanDto dto) {
         var flightplan = this.flightplanService.create(this.mapper.toFlightplanStruct(dto));
-        var response = createFlightplanResponseDto(flightplan);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, response.getCode()));
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     private FlightplanResponseDto createFlightplanResponseDto(Flightplan flightplan) {

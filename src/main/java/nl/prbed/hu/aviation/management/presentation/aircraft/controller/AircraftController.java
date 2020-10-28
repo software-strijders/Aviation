@@ -4,13 +4,11 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.TypeService;
-import nl.prbed.hu.aviation.management.domain.Airport;
 import nl.prbed.hu.aviation.management.domain.Type;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.*;
 import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateAircraftDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateTypeDtoMapper;
-import nl.prbed.hu.aviation.management.presentation.airport.dto.AirportResponseDto;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
@@ -59,9 +57,9 @@ public class AircraftController {
         var aircraft = this.aircraftService.findAll();
         var response = aircraft.stream()
                 .map(this::createAircraftResponseDto)
-                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -73,9 +71,9 @@ public class AircraftController {
         var aircraft = this.aircraftService.findAllByType(modelName);
         var response = aircraft.stream()
                 .map(this::createAircraftResponseDto)
-                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -85,8 +83,8 @@ public class AircraftController {
     @PatchMapping({"/{code}"})
     public EntityModel<AircraftResponseDto> update(@Validated @PathVariable String code, @Validated @RequestBody UpdateAircraftDto dto) {
         var aircraft = this.aircraftService.update(code, dto.code, dto.modelName);
-        var response = createAircraftResponseDto(aircraft);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
+        var response = this.createAircraftResponseDto(aircraft);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -97,8 +95,8 @@ public class AircraftController {
     @PostMapping
     public EntityModel<AircraftResponseDto> create(@Validated @RequestBody CreateAircraftDto dto) {
         var aircraft = this.aircraftService.create(this.aircraftMapper.toAircraftStruct(dto));
-        var response = createAircraftResponseDto(aircraft);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, response.getCode()));
+        var response = this.createAircraftResponseDto(aircraft);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -108,8 +106,8 @@ public class AircraftController {
     @PostMapping("/type")
     public EntityModel<TypeResponseDto> create(@Validated @RequestBody CreateTypeDto dto) {
         var type = this.typeService.create(this.typeMapper.toTypeStruct(dto));
-        var response = createTypeResponseDto(type);
-        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, "type", response.getType().getModelName()));
+        var response = this.createTypeResponseDto(type);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, "type", response.getType().getModelName()));
     }
 
     private AircraftResponseDto createAircraftResponseDto(Aircraft aircraft) {

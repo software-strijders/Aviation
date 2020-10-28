@@ -77,7 +77,6 @@ public class HateoasBuilder implements Builder {
 
     @Override
     public Iterable<Link> build() {
-        Iterable<Link> iterable = links;
-        return iterable;
+        return links;
     }
 }
