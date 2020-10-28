@@ -8,10 +8,7 @@ import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseD
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
 import nl.prbed.hu.aviation.management.presentation.booking.mapper.CreateBookingDtoMapper;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Secured("ROLE_EMPLOYEE")
@@ -19,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/booking")
 public class BookingController {
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
-    private final BookingService bookingService;
+    private final BookingService service;
 
     @ApiOperation(
             value = "Create a booking",
@@ -27,7 +24,7 @@ public class BookingController {
     )
     @PostMapping
     public BookingResponseDto create(@RequestBody CreateBookingDto dto) {
-        var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
+        var booking = this.service.create(this.mapper.toBookingStruct(dto));
         return this.createResponseDto(booking);
     }
 
@@ -39,5 +36,11 @@ public class BookingController {
                 booking.getFlight().getFlightplan(),
                 booking.getPassengers()
         );
+    }
+
+    @ApiOperation(value = "Delete a booking")
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        this.service.deleteById(id);
     }
 }

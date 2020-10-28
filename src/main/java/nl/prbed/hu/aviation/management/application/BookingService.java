@@ -124,4 +124,21 @@ public class BookingService {
     private CustomerEntity map(User user) {
         return (CustomerEntity) user;
     }
+
+    public void deleteById(Long id) {
+        var entity = this.bookingRepository.findById(id).orElseThrow();
+        var customer = entity.getCustomer();
+        customer.getBookings().remove(entity);
+        for (var flightSeat : entity.getFlight().getFlightSeats()) {
+            if (flightSeat.getPassenger() == null)
+                continue;
+            var passengerId = flightSeat.getPassenger().getId();
+            for (var passenger : entity.getPassengers()) {
+                if (passenger.getId().equals(passengerId))
+                    flightSeat.setPassenger(null);
+            }
+        }
+        this.userRepository.save(customer);
+        this.bookingRepository.delete(entity);
+    }
 }
