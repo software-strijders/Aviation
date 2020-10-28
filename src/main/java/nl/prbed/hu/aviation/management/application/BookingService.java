@@ -36,8 +36,6 @@ import java.util.stream.Collectors;
 public class BookingService {
     private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id: '%s'";
     private static final String FLIGHT_ERROR_MSG = "Could not find flight with id: '%s'";
-    private static final String PASSENGER_ERROR_MSG = "Could not find passenger with email: '%s'";
-    private static final String BOOKING_ERROR_MSG = "Could not find booking with customer: '%s'";
 
     private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
@@ -48,8 +46,6 @@ public class BookingService {
     private final BookingFactory bookingFactory;
     private final FlightFactory flightFactory;
 
-    private final FlightService flightService;
-
     public Booking create(BookingStruct bookingStruct) {
         var flightEntity = this.findFlightEntityById(bookingStruct.flightId);
         var flight = this.flightFactory.from(flightEntity);
@@ -57,7 +53,7 @@ public class BookingService {
         // TODO: this should also check for passengers that already have a seat (next iteration):
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
-        else if (! flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
+        else if (!flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
             throw new SeatsUnavailableException(bookingStruct.seatType);
 
         var passengers = bookingStruct.passengers.stream()
@@ -117,11 +113,10 @@ public class BookingService {
     }
 
     public List<Booking> findByCustomer(Long id) {
-        var userEntities = this.userRepository.findByIdAndCustomer(id)
+        var customer = (CustomerEntity) this.userRepository.findByIdAndCustomer(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, id)));
-        CustomerEntity customerEntity = (CustomerEntity) userEntities;
-        var bookingEntities = this.bookingRepository.findByCustomer(customerEntity);
-        return this.bookingFactory.from(bookingEntities);
+        var entities = this.bookingRepository.findByCustomer(customer);
+        return this.bookingFactory.from(entities);
     }
 
     private PassengerEntity findPassengerById(PassengerStruct struct) {

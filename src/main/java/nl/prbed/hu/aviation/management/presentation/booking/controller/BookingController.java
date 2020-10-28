@@ -24,15 +24,10 @@ public class BookingController {
     private final BookingService service;
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
-    @ApiOperation(
-            value = "Create a booking",
-            notes = "Provide the details of an booking."
-    )
-    @PostMapping
-    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
-        var booking = this.service.create(this.mapper.toBookingStruct(dto));
-        var response = this.createResponseDto(booking);
-        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
+    @ApiOperation(value = "Delete a booking")
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        this.service.deleteById(id);
     }
 
     @ApiOperation(value = "Find all bookings")
@@ -47,6 +42,17 @@ public class BookingController {
         return new BookingsResponseDto(this.service.findByCustomer(id));
     }
 
+    @ApiOperation(
+            value = "Create a booking",
+            notes = "Provide the details of an booking."
+    )
+    @PostMapping
+    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
+        var booking = this.service.create(this.mapper.toBookingStruct(dto));
+        var response = this.createResponseDto(booking);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
+    }
+
     private BookingResponseDto createResponseDto(Booking booking) {
         return new BookingResponseDto(
                 booking.getPrice(),
@@ -55,11 +61,5 @@ public class BookingController {
                 booking.getFlight().getFlightplan(),
                 booking.getPassengers()
         );
-    }
-
-    @ApiOperation(value = "Delete a booking")
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        this.service.deleteById(id);
     }
 }
