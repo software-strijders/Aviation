@@ -14,15 +14,19 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
+import nl.prbed.hu.aviation.management.domain.Passenger;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
+import nl.prbed.hu.aviation.management.domain.factory.PassengerFactory;
+import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -98,9 +102,21 @@ public class BookingService {
                 passenger.lastName,
                 passenger.birthDate,
                 passenger.nationality,
+                passenger.email,
                 // This will be set later:
                 null
         ));
+    }
+
+    public List<Booking> findAll() {
+        return this.bookingFactory.from(this.bookingRepository.findAll());
+    }
+
+    public List<Booking> findByCustomer(Long id) {
+        var customer = (CustomerEntity) this.userRepository.findByIdAndCustomer(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_ERROR_MSG, id)));
+        var entities = this.bookingRepository.findByCustomer(customer);
+        return this.bookingFactory.from(entities);
     }
 
     private PassengerEntity findPassengerById(PassengerStruct struct) {
