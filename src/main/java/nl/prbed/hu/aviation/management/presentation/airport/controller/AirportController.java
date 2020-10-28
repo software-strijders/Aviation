@@ -5,10 +5,18 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.domain.Airport;
+import nl.prbed.hu.aviation.management.domain.City;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
 import nl.prbed.hu.aviation.management.presentation.airport.mapper.AirportDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/airport")
@@ -18,6 +26,7 @@ public class AirportController {
     private final AirportService airportService;
     // TODO: This should probably go into its own controller:
     private final CityService cityService;
+    private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     @ApiOperation(
             value = "Delete an airport",
@@ -50,8 +59,13 @@ public class AirportController {
 
     @ApiOperation(value = "Find all airports")
     @GetMapping
-    public AirportsResponseDto findAll() {
-        return new AirportsResponseDto(this.airportService.findAll());
+    public CollectionModel<EntityModel<AirportResponseDto>> findAll() {
+        var airports = this.airportService.findAll();
+        var response = airports.stream()
+                .map(this::createAirportResponseDto)
+                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -59,9 +73,10 @@ public class AirportController {
             notes = "Provide the code of a specific airport."
     )
     @GetMapping("/{code}")
-    public AirportResponseDto findByCode(@PathVariable String code) {
+    public EntityModel<AirportResponseDto> findByCode(@PathVariable String code) {
         var airport = this.airportService.findByCode(code);
-        return this.createAirportResponseDto(airport);
+        var response = createAirportResponseDto(airport);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
     }
 
     @ApiOperation(
@@ -69,8 +84,13 @@ public class AirportController {
             notes = "Provide a city name."
     )
     @GetMapping("/city/{cityName}")
-    public AirportsResponseDto findByCity(@PathVariable String cityName) {
-        return new AirportsResponseDto(this.airportService.findByCity(cityName));
+    public CollectionModel<EntityModel<AirportResponseDto>> findByCity(@PathVariable String cityName) {
+        var airports = this.airportService.findByCity(cityName);
+        var response = airports.stream()
+                .map(this::createAirportResponseDto)
+                .map(dto -> EntityModel.of(dto, hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, hateoasDirector.make(HateoasType.FIND_ALL, ""));
     }
 
     @ApiOperation(
@@ -78,9 +98,10 @@ public class AirportController {
             notes = "Provide the code of the city that needs to be updated."
     )
     @PatchMapping("/{code}")
-    public AirportResponseDto update(@Validated @PathVariable String code, @Validated @RequestBody AirportDto dto) {
+    public EntityModel<AirportResponseDto> update(@Validated @PathVariable String code, @Validated @RequestBody AirportDto dto) {
         var airport = this.airportService.update(code, this.mapper.toAirportStruct(dto));
-        return this.createAirportResponseDto(airport);
+        var response = createAirportResponseDto(airport);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -88,9 +109,10 @@ public class AirportController {
             notes = "Provide codes of all aircraft and a code of the airport."
     )
     @PatchMapping("/{code}/aircraft")
-    public AirportResponseDto addAircraftToAirport(@PathVariable String code, @RequestBody AircraftListDto dto) {
+    public EntityModel<AirportResponseDto> addAircraftToAirport(@PathVariable String code, @RequestBody AircraftListDto dto) {
         var airport = this.airportService.addAircraftToAirport(code, dto.codes);
-        return this.createAirportResponseDto(airport);
+        var response = createAirportResponseDto(airport);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.UPDATE, response.getCode(), "aircraft"));
     }
 
     @ApiOperation(
@@ -99,9 +121,10 @@ public class AirportController {
                     "Note that the city provided must exist before the airport can be created."
     )
     @PostMapping
-    public AirportResponseDto create(@Validated @RequestBody AirportDto dto) {
+    public EntityModel<AirportResponseDto> create(@Validated @RequestBody AirportDto dto) {
         var airport = this.airportService.create(this.mapper.toAirportStruct(dto));
-        return this.createAirportResponseDto(airport);
+        var response = createAirportResponseDto(airport);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -109,9 +132,10 @@ public class AirportController {
             notes = "Provide the details of the city."
     )
     @PostMapping("/city")
-    public CityResponseDto create(@Validated @RequestBody CreateCityDto dto) {
+    public EntityModel<CityResponseDto> create(@Validated @RequestBody CreateCityDto dto) {
         var city = this.cityService.create(dto.name, dto.country);
-        return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
+        var response = createCityResponseDto(city);
+        return EntityModel.of(response, hateoasDirector.make(HateoasType.CREATE, "city", response.getName()));
     }
 
     private AirportResponseDto createAirportResponseDto(Airport airport) {
@@ -122,5 +146,9 @@ public class AirportController {
                 airport.getCity(),
                 airport.getAircraft()
         );
+    }
+
+    private CityResponseDto createCityResponseDto(City city) {
+        return new CityResponseDto(city.getName(), city.getCountry(), city.getAirports());
     }
 }
