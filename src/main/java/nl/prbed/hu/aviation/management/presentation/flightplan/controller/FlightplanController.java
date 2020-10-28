@@ -6,9 +6,15 @@ import nl.prbed.hu.aviation.management.application.FlightplanService;
 import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanResponseDto;
-import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplansResponseDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/flightplan")
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class FlightplanController {
     private final FlightplanDtoMapper mapper = FlightplanDtoMapper.instance;
     private final FlightplanService flightplanService;
+    private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     @ApiOperation(
             value = "Delete a flightplan",
@@ -28,9 +35,14 @@ public class FlightplanController {
 
     @ApiOperation(value = "Find all flightplans")
     @GetMapping
-    public FlightplansResponseDto findAll() {
+    public CollectionModel<EntityModel<FlightplanResponseDto>> findAll() {
         var flightplans = this.flightplanService.findAll();
-        return new FlightplansResponseDto(flightplans);
+        var response = flightplans.stream()
+                .map(this::createFlightplanResponseDto)
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
     }
 
     @ApiOperation(
@@ -38,8 +50,10 @@ public class FlightplanController {
             notes = "Provide the code of the flightplan."
     )
     @GetMapping("/{code}")
-    public FlightplanResponseDto findByCode(@PathVariable String code) {
-        return this.createFlightplanResponseDto(this.flightplanService.findFlightplanByCode(code));
+    public EntityModel<FlightplanResponseDto> findByCode(@PathVariable String code) {
+        var flightplan = this.flightplanService.findFlightplanByCode(code);
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ONE, response.getCode()));
     }
 
     @ApiOperation(
@@ -47,8 +61,10 @@ public class FlightplanController {
             notes = "Provide the code of the flightplan."
     )
     @PatchMapping("/{code}")
-    public FlightplanResponseDto update(@PathVariable String code, @RequestBody FlightplanDto dto) {
-        return this.createFlightplanResponseDto(this.flightplanService.update(code, this.mapper.toFlightplanStruct(dto)));
+    public EntityModel<FlightplanResponseDto> update(@PathVariable String code, @RequestBody FlightplanDto dto) {
+        var flightplan = this.flightplanService.update(code, this.mapper.toFlightplanStruct(dto));
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, response.getCode()));
     }
 
     @ApiOperation(
@@ -57,8 +73,10 @@ public class FlightplanController {
                     "Note that the cities provided must exist before the flightplan can be created."
     )
     @PostMapping
-    public FlightplanResponseDto create(@RequestBody FlightplanDto dto) {
-        return createFlightplanResponseDto(this.flightplanService.create(this.mapper.toFlightplanStruct(dto)));
+    public EntityModel<FlightplanResponseDto> create(@RequestBody FlightplanDto dto) {
+        var flightplan = this.flightplanService.create(this.mapper.toFlightplanStruct(dto));
+        var response = this.createFlightplanResponseDto(flightplan);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, response.getCode()));
     }
 
     private FlightplanResponseDto createFlightplanResponseDto(Flightplan flightplan) {

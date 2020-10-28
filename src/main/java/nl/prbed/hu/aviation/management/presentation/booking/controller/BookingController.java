@@ -7,6 +7,12 @@ import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
 import nl.prbed.hu.aviation.management.presentation.booking.mapper.CreateBookingDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import org.springframework.hateoas.EntityModel;
+import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,15 +23,17 @@ import org.springframework.web.bind.annotation.*;
 public class BookingController {
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
     private final BookingService service;
+    private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     @ApiOperation(
             value = "Create a booking",
             notes = "Provide the details of an booking."
     )
     @PostMapping
-    public BookingResponseDto create(@RequestBody CreateBookingDto dto) {
+    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
         var booking = this.service.create(this.mapper.toBookingStruct(dto));
-        return this.createResponseDto(booking);
+        var response = this.createResponseDto(booking);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
     }
 
     private BookingResponseDto createResponseDto(Booking booking) {
