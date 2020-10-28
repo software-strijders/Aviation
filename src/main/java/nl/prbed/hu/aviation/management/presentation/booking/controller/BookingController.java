@@ -46,6 +46,10 @@ public class BookingController {
         return new BookingsResponseDto(this.service.findByCustomer(id));
     }
 
+    @ApiOperation(
+            value = "Update a booking",
+            notes = "Provide a list of passengers that should replace the current passengers"
+    )
     @PatchMapping("/{id}")
     public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto) {
         var booking = this.service.update(id, this.updateMapper.toUpdateBookingStruct(dto));
