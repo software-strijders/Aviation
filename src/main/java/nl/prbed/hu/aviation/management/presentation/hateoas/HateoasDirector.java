@@ -26,7 +26,6 @@ public class HateoasDirector {
         builder.selfLink();
         switch (type) {
             case CREATE -> builder.findOneLink().findAllLink().updateLink().deleteLink();
-            case DELETE -> builder.createLink().findAllLink();
             case UPDATE -> builder.findOneLink().findAllLink().deleteLink();
             case FIND_ALL -> builder.findOneLink().updateLink().deleteLink();
             case FIND_ONE -> builder.findAllLink().updateLink().deleteLink();
