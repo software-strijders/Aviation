@@ -5,8 +5,8 @@ import org.springframework.hateoas.Link;
 
 @AllArgsConstructor
 public class HateoasDirector {
-    public Builder builder;
-    public Class<?> context;
+    private Builder builder;
+    private Class<?> context;
 
     public void changeBuilder(Builder builder) {
         this.builder = builder;
@@ -24,12 +24,11 @@ public class HateoasDirector {
 
     private Builder build(HateoasType type) {
         builder.selfLink();
-        switch (type) {
+        return switch (type) {
             case CREATE -> builder.findOneLink().findAllLink().updateLink().deleteLink();
             case UPDATE -> builder.findOneLink().findAllLink().deleteLink();
-            case FIND_ALL -> builder.findOneLink().updateLink().deleteLink();
             case FIND_ONE -> builder.findAllLink().updateLink().deleteLink();
-        }
-        return builder;
+            case FIND_ALL -> builder;
+        };
     }
 }
