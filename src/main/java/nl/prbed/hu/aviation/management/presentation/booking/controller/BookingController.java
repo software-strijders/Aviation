@@ -7,7 +7,9 @@ import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingsResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
+import nl.prbed.hu.aviation.management.presentation.booking.dto.UpdateBookingDto;
 import nl.prbed.hu.aviation.management.presentation.booking.mapper.CreateBookingDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.booking.mapper.UpdateBookingDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
@@ -20,9 +22,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/booking")
 public class BookingController {
-    private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
     private final BookingService service;
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
+
+    private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
+    private final UpdateBookingDtoMapper updateMapper = UpdateBookingDtoMapper.instance;
 
     @ApiOperation(value = "Delete a booking")
     @DeleteMapping("/{id}")
@@ -40,6 +44,13 @@ public class BookingController {
     @GetMapping("/{id}")
     public BookingsResponseDto findByCustomer(@PathVariable Long id) {
         return new BookingsResponseDto(this.service.findByCustomer(id));
+    }
+
+    @PatchMapping("/{id}")
+    public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto) {
+        var booking = this.service.update(id, this.updateMapper.toUpdateBookingStruct(dto));
+        var response = this.createResponseDto(booking);
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, id.toString()));
     }
 
     @ApiOperation(
