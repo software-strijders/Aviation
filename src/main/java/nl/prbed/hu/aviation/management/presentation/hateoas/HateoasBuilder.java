@@ -10,21 +10,25 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Component
 public class HateoasBuilder implements Builder {
-    private List<Link> links = new ArrayList<>();
-    private Class context;
+    private final List<Link> links = new ArrayList<>();
+    private Class<?> context;
     private String function = "";
     private String parameter;
 
     @Override
-    public Builder create(Class context, String function, String parameter) {
+    public Builder create(Class<?> context, String function, String parameter) {
+        this.links.clear();
         this.context = context;
         this.function = function;
         this.parameter = parameter;
         return this;
     }
 
-    public Builder create(Class context, String parameter) {
+    @Override
+    public Builder create(Class<?> context, String parameter) {
+        this.links.clear();
         this.context = context;
+        this.function = "";
         this.parameter = parameter;
         return this;
     }
@@ -43,19 +47,25 @@ public class HateoasBuilder implements Builder {
 
     @Override
     public Builder updateLink() {
-        links.add(linkTo(context).slash(parameter).withRel("update"));
+        links.add(linkTo(context).slash(function).slash(parameter).withRel("update"));
         return this;
     }
 
     @Override
     public Builder deleteLink() {
-        links.add(linkTo(context).slash(parameter).withRel("delete"));
+        links.add(linkTo(context).slash(function).slash(parameter).withRel("delete"));
+        return this;
+    }
+
+    @Override
+    public Builder findOneLink() {
+        links.add(linkTo(context).slash(function).slash(parameter).withRel("find"));
         return this;
     }
 
     @Override
     public Builder findAllLink() {
-        links.add(linkTo(context).withRel("findAll"));
+        links.add(linkTo(context).slash(function).withRel("findAll"));
         return this;
     }
 
