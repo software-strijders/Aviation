@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface CreateAirportDtoMapper {
-    CreateAirportDtoMapper instance = Mappers.getMapper(CreateAirportDtoMapper.class);
+public interface AirportDtoMapper {
+    AirportDtoMapper instance = Mappers.getMapper(AirportDtoMapper.class);
 
     AirportStruct toAirportStruct(AirportDto dto);
 }

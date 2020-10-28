@@ -9,9 +9,7 @@ import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateAircra
 import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateTypeDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.AirportDto;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.CreateCityDto;
-import nl.prbed.hu.aviation.management.presentation.airport.mapper.CreateAirportDtoMapper;
-import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
-import nl.prbed.hu.aviation.management.presentation.flight.mapper.CreateFlightDtoMapperImpl;
+import nl.prbed.hu.aviation.management.presentation.airport.mapper.AirportDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
 import nl.prbed.hu.aviation.security.application.UserService;
@@ -42,7 +40,7 @@ public class DataInserter {
 
     private final Logger logger = LoggerFactory.getLogger(DataInserter.class);
     private final ObjectMapper mapper = new ObjectMapper();
-    private final CreateAirportDtoMapper createAirportDtoMapper = CreateAirportDtoMapper.instance;
+    private final AirportDtoMapper airportDtoMapper = AirportDtoMapper.instance;
     private final CreateTypeDtoMapper createTypeDtoMapper = CreateTypeDtoMapper.instance;
     private final CreateAircraftDtoMapper createAircraftDtoMapper = CreateAircraftDtoMapper.instance;
     private final FlightplanDtoMapper flightplanDtoMapper = FlightplanDtoMapper.instance;
@@ -125,7 +123,7 @@ public class DataInserter {
         try {
             var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class);
             for (var dto : dtos)
-                this.airportService.create(this.createAirportDtoMapper.toAirportStruct(dto));
+                this.airportService.create(this.airportDtoMapper.toAirportStruct(dto));
         } catch (IOException e) {
             this.logger.warn(e.getLocalizedMessage());
         }

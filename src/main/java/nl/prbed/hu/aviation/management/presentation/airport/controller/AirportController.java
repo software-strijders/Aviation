@@ -6,7 +6,7 @@ import nl.prbed.hu.aviation.management.application.AirportService;
 import nl.prbed.hu.aviation.management.application.CityService;
 import nl.prbed.hu.aviation.management.domain.Airport;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.*;
-import nl.prbed.hu.aviation.management.presentation.airport.mapper.CreateAirportDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.airport.mapper.AirportDtoMapper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/airport")
 @RequiredArgsConstructor
 public class AirportController {
-    private final CreateAirportDtoMapper mapper = CreateAirportDtoMapper.instance;
+    private final AirportDtoMapper mapper = AirportDtoMapper.instance;
     private final AirportService airportService;
     // TODO: This should probably go into its own controller:
     private final CityService cityService;
