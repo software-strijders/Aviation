@@ -33,7 +33,7 @@ public class BookingController {
     public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
         var booking = this.service.create(this.mapper.toBookingStruct(dto));
         var response = this.createResponseDto(booking);
-        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE, ""));
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
     }
 
     private BookingResponseDto createResponseDto(Booking booking) {

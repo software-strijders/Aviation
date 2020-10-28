@@ -56,7 +56,7 @@ public class FlightController {
                 .map(this::createFlightResponseDto)
                 .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "departure", ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "departure"));
     }
 
     @ApiOperation(
@@ -70,7 +70,7 @@ public class FlightController {
                 .map(this::createFlightResponseDto)
                 .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "destination", ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "destination"));
     }
 
     @ApiOperation(value = "Find all flights")
@@ -81,7 +81,7 @@ public class FlightController {
                 .map(this::createFlightResponseDto)
                 .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
     }
 
     @ApiOperation(

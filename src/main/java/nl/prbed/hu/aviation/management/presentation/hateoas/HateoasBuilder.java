@@ -26,11 +26,7 @@ public class HateoasBuilder implements Builder {
 
     @Override
     public Builder create(Class<?> context, String parameter) {
-        this.links.clear();
-        this.context = context;
-        this.function = "";
-        this.parameter = parameter;
-        return this;
+        return this.create(context, "", parameter);
     }
 
     @Override

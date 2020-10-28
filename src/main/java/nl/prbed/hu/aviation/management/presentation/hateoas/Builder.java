@@ -13,5 +13,4 @@ public interface Builder {
     public Builder findAllLink();
     public Builder link(Link link);
     public Iterable<Link> build();
-
 }

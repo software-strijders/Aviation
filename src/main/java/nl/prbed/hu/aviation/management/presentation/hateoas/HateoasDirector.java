@@ -13,12 +13,16 @@ public class HateoasDirector {
     }
 
     public Iterable<Link> make(HateoasType type, String parameter) {
-        builder = this.builder.create(context, parameter);
-        return this.build(type).build();
+        return this.make(type, "", parameter);
     }
 
     public Iterable<Link> make(HateoasType type, String addon, String parameter) {
         builder = this.builder.create(context, addon, parameter);
+        return this.build(type).build();
+    }
+
+    public Iterable<Link> make(HateoasType type) {
+        builder = this.builder.create(context, "");
         return this.build(type).build();
     }
 

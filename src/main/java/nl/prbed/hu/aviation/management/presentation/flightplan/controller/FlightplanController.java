@@ -42,7 +42,7 @@ public class FlightplanController {
                 .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, ""));
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
     }
 
     @ApiOperation(
