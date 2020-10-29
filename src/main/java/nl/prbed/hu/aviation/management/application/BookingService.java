@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
 public class BookingService {
     private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id: '%s'";
     private static final String FLIGHT_ERROR_MSG = "Could not find flight with id: '%s'";
+    private static final String BOOKING_ERROR_MSG = "Could not find booking with id: '%s'";
 
     private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
@@ -142,7 +143,8 @@ public class BookingService {
     }
 
     public void deleteById(Long id) {
-        var entity = this.bookingRepository.findById(id).orElseThrow();
+        var entity = this.bookingRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));
         var customer = entity.getCustomer();
         customer.getBookings().remove(entity);
         for (var flightSeat : entity.getFlight().getFlightSeats()) {
