@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmployeeService {
     private static final String ERROR_MSG = "Could not find employee with id: '%s'";
+    private static final String ERROR_MSG_NAME = "Could not find employee with username: '%s'";
 
     private final SpringUserRepository repository;
 
@@ -25,7 +26,7 @@ public class EmployeeService {
 
     public void deleteByUsername(String username) {
         var entity = this.map(this.repository.findByUsernameAndEmployee(username)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, username))));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG_NAME, username))));
         this.repository.delete(entity);
     }
 

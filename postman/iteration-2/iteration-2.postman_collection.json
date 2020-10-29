@@ -1,0 +1,1462 @@
+{
+	"info": {
+		"_postman_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+		"name": "Luchtvaart systeem Test Suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ade71552-eae4-4fe7-97f2-1e95619add17",
+								"exec": [
+									"// Make authorization easier:\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", token);\r",
+									"}\r",
+									"\r",
+									"// happy flow\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should not give error\", () => {\r",
+									"    pm.response.to.not.be.error;\r",
+									"    pm.response.to.not.have.jsonBody(\"error\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8539ff2f-28fd-4bbb-b5ca-3b70c46f9161",
+								"exec": [
+									"// A bit cumbersome, but to 'logout' the only thing we can do is to remove the authtoken from Postman.\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", \"\");\r",
+									"}\r",
+									"\r",
+									"// happy flow\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should not give error\", () => {\r",
+									"    pm.response.to.not.be.error;\r",
+									"    pm.response.to.not.have.jsonBody(\"error\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{logoutPath}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{logoutPath}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "Get all Customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30f4d287-6faa-43b9-8277-17c24d3f4292",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//------happy flow------\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should have property customers\", () => {\r",
+									"    pm.expect(response).to.have.property(\"customers\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Customers property should be of type array\", () => {\r",
+									"    pm.expect(response.customers).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should not give error\", () => {\r",
+									"    pm.response.to.not.be.error;\r",
+									"    pm.response.to.not.have.jsonBody(\"error\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{customerPath}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{customerPath}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "87ed1b3a-a242-4131-b4ad-7501cf5589ce",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//------happy flow------\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"UserId should be correct\", () => {\r",
+									"    pm.expect(response.id).to.be.eql(22);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"firstName\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName should be correct\", () => {\r",
+									"    pm.expect(response.firstName).to.be.eql(\"Henk\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"lastName\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName should be correct\", () => {\r",
+									"    pm.expect(response.lastName).to.be.eql(\"Tenk\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"nationality\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality should be correct\", () => {\r",
+									"    pm.expect(response.nationality).to.be.eql(\"Netherlands\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"birthdate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate should be correct\", () => {\r",
+									"    pm.expect(response.birthdate).to.be.eql(\"2000-04-24\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"email\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email should be correct\", () => {\r",
+									"    pm.expect(response.email).to.be.eql(\"henk.tenk@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"phoneNumber\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber should be correct\", () => {\r",
+									"    pm.expect(response.phoneNumber).to.be.eql(\"+31696969420\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{customerPath}}/22",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{customerPath}}",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3996b129-283c-4973-a770-e13ec27fe3b5",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----happy flow------\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer/sophie.jansen@hotmail.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"sophie.jansen@hotmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5ab0886e-bfd2-46af-b525-62c3f9df9527",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id should be correct\", () => {\r",
+									"    pm.expect(response.id).to.be.eql(22);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"firstName\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName should be correct\", () => {\r",
+									"    pm.expect(response.firstName).to.be.eql(\"Henkie\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"lastName\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName should be correct\", () => {\r",
+									"    pm.expect(response.lastName).to.be.eql(\"Tenkie\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"nationality\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality should be correct\", () => {\r",
+									"    pm.expect(response.nationality).to.be.eql(\"Italiaanse\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"birthdate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate should be correct\", () => {\r",
+									"    pm.expect(response.birthdate).to.be.eql(\"1995-01-10\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"email\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email should be correct\", () => {\r",
+									"    pm.expect(response.email).to.be.eql(\"henkie.tenkie@customer.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"phoneNumber\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber should be correct\", () => {\r",
+									"    pm.expect(response.phoneNumber).to.be.eql(\"+31696969429\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Henkie\",\r\n    \"lastName\": \"Tenkie\",\r\n    \"nationality\": \"Italiaanse\",\r\n    \"birthDate\": \"1995-01-10\",\r\n    \"email\": \"henkie.tenkie@customer.com\",\r\n    \"phoneNumber\": \"+31696969429\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/{{customerUsername}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"{{customerUsername}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Aircraft",
+			"item": [
+				{
+					"name": "Add aircraft to airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "61558075-520f-482c-a59d-1f4e63471af2",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----happy flow-----\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code should be correct\", () => {\r",
+									"    pm.expect(response.code).to.be.eql('AMS');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"latitude property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"latitude\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"latitude should be correct\", () => {\r",
+									"    pm.expect(response.latitude).to.be.eql(4.76389);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"langitude property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"longitude\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"longitude should be correct\", () => {\r",
+									"    pm.expect(response.longitude).to.be.eql(52.308601);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"cityName property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"city\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"city should be of the correct type\", () => {\r",
+									"    pm.expect(response.city).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"aircraft property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraft\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codes\" : [\r\n        \"KLM003\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/AMS/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"AMS",
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete aircraft from airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c2cb14-359d-4a67-9db3-0d55f1183f63",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----happy flow------\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KLM003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/AMS/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"AMS",
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e500245f-f4fd-4268-870d-d8862931b00a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "756a99ea-4132-4f4e-b1a9-906db6f13897",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Flight",
+			"item": [
+				{
+					"name": "Create Flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c59b6e0-2a92-4541-aa54-5493100f0ff5",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----happy flow-----\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.collectionVariables.set(\"flightId\", response.id);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There should not be an unhappy flow statuscode\", () => {\r",
+									"    pm.response.to.not.have.status(404);\r",
+									"    pm.response.to.not.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"code\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code should be correct\", () => {\r",
+									"    pm.expect(response.code).to.be.eql(\"KL01\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceEconomy property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"priceEconomy\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceEconomy should be correct\", () => {\r",
+									"    pm.expect(response.priceEconomy).to.be.eql(200.0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceBusiness property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"priceBusiness\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceBusiness should be correct\", () => {\r",
+									"    pm.expect(response.priceBusiness).to.be.eql(50.0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceFirst property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"priceFirst\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"PriceFirst should be correct\", () => {\r",
+									"    pm.expect(response.priceFirst).to.be.eql(20.0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"AircraftCode property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraftCode\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Price should be correct\", () => {\r",
+									"    pm.expect(response.aircraftCode).to.be.eql(\"KLM003\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FlightPlanCode property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"flightPlanCode\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"FlightPlanCode should be correct\", () => {\r",
+									"    pm.expect(response.flightPlanCode).to.be.eql(\"AMS-TUS\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 20.00,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM003\",\r\n    \"flightPlanCode\": \"AMS-TUS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find flight by code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "29f77984-1def-4544-af94-ab17d5ec5cbc",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/KL01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"KL01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "14e435d1-3f22-4c2b-8af3-34931bb80f69",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights by departure airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "452e1df2-94c8-4b44-8460-907caa0e1cbd",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/departure/AMS",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"departure",
+								"AMS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights by destination airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32feadbc-8a7f-482e-9823-8e9c23900f08",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/destination/LEL",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"destination",
+								"LEL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d1cac8b-1531-48c5-bb75-f0cd94138eb4",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 500,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM003\",\r\n    \"flightPlanCode\": \"BCN-AYT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flight/KL01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"KL01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete flight by code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "04cfae0f-90c9-42f1-abcb-0514ee67ce2b",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/KL01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"KL01"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Delete Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20b2cc88-bc4e-46cf-8bcf-632c4c3d518a",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee/henk.tenk@aviation.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								"henk.tenk@aviation.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Findall Employees",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce05f29f-7e3c-42e9-8c29-e1b509f5914a",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Employee By Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00618d75-da1f-4544-ade6-4d21d79aeac2",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee/admin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de837274-3237-472a-a819-cc619d4a3ac3",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Henkie\",\r\n    \"lastName\": \"Tenkie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/employee/xander.vedder@aviation.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								"xander.vedder@aviation.com"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "Create booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6da97b5b-2c37-4c68-88d7-10ae49383120",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response code should be 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Price property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"price\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Price should be correct\", () => {\r",
+									"    pm.expect(response.price).to.be.eql(500.0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FlightCode property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"flightCode\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"FlightCode should be correct\", () => {\r",
+									"    pm.expect(response.flightCode).to.be.eql(\"KL01\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraft\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Flightplan property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"flightplan\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Flightplan property should be of type object\", () => {\r",
+									"    pm.expect(response.flightplan).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Passengers property should be of type array\", () => {\r",
+									"    pm.expect(response.passengers).to.be.an(\"array\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 22,\r\n    \"flightId\": {{flightId}},\r\n    \"seatType\": \"ECONOMY\",\r\n    \"passengers\": [\r\n        {\r\n            \"id\": null,\r\n            \"firstName\": \"Xander\",\r\n            \"lastName\": \"Vedder\",\r\n            \"email\": \"xander.vedder@outlook.com\",\r\n            \"birthDate\": \"2000-04-24\",\r\n            \"nationality\": \"Nederlandse\"\r\n        },\r\n        {\r\n            \"id\": null,\r\n            \"firstName\": \"Milan\",\r\n            \"lastName\": \"Dol\",\r\n            \"email\": \"milan.outlook.com\",\r\n            \"birthDate\": \"2001-01-03\",\r\n            \"nationality\": \"Nederlandse\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ada1c51-ea45-4092-9905-1e014ed303eb",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 20.00,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM0001\",\r\n    \"flightPlanCode\": \"FP01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "971cfdf7-5e7c-402b-ac60-ecf9a2e9055d",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/booking/12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "696240a1-67ed-4f96-9a32-06545e0ddd9a",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/booking/36903",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking",
+								"36903"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e26c10b-e0aa-4432-9c19-af05917a7d47",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FlightCode property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"flightCode\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Aircraft property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"aircraft\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Flightplan property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"flightplan\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Passengers property should exist\", () => {\r",
+									"    pm.expect(response).to.have.property(\"passengers\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"HATEOAS should be present\", () => {\r",
+									"    pm.expect(response).to.have.property(\"_links\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"_links should be of type object\", () => {\r",
+									"    pm.expect(response._links).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Self should be present\", () => {\r",
+									"    pm.expect(response._links).to.have.property(\"self\");  \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Find should be of type array\", () => {\r",
+									"    pm.expect(response._links).to.have.property(\"find\");  \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Findall should be of type array\", () => {\r",
+									"    pm.expect(response._links).to.have.property(\"findAll\");  \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Delete should be of type array\", () => {\r",
+									"    pm.expect(response._links).to.have.property(\"delete\");  \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seatType\": \"BUSINESS\",\r\n    \"passengers\": [\r\n        {\r\n            \"id\": 36901,\r\n            \"firstName\": null,\r\n            \"lastName\": null,\r\n            \"email\": null,\r\n            \"birthDate\": null,\r\n            \"nationality\": null\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking/36903",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking",
+								"36903"
+							]
+						},
+						"description": "Only thing that is possible to update, are the passengers. Provide a full list of passengers"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b0c802bf-c63c-4a8c-9d05-8f6677f6e344",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "77388604-4744-4199-b232-af0c83530440",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "663da031-74b4-4a28-af88-6a40f1f71031",
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"id": "d6e18dde-ef10-4a94-b5cd-c85144b2c5ce",
+			"key": "authToken",
+			"value": ""
+		},
+		{
+			"id": "d73603f0-7f97-4b74-b881-4efa337319a4",
+			"key": "flightId",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -23,7 +23,7 @@ public class AirportResponseDto {
     private final double longitude;
 
     @ApiModelProperty(notes = "The city where the airport is located in")
-    private final City cityName;
+    private final City city;
 
     @ApiModelProperty(notes = "The list of all aircraft from the airport")
     private final List<Aircraft> aircraft;
