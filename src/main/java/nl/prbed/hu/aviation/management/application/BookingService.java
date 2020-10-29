@@ -32,9 +32,9 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class BookingService {
+    private static final String BOOKING_ERROR_MSG = "Could not find booking with id: '%s'";
     private static final String CUSTOMER_ERROR_MSG = "Could not find customer with id: '%s'";
     private static final String FLIGHT_ERROR_MSG = "Could not find flight with id: '%s'";
-    private static final String BOOKING_ERROR_MSG = "Could not find booking with id: '%s'";
 
     private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
