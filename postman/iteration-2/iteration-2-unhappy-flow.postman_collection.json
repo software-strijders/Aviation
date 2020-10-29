@@ -1,0 +1,1401 @@
+{
+	"info": {
+		"_postman_id": "fcd8059b-5d0b-42f8-beda-1efaf24401b2",
+		"name": "Luchtvaart systeem Test Suite iteratie 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1425b74b-8419-4469-835e-efc258e24613",
+								"exec": [
+									"// Make authorization easier:\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", token);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f43cca5b-64fe-4edc-8af2-c45b3626aa99",
+								"exec": [
+									"// A bit cumbersome, but to 'logout' the only thing we can do is to remove the authtoken from Postman.\r",
+									"if (pm.response.code === 200) {\r",
+									"    const authHeader = pm.response.headers.get(\"Authorization\");\r",
+									"    const token = authHeader.substring(7);\r",
+									"    pm.collectionVariables.set(\"authToken\", \"\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{employeeUsername}}\",\r\n    \"password\": \"{{employeePassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{logoutPath}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{logoutPath}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "Get all Customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b11211cb-ea95-449e-bb16-f05a24b6bc7d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{customerPath}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{customerPath}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "12998226-1b07-43b8-8116-e9a3bfe8d00a",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"// -----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"firstName\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"lastName\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"nationality\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"birthdate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"email\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"phoneNumber\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{customerPath}}/228282",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{customerPath}}",
+								"228282"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a850db44-46eb-4b3b-93b0-67b89bd4d2ca",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer/not.exist@hotmail.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"not.exist@hotmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55837fdd-e90e-40ff-a51f-811b0519cb6a",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"FirstName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"firstName\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"LastName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"lastName\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nationality property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"nationality\");   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"birthdate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"email\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phonenumber property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"phoneNumber\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Henkie\",\r\n    \"lastName\": \"Tenkie\",\r\n    \"nationality\": \"Italiaanse\",\r\n    \"birthDate\": \"1995-01-10\",\r\n    \"email\": \"henkie.tenkie@customer.com\",\r\n    \"phoneNumber\": 99202912\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/notexist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"notexist"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Aircraft",
+			"item": [
+				{
+					"name": "Add aircraft to airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc40892d-b9f0-4f50-aef0-d27101aab8d0",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"latitude property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"latitude\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"longitude property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"longitude\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"cityName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"cityName\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"codes\" : [\r\n        \"KLM003NoExist\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/AMSNoExist/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"AMSNoExist",
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete aircraft from airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2fec9ac9-29b7-448f-9145-6a817817edea",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"aircraftcode\": \"KLM003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/airport/AMSNoExist/aircraft",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"airport",
+								"AMSNoExist",
+								"aircraft"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1a8cd97f-8007-4603-93e6-a39dd2bf5788",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "86ff0da7-3fc2-4348-baee-972fc805224e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Flight",
+			"item": [
+				{
+					"name": "Create Flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79ad8f68-f02f-4d6c-b5c0-905f938b73f3",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceEconomy property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceEconomy\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceBusiness property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceBusiness\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceFirst property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceFirst\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"aircraftCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"aircraftCode\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"flightPlanCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"flightPlanCode\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 20.00,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM003NoExist\",\r\n    \"flightPlanCode\": \"AMS-TUSNoExist\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find flight by code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1c55e6f9-708f-4e03-9d00-ac8bab50895d",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceEconomy property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceEconomy\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceBusiness property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceBusiness\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceFirst property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceFirst\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"aircraftCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"aircraftCode\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"flightPlanCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"flightPlanCode\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/KL01NoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"KL01NoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "50711b1d-b38d-4b47-9d96-da2a8ec087ac",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights by departure airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f2fcd81f-4e24-4093-9d7e-a6948bfd4463",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/departure/AMSNoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"departure",
+								"AMSNoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all flights by destination airport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "14363ec7-ae0f-42cf-99a5-9fe36155d3c4",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/flight/destination/AmsNoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"destination",
+								"AmsNoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a63fcf4f-590f-4128-afef-cd315903e66f",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"code property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"code\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceEconomy property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceEconomy\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceBusiness property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceBusiness\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"priceFirst property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"priceFirst\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"aircraftCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"aircraftCode\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"flightPlanCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"flightPlanCode\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 500,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM003\",\r\n    \"flightPlanCode\": \"AMS-BER-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flight/AmsNoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"AmsNoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete flight by code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74a94dda-23c0-47c6-b786-065b9f7f9e41",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/flight/KL01NoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"flight",
+								"KL01NoExist"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Delete Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1513692-9fd8-4581-8ff0-a87d2314927b",
+								"exec": [
+									"//postman will give errors if response is set while no json is returned (because delete returns nothing in our application) thats why its checked with an if statement\r",
+									"if (pm.response.code !== 200) {\r",
+									"    var response = pm.response.json();\r",
+									"}\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer/NoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"NoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Findall Employees",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5b0d69b-5c49-4e65-83b6-f79455e07ac2",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Employee By Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70875f30-d26e-47b5-b16e-398c31c67064",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"username property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"username\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"firstName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"firstName\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"lastName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"lastName\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee/NoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								"NoExist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b84ff179-cb9a-47e4-b535-f77741cbe30e",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"firstName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"firstName\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"lastName property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"lastName\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"nationality property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"nationality\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"birthdate property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"birthdate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"email property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"email\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"phoneNumber property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"phoneNumber\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Henkie\",\r\n    \"lastName\": \"Tenkie\",\r\n    \"nationality\": \"Italiaanse\",\r\n    \"birthDate\": \"1995-01-10\",\r\n    \"email\": \"henkie.tenkie@customer.com\",\r\n    \"phoneNumber\": 99202912\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/NoExist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"NoExist"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "Create booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0ec91af-1a4f-4729-925a-b8a02bc101ab",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"price property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"price\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"flightCode property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"flightCode\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"aircraft property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"aircraft\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"flightplan property should not exist\", () => {\r",
+									"    pm.expect(response).to.not.have.property(\"flightplan\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 142323313,\r\n    \"flightId\": 36623232331,\r\n    \"seatType\": \"ECONOMY\",\r\n    \"passengers\": [\r\n        {\r\n            \"id\": null,\r\n            \"firstName\": \"Xander\",\r\n            \"lastName\": \"Vedder\",\r\n            \"email\": \"xander.vedder@outlook.com\",\r\n            \"birthDate\": \"2000-04-24\",\r\n            \"nationality\": \"Nederlandse\"\r\n        },\r\n        {\r\n            \"id\": null,\r\n            \"firstName\": \"Milan\",\r\n            \"lastName\": \"Dol\",\r\n            \"email\": \"milan.outlook.com\",\r\n            \"birthDate\": \"2001-01-03\",\r\n            \"nationality\": \"Nederlandse\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b52ba645-ec44-4c20-9f4f-3683f4cd7920",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be of type object\", () => {\r",
+									"    pm.expect(response).to.be.an(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"KL01\",\r\n    \"priceEconomy\": 20.00,\r\n    \"priceBusiness\": 50.00,\r\n    \"priceFirst\": 200.00,\r\n    \"aircraftCode\": \"KLM0001\",\r\n    \"flightPlanCode\": \"FP01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "661347c7-2c56-4eb9-be12-98213c2c0932",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/booking/12232323",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking",
+								"12232323"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a2eb9741-808f-4f82-8f7e-735ddf5a2453",
+								"exec": [
+									"var response = pm.response.json();\r",
+									"\r",
+									"//-----unhappy flow------\r",
+									"pm.test(\"Response code should be 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give error\", () => {\r",
+									"    pm.response.to.be.error;\r",
+									"    pm.response.to.have.jsonBody(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should give Not Found\", () => {\r",
+									"    pm.expect(response.error).to.be.eql(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/booking/369122323",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking",
+								"369122323"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "448d7ab6-d1b2-42bf-b856-1be5602c96b3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d53d9bc8-afd5-4854-a46c-f326863c0de3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "82f7d88f-ddee-4087-8af8-4ab644d4c5c6",
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"id": "6999d4f8-dfaf-43bb-93f5-ac4b36ab6854",
+			"key": "authToken",
+			"value": ""
+		},
+		{
+			"id": "3eb313ee-740a-4ee5-a2fc-00fa6b801252",
+			"key": "flightId",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
