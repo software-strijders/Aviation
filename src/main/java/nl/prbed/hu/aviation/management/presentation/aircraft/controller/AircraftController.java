@@ -18,6 +18,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -55,11 +56,7 @@ public class AircraftController {
     @GetMapping
     public CollectionModel<EntityModel<AircraftResponseDto>> findAll() {
         var aircraft = this.aircraftService.findAll();
-        var response = aircraft.stream()
-                .map(this::createAircraftResponseDto)
-                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
-                .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
+        return this.createCollectionModel(aircraft);
     }
 
     @ApiOperation(
@@ -69,11 +66,7 @@ public class AircraftController {
     @GetMapping("/{modelName}")
     public CollectionModel<EntityModel<AircraftResponseDto>> findAllByModel(@PathVariable String modelName) {
         var aircraft = this.aircraftService.findAllByType(modelName);
-        var response = aircraft.stream()
-                .map(this::createAircraftResponseDto)
-                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
-                .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
+        return this.createCollectionModel(aircraft);
     }
 
     @ApiOperation(
@@ -110,12 +103,16 @@ public class AircraftController {
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE, "type", response.getType().getModelName()));
     }
 
+    private CollectionModel<EntityModel<AircraftResponseDto>> createCollectionModel(List<Aircraft> aircraft) {
+        var response = aircraft.stream()
+                .map(this::createAircraftResponseDto)
+                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
+                .collect(Collectors.toList());
+        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL));
+    }
+
     private AircraftResponseDto createAircraftResponseDto(Aircraft aircraft) {
-        return new AircraftResponseDto(
-                aircraft.getCode(),
-                aircraft.getType().getModelName(),
-                aircraft.getSeats()
-        );
+        return new AircraftResponseDto(aircraft.getCode(), aircraft.getType().getModelName());
     }
 
     private TypeResponseDto createTypeResponseDto(Type type) {

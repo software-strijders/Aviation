@@ -17,7 +17,4 @@ public class AircraftResponseDto {
 
     @ApiModelProperty(notes = "The model name of the type")
     private final String modelName;
-
-    @ApiModelProperty(notes = "The seats in the aircraft")
-    private final List<Seat> seats;
 }
