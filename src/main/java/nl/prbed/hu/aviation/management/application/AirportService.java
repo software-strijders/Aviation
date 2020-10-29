@@ -35,7 +35,9 @@ public class AirportService {
     public Airport addAircraftToAirport(String airportCode, List<String> aircraftCodes) {
         var entity = findAirportEntityByCode(airportCode);
         entity.getAircraftEntities().addAll(findByAircraftCodes(aircraftCodes));
-        return this.airportFactory.from(this.airportRepository.save(entity));
+        var airport = this.airportFactory.from(this.airportRepository.save(entity));
+        airport.setCity(this.cityFactory.from(entity.getCity()));
+        return airport;
     }
 
     public Airport create(AirportStruct struct) {
@@ -90,7 +92,9 @@ public class AirportService {
         var entity = findAirportEntityByCode(code);
         entity.getAircraftEntities().remove(aircraftRepository.findAircraftEntityByCode(aircraftCode)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, aircraftCode))));
-        return this.airportFactory.from(this.airportRepository.save(entity));
+        var airport = this.airportFactory.from(this.airportRepository.save(entity));
+        airport.setCity(this.cityFactory.from(entity.getCity()));
+        return airport;
     }
 
     private List<AircraftEntity> findByAircraftCodes(List<String> aircraftCodes) {

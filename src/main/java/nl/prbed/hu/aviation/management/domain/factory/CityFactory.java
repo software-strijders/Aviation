@@ -14,7 +14,7 @@ public class CityFactory {
         return new City(
                 entity.getName(),
                 entity.getCountry(),
-                airportFactory.from(entity.getAirportEntities())
+                this.airportFactory.from(entity.getAirportEntities())
         );
     }
 }
