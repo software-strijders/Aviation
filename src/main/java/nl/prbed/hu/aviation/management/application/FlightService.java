@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
+import nl.prbed.hu.aviation.management.data.booking.SpringBookingRepository;
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 public class FlightService {
     private static final String ERROR_MSG = "Could not find flight with code: '%s'";
 
+    private final SpringBookingRepository bookingRepository;
     private final SpringFlightRepository flightRepository;
     private final SpringFlightSeatRepository flightSeatRepository;
 
@@ -51,6 +53,8 @@ public class FlightService {
     public void deleteByCode(String code) {
         var entity = this.flightRepository.findFlightEntityByCode(code)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(ERROR_MSG, code)));
+        this.flightSeatRepository.deleteAllByFlight(entity);
+        this.bookingRepository.deleteAllByFlight(entity);
         this.flightRepository.delete(entity);
     }
 
