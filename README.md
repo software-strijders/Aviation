@@ -220,6 +220,6 @@ For each request we will add an appropriate test script. These tests are written
 
 ### Postman Collections
 
-To get around Postman's limitations of a maximum amount of requests (25), we export our collection **per** iteration. Not only do we export the Postman collection, we also export multiple Postman test runs. We test the happy flow aswell as an unhappy flow that tests our custom exceptions.
+To get around Postman's limitations of a maximum amount of requests (25), we export our collection **per** iteration. Not only do we export the Postman collection, we also export multiple Postman test runs. We test the happy and unhappy flow to make sure the release version of our API is always working.
 
 Every testrun can be found [here](postman/).
