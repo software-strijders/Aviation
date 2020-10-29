@@ -1,0 +1,1320 @@
+{
+	"id": "d1f7dc91-795a-4522-bb22-30c1923ca4e4",
+	"name": "Luchtvaart systeem Test Suite",
+	"timestamp": "2020-10-29T11:03:28.389Z",
+	"collection_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+	"folder_id": 0,
+	"environment_id": "8c324227-78db-41e1-90ca-0d7c3f57b5f1",
+	"totalPass": 117,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+			"name": "Login",
+			"url": "http://localhost:8080/api/login",
+			"time": 342,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				342
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "b91406a8-0216-4696-a21f-5d7f86115c96",
+			"name": "Get all Customers",
+			"url": "http://localhost:8080/api/customer",
+			"time": 122,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"There should not be an unhappy flow statuscode": true,
+				"Response should be of type object": true,
+				"Response should have property customers": true,
+				"Customers property should be of type array": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should have property customers": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Customers property should be of type array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				122
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"There should not be an unhappy flow statuscode": true,
+					"Response should be of type object": true,
+					"Response should have property customers": true,
+					"Customers property should be of type array": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "d0287a32-40d6-4a27-b6c4-b2a56e9c65ab",
+			"name": "Get Customer by id",
+			"url": "http://localhost:8080/api/customer/22",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"There should not be an unhappy flow statuscode": true,
+				"Response should be of type object": true,
+				"id property should exist": true,
+				"UserId should be correct": true,
+				"FirstName property should exist": true,
+				"FirstName should be correct": true,
+				"LastName property should exist": true,
+				"LastName should be correct": true,
+				"Nationality property should exist": true,
+				"Nationality should be correct": true,
+				"Birthdate property should exist": true,
+				"Birthdate should be correct": true,
+				"Email property should exist": true,
+				"Email should be correct": true,
+				"Phonenumber property should exist": true,
+				"Phonenumber should be correct": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"UserId should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FirstName property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FirstName should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"LastName property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"LastName should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nationality property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nationality should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Birthdate property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Birthdate should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Email property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Email should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Phonenumber property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Phonenumber should be correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"There should not be an unhappy flow statuscode": true,
+					"Response should be of type object": true,
+					"id property should exist": true,
+					"UserId should be correct": true,
+					"FirstName property should exist": true,
+					"FirstName should be correct": true,
+					"LastName property should exist": true,
+					"LastName should be correct": true,
+					"Nationality property should exist": true,
+					"Nationality should be correct": true,
+					"Birthdate property should exist": true,
+					"Birthdate should be correct": true,
+					"Email property should exist": true,
+					"Email should be correct": true,
+					"Phonenumber property should exist": true,
+					"Phonenumber should be correct": true
+				}
+			]
+		},
+		{
+			"id": "6dcbe36a-eb19-4ad2-9365-381f45db1855",
+			"name": "Update Customer",
+			"url": "http://localhost:8080/api/customer/henk.tenk@gmail.com",
+			"time": 282,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"There should not be an unhappy flow statuscode": true,
+				"Response should be of type object": true,
+				"id property should exist": true,
+				"id should be correct": true,
+				"FirstName property should exist": true,
+				"FirstName should be correct": true,
+				"LastName property should exist": true,
+				"LastName should be correct": true,
+				"Nationality property should exist": true,
+				"Nationality should be correct": true,
+				"Birthdate property should exist": true,
+				"Birthdate should be correct": true,
+				"Email property should exist": true,
+				"Email should be correct": true,
+				"Phonenumber property should exist": true,
+				"Phonenumber should be correct": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FirstName property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FirstName should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"LastName property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"LastName should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nationality property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nationality should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Birthdate property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Birthdate should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Email property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Email should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Phonenumber property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Phonenumber should be correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				282
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"There should not be an unhappy flow statuscode": true,
+					"Response should be of type object": true,
+					"id property should exist": true,
+					"id should be correct": true,
+					"FirstName property should exist": true,
+					"FirstName should be correct": true,
+					"LastName property should exist": true,
+					"LastName should be correct": true,
+					"Nationality property should exist": true,
+					"Nationality should be correct": true,
+					"Birthdate property should exist": true,
+					"Birthdate should be correct": true,
+					"Email property should exist": true,
+					"Email should be correct": true,
+					"Phonenumber property should exist": true,
+					"Phonenumber should be correct": true
+				}
+			]
+		},
+		{
+			"id": "8dd60545-a27b-4fdc-acde-ea2cf3301fa5",
+			"name": "Delete Customer",
+			"url": "http://localhost:8080/api/customer/sophie.jansen@hotmail.com",
+			"time": 77,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"There should not be an unhappy flow statuscode": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"There should not be an unhappy flow statuscode": true
+				}
+			]
+		},
+		{
+			"id": "28a093ab-fdc1-4f9b-bf26-dd9f634d56a9",
+			"name": "Add aircraft to airport",
+			"url": "http://localhost:8080/api/airport/AMS/aircraft",
+			"time": 250,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"There should not be an unhappy flow statuscode": true,
+				"Response should be of type object": true,
+				"code property should exist": true,
+				"code should be correct": true,
+				"latitude property should exist": true,
+				"latitude should be correct": true,
+				"langitude property should exist": true,
+				"longitude should be correct": true,
+				"cityName property should exist": true,
+				"city should be of the correct type": true,
+				"aircraft property should exist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"latitude property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"latitude should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"langitude property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"longitude should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"cityName property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"city should be of the correct type": {
+					"pass": 1,
+					"fail": 0
+				},
+				"aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				250
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"There should not be an unhappy flow statuscode": true,
+					"Response should be of type object": true,
+					"code property should exist": true,
+					"code should be correct": true,
+					"latitude property should exist": true,
+					"latitude should be correct": true,
+					"langitude property should exist": true,
+					"longitude should be correct": true,
+					"cityName property should exist": true,
+					"city should be of the correct type": true,
+					"aircraft property should exist": true
+				}
+			]
+		},
+		{
+			"id": "81880c89-6210-47dd-9c38-c975b208b928",
+			"name": "Delete aircraft from airport",
+			"url": "http://localhost:8080/api/airport/AMS/aircraft",
+			"time": 50,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"There should not be an unhappy flow statuscode": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"There should not be an unhappy flow statuscode": true
+				}
+			]
+		},
+		{
+			"id": "7b75d7a5-65d6-4c5f-858c-b31ce8f5354d",
+			"name": "Create Flight",
+			"url": "http://localhost:8080/api/flight",
+			"time": 594,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"There should not be an unhappy flow statuscode": true,
+				"Response should be of type object": true,
+				"Code property should exist": true,
+				"Code should be correct": true,
+				"PriceEconomy property should exist": true,
+				"PriceEconomy should be correct": true,
+				"PriceBusiness property should exist": true,
+				"PriceBusiness should be correct": true,
+				"PriceFirst property should exist": true,
+				"PriceFirst should be correct": true,
+				"AircraftCode property should exist": true,
+				"Price should be correct": true,
+				"FlightPlanCode property should exist": true,
+				"FlightPlanCode should be correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There should not be an unhappy flow statuscode": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Code should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceEconomy property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceEconomy should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceBusiness property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceBusiness should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceFirst property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"PriceFirst should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"AircraftCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightPlanCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightPlanCode should be correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				594
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"There should not be an unhappy flow statuscode": true,
+					"Response should be of type object": true,
+					"Code property should exist": true,
+					"Code should be correct": true,
+					"PriceEconomy property should exist": true,
+					"PriceEconomy should be correct": true,
+					"PriceBusiness property should exist": true,
+					"PriceBusiness should be correct": true,
+					"PriceFirst property should exist": true,
+					"PriceFirst should be correct": true,
+					"AircraftCode property should exist": true,
+					"Price should be correct": true,
+					"FlightPlanCode property should exist": true,
+					"FlightPlanCode should be correct": true
+				}
+			]
+		},
+		{
+			"id": "0b87b877-613e-47c5-b4c2-8961ec07516a",
+			"name": "Find flight by code",
+			"url": "http://localhost:8080/api/flight/KL01",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				76
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "689e0050-1846-457d-9553-8101af5c8533",
+			"name": "Find all flights",
+			"url": "http://localhost:8080/api/flight",
+			"time": 68,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				68
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "82b7ead3-00ad-4ab6-ad05-4885be7983de",
+			"name": "Find all flights by departure airport",
+			"url": "http://localhost:8080/api/flight/departure/AMS",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "4457d6ab-0429-4820-a512-58cf328cf96a",
+			"name": "Find all flights by destination airport",
+			"url": "http://localhost:8080/api/flight/destination/LEL",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "13a8b1bd-18dc-4986-b4ef-74d72fe69db9",
+			"name": "Update Flight",
+			"url": "http://localhost:8080/api/flight/KL01",
+			"time": 75,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				75
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7ef88647-86ed-49eb-b375-9c8561e6653c",
+			"name": "Delete Employee",
+			"url": "http://localhost:8080/api/employee/henk.tenk@aviation.com",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "63e54241-09b1-4e91-98ed-034dcf5297a9",
+			"name": "Findall Employees",
+			"url": "http://localhost:8080/api/employee",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9392944b-9390-4a84-8471-c753e6cd0516",
+			"name": "Find Employee By Username",
+			"url": "http://localhost:8080/api/employee/admin",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "612da652-7c31-453b-aa51-1356d612137a",
+			"name": "Update Employee",
+			"url": "http://localhost:8080/api/employee/xander.vedder@aviation.com",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "630e1ad7-ccc6-4b25-b270-3729fb097f10",
+			"name": "Create booking",
+			"url": "http://localhost:8080/api/booking",
+			"time": 134,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should be of type object": true,
+				"Price property should exist": true,
+				"Price should be correct": true,
+				"FlightCode property should exist": true,
+				"FlightCode should be correct": true,
+				"Aircraft property should exist": true,
+				"Flightplan property should exist": true,
+				"Flightplan property should be of type object": true,
+				"Passengers property should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should be of type object": true,
+					"Price property should exist": true,
+					"Price should be correct": true,
+					"FlightCode property should exist": true,
+					"FlightCode should be correct": true,
+					"Aircraft property should exist": true,
+					"Flightplan property should exist": true,
+					"Flightplan property should be of type object": true,
+					"Passengers property should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "03f7de0b-bdba-40ba-a077-02f02a3d3b05",
+			"name": "Find all bookings",
+			"url": "http://localhost:8080/api/booking",
+			"time": 89,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				89
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "d7bc5f59-d988-45a7-a5a3-c77f3f9c92c8",
+			"name": "Find by customer",
+			"url": "http://localhost:8080/api/booking/12",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true
+				}
+			]
+		},
+		{
+			"id": "b0a816a1-9f85-42d3-b263-c3e727ec15d6",
+			"name": "Update booking",
+			"url": "http://localhost:8080/api/booking/36903",
+			"time": 82,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true,
+				"FlightCode property should exist": true,
+				"Aircraft property should exist": true,
+				"Flightplan property should exist": true,
+				"Passengers property should exist": true,
+				"HATEOAS should be present": true,
+				"_links should be of type object": true,
+				"Self should be present": true,
+				"Find should be of type array": true,
+				"Findall should be of type array": true,
+				"Delete should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"HATEOAS should be present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"_links should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Self should be present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Find should be of type array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Findall should be of type array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Delete should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				82
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true,
+					"FlightCode property should exist": true,
+					"Aircraft property should exist": true,
+					"Flightplan property should exist": true,
+					"Passengers property should exist": true,
+					"HATEOAS should be present": true,
+					"_links should be of type object": true,
+					"Self should be present": true,
+					"Find should be of type array": true,
+					"Findall should be of type array": true,
+					"Delete should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "c3aac895-68f9-487c-8343-2a14560efd48",
+			"name": "Delete booking",
+			"url": "http://localhost:8080/api/booking/36903",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3eacd481-5e52-43c7-9d27-d13879c08a1e",
+			"name": "Delete flight by code",
+			"url": "http://localhost:8080/api/flight/KL01",
+			"time": 817,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				817
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "505c4066-4afc-4775-95ec-388ff904661e",
+			"name": "Logout",
+			"url": "http://localhost:8080/api/login",
+			"time": 127,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				127
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should not give error": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3421,
+	"collection": {
+		"requests": [
+			{
+				"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+				"method": "POST"
+			},
+			{
+				"id": "b91406a8-0216-4696-a21f-5d7f86115c96",
+				"method": "GET"
+			},
+			{
+				"id": "d0287a32-40d6-4a27-b6c4-b2a56e9c65ab",
+				"method": "GET"
+			},
+			{
+				"id": "6dcbe36a-eb19-4ad2-9365-381f45db1855",
+				"method": "PATCH"
+			},
+			{
+				"id": "8dd60545-a27b-4fdc-acde-ea2cf3301fa5",
+				"method": "DELETE"
+			},
+			{
+				"id": "28a093ab-fdc1-4f9b-bf26-dd9f634d56a9",
+				"method": "PATCH"
+			},
+			{
+				"id": "81880c89-6210-47dd-9c38-c975b208b928",
+				"method": "DELETE"
+			},
+			{
+				"id": "7b75d7a5-65d6-4c5f-858c-b31ce8f5354d",
+				"method": "POST"
+			},
+			{
+				"id": "0b87b877-613e-47c5-b4c2-8961ec07516a",
+				"method": "GET"
+			},
+			{
+				"id": "689e0050-1846-457d-9553-8101af5c8533",
+				"method": "GET"
+			},
+			{
+				"id": "82b7ead3-00ad-4ab6-ad05-4885be7983de",
+				"method": "GET"
+			},
+			{
+				"id": "4457d6ab-0429-4820-a512-58cf328cf96a",
+				"method": "GET"
+			},
+			{
+				"id": "13a8b1bd-18dc-4986-b4ef-74d72fe69db9",
+				"method": "PATCH"
+			},
+			{
+				"id": "7ef88647-86ed-49eb-b375-9c8561e6653c",
+				"method": "DELETE"
+			},
+			{
+				"id": "63e54241-09b1-4e91-98ed-034dcf5297a9",
+				"method": "GET"
+			},
+			{
+				"id": "9392944b-9390-4a84-8471-c753e6cd0516",
+				"method": "GET"
+			},
+			{
+				"id": "612da652-7c31-453b-aa51-1356d612137a",
+				"method": "PATCH"
+			},
+			{
+				"id": "630e1ad7-ccc6-4b25-b270-3729fb097f10",
+				"method": "POST"
+			},
+			{
+				"id": "03f7de0b-bdba-40ba-a077-02f02a3d3b05",
+				"method": "GET"
+			},
+			{
+				"id": "d7bc5f59-d988-45a7-a5a3-c77f3f9c92c8",
+				"method": "GET"
+			},
+			{
+				"id": "b0a816a1-9f85-42d3-b263-c3e727ec15d6",
+				"method": "PATCH"
+			},
+			{
+				"id": "c3aac895-68f9-487c-8343-2a14560efd48",
+				"method": "DELETE"
+			},
+			{
+				"id": "3eacd481-5e52-43c7-9d27-d13879c08a1e",
+				"method": "DELETE"
+			},
+			{
+				"id": "505c4066-4afc-4775-95ec-388ff904661e",
+				"method": "POST"
+			}
+		]
+	}
+}
