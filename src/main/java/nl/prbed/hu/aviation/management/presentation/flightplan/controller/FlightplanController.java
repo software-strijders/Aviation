@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.management.presentation.flightplan.controller;
 
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightplanService;
 import nl.prbed.hu.aviation.management.domain.flight.Flightplan;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
@@ -12,13 +12,15 @@ import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
 @RestController
+@Secured("ROLE_EMPLOYEE")
+@RequiredArgsConstructor
 @RequestMapping("/flightplan")
-@AllArgsConstructor
 public class FlightplanController {
     private final FlightplanDtoMapper mapper = FlightplanDtoMapper.instance;
     private final FlightplanService flightplanService;
