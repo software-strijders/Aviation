@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.management.presentation.aircraft.controller;
 
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.TypeService;
 import nl.prbed.hu.aviation.management.domain.Type;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Secured("ROLE_EMPLOYEE")
 @RequestMapping("/aircraft")
 public class AircraftController {

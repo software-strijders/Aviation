@@ -26,6 +26,6 @@ public class Aircraft {
     private List<Flight> past;
 
     public static Builder create() {
-        return new AircraftBuilder(new SeatFactory(new PassengerFactory()));
+        return new AircraftBuilder(new SeatFactory());
     }
 }

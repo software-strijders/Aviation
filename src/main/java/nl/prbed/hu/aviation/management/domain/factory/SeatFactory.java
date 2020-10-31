@@ -1,6 +1,5 @@
 package nl.prbed.hu.aviation.management.domain.factory;
 
-import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.domain.Seat;
 import nl.prbed.hu.aviation.management.domain.SeatType;
@@ -10,11 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 public class SeatFactory {
-    private final PassengerFactory passengerFactory;
-
     public Seat from(SeatEntity entity) {
+        // TODO: Maybe we could add more to the seat, like seatNumber?
         return new Seat(entity.getSeatType(), null);
     }
 
