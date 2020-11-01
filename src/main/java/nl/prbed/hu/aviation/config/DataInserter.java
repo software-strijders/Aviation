@@ -25,6 +25,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
@@ -169,7 +170,7 @@ public class DataInserter {
         this.logger.info(String.format("Inserting %s...", entityName));
         try {
             runnable.run();
-        } catch (Exception exception) {
+        } catch (IOException exception) {
             this.logger.warn(exception.getLocalizedMessage());
         }
         this.logger.info("Inserting complete!");
