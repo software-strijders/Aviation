@@ -40,6 +40,7 @@ public class FlightService {
                 flightStruct.priceEconomy,
                 flightStruct.priceBusiness,
                 flightStruct.priceFirst,
+                flightStruct.departureDateTime,
                 null,
                 aircraft,
                 flightplan,
@@ -65,6 +66,7 @@ public class FlightService {
         entity.setPriceFirst(flightStruct.priceFirst);
         entity.setPriceBusiness(flightStruct.priceBusiness);
         entity.setPriceEconomy(flightStruct.priceEconomy);
+        entity.setDateTime(flightStruct.departureDateTime);
         entity.setAircraft(this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode));
         entity.setFlightplan(this.flightplanService.findFlightplanEntityByCode(flightStruct.flightPlanCode));
         return factory.from(flightRepository.save(entity));

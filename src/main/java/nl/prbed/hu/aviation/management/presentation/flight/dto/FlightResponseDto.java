@@ -1,9 +1,13 @@
 package nl.prbed.hu.aviation.management.presentation.flight.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor
@@ -23,6 +27,10 @@ public class FlightResponseDto {
 
     @ApiModelProperty(notes = "The price of the flight in first class")
     private final double priceFirst;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @ApiModelProperty(notes = "'The departure of the flight in date and time")
+    private final LocalDateTime departureDateTime;
 
     @ApiModelProperty(notes = "The code of the aircraft")
     private final String aircraftCode;

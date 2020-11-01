@@ -7,6 +7,7 @@ import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
 import nl.prbed.hu.aviation.management.data.flightplan.FlightplanEntity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class FlightEntity {
     private double priceEconomy;
     private double priceBusiness;
     private double priceFirst;
+    private LocalDateTime dateTime;
 
     @OneToMany
     private List<BookingEntity> bookings;
@@ -41,6 +43,7 @@ public class FlightEntity {
             double priceEconomy,
             double priceBusiness,
             double priceFirst,
+            LocalDateTime dateTime,
             List<BookingEntity> bookings,
             AircraftEntity aircraft,
             FlightplanEntity flightplan,
@@ -50,6 +53,7 @@ public class FlightEntity {
         this.priceEconomy = priceEconomy;
         this.priceBusiness = priceBusiness;
         this.priceFirst = priceFirst;
+        this.dateTime = dateTime;
         this.bookings = bookings;
         this.aircraft = aircraft;
         this.flightplan = flightplan;
