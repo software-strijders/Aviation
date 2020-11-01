@@ -10,6 +10,10 @@ import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateTypeDt
 import nl.prbed.hu.aviation.management.presentation.airport.dto.AirportDto;
 import nl.prbed.hu.aviation.management.presentation.airport.dto.CreateCityDto;
 import nl.prbed.hu.aviation.management.presentation.airport.mapper.AirportDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
+import nl.prbed.hu.aviation.management.presentation.booking.mapper.CreateBookingDtoMapper;
+import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
+import nl.prbed.hu.aviation.management.presentation.flight.mapper.FlightDtoMapper;
 import nl.prbed.hu.aviation.management.presentation.flightplan.dto.FlightplanDto;
 import nl.prbed.hu.aviation.management.presentation.flightplan.mapper.FlightplanDtoMapper;
 import nl.prbed.hu.aviation.security.application.UserService;
@@ -21,7 +25,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
@@ -32,22 +35,28 @@ public class DataInserter {
     private static final String DIR = "test-data/";
     private static final String AIRCRAFT = DIR + "aircraft.json";
     private static final String AIRPORT = DIR + "airport.json";
+    private static final String BOOKING = DIR + "booking.json";
     private static final String CITY = DIR + "city.json";
     private static final String CUSTOMER = DIR + "customer.json";
     private static final String EMPLOYEE = DIR + "employee.json";
+    private static final String FLIGHT = DIR + "flight.json";
     private static final String FLIGHTPLAN = DIR + "flightplan.json";
     private static final String TYPE = DIR + "type.json";
 
     private final Logger logger = LoggerFactory.getLogger(DataInserter.class);
     private final ObjectMapper mapper = new ObjectMapper();
     private final AirportDtoMapper airportDtoMapper = AirportDtoMapper.instance;
-    private final CreateTypeDtoMapper createTypeDtoMapper = CreateTypeDtoMapper.instance;
     private final CreateAircraftDtoMapper createAircraftDtoMapper = CreateAircraftDtoMapper.instance;
+    private final CreateTypeDtoMapper createTypeDtoMapper = CreateTypeDtoMapper.instance;
+    private final CreateBookingDtoMapper createBookingDtoMapper = CreateBookingDtoMapper.instance;
+    private final FlightDtoMapper flightDtoMapper = FlightDtoMapper.instance;
     private final FlightplanDtoMapper flightplanDtoMapper = FlightplanDtoMapper.instance;
 
     private final AircraftService aircraftService;
     private final AirportService airportService;
+    private final BookingService bookingService;
     private final CityService cityService;
+    private final FlightService flightService;
     private final FlightplanService flightplanService;
     private final UserService userService;
     private final TypeService typeService;
@@ -65,6 +74,8 @@ public class DataInserter {
             this.insertTypes();
             this.insertAircraft();
             this.insertFlightplans();
+            this.insertFlights();
+            this.insertBookings();
         } catch (Exception e) {
             this.logger.warn(e.getMessage());
             message = "Data already present, skipping...";
@@ -74,20 +85,15 @@ public class DataInserter {
     }
 
     private void insertEmployees() {
-        this.logger.info("Inserting employees...");
-        try {
+        this.executeInsertion("employees", () -> {
             var dtos = this.mapper.readValue(Paths.get(EMPLOYEE).toFile(), EmployeeRegisterationDto[].class);
             for (var dto : dtos)
                 this.userService.registerEmployee(dto.username, dto.password, dto.firstName, dto.lastName);
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertCustomers() {
-        this.logger.info("Inserting customers...");
-        try {
+        this.executeInsertion("customers", () -> {
             var dtos = this.mapper.readValue(Paths.get(CUSTOMER).toFile(), CustomerRegistrationDto[].class);
             for (var dto : dtos)
                 this.userService.registerCustomer(
@@ -100,68 +106,71 @@ public class DataInserter {
                         dto.email,
                         dto.phoneNumber
                 );
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertCities() {
-        this.logger.info("Inserting cities...");
-        try {
+        this.executeInsertion("cities", () -> {
             var dtos = this.mapper.readValue(Paths.get(CITY).toFile(), CreateCityDto[].class);
             for (var dto : dtos)
                 this.cityService.create(dto.name, dto.country);
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertAirports() {
-        this.logger.info("Inserting airports...");
-        try {
+        this.executeInsertion("airports", () -> {
             var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class);
             for (var dto : dtos)
                 this.airportService.create(this.airportDtoMapper.toAirportStruct(dto));
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertTypes() {
-        this.logger.info("Inserting types...");
-        try {
+        this.executeInsertion("types", () -> {
             var dtos = this.mapper.readValue(Paths.get(TYPE).toFile(), CreateTypeDto[].class);
             for (var dto : dtos)
                 this.typeService.create(this.createTypeDtoMapper.toTypeStruct(dto));
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertAircraft() {
-        this.logger.info("Inserting aircraft...");
-        try {
+        this.executeInsertion("aircraft", () -> {
             var dtos = this.mapper.readValue(Paths.get(AIRCRAFT).toFile(), CreateAircraftDto[].class);
             for (var dto : dtos)
                 this.aircraftService.create(this.createAircraftDtoMapper.toAircraftStruct(dto));
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
-        }
-        this.logger.info("Inserting complete!");
+        });
     }
 
     private void insertFlightplans() {
-        this.logger.info("Inserting flightplans...");
-        try {
+        this.executeInsertion("flightplans", () -> {
             var dtos = this.mapper.readValue(Paths.get(FLIGHTPLAN).toFile(), FlightplanDto[].class);
             for (var dto : dtos)
                 this.flightplanService.create(this.flightplanDtoMapper.toFlightplanStruct(dto));
-        } catch (IOException e) {
-            this.logger.warn(e.getLocalizedMessage());
+        });
+    }
+
+    private void insertFlights() {
+        this.executeInsertion("flights", () -> {
+            var dtos = this.mapper.readValue(Paths.get(FLIGHT).toFile(), FlightDto[].class);
+            for (var dto : dtos)
+                this.flightService.create(this.flightDtoMapper.toFlightStruct(dto));
+        });
+    }
+
+    private void insertBookings() {
+        this.executeInsertion("bookings", () -> {
+            var dtos = this.mapper.readValue(Paths.get(BOOKING).toFile(), CreateBookingDto[].class);
+            for (var dto : dtos)
+                this.bookingService.create(this.createBookingDtoMapper.toBookingStruct(dto));
+        });
+    }
+
+    private void executeInsertion(String entityName, Runnable runnable) {
+        this.logger.info(String.format("Inserting %s...", entityName));
+        try {
+            runnable.run();
+        } catch (Exception exception) {
+            this.logger.warn(exception.getLocalizedMessage());
         }
         this.logger.info("Inserting complete!");
     }
