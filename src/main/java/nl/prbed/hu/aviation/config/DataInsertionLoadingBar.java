@@ -36,6 +36,10 @@ public class DataInsertionLoadingBar {
         this.print();
     }
 
+    public void clear() {
+        System.out.print('\r');
+    }
+
     private void print() {
         System.out.printf(
                 FORMAT,

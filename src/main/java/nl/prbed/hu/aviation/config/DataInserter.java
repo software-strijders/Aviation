@@ -178,8 +178,13 @@ public class DataInserter {
     private void executeInsertion(String entityName, Object[] dtos, Inserter inserter) {
         var loadingBar = DataInsertionLoadingBar.create(entityName, dtos.length);
         for (var dto : dtos) {
-            loadingBar.load();
-            inserter.insert(dto);
+            try {
+                loadingBar.load();
+                inserter.insert(dto);
+            } catch (Exception e) {
+                loadingBar.clear();
+                throw e;
+            }
         }
         loadingBar.done();
     }
