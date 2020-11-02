@@ -15,16 +15,17 @@ public class PassengerFactory {
     private final SeatFactory seatFactory;
 
     public Passenger from(PassengerEntity entity) {
+        var flightSeats = entity.getFlightSeats();
         return new Passenger(
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getBirthdate(),
                 entity.getNationality(),
                 entity.getEmail(),
-                entity.getFlightSeats().stream()
+                flightSeats != null ? entity.getFlightSeats().stream()
                         .map(FlightSeatEntity::getSeat)
                         .map(seatFactory::from)
-                        .collect(Collectors.toList()),
+                        .collect(Collectors.toList()) : null,
                 null
         );
     }
