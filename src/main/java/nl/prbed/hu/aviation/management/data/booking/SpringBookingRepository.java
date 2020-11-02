@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface SpringBookingRepository extends JpaRepository<BookingEntity, Long> {
     List<BookingEntity> findByCustomer(CustomerEntity customerEntity);
-    Optional<BookingEntity> findBookingEntityByConfirmedAndCustomer(CustomerEntity customer, boolean confirmed);
+    Optional<BookingEntity> findBookingEntityByConfirmedAndCustomer(boolean confirmed, CustomerEntity customerEntity);
     void deleteAllByFlight(FlightEntity entity);
 }

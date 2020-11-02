@@ -3,6 +3,8 @@ package nl.prbed.hu.aviation.management.presentation.booking.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.BookingService;
+import nl.prbed.hu.aviation.management.application.CustomerService;
+import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
@@ -12,9 +14,12 @@ import nl.prbed.hu.aviation.management.presentation.booking.mapper.UpdateBooking
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
+import nl.prbed.hu.aviation.security.application.UserService;
+import nl.prbed.hu.aviation.security.data.UserProfile;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +30,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RequestMapping("/booking")
 public class BookingController {
-    private final BookingService service;
+    private final BookingService bookingService;
+    private final UserService userService;
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
@@ -34,19 +40,19 @@ public class BookingController {
     @ApiOperation(value = "Delete a booking")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        this.service.deleteById(id);
+        this.bookingService.deleteById(id);
     }
 
     @ApiOperation(value = "Find all bookings")
     @GetMapping
     public CollectionModel<EntityModel<BookingResponseDto>> findAll() {
-        return this.createCollectionModel(this.service.findAll());
+        return this.createCollectionModel(this.bookingService.findAll());
     }
 
     @ApiOperation(value = "Find all bookings from a specific customer")
     @GetMapping("/{id}")
     public CollectionModel<EntityModel<BookingResponseDto>> findByCustomer(@PathVariable Long id) {
-        return this.createCollectionModel(this.service.findByCustomer(id));
+        return this.createCollectionModel(this.bookingService.findByCustomer(id));
     }
 
     @ApiOperation(
@@ -55,7 +61,7 @@ public class BookingController {
     )
     @PatchMapping("/{id}")
     public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto) {
-        var booking = this.service.update(id, this.updateMapper.toUpdateBookingStruct(dto));
+        var booking = this.bookingService.update(id, this.updateMapper.toUpdateBookingStruct(dto));
         var response = this.createResponseDto(booking);
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, id.toString()));
     }
@@ -65,8 +71,16 @@ public class BookingController {
             notes = "Provide the details of an booking."
     )
     @PostMapping
-    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
-        var booking = this.service.create(this.mapper.toBookingStruct(dto));
+    @Secured("ROLE_CUSTOMER")
+    public EntityModel<BookingResponseDto> create(Authentication authentication, @RequestBody CreateBookingDto dto) {
+        UserProfile profile = (UserProfile) authentication.getPrincipal();
+        var customer = userService.findCustomerByUsername(profile.getUsername());
+
+        if(bookingService.findUnconfirmed(customer) != null) {
+            throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
+        }
+
+        var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
         var response = this.createResponseDto(booking);
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
     }

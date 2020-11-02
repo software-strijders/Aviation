@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.security.application;
 
+import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.security.application.exception.UserAlreadyExistsException;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.management.data.user.EmployeeEntity;
@@ -56,6 +57,11 @@ public class UserService implements UserDetailsService {
         var user = this.userRepository.findByUsername(username);
         if (user.isPresent())
             throw new UserAlreadyExistsException(username);
+    }
+
+    public CustomerEntity findCustomerByUsername(String username) {
+        return (CustomerEntity) this.userRepository.findByUsernameAndCustomer(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     private void save(User user) {

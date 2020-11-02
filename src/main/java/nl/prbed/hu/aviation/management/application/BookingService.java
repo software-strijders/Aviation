@@ -16,6 +16,7 @@ import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
+import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
@@ -107,6 +108,15 @@ public class BookingService {
         return this.bookingFactory.from(this.bookingRepository.save(booking));
     }
 
+    public Booking findUnconfirmed(CustomerEntity customer) {
+        try {
+            var entity = this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer).get();
+            return this.bookingFactory.from(entity);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     private void addBookingToCustomer(BookingEntity entity, Long id) {
         var customer = this.findCustomerEntityById(id);
         customer.addBooking(entity);
@@ -164,12 +174,6 @@ public class BookingService {
 
     private CustomerEntity map(User user) {
         return (CustomerEntity) user;
-    }
-
-    private Booking findUnconfirmed(CustomerEntity customer) {
-        var entity = this.bookingRepository.findBookingEntityByConfirmedAndCustomer(customer, false)
-                .orElseThrow(() -> new EntityNotFoundException(BOOKING_ERROR_MSG));
-        return this.bookingFactory.from(entity);
     }
 
     private void removeFlightSeatReferences(List<FlightSeatEntity> flightSeats, List<PassengerEntity> passengers) {
