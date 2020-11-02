@@ -7,7 +7,6 @@ import nl.prbed.hu.aviation.management.domain.Employee;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
-import nl.prbed.hu.aviation.management.presentation.user.dto.EmployeeOverviewResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.EmployeeResponseDto;
 import nl.prbed.hu.aviation.management.presentation.user.dto.EmployeeUpdateDto;
 import org.springframework.hateoas.CollectionModel;
