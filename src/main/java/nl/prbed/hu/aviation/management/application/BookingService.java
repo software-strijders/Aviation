@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AlreadyBookedException;
+import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.application.exception.SeatsUnavailableException;
 import nl.prbed.hu.aviation.management.application.struct.BookingStruct;
@@ -52,6 +53,8 @@ public class BookingService {
         var flight = this.flightFactory.from(flightEntity);
         var customer = this.findCustomerEntityById(bookingStruct.customerId);
         // TODO: this should also check for passengers that already have a seat (next iteration):
+        if(this.findUnconfirmed(customer) != null)
+            throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
         else if (!flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))

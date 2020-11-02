@@ -72,14 +72,7 @@ public class BookingController {
     )
     @PostMapping
     @Secured("ROLE_CUSTOMER")
-    public EntityModel<BookingResponseDto> create(Authentication authentication, @RequestBody CreateBookingDto dto) {
-        UserProfile profile = (UserProfile) authentication.getPrincipal();
-        var customer = userService.findCustomerByUsername(profile.getUsername());
-
-        if(bookingService.findUnconfirmed(customer) != null) {
-            throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
-        }
-
+    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
         var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
         var response = this.createResponseDto(booking);
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
