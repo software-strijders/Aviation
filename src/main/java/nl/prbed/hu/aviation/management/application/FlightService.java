@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
+import nl.prbed.hu.aviation.management.application.exception.SearchFlightDetailsException;
 import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.booking.SpringBookingRepository;
@@ -9,12 +10,18 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
+import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -91,6 +98,26 @@ public class FlightService {
     public List<Flight> findAllFlights() {
         var entities = this.flightRepository.findAll();
         return this.factory.from(entities);
+    }
+
+    public List<Flight> findAvailableFlights(Map<String, String> searchDetails) throws SearchFlightDetailsException {
+        var availableFlights = new ArrayList<Flight>();
+        try {
+            var date = LocalDate.parse(searchDetails.get("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    .withLocale(Locale.ENGLISH));
+            var seatType = SeatType.fromString(searchDetails.get("flightClass"));
+            var passengerAmount = Integer.parseInt(searchDetails.get("passengers"));
+            if (date.isBefore(LocalDate.now()))
+                throw new SearchFlightDetailsException("Date not valid");
+            for (Flight flight : this.findAllFlights()) {
+                if (flight.areSeatsAvailable(seatType, passengerAmount))
+                    availableFlights.add(flight);
+            }
+        }
+        catch (Exception e) {
+            throw new SearchFlightDetailsException("Search details not valid");
+        }
+        return availableFlights;
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
