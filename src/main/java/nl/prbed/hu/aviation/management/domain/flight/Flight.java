@@ -7,6 +7,7 @@ import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,7 @@ public class Flight {
     private double priceEconomy;
     private double priceBusiness;
     private double priceFirst;
+    private LocalDateTime departureDateTime;
     private List<Booking> bookings;
     private List<Seat> seats;
     private Aircraft aircraft;

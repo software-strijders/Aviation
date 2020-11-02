@@ -1,0 +1,902 @@
+[
+  {
+    "code": "KL01",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM001",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL02",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM002",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL03",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM003",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL04",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM004",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL05",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM005",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL06",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM006",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL07",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM007",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL08",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM008",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL09",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM009",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL10",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-01-10 12:00",
+    "aircraftCode": "KLM010",
+    "flightPlanCode": "AMS-TUS"
+  },
+  {
+    "code": "KL11",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM011",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL12",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM012",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL13",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM013",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL14",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM014",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL15",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM015",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL16",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM016",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL17",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM017",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL18",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM018",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL19",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM019",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL20",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-02-20 19:00",
+    "aircraftCode": "KLM020",
+    "flightPlanCode": "LED-LEX"
+  },
+  {
+    "code": "KL21",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM021",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL22",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM022",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL23",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM023",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL24",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM024",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL25",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM025",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL26",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM026",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL27",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM027",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL28",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM028",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL29",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM029",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL30",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-03-05 22:00",
+    "aircraftCode": "KLM030",
+    "flightPlanCode": "IAD-EVN"
+  },
+  {
+    "code": "KL31",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM031",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL32",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM032",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL33",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM033",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL34",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM034",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL35",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM035",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL36",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM036",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL37",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM037",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL38",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM038",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL39",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM039",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL40",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-17 08:00",
+    "aircraftCode": "KLM040",
+    "flightPlanCode": "CNX-BWN"
+  },
+  {
+    "code": "KL41",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM041",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL42",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM042",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL43",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM043",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL44",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM044",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL45",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM045",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL46",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM046",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL47",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM047",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL48",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM048",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL49",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM049",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL50",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-04-18 15:30",
+    "aircraftCode": "KLM050",
+    "flightPlanCode": "BCN-AYT"
+  },
+  {
+    "code": "KL51",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM051",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL52",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM052",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL53",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM053",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL54",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM054",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL55",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM055",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL56",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM056",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL57",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM057",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL58",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM058",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL59",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM059",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL60",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-05-27 21:15",
+    "aircraftCode": "KLM060",
+    "flightPlanCode": "BLL-BLQ"
+  },
+  {
+    "code": "KL61",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM061",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL62",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM062",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL63",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM063",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL64",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM064",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL65",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM065",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL66",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM066",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL67",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM067",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL68",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM068",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL69",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM069",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL70",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-12 05:45",
+    "aircraftCode": "KLM070",
+    "flightPlanCode": "BWN-CTS"
+  },
+  {
+    "code": "KL71",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM071",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL72",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM072",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL73",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM073",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL74",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM074",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL75",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM075",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL76",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM076",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL77",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM077",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL78",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM078",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL79",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM079",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL80",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-06-16 18:24",
+    "aircraftCode": "KLM080",
+    "flightPlanCode": "FRA-LHR"
+  },
+  {
+    "code": "KL81",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM081",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL82",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM082",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL83",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM083",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL84",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM084",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL85",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM085",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL86",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM086",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL87",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM087",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL88",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM088",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL89",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM089",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL90",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-10 13:20",
+    "aircraftCode": "KLM090",
+    "flightPlanCode": "BRU-CPH"
+  },
+  {
+    "code": "KL91",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM091",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL92",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM092",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL93",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM093",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL94",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM094",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL95",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM095",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL96",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM096",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL97",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM097",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL98",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM098",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL99",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM099",
+    "flightPlanCode": "EIN-BGY"
+  },
+  {
+    "code": "KL100",
+    "priceEconomy": 20.00,
+    "priceBusiness": 50.00,
+    "priceFirst": 200.00,
+    "departureDateTime": "2020-07-19 09:50",
+    "aircraftCode": "KLM100",
+    "flightPlanCode": "EIN-BGY"
+  }
+]

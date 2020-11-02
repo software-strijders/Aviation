@@ -115,6 +115,7 @@ public class FlightController {
                 flight.getPriceFirst(),
                 flight.getPriceBusiness(),
                 flight.getPriceEconomy(),
+                flight.getDepartureDateTime(),
                 flight.getAircraft().getCode(),
                 flight.getFlightplan().getCode()
         );

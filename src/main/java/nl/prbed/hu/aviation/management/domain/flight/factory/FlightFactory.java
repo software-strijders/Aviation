@@ -28,6 +28,7 @@ public class FlightFactory {
                 entity.getPriceEconomy(),
                 entity.getPriceBusiness(),
                 entity.getPriceFirst(),
+                entity.getDateTime(),
                 null,
                 seats != null ? this.flightSeatFactory.from(seats) : null,
                 this.aircraftFactory.from(entity.getAircraft()),
