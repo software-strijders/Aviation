@@ -25,6 +25,7 @@ import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.awt.print.Book;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,6 +61,7 @@ public class BookingService {
         var entity = this.bookingRepository.save(
                 new BookingEntity(
                         flight.getPriceBySeatType(bookingStruct.seatType),
+                        false,
                         this.findCustomerEntityById(bookingStruct.customerId),
                         flightEntity,
                         passengers
@@ -162,6 +164,12 @@ public class BookingService {
 
     private CustomerEntity map(User user) {
         return (CustomerEntity) user;
+    }
+
+    private Booking findUnconfirmed(CustomerEntity customer) {
+        var entity = this.bookingRepository.findBookingEntityByConfirmedAndCustomer(customer, false)
+                .orElseThrow(() -> new EntityNotFoundException(BOOKING_ERROR_MSG));
+        return this.bookingFactory.from(entity);
     }
 
     private void removeFlightSeatReferences(List<FlightSeatEntity> flightSeats, List<PassengerEntity> passengers) {
