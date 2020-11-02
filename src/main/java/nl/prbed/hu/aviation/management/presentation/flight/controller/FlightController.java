@@ -130,9 +130,10 @@ public class FlightController {
             value = "Find available flights",
             notes = "Provide the details for filtering."
     )
+    @Secured("ROLE_CUSTOMER")
     @GetMapping("/customer")
     public CollectionModel<EntityModel<FlightResponseDto>> allAvailableFlights(
-            @RequestParam Map<String, String> allParams) throws SearchFlightDetailsException {
+            @RequestParam Map<String, String> allParams) {
         var flights = flightService.findAvailableFlights(allParams);
         var response = flights.stream()
                 .map(this::createFlightResponseDto)

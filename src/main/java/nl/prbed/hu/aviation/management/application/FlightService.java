@@ -100,24 +100,21 @@ public class FlightService {
         return this.factory.from(entities);
     }
 
-    public List<Flight> findAvailableFlights(Map<String, String> searchDetails) throws SearchFlightDetailsException {
-        var availableFlights = new ArrayList<Flight>();
+    public List<Flight> findAvailableFlights(Map<String, String> searchDetails) {
         try {
-            var date = LocalDate.parse(searchDetails.get("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                    .withLocale(Locale.ENGLISH));
+            var date = LocalDate.parse(
+                    searchDetails.get("date"),
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.ENGLISH)
+            );
             var seatType = SeatType.fromString(searchDetails.get("flightClass"));
             var passengerAmount = Integer.parseInt(searchDetails.get("passengers"));
             if (date.isBefore(LocalDate.now()))
-                throw new SearchFlightDetailsException("Date not valid");
-            for (Flight flight : this.findAllFlights()) {
-                if (flight.areSeatsAvailable(seatType, passengerAmount))
-                    availableFlights.add(flight);
-            }
+                throw new SearchFlightDetailsException("Date is in the past");
+            return this.findAllFlights().stream().filter(flight -> flight.areSeatsAvailable(seatType, passengerAmount))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new SearchFlightDetailsException("Search details invalid");
         }
-        catch (Exception e) {
-            throw new SearchFlightDetailsException("Search details not valid");
-        }
-        return availableFlights;
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {

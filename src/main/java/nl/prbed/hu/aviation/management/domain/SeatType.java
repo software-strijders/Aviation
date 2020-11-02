@@ -17,6 +17,6 @@ public enum SeatType {
 
     public static SeatType fromString(String seat) {
         return Stream.of(SeatType.values()).filter(seatType -> seatType.seat.equals(seat))
-                .findFirst().orElseThrow(() -> new SearchFlightDetailsException("Invalid class"));
+                .findFirst().orElseThrow(() -> new IllegalArgumentException("Invalid class"));
     }
 }
