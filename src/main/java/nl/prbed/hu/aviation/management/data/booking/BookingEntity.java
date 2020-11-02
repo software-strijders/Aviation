@@ -18,9 +18,7 @@ public class BookingEntity {
 
     @Column
     private Double price;
-
-    // TODO: Add this for the use case 'boeking bevestigen'
-    // private Boolean confirmed;
+    private Boolean confirmed;
 
     @ManyToOne
     private CustomerEntity customer;

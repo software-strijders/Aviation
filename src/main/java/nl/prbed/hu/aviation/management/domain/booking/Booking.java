@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Booking {
     private double price;
+    private boolean confirmed;
     private Customer customer;
     private Flight flight;
     private List<Passenger> passengers;
