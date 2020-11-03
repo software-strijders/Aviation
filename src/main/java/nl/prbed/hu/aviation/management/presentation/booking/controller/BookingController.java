@@ -31,7 +31,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/booking")
 public class BookingController {
     private final BookingService bookingService;
-    private final UserService userService;
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
 
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
@@ -75,7 +74,7 @@ public class BookingController {
     public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
         var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
         var response = this.createResponseDto(booking);
-        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.NONE));
+        return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE));
     }
 
     private BookingResponseDto createResponseDto(Booking booking) {

@@ -53,7 +53,7 @@ public class BookingService {
         var flight = this.flightFactory.from(flightEntity);
         var customer = this.findCustomerEntityById(bookingStruct.customerId);
         // TODO: this should also check for passengers that already have a seat (next iteration):
-        if(this.findUnconfirmed(customer) != null)
+        if (this.findUnconfirmed(customer) != null)
             throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
@@ -69,7 +69,8 @@ public class BookingService {
                         this.findCustomerEntityById(bookingStruct.customerId),
                         flightEntity,
                         passengers
-                ));
+                )
+        );
 
         this.addPassengersToFlightSeat(passengers, flightEntity, bookingStruct.seatType);
         this.addBookingToCustomer(entity, bookingStruct.customerId);
@@ -111,10 +112,9 @@ public class BookingService {
         return this.bookingFactory.from(this.bookingRepository.save(booking));
     }
 
-    public Booking findUnconfirmed(CustomerEntity customer) {
+    public BookingEntity findUnconfirmed(CustomerEntity customer) {
         try {
-            var entity = this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer).get();
-            return this.bookingFactory.from(entity);
+            return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer).get();
         } catch (Exception e) {
             return null;
         }

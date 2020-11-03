@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.data.booking;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter @Setter @EqualsAndHashCode
 @Table(name = "passenger")
 public class PassengerEntity {
     @Id
