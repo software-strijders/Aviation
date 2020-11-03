@@ -85,6 +85,11 @@ public class BookingService {
         return bookingFactory.from(booking);
     }
 
+    public void cancelBooking(CustomerEntity customer) {
+        var booking = this.findUnconfirmed(customer);
+        this.deleteById(booking.getId());
+    }
+
     public void deleteById(Long id) {
         var entity = this.bookingRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));

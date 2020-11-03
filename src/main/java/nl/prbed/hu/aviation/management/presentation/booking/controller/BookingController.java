@@ -3,8 +3,6 @@ package nl.prbed.hu.aviation.management.presentation.booking.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.BookingService;
-import nl.prbed.hu.aviation.management.application.CustomerService;
-import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
@@ -16,13 +14,9 @@ import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
 import nl.prbed.hu.aviation.security.application.UserService;
-import nl.prbed.hu.aviation.security.data.User;
-import nl.prbed.hu.aviation.security.data.UserProfile;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -73,12 +67,19 @@ public class BookingController {
     }
 
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
-    @PatchMapping
+    @PatchMapping("/confirm")
     public EntityModel<BookingResponseDto> confirm(@RequestBody CreateBookingDto dto) {
         var customer = userService.findCustomerById(dto.customerId);
         var booking = this.bookingService.confirmBooking(customer);
         var response = this.createResponseDto(booking);
-        return EntityModel.of(response , hateoasDirector.make(HateoasType.UPDATE));
+        return EntityModel.of(response , hateoasDirector.make(HateoasType.UPDATE, "confirm"));
+    }
+
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
+    @DeleteMapping("/cancel")
+    public void cancel(@RequestBody CreateBookingDto dto) {
+        var customer = userService.findCustomerById(dto.customerId);
+        this.bookingService.cancelBooking(customer);
     }
 
     @ApiOperation(
