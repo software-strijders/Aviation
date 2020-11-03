@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.security.application;
 
+import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.security.application.exception.UserAlreadyExistsException;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.management.data.user.EmployeeEntity;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDate;
 
 /**
@@ -56,6 +58,11 @@ public class UserService implements UserDetailsService {
         var user = this.userRepository.findByUsername(username);
         if (user.isPresent())
             throw new UserAlreadyExistsException(username);
+    }
+
+    public CustomerEntity findCustomerById(Long id) {
+        return (CustomerEntity) this.userRepository.findByIdAndCustomer(id)
+                .orElseThrow(() -> new NullPointerException(id.toString()));
     }
 
     private void save(User user) {

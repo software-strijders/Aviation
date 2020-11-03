@@ -80,6 +80,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
                 .setSubject(user.getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + this.expirationInMs))
                 .claim("rol", roles)
+                .claim("id", user.getId())
                 .claim("firstName", user.getFirstName())
                 .claim("lastName", user.getLastName())
                 .compact();

@@ -17,6 +17,9 @@ public class BookingResponseDto {
     @ApiModelProperty(notes = "The price of the booking")
     private final double price;
 
+    @ApiModelProperty(notes = "Is the booking confirmed")
+    private final boolean confirmed;
+
     @ApiModelProperty(notes = "The flight code of the booking")
     private final String flightCode;
 

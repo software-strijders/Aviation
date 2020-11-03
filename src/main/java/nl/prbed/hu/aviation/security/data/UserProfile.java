@@ -1,5 +1,8 @@
 package nl.prbed.hu.aviation.security.data;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * This is a data model.
  *
@@ -7,26 +10,12 @@ package nl.prbed.hu.aviation.security.data;
  * intended for storage purposes. It does not
  * contain a lot of business logic.
  */
+@Getter
+@RequiredArgsConstructor
 public class UserProfile {
+    private final Long id;
     private final String username;
     private final String firstName;
     private final String lastName;
-
-    public UserProfile(String username, String firstName, String lastName) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
+    private final String role;
 }

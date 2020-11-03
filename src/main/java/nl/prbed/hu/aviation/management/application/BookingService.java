@@ -2,6 +2,7 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AlreadyBookedException;
+import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.application.exception.SeatsUnavailableException;
 import nl.prbed.hu.aviation.management.application.struct.BookingStruct;
@@ -16,6 +17,7 @@ import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
+import nl.prbed.hu.aviation.management.domain.Customer;
 import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
@@ -25,7 +27,9 @@ import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.awt.print.Book;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,6 +54,8 @@ public class BookingService {
         var flight = this.flightFactory.from(flightEntity);
         var customer = this.findCustomerEntityById(bookingStruct.customerId);
         // TODO: this should also check for passengers that already have a seat (next iteration):
+        if (this.hasUnconfirmed(customer))
+            throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
         else if (!flight.areSeatsAvailable(bookingStruct.seatType, bookingStruct.passengers.size()))
@@ -60,14 +66,31 @@ public class BookingService {
         var entity = this.bookingRepository.save(
                 new BookingEntity(
                         flight.getPriceBySeatType(bookingStruct.seatType),
+                        false,
                         this.findCustomerEntityById(bookingStruct.customerId),
                         flightEntity,
                         passengers
-                ));
+                )
+        );
 
         this.addPassengersToFlightSeat(passengers, flightEntity, bookingStruct.seatType);
         this.addBookingToCustomer(entity, bookingStruct.customerId);
         return this.bookingFactory.from(entity);
+    }
+
+    public Booking confirmBooking(Long customerId) {
+        var customer = this.findCustomerEntityById(customerId);
+        var booking = this.findUnconfirmed(customer);
+        booking.setConfirmed(true);
+        this.bookingRepository.save(booking);
+
+        return bookingFactory.from(booking);
+    }
+
+    public void cancelBooking(Long customerId) {
+        var customer = this.findCustomerEntityById(customerId);
+        var booking = this.findUnconfirmed(customer);
+        this.deleteById(booking.getId());
     }
 
     public void deleteById(Long id) {
@@ -103,6 +126,21 @@ public class BookingService {
         this.addPassengersToFlightSeat(booking.getPassengers(), booking.getFlight(), struct.seatType);
 
         return this.bookingFactory.from(this.bookingRepository.save(booking));
+    }
+
+    //TODO: Clean up
+    public boolean hasUnconfirmed(CustomerEntity customerEntity) {
+        try {
+            this.findUnconfirmed(customerEntity);
+            return true;
+        } catch (EntityNotFoundException e) {
+            return false;
+        }
+    }
+
+    public BookingEntity findUnconfirmed(CustomerEntity customer) {
+        return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer)
+                .orElseThrow(() -> new EntityNotFoundException("No unconfirmed booking found"));
     }
 
     private void addBookingToCustomer(BookingEntity entity, Long id) {

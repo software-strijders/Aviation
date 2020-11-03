@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.data.booking;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
