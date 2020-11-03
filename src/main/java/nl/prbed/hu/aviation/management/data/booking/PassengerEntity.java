@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter @Setter @EqualsAndHashCode
+@Getter @Setter
 @Table(name = "passenger")
 public class PassengerEntity {
     @Id

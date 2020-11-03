@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.awt.print.Book;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,7 +54,7 @@ public class BookingService {
         var flight = this.flightFactory.from(flightEntity);
         var customer = this.findCustomerEntityById(bookingStruct.customerId);
         // TODO: this should also check for passengers that already have a seat (next iteration):
-        if (this.findUnconfirmed(customer) != null)
+        if (this.hasUnconfirmed(customer))
             throw new AlreadyHasUnconfirmedBookingException(customer.getUsername());
         if (this.customerHasBookingOnFlight(customer, flightEntity))
             throw new AlreadyBookedException(customer.getFirstName(), flight.getCode());
@@ -127,13 +128,19 @@ public class BookingService {
         return this.bookingFactory.from(this.bookingRepository.save(booking));
     }
 
-    public BookingEntity findUnconfirmed(CustomerEntity customer) {
+    //TODO: Clean up
+    public boolean hasUnconfirmed(CustomerEntity customerEntity) {
         try {
-            return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer)
-                    .orElseThrow(() -> new EntityNotFoundException("No unconfirmed booking found"));
-        } catch (Exception e) {
-            return null;
+            this.findUnconfirmed(customerEntity);
+            return true;
+        } catch (EntityNotFoundException e) {
+            return false;
         }
+    }
+
+    public BookingEntity findUnconfirmed(CustomerEntity customer) {
+        return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer)
+                .orElseThrow(() -> new EntityNotFoundException("No unconfirmed booking found"));
     }
 
     private void addBookingToCustomer(BookingEntity entity, Long id) {

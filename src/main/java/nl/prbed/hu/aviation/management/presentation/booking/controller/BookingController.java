@@ -31,11 +31,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/booking")
 public class BookingController {
     private final BookingService bookingService;
-    private final UserService userService;
 
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
-
-    private final BookingFactory bookingFactory;
 
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
     private final UpdateBookingDtoMapper updateMapper = UpdateBookingDtoMapper.instance;
@@ -79,7 +76,7 @@ public class BookingController {
         var user = (UserProfile) authentication.getPrincipal();
 
         Booking booking;
-        if(user.getRole().equals("ROLE_CUSTOMER"))
+        if (user.getRole().equals("ROLE_CUSTOMER"))
             booking = this.bookingService.confirmBooking(user.getId());
         else
             booking = this.bookingService.confirmBooking(dto.customerId);
@@ -96,7 +93,7 @@ public class BookingController {
     @DeleteMapping("/cancel")
     public void cancel(@RequestBody CreateBookingDto dto, Authentication authentication) {
         var user = (UserProfile) authentication.getPrincipal();
-        if(user.getRole().equals("ROLE_CUSTOMER"))
+        if (user.getRole().equals("ROLE_CUSTOMER"))
             this.bookingService.cancelBooking(user.getId());
         else
             this.bookingService.cancelBooking(dto.customerId);
