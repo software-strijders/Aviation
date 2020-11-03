@@ -77,7 +77,8 @@ public class BookingService {
         return this.bookingFactory.from(entity);
     }
 
-    public Booking confirmBooking(CustomerEntity customer) {
+    public Booking confirmBooking(Long customerId) {
+        var customer = this.findCustomerEntityById(customerId);
         var booking = this.findUnconfirmed(customer);
         booking.setConfirmed(true);
         this.bookingRepository.save(booking);
@@ -85,7 +86,8 @@ public class BookingService {
         return bookingFactory.from(booking);
     }
 
-    public void cancelBooking(CustomerEntity customer) {
+    public void cancelBooking(Long customerId) {
+        var customer = this.findCustomerEntityById(customerId);
         var booking = this.findUnconfirmed(customer);
         this.deleteById(booking.getId());
     }
@@ -127,7 +129,8 @@ public class BookingService {
 
     public BookingEntity findUnconfirmed(CustomerEntity customer) {
         try {
-            return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer).get();
+            return this.bookingRepository.findBookingEntityByConfirmedAndCustomer(false, customer)
+                    .orElseThrow(() -> new EntityNotFoundException("No unconfirmed booking found"));
         } catch (Exception e) {
             return null;
         }

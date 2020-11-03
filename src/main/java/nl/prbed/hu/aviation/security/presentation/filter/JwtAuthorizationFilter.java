@@ -82,9 +82,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         }
 
         UserProfile principal = new UserProfile(
+                Long.valueOf((Integer) parsedToken.getBody().get("id")),
                 username,
                 (String) parsedToken.getBody().get("firstName"),
-                (String) parsedToken.getBody().get("lastName")
+                (String) parsedToken.getBody().get("lastName"),
+                authorities.get(0).toString()
         );
 
         return new UsernamePasswordAuthenticationToken(principal, null, authorities);

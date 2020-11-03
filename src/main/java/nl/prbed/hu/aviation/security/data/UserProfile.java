@@ -8,14 +8,22 @@ package nl.prbed.hu.aviation.security.data;
  * contain a lot of business logic.
  */
 public class UserProfile {
+    private final Long id;
     private final String username;
     private final String firstName;
     private final String lastName;
+    private final String role;
 
-    public UserProfile(String username, String firstName, String lastName) {
+    public UserProfile(Long id, String username, String firstName, String lastName, String role) {
+        this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getUsername() {
@@ -28,5 +36,9 @@ public class UserProfile {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
