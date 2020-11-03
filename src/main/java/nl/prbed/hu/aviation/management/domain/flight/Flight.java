@@ -8,8 +8,11 @@ import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 @AllArgsConstructor
@@ -26,8 +29,7 @@ public class Flight {
     private Flightplan flightplan;
 
     public boolean areSeatsAvailable(SeatType type, int passengerAmount) {
-        var availableSeats = this.seats.stream()
-                .filter(Seat::doesNotHavePassenger).collect(Collectors.toList());
+        var availableSeats = this.getAvailableSeats();
         if (availableSeats.size() < passengerAmount)
             // Early return here, because we only want to check the actual seat types
             // when there are enough seats left over
@@ -43,5 +45,24 @@ public class Flight {
             case ECONOMY -> this.priceEconomy;
             case FIRST -> this.priceFirst;
         };
+    }
+
+    public Map<SeatType, Integer> getAvailableSeatsMap() {
+        var map = new HashMap<SeatType, Integer>();
+        for (var seatType : SeatType.values())
+            map.put(seatType, 0);
+
+        var availableSeats = this.getAvailableSeats();
+        for (var seat : availableSeats) {
+            var seatType = seat.getSeatType();
+            var currentSeats = map.get(seatType) + 1;
+            map.put(seatType, currentSeats);
+        }
+        return map;
+    }
+
+    private List<Seat> getAvailableSeats() {
+        return this.seats.stream().filter(Seat::doesNotHavePassenger)
+                .collect(Collectors.toList());
     }
 }
