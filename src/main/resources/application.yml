@@ -1,0 +1,50 @@
+info:
+    app:
+        name: Aviation
+        description: Flight control application
+    github: https://github.com/huict/prbed-2021-v2b-1
+    website: https://www.pbed-aviation.herokuapp.com
+    build:
+        groupId: @project.groupId@
+        artifact: @project.artifactId@
+        name: @project.name@
+        version: @project.version@
+    env:
+        java:
+            ventor: ${java.specification.vendor}
+            vm-name: ${java.vm.name}
+            runtime-version: ${java.runtime.version}
+
+management:
+    endpoint:
+        health:
+            show-details: when_authorized
+    endpoints:
+        web:
+            exposure:
+                include: info, health, metrics, prometheus
+
+security:
+    jwt:
+        expiration-in-ms: 864000000
+        secret: '"this-is-a-512-bit-key-used-for-signing-jwt-tokens-that-should-be-changed-production"'
+
+server:
+    servlet:
+        context-path: /api
+
+spring:
+    application:
+        name: aviation
+    datasource:
+        password: prbed-aviation
+        url: jdbc:postgresql://localhost:15432/prbed-aviation
+        username: prbed-aviation
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                jdbc:
+                    batch_size: 100
+                order_inserts: true

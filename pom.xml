@@ -10,7 +10,7 @@
     </parent>
     <groupId>nl.prbed.hu</groupId>
     <artifactId>aviation</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>3.0</version>
     <name>aviation</name>
     <description>Flight managment software for a project (Hogeschool Utrecht)</description>
 
