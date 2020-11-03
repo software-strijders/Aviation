@@ -85,94 +85,107 @@ public class DataInserter {
         this.logger.info(String.format("Elapsed time: %ds", Duration.between(start, Instant.now()).toSeconds()));
     }
 
-    private void insertEmployees() {
-        this.executeInsertion("employees", () -> {
-            var dtos = this.mapper.readValue(Paths.get(EMPLOYEE).toFile(), EmployeeRegisterationDto[].class);
-            for (var dto : dtos)
-                this.userService.registerEmployee(dto.username, dto.password, dto.firstName, dto.lastName);
-        });
+    private void insertEmployees() throws IOException {
+        this.executeInsertion(
+                "employees",
+                this.mapper.readValue(Paths.get(EMPLOYEE).toFile(), EmployeeRegisterationDto[].class),
+                o -> {
+                    var dto = (EmployeeRegisterationDto) o;
+                    this.userService.registerEmployee(dto.username, dto.password, dto.firstName, dto.lastName);
+                }
+        );
     }
 
-    private void insertCustomers() {
-        this.executeInsertion("customers", () -> {
-            var dtos = this.mapper.readValue(Paths.get(CUSTOMER).toFile(), CustomerRegistrationDto[].class);
-            for (var dto : dtos)
-                this.userService.registerCustomer(
-                        dto.username,
-                        dto.password,
-                        dto.firstName,
-                        dto.lastName,
-                        dto.nationality,
-                        dto.birthDate,
-                        dto.email,
-                        dto.phoneNumber
-                );
-        });
+    private void insertCustomers() throws IOException {
+        this.executeInsertion(
+                "customers",
+                this.mapper.readValue(Paths.get(CUSTOMER).toFile(), CustomerRegistrationDto[].class),
+                o -> {
+                    var dto = (CustomerRegistrationDto) o;
+                    this.userService.registerCustomer(
+                            dto.username,
+                            dto.password,
+                            dto.firstName,
+                            dto.lastName,
+                            dto.nationality,
+                            dto.birthDate,
+                            dto.email,
+                            dto.phoneNumber
+                    );
+                }
+        );
     }
 
-    private void insertCities() {
-        this.executeInsertion("cities", () -> {
-            var dtos = this.mapper.readValue(Paths.get(CITY).toFile(), CreateCityDto[].class);
-            for (var dto : dtos)
-                this.cityService.create(dto.name, dto.country);
-        });
+    private void insertCities() throws IOException {
+        this.executeInsertion(
+                "cities",
+                this.mapper.readValue(Paths.get(CITY).toFile(), CreateCityDto[].class),
+                o -> {
+                    var dto = (CreateCityDto) o;
+                    this.cityService.create(dto.name, dto.country);
+                }
+         );
     }
 
-    private void insertAirports() {
-        this.executeInsertion("airports", () -> {
-            var dtos = this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class);
-            for (var dto : dtos)
-                this.airportService.create(this.airportDtoMapper.toAirportStruct(dto));
-        });
+    private void insertAirports() throws IOException {
+        this.executeInsertion(
+                "airports",
+                this.mapper.readValue(Paths.get(AIRPORT).toFile(), AirportDto[].class),
+                dto -> this.airportService.create(this.airportDtoMapper.toAirportStruct((AirportDto) dto))
+        );
     }
 
-    private void insertTypes() {
-        this.executeInsertion("types", () -> {
-            var dtos = this.mapper.readValue(Paths.get(TYPE).toFile(), CreateTypeDto[].class);
-            for (var dto : dtos)
-                this.typeService.create(this.createTypeDtoMapper.toTypeStruct(dto));
-        });
+    private void insertTypes() throws IOException {
+        this.executeInsertion(
+                "types",
+                this.mapper.readValue(Paths.get(TYPE).toFile(), CreateTypeDto[].class),
+                dto -> this.typeService.create(this.createTypeDtoMapper.toTypeStruct((CreateTypeDto) dto))
+        );
     }
 
-    private void insertAircraft() {
-        this.executeInsertion("aircraft", () -> {
-            var dtos = this.mapper.readValue(Paths.get(AIRCRAFT).toFile(), CreateAircraftDto[].class);
-            for (var dto : dtos)
-                this.aircraftService.create(this.createAircraftDtoMapper.toAircraftStruct(dto));
-        });
+    private void insertAircraft() throws IOException {
+        this.executeInsertion(
+                "aircraft",
+                this.mapper.readValue(Paths.get(AIRCRAFT).toFile(), CreateAircraftDto[].class),
+                dto -> this.aircraftService.create(createAircraftDtoMapper.toAircraftStruct(((CreateAircraftDto) dto)))
+        );
     }
 
-    private void insertFlightplans() {
-        this.executeInsertion("flightplans", () -> {
-            var dtos = this.mapper.readValue(Paths.get(FLIGHTPLAN).toFile(), FlightplanDto[].class);
-            for (var dto : dtos)
-                this.flightplanService.create(this.flightplanDtoMapper.toFlightplanStruct(dto));
-        });
+    private void insertFlightplans() throws IOException {
+        this.executeInsertion(
+                "flightplans",
+                this.mapper.readValue(Paths.get(FLIGHTPLAN).toFile(), FlightplanDto[].class),
+                dto -> this.flightplanService.create(flightplanDtoMapper.toFlightplanStruct((FlightplanDto) dto))
+        );
     }
 
-    private void insertFlights() {
-        this.executeInsertion("flights", () -> {
-            var dtos = this.mapper.readValue(Paths.get(FLIGHT).toFile(), FlightDto[].class);
-            for (var dto : dtos)
-                this.flightService.create(this.flightDtoMapper.toFlightStruct(dto));
-        });
+    private void insertFlights() throws IOException {
+        this.executeInsertion(
+                "flights",
+                this.mapper.readValue(Paths.get(FLIGHT).toFile(), FlightDto[].class),
+                dto -> this.flightService.create(flightDtoMapper.toFlightStruct((FlightDto) dto))
+        );
     }
 
-    private void insertBookings() {
-        this.executeInsertion("bookings", () -> {
-            var dtos = this.mapper.readValue(Paths.get(BOOKING).toFile(), CreateBookingDto[].class);
-            for (var dto : dtos)
-                this.bookingService.create(this.createBookingDtoMapper.toBookingStruct(dto));
-        });
+    private void insertBookings() throws IOException {
+        this.executeInsertion(
+                "bookings",
+                this.mapper.readValue(Paths.get(BOOKING).toFile(), CreateBookingDto[].class),
+                dto -> this.bookingService.create(createBookingDtoMapper.toBookingStruct((CreateBookingDto) dto))
+        );
     }
 
-    private void executeInsertion(String entityName, Runnable runnable) {
-        this.logger.info(String.format("Inserting %s...", entityName));
-        try {
-            runnable.run();
-        } catch (IOException exception) {
-            this.logger.warn(exception.getLocalizedMessage());
+    private void executeInsertion(String entityName, Object[] dtos, Inserter inserter) {
+        var loadingBar = DataInsertionLoadingBar.create(entityName, dtos.length);
+        for (var dto : dtos) {
+            try {
+                loadingBar.load();
+                inserter.insert(dto);
+            } catch (Exception e) {
+                loadingBar.clear();
+                throw e;
+            }
         }
-        this.logger.info("Inserting complete!");
+        loadingBar.done();
     }
 }
