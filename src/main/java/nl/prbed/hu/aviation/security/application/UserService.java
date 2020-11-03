@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDate;
 
 /**
@@ -59,9 +60,9 @@ public class UserService implements UserDetailsService {
             throw new UserAlreadyExistsException(username);
     }
 
-    public CustomerEntity findCustomerByUsername(String username) {
-        return (CustomerEntity) this.userRepository.findByUsernameAndCustomer(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username));
+    public CustomerEntity findCustomerById(Long id) {
+        return (CustomerEntity) this.userRepository.findByIdAndCustomer(id)
+                .orElseThrow(() -> new NullPointerException(id.toString()));
     }
 
     private void save(User user) {

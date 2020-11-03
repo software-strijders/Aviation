@@ -6,6 +6,7 @@ import nl.prbed.hu.aviation.management.application.BookingService;
 import nl.prbed.hu.aviation.management.application.CustomerService;
 import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
+import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.UpdateBookingDto;
@@ -15,11 +16,13 @@ import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
 import nl.prbed.hu.aviation.security.application.UserService;
+import nl.prbed.hu.aviation.security.data.User;
 import nl.prbed.hu.aviation.security.data.UserProfile;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +34,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/booking")
 public class BookingController {
     private final BookingService bookingService;
+    private final UserService userService;
+
     private final HateoasDirector hateoasDirector = new HateoasDirector(new HateoasBuilder(), this.getClass());
+
+    private final BookingFactory bookingFactory;
 
     private final CreateBookingDtoMapper mapper = CreateBookingDtoMapper.instance;
     private final UpdateBookingDtoMapper updateMapper = UpdateBookingDtoMapper.instance;
@@ -65,12 +72,21 @@ public class BookingController {
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, id.toString()));
     }
 
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
+    @PatchMapping
+    public EntityModel<BookingResponseDto> confirm(@RequestBody CreateBookingDto dto) {
+        var customer = userService.findCustomerById(dto.customerId);
+        var booking = this.bookingService.confirmBooking(customer);
+        var response = this.createResponseDto(booking);
+        return EntityModel.of(response , hateoasDirector.make(HateoasType.UPDATE));
+    }
+
     @ApiOperation(
             value = "Create a booking",
             notes = "Provide the details of an booking."
     )
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PostMapping
-    @Secured("ROLE_CUSTOMER")
     public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
         var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
         var response = this.createResponseDto(booking);
