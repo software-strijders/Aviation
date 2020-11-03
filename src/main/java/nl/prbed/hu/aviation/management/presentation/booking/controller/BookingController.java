@@ -69,6 +69,10 @@ public class BookingController {
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, id.toString()));
     }
 
+    @ApiOperation(
+            value = "Confirm a booking",
+            notes = "Provide the customer ID or be logged in as the customer."
+    )
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PatchMapping("/confirm")
     public EntityModel<BookingResponseDto> confirm(@RequestBody CreateBookingDto dto, Authentication authentication) {
@@ -84,6 +88,10 @@ public class BookingController {
         return EntityModel.of(response , hateoasDirector.make(HateoasType.UPDATE, "confirm"));
     }
 
+    @ApiOperation(
+            value = "Cancel an unconfirmed booking",
+            notes = "Provide the customer ID or be logged in as the customer."
+    )
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @DeleteMapping("/cancel")
     public void cancel(@RequestBody CreateBookingDto dto, Authentication authentication) {
