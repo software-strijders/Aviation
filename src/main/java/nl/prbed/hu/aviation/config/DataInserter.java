@@ -171,7 +171,10 @@ public class DataInserter {
         this.executeInsertion(
                 "bookings",
                 this.mapper.readValue(Paths.get(BOOKING).toFile(), CreateBookingDto[].class),
-                dto -> this.bookingService.create(createBookingDtoMapper.toBookingStruct((CreateBookingDto) dto))
+                dto -> {
+                    this.bookingService.create(createBookingDtoMapper.toBookingStruct((CreateBookingDto) dto));
+//                    this.bookingService.confirmBooking(((CreateBookingDto) dto).customerId);
+                }
         );
     }
 
