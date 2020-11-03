@@ -98,9 +98,15 @@ public class FlightService {
             );
             var seatType = SeatType.fromString(searchDetails.get("flightClass"));
             var passengerAmount = Integer.parseInt(searchDetails.get("passengers"));
+            var departure = searchDetails.get("from");
+            var destination = searchDetails.get("to");
             if (date.isBefore(LocalDate.now()))
                 throw new SearchFlightDetailsException("Date is in the past");
-            return this.findAllFlights().stream().filter(flight -> flight.areSeatsAvailable(seatType, passengerAmount))
+            return this.findAllFlights().stream().filter(
+                    flight -> flight.areSeatsAvailable(seatType, passengerAmount)
+                    && flight.getDepartureDateTime().toLocalDate().equals(date)
+                    && flight.getFlightplan().getDeparture().getCode().equals(departure)
+                    && flight.getFlightplan().getDestination().getCode().equals(destination))
                     .collect(Collectors.toList());
         } catch (Exception e) {
             throw new SearchFlightDetailsException("Search details invalid");
