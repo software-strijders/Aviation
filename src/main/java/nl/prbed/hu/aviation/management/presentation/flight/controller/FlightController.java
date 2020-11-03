@@ -52,34 +52,6 @@ public class FlightController {
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ONE, flight.getCode()));
     }
 
-    @ApiOperation(
-            value = "Find flights with a specific departure airport",
-            notes = "Provide an airport code."
-    )
-    @GetMapping("/departure/{code}")
-    public CollectionModel<EntityModel<FlightResponseDto>> findByDeparture(@PathVariable String code) {
-        var flights = this.flightService.findFlightsByDeparture(code);
-        var response = flights.stream()
-                .map(this::createFlightResponseDto)
-                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
-                .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "departure"));
-    }
-
-    @ApiOperation(
-            value = "Find flights with a specific destination airport",
-            notes = "Provide an airport code."
-    )
-    @GetMapping("/destination/{code}")
-    public CollectionModel<EntityModel<FlightResponseDto>> findByDestination(@PathVariable String code) {
-        var flights = this.flightService.findFlightsByDestination(code);
-        var response = flights.stream()
-                .map(this::createFlightResponseDto)
-                .map(dto -> EntityModel.of(dto, this.hateoasDirector.make(HateoasType.FIND_ONE, dto.getCode())))
-                .collect(Collectors.toList());
-        return CollectionModel.of(response, this.hateoasDirector.make(HateoasType.FIND_ALL, "destination"));
-    }
-
     @ApiOperation(value = "Find all flights")
     @GetMapping
     public CollectionModel<EntityModel<FlightResponseDto>> findAll() {
@@ -120,6 +92,7 @@ public class FlightController {
                 flight.getPriceFirst(),
                 flight.getPriceBusiness(),
                 flight.getPriceEconomy(),
+                flight.getAvailableSeatsMap(),
                 flight.getDepartureDateTime(),
                 flight.getAircraft().getCode(),
                 flight.getFlightplan().getCode()

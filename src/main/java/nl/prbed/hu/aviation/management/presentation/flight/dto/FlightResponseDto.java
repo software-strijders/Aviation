@@ -6,8 +6,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.management.domain.SeatType;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Getter
 @RequiredArgsConstructor
@@ -27,6 +29,9 @@ public class FlightResponseDto {
 
     @ApiModelProperty(notes = "The price of the flight in first class")
     private final double priceFirst;
+
+    @ApiModelProperty(notes = "The avaible seats of the flight grouped by class")
+    private final Map<SeatType, Integer> availableSeats;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @ApiModelProperty(notes = "'The departure of the flight in date and time")

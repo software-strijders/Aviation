@@ -85,16 +85,6 @@ public class FlightService {
         return this.factory.from(entity);
     }
 
-    public List<Flight> findFlightsByDeparture(String code) {
-        var entities = this.flightRepository.findFlightEntitiesByFlightplanDepartureCode(code);
-        return this.factory.from(entities);
-    }
-
-    public List<Flight> findFlightsByDestination(String code) {
-        var entities = this.flightRepository.findFlightEntitiesByFlightplanDestinationCode(code);
-        return this.factory.from(entities);
-    }
-
     public List<Flight> findAllFlights() {
         var entities = this.flightRepository.findAll();
         return this.factory.from(entities);
