@@ -113,6 +113,7 @@ public class BookingController {
 
     private BookingResponseDto createResponseDto(Booking booking) {
         return new BookingResponseDto(
+                booking.getId(),
                 booking.getPrice(),
                 booking.isConfirmed(),
                 booking.getFlight().getCode(),

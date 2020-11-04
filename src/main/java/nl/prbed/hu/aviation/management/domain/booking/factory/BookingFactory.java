@@ -19,6 +19,7 @@ public class BookingFactory {
 
     public Booking from(BookingEntity entity) {
         return new Booking(
+                entity.getId(),
                 entity.getPrice(),
                 entity.getConfirmed(),
                 this.customerfactory.from(entity.getCustomer()),

@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Booking {
+    private Long id;
     private double price;
     private boolean confirmed;
     private Customer customer;
