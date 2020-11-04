@@ -1,10 +1,8 @@
 package nl.prbed.hu.aviation.management.presentation.flight.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.FlightService;
-import nl.prbed.hu.aviation.management.application.exception.SearchFlightDetailsException;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightDto;
 import nl.prbed.hu.aviation.management.presentation.flight.dto.FlightResponseDto;
@@ -18,8 +16,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -103,7 +99,7 @@ public class FlightController {
             value = "Find available flights",
             notes = "Provide the details for filtering."
     )
-    @Secured("ROLE_CUSTOMER")
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @GetMapping("/customer")
     public CollectionModel<EntityModel<FlightResponseDto>> allAvailableFlights(
             @RequestParam Map<String, String> allParams) {
