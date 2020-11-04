@@ -1,6 +1,7 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
+import nl.prbed.hu.aviation.management.application.exception.AircraftInUseException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.application.filter.FilterChain;
 import nl.prbed.hu.aviation.management.application.filter.FilterChainFactory;
@@ -17,6 +18,7 @@ import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -40,6 +42,14 @@ public class FlightService {
     public Flight create(FlightStruct flightStruct) {
         var aircraft = this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode);
         var flightplan = this.flightplanService.findFlightplanEntityByCode(flightStruct.flightPlanCode);
+
+        if (this.aircraftInUse(aircraft, flightStruct.departureDateTime, flightplan.getDuration()))
+            throw new AircraftInUseException(
+                    aircraft.getCode(),
+                    flightStruct.departureDateTime,
+                    flightStruct.departureDateTime.plusMinutes(flightplan.getDuration())
+            );
+
         var entity = new FlightEntity(
                 flightStruct.code,
                 flightStruct.priceEconomy,
@@ -51,6 +61,7 @@ public class FlightService {
                 flightplan,
                 null
         );
+
         var flight = this.flightRepository.save(entity);
         this.saveSeatsForFlight(flight, flight.getAircraft());
         return factory.from(flight);
@@ -90,6 +101,19 @@ public class FlightService {
 
     public List<Flight> findAvailableFlights(Map<String, String> searchDetails) {
             return filterChainFactory.create(this.findAllFlights(), searchDetails).doFilters();
+    }
+
+    private boolean aircraftInUse(AircraftEntity aircraft, LocalDateTime flightDate, Long duration) {
+        var flights = flightRepository.findFlightEntitiesByAircraft(aircraft);
+        var isFlightPossible = true;
+        for(FlightEntity flight : flights) {
+            var departureDateTime = flight.getDateTime();
+            var arrivalDateTime = flight.getDateTime().plusMinutes(flight.getFlightplan().getDuration());
+            if(!flightDate.isAfter(arrivalDateTime)  && !departureDateTime.isAfter(flightDate.plusMinutes(duration))) {
+                isFlightPossible = false;
+            }
+        }
+        return isFlightPossible;
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
