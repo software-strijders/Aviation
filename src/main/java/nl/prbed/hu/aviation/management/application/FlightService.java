@@ -3,7 +3,6 @@ package nl.prbed.hu.aviation.management.application;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.AircraftInUseException;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
-import nl.prbed.hu.aviation.management.application.filter.FilterChain;
 import nl.prbed.hu.aviation.management.application.filter.FilterChainFactory;
 import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
@@ -12,7 +11,6 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
-import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;
@@ -105,15 +103,15 @@ public class FlightService {
 
     private boolean aircraftInUse(AircraftEntity aircraft, LocalDateTime flightDate, Long duration) {
         var flights = flightRepository.findFlightEntitiesByAircraft(aircraft);
-        var isFlightPossible = true;
+        var aircraftInUse = false;
         for(FlightEntity flight : flights) {
             var departureDateTime = flight.getDateTime();
             var arrivalDateTime = flight.getDateTime().plusMinutes(flight.getFlightplan().getDuration());
             if(!flightDate.isAfter(arrivalDateTime)  && !departureDateTime.isAfter(flightDate.plusMinutes(duration))) {
-                isFlightPossible = false;
+                aircraftInUse = true;
             }
         }
-        return isFlightPossible;
+        return aircraftInUse;
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
