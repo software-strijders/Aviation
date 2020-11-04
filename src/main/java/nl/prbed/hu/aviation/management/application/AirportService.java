@@ -8,9 +8,9 @@ import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
 import nl.prbed.hu.aviation.management.data.airport.AirportEntity;
 import nl.prbed.hu.aviation.management.data.airport.SpringAirportRepository;
-import nl.prbed.hu.aviation.management.domain.Airport;
-import nl.prbed.hu.aviation.management.domain.factory.AirportFactory;
-import nl.prbed.hu.aviation.management.domain.factory.CityFactory;
+import nl.prbed.hu.aviation.management.domain.airport.Airport;
+import nl.prbed.hu.aviation.management.domain.airport.factory.AirportFactory;
+import nl.prbed.hu.aviation.management.domain.airport.factory.CityFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

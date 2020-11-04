@@ -3,8 +3,7 @@ package nl.prbed.hu.aviation.management.domain.booking.factory;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
-import nl.prbed.hu.aviation.management.domain.factory.CustomerFactory;
-import nl.prbed.hu.aviation.management.domain.factory.PassengerFactory;
+import nl.prbed.hu.aviation.management.domain.user.factory.CustomerFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Component;
 

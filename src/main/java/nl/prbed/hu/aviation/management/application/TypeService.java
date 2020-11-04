@@ -5,8 +5,8 @@ import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundExcep
 import nl.prbed.hu.aviation.management.application.struct.TypeStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringTypeRepository;
 import nl.prbed.hu.aviation.management.data.aircraft.TypeEntity;
-import nl.prbed.hu.aviation.management.domain.Type;
-import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.factory.TypeFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

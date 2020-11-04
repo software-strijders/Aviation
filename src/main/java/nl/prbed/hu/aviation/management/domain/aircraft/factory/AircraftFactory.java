@@ -3,8 +3,6 @@ package nl.prbed.hu.aviation.management.domain.aircraft.factory;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
-import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
-import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

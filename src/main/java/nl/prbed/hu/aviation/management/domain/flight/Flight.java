@@ -2,8 +2,8 @@ package nl.prbed.hu.aviation.management.domain.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import nl.prbed.hu.aviation.management.domain.Seat;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.Seat;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 

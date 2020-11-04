@@ -2,7 +2,7 @@ package nl.prbed.hu.aviation.management.domain.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import nl.prbed.hu.aviation.management.domain.Airport;
+import nl.prbed.hu.aviation.management.domain.airport.Airport;
 
 @Data
 @AllArgsConstructor

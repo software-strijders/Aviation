@@ -2,7 +2,7 @@ package nl.prbed.hu.aviation.management.presentation.booking.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 
 import java.util.List;
 

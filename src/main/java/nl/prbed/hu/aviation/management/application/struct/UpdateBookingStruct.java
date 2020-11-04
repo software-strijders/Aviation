@@ -1,6 +1,6 @@
 package nl.prbed.hu.aviation.management.application.struct;
 
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 
 import java.util.List;
 

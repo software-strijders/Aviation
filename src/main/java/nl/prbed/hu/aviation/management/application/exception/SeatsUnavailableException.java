@@ -1,6 +1,6 @@
 package nl.prbed.hu.aviation.management.application.exception;
 
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

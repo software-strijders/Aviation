@@ -1,8 +1,8 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.flight.factory;
 
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
-import nl.prbed.hu.aviation.management.domain.Passenger;
-import nl.prbed.hu.aviation.management.domain.Seat;
+import nl.prbed.hu.aviation.management.domain.booking.Passenger;
+import nl.prbed.hu.aviation.management.domain.aircraft.Seat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

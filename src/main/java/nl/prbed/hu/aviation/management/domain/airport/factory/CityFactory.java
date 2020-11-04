@@ -1,8 +1,8 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.airport.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.airport.CityEntity;
-import nl.prbed.hu.aviation.management.domain.City;
+import nl.prbed.hu.aviation.management.domain.airport.City;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor

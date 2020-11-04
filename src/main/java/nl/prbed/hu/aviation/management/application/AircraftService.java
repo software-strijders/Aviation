@@ -6,10 +6,10 @@ import nl.prbed.hu.aviation.management.application.struct.AircraftStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SeatEntity;
 import nl.prbed.hu.aviation.management.data.aircraft.SpringAircraftRepository;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.aircraft.factory.AircraftFactory;
-import nl.prbed.hu.aviation.management.domain.factory.TypeFactory;
+import nl.prbed.hu.aviation.management.domain.aircraft.factory.TypeFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
