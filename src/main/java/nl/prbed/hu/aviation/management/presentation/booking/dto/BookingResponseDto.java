@@ -14,6 +14,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @ApiModel(description = "Details about the booking")
 public class BookingResponseDto {
+    @ApiModelProperty(notes = "The id of the booking")
+    private final Long id;
+
     @ApiModelProperty(notes = "The price of the booking")
     private final double price;
 
