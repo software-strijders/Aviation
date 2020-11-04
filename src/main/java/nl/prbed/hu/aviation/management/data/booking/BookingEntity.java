@@ -26,7 +26,7 @@ public class BookingEntity {
     @OneToOne
     private FlightEntity flight;
 
-    @OneToMany
+    @ManyToMany
     private List<PassengerEntity> passengers;
 
     public BookingEntity() {}
