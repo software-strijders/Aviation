@@ -64,6 +64,7 @@ public class Flight {
     private List<Seat> getAvailableSeats() {
         if (this.seats == null)
             return new ArrayList<>();
+
         return this.seats.stream().filter(Seat::doesNotHavePassenger)
                 .collect(Collectors.toList());
     }

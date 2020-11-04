@@ -104,10 +104,10 @@ public class FlightService {
     private boolean aircraftInUse(AircraftEntity aircraft, LocalDateTime flightDate, Long duration) {
         var flights = flightRepository.findFlightEntitiesByAircraft(aircraft);
         var aircraftInUse = false;
-        for(FlightEntity flight : flights) {
+        for (FlightEntity flight : flights) {
             var departureDateTime = flight.getDateTime();
             var arrivalDateTime = flight.getDateTime().plusMinutes(flight.getFlightplan().getDuration());
-            if(!flightDate.isAfter(arrivalDateTime)  && !departureDateTime.isAfter(flightDate.plusMinutes(duration))) {
+            if (!flightDate.isAfter(arrivalDateTime)  && !departureDateTime.isAfter(flightDate.plusMinutes(duration))) {
                 aircraftInUse = true;
             }
         }
