@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.config;
+package nl.prbed.hu.aviation.config.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

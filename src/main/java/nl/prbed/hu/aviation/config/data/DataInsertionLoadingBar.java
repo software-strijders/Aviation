@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.config;
+package nl.prbed.hu.aviation.config.data;
 
 import java.time.Duration;
 import java.time.Instant;
