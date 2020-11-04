@@ -99,7 +99,7 @@ public class FlightController {
             value = "Find available flights",
             notes = "Provide the details for filtering."
     )
-    @Secured("ROLE_CUSTOMER")
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @GetMapping("/customer")
     public CollectionModel<EntityModel<FlightResponseDto>> allAvailableFlights(
             @RequestParam Map<String, String> allParams) {
