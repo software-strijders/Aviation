@@ -1232,34 +1232,6 @@
     ]
   },
   {
-    "customerId": 22,
-    "flightId": 37439,
-    "seatType": "ECONOMY",
-    "passengers": [
-      {
-        "firstName": "Brynna",
-        "lastName": "Dielu",
-        "birthDate": "2042-10-10",
-        "email": "Brynna.Dielu@gmail.com",
-        "nationality": "Engelse"
-      },
-      {
-        "firstName": "Micheline",
-        "lastName": "Winnick",
-        "birthDate": "1904-10-01",
-        "email": "Micheline.Winnick@gmail.com",
-        "nationality": "Engelse"
-      },
-      {
-        "firstName": "Judy",
-        "lastName": "Craggie",
-        "birthDate": "2007-11-20",
-        "email": "Judy.Craggie@gmail.com",
-        "nationality": "Italiaanse"
-      }
-    ]
-  },
-  {
     "customerId": 32,
     "flightId": 36901,
     "seatType": "BUSINESS",
@@ -1396,34 +1368,6 @@
         "birthDate": "2026-08-24",
         "email": "Laurene.Ramona@gmail.com",
         "nationality": "Italiaanse"
-      }
-    ]
-  },
-  {
-    "customerId": 100,
-    "flightId": 38246,
-    "seatType": "BUSINESS",
-    "passengers": [
-      {
-        "firstName": "Grier",
-        "lastName": "Ahab",
-        "birthDate": "1977-01-02",
-        "email": "Grier.Ahab@gmail.com",
-        "nationality": "Italiaanse"
-      },
-      {
-        "firstName": "Deloria",
-        "lastName": "Ephrem",
-        "birthDate": "1979-01-22",
-        "email": "Deloria.Ephrem@gmail.com",
-        "nationality": "Zweedse"
-      },
-      {
-        "firstName": "Katleen",
-        "lastName": "Toffic",
-        "birthDate": "2021-05-29",
-        "email": "Katleen.Toffic@gmail.com",
-        "nationality": "Spaanse"
       }
     ]
   },
@@ -2123,34 +2067,6 @@
         "lastName": "Tound",
         "birthDate": "2076-08-24",
         "email": "Harrietta.Tound@gmail.com",
-        "nationality": "Franse"
-      }
-    ]
-  },
-  {
-    "customerId": 22,
-    "flightId": 46183,
-    "seatType": "ECONOMY",
-    "passengers": [
-      {
-        "firstName": "Elka",
-        "lastName": "Sadowski",
-        "birthDate": "2010-10-05",
-        "email": "Elka.Sadowski@gmail.com",
-        "nationality": "Spaanse"
-      },
-      {
-        "firstName": "Sean",
-        "lastName": "Rillings",
-        "birthDate": "1969-12-19",
-        "email": "Sean.Rillings@gmail.com",
-        "nationality": "Italiaanse"
-      },
-      {
-        "firstName": "Kristina",
-        "lastName": "Pernick",
-        "birthDate": "1995-01-24",
-        "email": "Kristina.Pernick@gmail.com",
         "nationality": "Franse"
       }
     ]
@@ -3416,34 +3332,6 @@
     ]
   },
   {
-    "customerId": 22,
-    "flightId": 38784,
-    "seatType": "ECONOMY",
-    "passengers": [
-      {
-        "firstName": "Caressa",
-        "lastName": "Marisa",
-        "birthDate": "2012-08-08",
-        "email": "Caressa.Marisa@gmail.com",
-        "nationality": "Franse"
-      },
-      {
-        "firstName": "Darlleen",
-        "lastName": "Abernon",
-        "birthDate": "2088-08-04",
-        "email": "Darlleen.Abernon@gmail.com",
-        "nationality": "Engelse"
-      },
-      {
-        "firstName": "Alexine",
-        "lastName": "Amand",
-        "birthDate": "2052-09-21",
-        "email": "Alexine.Amand@gmail.com",
-        "nationality": "Nederlandse"
-      }
-    ]
-  },
-  {
     "customerId": 33,
     "flightId": 37708,
     "seatType": "FIRST",
@@ -4056,34 +3944,6 @@
         "birthDate": "2003-01-09",
         "email": "Minda.Turne@gmail.com",
         "nationality": "Nederlandse"
-      }
-    ]
-  },
-  {
-    "customerId": 22,
-    "flightId": 47422,
-    "seatType": "FIRST",
-    "passengers": [
-      {
-        "firstName": "Livvyy",
-        "lastName": "Quent",
-        "birthDate": "1955-07-21",
-        "email": "Livvyy.Quent@gmail.com",
-        "nationality": "Engelse"
-      },
-      {
-        "firstName": "Lonnie",
-        "lastName": "Zrike",
-        "birthDate": "2001-02-26",
-        "email": "Lonnie.Zrike@gmail.com",
-        "nationality": "Zweedse"
-      },
-      {
-        "firstName": "Wendi",
-        "lastName": "Tryck",
-        "birthDate": "1931-04-27",
-        "email": "Wendi.Tryck@gmail.com",
-        "nationality": "Engelse"
       }
     ]
   },
