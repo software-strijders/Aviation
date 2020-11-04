@@ -2,7 +2,8 @@ package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
-import nl.prbed.hu.aviation.management.application.exception.SearchFlightDetailsException;
+import nl.prbed.hu.aviation.management.application.filter.FilterChain;
+import nl.prbed.hu.aviation.management.application.filter.FilterChainFactory;
 import nl.prbed.hu.aviation.management.application.struct.FlightStruct;
 import nl.prbed.hu.aviation.management.data.aircraft.AircraftEntity;
 import nl.prbed.hu.aviation.management.data.booking.SpringBookingRepository;
@@ -10,16 +11,12 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
-import nl.prbed.hu.aviation.management.domain.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -37,6 +34,7 @@ public class FlightService {
     private final FlightplanService flightplanService;
 
     private final FlightFactory factory;
+    private final FilterChainFactory filterChainFactory;
 
     public Flight create(FlightStruct flightStruct) {
         var aircraft = this.aircraftService.findAircraftEntityByCode(flightStruct.aircraftCode);
@@ -90,26 +88,7 @@ public class FlightService {
     }
 
     public List<Flight> findAvailableFlights(Map<String, String> searchDetails) {
-        try {
-            var date = LocalDate.parse(
-                    searchDetails.get("date"),
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.ENGLISH)
-            );
-            var seatType = SeatType.fromString(searchDetails.get("flightClass"));
-            var passengerAmount = Integer.parseInt(searchDetails.get("passengers"));
-            var departure = searchDetails.get("from");
-            var destination = searchDetails.get("to");
-            if (date.isBefore(LocalDate.now()))
-                throw new SearchFlightDetailsException("Date is in the past");
-            return this.findAllFlights().stream().filter(
-                    flight -> flight.areSeatsAvailable(seatType, passengerAmount)
-                    && flight.getDepartureDateTime().toLocalDate().equals(date)
-                    && flight.getFlightplan().getDeparture().getCode().equals(departure)
-                    && flight.getFlightplan().getDestination().getCode().equals(destination))
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new SearchFlightDetailsException("Search details invalid");
-        }
+            return filterChainFactory.create(this.findAllFlights(), searchDetails).doFilters();
     }
 
     private void saveSeatsForFlight(FlightEntity flight, AircraftEntity aircraft) {
