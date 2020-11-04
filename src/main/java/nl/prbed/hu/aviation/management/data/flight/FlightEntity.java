@@ -18,8 +18,10 @@ public class FlightEntity {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String code;
+
+    @Column
     private double priceEconomy;
     private double priceBusiness;
     private double priceFirst;
