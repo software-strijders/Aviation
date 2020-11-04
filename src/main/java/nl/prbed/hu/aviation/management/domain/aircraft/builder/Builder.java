@@ -1,9 +1,9 @@
 package nl.prbed.hu.aviation.management.domain.aircraft.builder;
 
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
-import nl.prbed.hu.aviation.management.domain.Seat;
-import nl.prbed.hu.aviation.management.domain.SeatType;
-import nl.prbed.hu.aviation.management.domain.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.Seat;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 
 import java.util.List;

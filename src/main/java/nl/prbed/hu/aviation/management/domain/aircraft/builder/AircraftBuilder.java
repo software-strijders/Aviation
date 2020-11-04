@@ -1,9 +1,11 @@
 package nl.prbed.hu.aviation.management.domain.aircraft.builder;
 
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.domain.*;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
-import nl.prbed.hu.aviation.management.domain.factory.SeatFactory;
+import nl.prbed.hu.aviation.management.domain.aircraft.Seat;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.factory.SeatFactory;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 
 import java.util.ArrayList;

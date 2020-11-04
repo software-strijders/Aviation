@@ -11,6 +11,7 @@ import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import org.springframework.stereotype.Service;

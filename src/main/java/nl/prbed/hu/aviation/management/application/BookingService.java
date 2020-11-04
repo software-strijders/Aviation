@@ -17,8 +17,7 @@ import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightRepository;
 import nl.prbed.hu.aviation.management.data.flight.SpringFlightSeatRepository;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
-import nl.prbed.hu.aviation.management.domain.Customer;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
@@ -27,9 +26,7 @@ import nl.prbed.hu.aviation.security.data.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

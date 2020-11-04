@@ -1,7 +1,7 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.user.factory;
 
 import nl.prbed.hu.aviation.management.data.user.EmployeeEntity;
-import nl.prbed.hu.aviation.management.domain.Employee;
+import nl.prbed.hu.aviation.management.domain.user.Employee;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

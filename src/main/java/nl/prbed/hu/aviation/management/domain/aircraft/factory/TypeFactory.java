@@ -1,8 +1,8 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.aircraft.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.aircraft.TypeEntity;
-import nl.prbed.hu.aviation.management.domain.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -2,7 +2,6 @@ package nl.prbed.hu.aviation.management.data.booking;
 
 import nl.prbed.hu.aviation.management.data.flight.FlightEntity;
 import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
-import nl.prbed.hu.aviation.management.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

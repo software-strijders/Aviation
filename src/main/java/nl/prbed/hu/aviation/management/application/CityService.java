@@ -5,8 +5,8 @@ import nl.prbed.hu.aviation.management.application.exception.EntityAlreadyExists
 import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
 import nl.prbed.hu.aviation.management.data.airport.CityEntity;
 import nl.prbed.hu.aviation.management.data.airport.SpringCityRepository;
-import nl.prbed.hu.aviation.management.domain.City;
-import nl.prbed.hu.aviation.management.domain.factory.CityFactory;
+import nl.prbed.hu.aviation.management.domain.airport.City;
+import nl.prbed.hu.aviation.management.domain.airport.factory.CityFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

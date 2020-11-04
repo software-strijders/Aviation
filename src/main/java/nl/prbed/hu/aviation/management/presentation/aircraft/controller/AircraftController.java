@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.AircraftService;
 import nl.prbed.hu.aviation.management.application.TypeService;
-import nl.prbed.hu.aviation.management.domain.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
 import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.presentation.aircraft.dto.*;
 import nl.prbed.hu.aviation.management.presentation.aircraft.mapper.CreateAircraftDtoMapper;

@@ -1,9 +1,10 @@
-package nl.prbed.hu.aviation.management.domain.factory;
+package nl.prbed.hu.aviation.management.domain.booking.factory;
 
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.data.booking.PassengerEntity;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
-import nl.prbed.hu.aviation.management.domain.Passenger;
+import nl.prbed.hu.aviation.management.domain.booking.Passenger;
+import nl.prbed.hu.aviation.management.domain.aircraft.factory.SeatFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

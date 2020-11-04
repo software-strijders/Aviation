@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.domain.Type;
+import nl.prbed.hu.aviation.management.domain.aircraft.Type;
 
 @Getter
 @RequiredArgsConstructor

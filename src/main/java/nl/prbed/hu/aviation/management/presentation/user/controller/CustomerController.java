@@ -3,7 +3,7 @@ package nl.prbed.hu.aviation.management.presentation.user.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.CustomerService;
-import nl.prbed.hu.aviation.management.domain.Customer;
+import nl.prbed.hu.aviation.management.domain.user.Customer;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;

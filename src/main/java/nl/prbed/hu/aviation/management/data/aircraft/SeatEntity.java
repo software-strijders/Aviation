@@ -3,7 +3,7 @@ package nl.prbed.hu.aviation.management.data.aircraft;
 import lombok.Getter;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.flight.FlightSeatEntity;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 
 import javax.persistence.*;
 import java.util.List;
