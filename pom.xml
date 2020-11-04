@@ -10,7 +10,7 @@
     </parent>
     <groupId>nl.prbed.hu</groupId>
     <artifactId>aviation</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>3.0</version>
     <name>aviation</name>
     <description>Flight managment software for a project (Hogeschool Utrecht)</description>
 
@@ -50,6 +50,17 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.3.5.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
         <dependency>
