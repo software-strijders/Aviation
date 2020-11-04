@@ -9,26 +9,17 @@ import java.util.Map;
 @Component
 public class FilterChainFactory {
     public FilterChain create(List<Flight> flights, Map<String, String> searchDetails) {
-
         var filterChain = new FilterChain(flights, searchDetails);
-        if (searchDetails.containsKey("passengers") && searchDetails.containsKey("flightClass")) {
-            filterChain.addFilter(new SeatsAvailableFilter());
-        }
 
-        //departure
-        if (searchDetails.containsKey("from")) {
+        if (searchDetails.containsKey("passengers") && searchDetails.containsKey("flightClass"))
+            filterChain.addFilter(new AvailableSeatsFiler());
+        if (searchDetails.containsKey("from"))
             filterChain.addFilter(new DepartureFilter());
-        }
-
-        //destination
-        if (searchDetails.containsKey("to")) {
-            filterChain.addFilter(new ArrivalFilter());
-        }
-
-        //date
-        if (searchDetails.containsKey("date")) {
+        if (searchDetails.containsKey("to"))
+            filterChain.addFilter(new DestinationFilter());
+        if (searchDetails.containsKey("date"))
             filterChain.addFilter(new DateFilter());
-        }
+
         return filterChain;
     }
 }

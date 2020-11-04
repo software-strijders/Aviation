@@ -9,12 +9,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
-public class SeatsAvailableFilter implements Filter {
+public class AvailableSeatsFiler implements Filter {
     @Override
     public List<Flight> filter(List<Flight> flights, Map<String, String> searchDetails) {
-        return flights.stream().filter(f -> f.areSeatsAvailable(
-                SeatType.fromString(searchDetails.get("flightClass")),
-                Integer.parseInt(searchDetails.get("passengers"))))
+        return flights.stream()
+                .filter(f -> f.areSeatsAvailable(
+                    SeatType.fromString(searchDetails.get("flightClass")),
+                    Integer.parseInt(searchDetails.get("passengers")))
+                )
                 .collect(Collectors.toList());
     }
 }

@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class DepartureFilter implements Filter {
     @Override
     public List<Flight> filter(List<Flight> flights, Map<String, String> searchDetails) {
-        return flights.stream().filter(f ->
-                f.getFlightplan().getDeparture().getCode().equals(searchDetails.get("from")))
+        return flights.stream()
+                .filter(f -> f.getFlightplan().getDeparture().getCode().equals(searchDetails.get("from")))
                 .collect(Collectors.toList());
     }
 }

@@ -23,8 +23,8 @@ public class DateFilter implements Filter {
         if (date.isBefore(LocalDate.now()))
             throw new SearchFlightDetailsException("Date is in the past");
 
-        return flights.stream().filter(f ->
-                f.getDepartureDateTime().toLocalDate().equals(date))
+        return flights.stream()
+                .filter(f -> f.getDepartureDateTime().toLocalDate().equals(date))
                 .collect(Collectors.toList());
     }
 }
