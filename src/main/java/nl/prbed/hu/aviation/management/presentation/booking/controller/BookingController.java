@@ -58,8 +58,8 @@ public class BookingController {
     )
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PatchMapping("/{id}")
-    public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto) {
-        var booking = this.bookingService.update(id, this.updateMapper.toUpdateBookingStruct(dto));
+    public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto, Authentication authentication) {
+        var booking = this.bookingService.update(id, this.updateMapper.toUpdateBookingStruct(dto), ((UserProfile) authentication.getPrincipal()).getId());
         var response = this.createResponseDto(booking);
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.UPDATE, id.toString()));
     }

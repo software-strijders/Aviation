@@ -1,10 +1,7 @@
 package nl.prbed.hu.aviation.management.application;
 
 import lombok.RequiredArgsConstructor;
-import nl.prbed.hu.aviation.management.application.exception.AlreadyBookedException;
-import nl.prbed.hu.aviation.management.application.exception.AlreadyHasUnconfirmedBookingException;
-import nl.prbed.hu.aviation.management.application.exception.EntityNotFoundException;
-import nl.prbed.hu.aviation.management.application.exception.SeatsUnavailableException;
+import nl.prbed.hu.aviation.management.application.exception.*;
 import nl.prbed.hu.aviation.management.application.struct.BookingStruct;
 import nl.prbed.hu.aviation.management.application.struct.PassengerStruct;
 import nl.prbed.hu.aviation.management.application.struct.UpdateBookingStruct;
@@ -23,6 +20,7 @@ import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
 import nl.prbed.hu.aviation.management.domain.flight.factory.FlightFactory;
 import nl.prbed.hu.aviation.security.data.SpringUserRepository;
 import nl.prbed.hu.aviation.security.data.User;
+import nl.prbed.hu.aviation.security.data.UserProfile;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -109,10 +107,13 @@ public class BookingService {
         return this.bookingFactory.from(entities);
     }
 
-    public Booking update(Long id, UpdateBookingStruct struct) {
+    public Booking update(Long id, UpdateBookingStruct struct, Long userId) {
         var booking = this.bookingRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format(BOOKING_ERROR_MSG, id)));
-
+        var customer = this.findCustomerEntityById(userId);
+        if (!customer.equals(booking.getCustomer())) {
+            throw new NotYourBookingException("This booking is not yours!");
+        }
         this.removeFlightSeatReferences(booking.getFlight().getFlightSeats(), booking.getPassengers());
         booking.setPassengers(
                 struct.passengers.stream()

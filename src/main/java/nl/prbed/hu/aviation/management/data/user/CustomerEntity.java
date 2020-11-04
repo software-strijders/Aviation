@@ -1,5 +1,6 @@
 package nl.prbed.hu.aviation.management.data.user;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import nl.prbed.hu.aviation.management.data.booking.BookingEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "customer")
 public class CustomerEntity extends User {
