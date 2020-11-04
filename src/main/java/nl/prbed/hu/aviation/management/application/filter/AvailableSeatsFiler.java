@@ -1,7 +1,7 @@
 package nl.prbed.hu.aviation.management.application.filter;
 
 import lombok.NoArgsConstructor;
-import nl.prbed.hu.aviation.management.domain.SeatType;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 
 import java.util.List;
