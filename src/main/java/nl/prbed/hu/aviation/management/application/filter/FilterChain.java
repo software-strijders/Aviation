@@ -1,31 +1,24 @@
-package nl.prbed.hu.aviation.management.application.filters;
+package nl.prbed.hu.aviation.management.application.filter;
 
+import lombok.AllArgsConstructor;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@AllArgsConstructor
 public class FilterChain {
-    public List<Flight> doFilters(List<Flight> flights, Map<String, String> searchDetails) {
-        //seats available
-        if (searchDetails.containsKey("passengers") && searchDetails.containsKey("flightClass")) {
-            flights = new SeatsAvailableFilter().filter(flights, searchDetails);
-        }
+    private List<Flight> flights;
+    private final Map<String, String> searchDetails;
+    private final List<Filter> filters = new ArrayList<>();
 
-        //departure
-        if (searchDetails.containsKey("from")) {
-            flights = new DepartureFilter().filter(flights, searchDetails);
-        }
-
-        //destination
-        if (searchDetails.containsKey("to")) {
-            flights = new ArrivalFilter().filter(flights, searchDetails);
-        }
-
-        //date
-        if (searchDetails.containsKey("date")) {
-            flights = new DateFilter().filter(flights, searchDetails);
-        }
+    public List<Flight> doFilters() {
+        filters.forEach(filter -> flights = filter.filter(flights, searchDetails));
         return flights;
+    }
+
+    public void addFilter(Filter filter) {
+        this.filters.add(filter);
     }
 }

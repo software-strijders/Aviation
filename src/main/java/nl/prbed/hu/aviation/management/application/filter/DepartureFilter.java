@@ -1,4 +1,4 @@
-package nl.prbed.hu.aviation.management.application.filters;
+package nl.prbed.hu.aviation.management.application.filter;
 
 import lombok.NoArgsConstructor;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
