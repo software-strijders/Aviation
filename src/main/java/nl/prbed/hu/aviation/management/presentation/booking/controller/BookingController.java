@@ -3,9 +3,7 @@ package nl.prbed.hu.aviation.management.presentation.booking.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import nl.prbed.hu.aviation.management.application.BookingService;
-import nl.prbed.hu.aviation.management.data.user.CustomerEntity;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
-import nl.prbed.hu.aviation.management.domain.booking.factory.BookingFactory;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.BookingResponseDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.CreateBookingDto;
 import nl.prbed.hu.aviation.management.presentation.booking.dto.UpdateBookingDto;
@@ -14,7 +12,6 @@ import nl.prbed.hu.aviation.management.presentation.booking.mapper.UpdateBooking
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasBuilder;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasDirector;
 import nl.prbed.hu.aviation.management.presentation.hateoas.HateoasType;
-import nl.prbed.hu.aviation.security.application.UserService;
 import nl.prbed.hu.aviation.security.data.UserProfile;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -73,14 +70,7 @@ public class BookingController {
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PatchMapping("/confirm")
     public EntityModel<BookingResponseDto> confirm(@RequestBody CreateBookingDto dto, Authentication authentication) {
-        var user = (UserProfile) authentication.getPrincipal();
-
-        Booking booking;
-        if (user.getRole().equals("ROLE_CUSTOMER"))
-            booking = this.bookingService.confirmBooking(user.getId());
-        else
-            booking = this.bookingService.confirmBooking(dto.customerId);
-
+        var booking = this.bookingService.confirmBooking(this.getCustomerId(dto, authentication));
         var response = this.createResponseDto(booking);
         return EntityModel.of(response , hateoasDirector.make(HateoasType.UPDATE, "confirm"));
     }
@@ -92,11 +82,7 @@ public class BookingController {
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @DeleteMapping("/cancel")
     public void cancel(@RequestBody CreateBookingDto dto, Authentication authentication) {
-        var user = (UserProfile) authentication.getPrincipal();
-        if (user.getRole().equals("ROLE_CUSTOMER"))
-            this.bookingService.cancelBooking(user.getId());
-        else
-            this.bookingService.cancelBooking(dto.customerId);
+        this.bookingService.cancelBooking(this.getCustomerId(dto, authentication));
     }
 
     @ApiOperation(
@@ -105,10 +91,23 @@ public class BookingController {
     )
     @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PostMapping
-    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto) {
-        var booking = this.bookingService.create(this.mapper.toBookingStruct(dto));
+    public EntityModel<BookingResponseDto> create(@RequestBody CreateBookingDto dto, Authentication authentication) {
+        var id = this.getCustomerId(dto, authentication);
+        var struct = this.mapper.toBookingStruct(dto);
+        struct.customerId = id; // Override if the request came from a customer
+        var booking = this.bookingService.create(struct);
         var response = this.createResponseDto(booking);
         return EntityModel.of(response, this.hateoasDirector.make(HateoasType.CREATE));
+    }
+
+    private Long getCustomerId(CreateBookingDto dto, Authentication authentication) {
+        var user = (UserProfile) authentication.getPrincipal();
+        // When the customer is authorised, we want to get the id from the authentication. In any other situation it
+        // should be supplied in the dto.
+        if (user.getRole().equals("ROLE_CUSTOMER"))
+            return user.getId();
+
+        return dto.customerId;
     }
 
     private BookingResponseDto createResponseDto(Booking booking) {
