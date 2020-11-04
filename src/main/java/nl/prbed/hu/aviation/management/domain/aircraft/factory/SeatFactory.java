@@ -11,14 +11,13 @@ import java.util.List;
 @Component
 public class SeatFactory {
     public Seat from(SeatEntity entity) {
-        // TODO: Maybe we could add more to the seat, like seatNumber?
-        return new Seat(entity.getSeatType(), null);
+        return new Seat(entity.getSeatType(), null, entity.getSeatNumber());
     }
 
     public List<Seat> from(int num, SeatType type) {
         var seats = new ArrayList<Seat>();
         for(int i = 0; i < num; i++) {
-            seats.add(new Seat(type, null));
+            seats.add(new Seat(type, null, i));
         }
         return seats;
     }

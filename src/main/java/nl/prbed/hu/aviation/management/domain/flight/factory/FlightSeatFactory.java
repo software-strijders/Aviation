@@ -24,7 +24,7 @@ public class FlightSeatFactory {
                     null
             );
         }
-        return new Seat(entity.getSeat().getSeatType(), passenger);
+        return new Seat(entity.getSeat().getSeatType(), passenger, entity.getSeat().getSeatNumber());
     }
 
     public List<Seat> from(List<FlightSeatEntity> entities) {

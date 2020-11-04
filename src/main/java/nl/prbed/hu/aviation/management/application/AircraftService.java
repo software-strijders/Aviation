@@ -40,7 +40,7 @@ public class AircraftService {
                 .addSeats(struct.seatsEconomy, SeatType.ECONOMY)
                 .build();
 
-        var seats = aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null)).collect(Collectors.toList());
+        var seats = aircraft.getSeats().stream().map(x -> new SeatEntity(x.getSeatType(), null, x.getSeatNumber())).collect(Collectors.toList());
         var airport = airportService.findAirportEntityByCode(struct.airportCode);
         var entity = new AircraftEntity(struct.code, type, seats, airport);
         return this.aircraftFactory.from(this.repository.save(entity));

@@ -59,6 +59,7 @@ public class BookingController {
             value = "Update a booking",
             notes = "Provide a list of passengers that should replace the current passengers"
     )
+    @Secured({"ROLE_CUSTOMER", "ROLE_EMPLOYEE"})
     @PatchMapping("/{id}")
     public EntityModel<BookingResponseDto> update(@PathVariable Long id, @RequestBody UpdateBookingDto dto) {
         var booking = this.bookingService.update(id, this.updateMapper.toUpdateBookingStruct(dto));

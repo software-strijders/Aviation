@@ -9,6 +9,7 @@ import nl.prbed.hu.aviation.management.domain.booking.Passenger;
 public class Seat {
     private SeatType seatType;
     private Passenger passenger;
+    private int seatNumber;
 
     public boolean doesNotHavePassenger() {
         return this.passenger == null;

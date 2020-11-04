@@ -18,13 +18,15 @@ public class SeatEntity {
 
     @Column
     private SeatType seatType;
+    private int seatNumber;
 
     @OneToMany(mappedBy = "seat")
     private List<FlightSeatEntity> flightSeats;
 
     public SeatEntity(){}
-    public SeatEntity(SeatType seatType, List<FlightSeatEntity> flightSeats) {
+    public SeatEntity(SeatType seatType, List<FlightSeatEntity> flightSeats, int seatNumber) {
         this.seatType = seatType;
         this.flightSeats = flightSeats;
+        this.seatNumber = seatNumber;
     }
 }
