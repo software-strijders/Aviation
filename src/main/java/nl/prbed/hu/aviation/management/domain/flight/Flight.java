@@ -8,6 +8,7 @@ import nl.prbed.hu.aviation.management.domain.aircraft.Aircraft;
 import nl.prbed.hu.aviation.management.domain.booking.Booking;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,9 @@ public class Flight {
     }
 
     private List<Seat> getAvailableSeats() {
+        if (this.seats == null)
+            return new ArrayList<>();
+
         return this.seats.stream().filter(Seat::doesNotHavePassenger)
                 .collect(Collectors.toList());
     }
