@@ -1,0 +1,361 @@
+{
+	"id": "9d442584-bf99-4db1-bd25-feb2ed52731d",
+	"name": "Luchtvaart systeem Test Suite",
+	"timestamp": "2020-11-05T20:52:08.404Z",
+	"collection_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+	"folder_id": 0,
+	"environment_id": "8c324227-78db-41e1-90ca-0d7c3f57b5f1",
+	"totalPass": 29,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "a8d52d26-f30a-42ca-9360-0191fc72cafd",
+			"name": "Health",
+			"url": "http://localhost:8080/api/actuator/health",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "da561412-de04-4538-806e-5046530a8b9d",
+			"name": "Info",
+			"url": "http://localhost:8080/api/actuator/info",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ddc867b4-1e61-4adf-9827-04db80a7ec55",
+			"name": "Login Customer",
+			"url": "http://localhost:8080/api/login",
+			"time": 78,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				78
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "630e1ad7-ccc6-4b25-b270-3729fb097f10",
+			"name": "Create booking",
+			"url": "http://localhost:8080/api/booking",
+			"time": 57,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should not give error": true,
+				"Response should be of type object": true,
+				"Price property should exist": true,
+				"Price should be correct": true,
+				"FlightCode property should exist": true,
+				"FlightCode should be correct": true,
+				"Aircraft property should exist": true,
+				"Flightplan property should exist": true,
+				"Flightplan property should be of type object": true,
+				"Passengers property should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode should be correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should not give error": true,
+					"Response should be of type object": true,
+					"Price property should exist": true,
+					"Price should be correct": true,
+					"FlightCode property should exist": true,
+					"FlightCode should be correct": true,
+					"Aircraft property should exist": true,
+					"Flightplan property should exist": true,
+					"Flightplan property should be of type object": true,
+					"Passengers property should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "b0a816a1-9f85-42d3-b263-c3e727ec15d6",
+			"name": "Update booking",
+			"url": "http://localhost:8080/api/booking/62720",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should be of type object": true,
+				"FlightCode property should exist": true,
+				"Aircraft property should exist": true,
+				"Flightplan property should exist": true,
+				"Passengers property should exist": true,
+				"HATEOAS should be present": true,
+				"_links should be of type object": true,
+				"Self should be present": true,
+				"Find should be of type array": true,
+				"Findall should be of type array": true,
+				"Delete should be of type array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"HATEOAS should be present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"_links should be of type object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Self should be present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Find should be of type array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Findall should be of type array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Delete should be of type array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should be of type object": true,
+					"FlightCode property should exist": true,
+					"Aircraft property should exist": true,
+					"Flightplan property should exist": true,
+					"Passengers property should exist": true,
+					"HATEOAS should be present": true,
+					"_links should be of type object": true,
+					"Self should be present": true,
+					"Find should be of type array": true,
+					"Findall should be of type array": true,
+					"Delete should be of type array": true
+				}
+			]
+		},
+		{
+			"id": "cf205634-97c7-4884-8b8f-9e92ea0e31f8",
+			"name": "Cancel Booking",
+			"url": "http://localhost:8080/api/booking/cancel",
+			"time": 37,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				37
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "505c4066-4afc-4775-95ec-388ff904661e",
+			"name": "Logout",
+			"url": "http://localhost:8080/api/login",
+			"time": 82,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				82
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should not give error": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 334,
+	"collection": {
+		"requests": [
+			{
+				"id": "a8d52d26-f30a-42ca-9360-0191fc72cafd",
+				"method": "GET"
+			},
+			{
+				"id": "da561412-de04-4538-806e-5046530a8b9d",
+				"method": "GET"
+			},
+			{
+				"id": "ddc867b4-1e61-4adf-9827-04db80a7ec55",
+				"method": "POST"
+			},
+			{
+				"id": "630e1ad7-ccc6-4b25-b270-3729fb097f10",
+				"method": "POST"
+			},
+			{
+				"id": "b0a816a1-9f85-42d3-b263-c3e727ec15d6",
+				"method": "PATCH"
+			},
+			{
+				"id": "cf205634-97c7-4884-8b8f-9e92ea0e31f8",
+				"method": "DELETE"
+			},
+			{
+				"id": "505c4066-4afc-4775-95ec-388ff904661e",
+				"method": "POST"
+			}
+		]
+	}
+}
