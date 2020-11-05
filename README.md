@@ -15,7 +15,9 @@ This project mimicks an entire airline system which is capable of the following:
 
 This project is an assignment for the course `prbed` in the field of study Software Development on the Hogeschool Utrecht. This will be made over the course of 4~ weeks in three different iterations.
 
-The current release can be found [here](https://prbed-aviation-project.herokuapp.com/api)
+The current release can be found on [Heroku](https://prbed-aviation-project.herokuapp.com/api)
+or on our own website:
+[aviation.software-strijders.nl](http://aviation.software-strijders.nl/api)
 
 ## Table of contents
 
@@ -50,6 +52,8 @@ For this project, we use the following dependencies (the most important ones):
 - [Spring Boot](https://spring.io/projects/spring-boot "Spring Boot")
 - [Spring HATEOAS](https://spring.io/projects/spring-hateoas "Spring HATEOAS")
 - [Spring Security](https://spring.io/projects/spring-security "Spring Security")
+- [Spring Mail](https://docs.spring.io/spring-integration/reference/html/mail.html "Spring Mail")
+- [Prometheus](https://prometheus.io/ "Prometheus")
 - [JSON Web Tokens](https://jwt.io/ "Auth0 JWT")
 - [Swagger UI](https://swagger.io/tools/swagger-ui/ "Swagger UI")
 - [Lombok](https://projectlombok.org/ "Project Lombok")
