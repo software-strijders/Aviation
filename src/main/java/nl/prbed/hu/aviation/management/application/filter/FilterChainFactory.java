@@ -12,7 +12,7 @@ public class FilterChainFactory {
         var filterChain = new FilterChain(flights, searchDetails);
 
         if (searchDetails.containsKey("passengers") && searchDetails.containsKey("flightClass"))
-            filterChain.addFilter(new AvailableSeatsFiler());
+            filterChain.addFilter(new AvailableSeatsFilter());
         if (searchDetails.containsKey("from"))
             filterChain.addFilter(new DepartureFilter());
         if (searchDetails.containsKey("to"))

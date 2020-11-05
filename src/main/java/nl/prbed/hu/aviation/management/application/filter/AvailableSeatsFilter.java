@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
-public class AvailableSeatsFiler implements Filter {
+public class AvailableSeatsFilter implements Filter {
     @Override
     public List<Flight> filter(List<Flight> flights, Map<String, String> searchDetails) {
         return flights.stream()
