@@ -1,0 +1,616 @@
+{
+	"id": "b639d9b5-8adc-4af9-ab1b-b4a58f0dbd33",
+	"name": "Luchtvaart systeem Test Suite",
+	"timestamp": "2020-11-05T16:52:33.631Z",
+	"collection_id": "7a26f46c-d06b-496f-ad50-e70b582a842a",
+	"folder_id": 0,
+	"environment_id": "8c324227-78db-41e1-90ca-0d7c3f57b5f1",
+	"totalPass": 56,
+	"totalFail": 2,
+	"results": [
+		{
+			"id": "ddc867b4-1e61-4adf-9827-04db80a7ec55",
+			"name": "Login Customer",
+			"url": "http://localhost:8080/api/login",
+			"time": 95,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				95
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "9353398d-5eeb-477f-ad29-2baca5fb7dd1",
+			"name": "Find all available flights unhappy",
+			"url": "http://localhost:8080/api/flight/customer?flightClass=ECONOMY&passengers=2&date=06-2020-20",
+			"time": 1885,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad request"
+			},
+			"tests": {
+				"Response code should be 400": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"id property should not exist": true,
+				"code property should not exist": true,
+				"priceEconomy property should not exist": true,
+				"priceFirst property should not exist": true,
+				"availableSeats property should not exist": true,
+				"departureDateTime property should not exist": true,
+				"aircraftCode property should not exist": true,
+				"flightplanCode property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 0,
+					"fail": 1
+				},
+				"id property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"priceEconomy property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"priceFirst property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"availableSeats property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"departureDateTime property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"aircraftCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"flightplanCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1885
+			],
+			"allTests": [
+				{
+					"Response code should be 400": false,
+					"Response should give error": true,
+					"Response should give Not Found": false,
+					"id property should not exist": true,
+					"code property should not exist": true,
+					"priceEconomy property should not exist": true,
+					"priceFirst property should not exist": true,
+					"availableSeats property should not exist": true,
+					"departureDateTime property should not exist": true,
+					"aircraftCode property should not exist": true,
+					"flightplanCode property should not exist": true
+				}
+			]
+		},
+		{
+			"id": "93195066-5e26-4ff8-86db-67ad05a9da45",
+			"name": "Create booking unhappy",
+			"url": "http://localhost:8080/api/booking",
+			"time": 24,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response code should be 404": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"Price property should not exist": true,
+				"FlightCode property should not exist": true,
+				"Aircraft property should not exist": true,
+				"Flightplan property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Response code should be 404": true,
+					"Response should give error": true,
+					"Response should give Not Found": true,
+					"Price property should not exist": true,
+					"FlightCode property should not exist": true,
+					"Aircraft property should not exist": true,
+					"Flightplan property should not exist": true
+				}
+			]
+		},
+		{
+			"id": "1bdee8be-0bcc-447d-89c1-12974efd055f",
+			"name": "Update booking unhappy",
+			"url": "http://localhost:8080/api/booking/61711",
+			"time": 20,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status code is 405": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"confirmed property should not exist": true,
+				"FlightCode property should not exist": true,
+				"Passengers property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 405": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirmed property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 405": true,
+					"Response should give error": true,
+					"Response should give Not Found": true,
+					"confirmed property should not exist": true,
+					"FlightCode property should not exist": true,
+					"Passengers property should not exist": true
+				}
+			]
+		},
+		{
+			"id": "76282308-531d-4a52-a452-4f2d0bcca865",
+			"name": "Cancel Booking Unhappy",
+			"url": "http://localhost:8080/api/booking/cancel",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Response should give error": true,
+				"Response should give Not Found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Response should give error": true,
+					"Response should give Not Found": true
+				}
+			]
+		},
+		{
+			"id": "db36c2cf-24db-490b-9ac5-11c14f4fd9e3",
+			"name": "Confirm Booking unhappy",
+			"url": "http://localhost:8080/api/booking/confirm",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"confirmed property should not exist": true,
+				"FlightCode property should not exist": true,
+				"Passengers property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirmed property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Response should give error": true,
+					"Response should give Not Found": true,
+					"confirmed property should not exist": true,
+					"FlightCode property should not exist": true,
+					"Passengers property should not exist": true
+				}
+			]
+		},
+		{
+			"id": "505c4066-4afc-4775-95ec-388ff904661e",
+			"name": "Logout",
+			"url": "http://localhost:8080/api/login",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response code should be 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				85
+			],
+			"allTests": [
+				{
+					"Response code should be 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+			"name": "Login",
+			"url": "http://localhost:8080/api/login",
+			"time": 84,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response should not give error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should not give error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				84
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response should not give error": true
+				}
+			]
+		},
+		{
+			"id": "d49b4c27-974e-4189-90db-1c23a9ea0770",
+			"name": "Find flight by code unhappy",
+			"url": "http://localhost:8080/api/flight/NonExistantFlight",
+			"time": 10,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response code should be 404": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"id property should not exist": true,
+				"code property should not exist": true,
+				"priceEconomy property should not exist": true,
+				"priceFirst property should not exist": true,
+				"availableSeats property should not exist": true,
+				"departureDateTime property should not exist": true,
+				"aircraftCode property should not exist": true,
+				"flightplanCode property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"priceEconomy property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"priceFirst property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"availableSeats property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"departureDateTime property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"aircraftCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"flightplanCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code should be 404": true,
+					"Response should give error": true,
+					"Response should give Not Found": true,
+					"id property should not exist": true,
+					"code property should not exist": true,
+					"priceEconomy property should not exist": true,
+					"priceFirst property should not exist": true,
+					"availableSeats property should not exist": true,
+					"departureDateTime property should not exist": true,
+					"aircraftCode property should not exist": true,
+					"flightplanCode property should not exist": true
+				}
+			]
+		},
+		{
+			"id": "789fda7b-0ed2-41ba-801e-40e22f66bb1c",
+			"name": "Find by customer unhappy",
+			"url": "http://localhost:8080/api/booking/39999",
+			"time": 10,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response code should be 404": true,
+				"Response should give error": true,
+				"Response should give Not Found": true,
+				"Price property should not exist": true,
+				"FlightCode property should not exist": true,
+				"Aircraft property should not exist": true,
+				"Flightplan property should not exist": true,
+				"Passengers property should not exist": true
+			},
+			"testPassFailCounts": {
+				"Response code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response should give Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Price property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"FlightCode property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aircraft property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Flightplan property should not exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Passengers property should not exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Response code should be 404": true,
+					"Response should give error": true,
+					"Response should give Not Found": true,
+					"Price property should not exist": true,
+					"FlightCode property should not exist": true,
+					"Aircraft property should not exist": true,
+					"Flightplan property should not exist": true,
+					"Passengers property should not exist": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2237,
+	"collection": {
+		"requests": [
+			{
+				"id": "ddc867b4-1e61-4adf-9827-04db80a7ec55",
+				"method": "POST"
+			},
+			{
+				"id": "9353398d-5eeb-477f-ad29-2baca5fb7dd1",
+				"method": "GET"
+			},
+			{
+				"id": "93195066-5e26-4ff8-86db-67ad05a9da45",
+				"method": "POST"
+			},
+			{
+				"id": "1bdee8be-0bcc-447d-89c1-12974efd055f",
+				"method": "PATCH"
+			},
+			{
+				"id": "76282308-531d-4a52-a452-4f2d0bcca865",
+				"method": "DELETE"
+			},
+			{
+				"id": "db36c2cf-24db-490b-9ac5-11c14f4fd9e3",
+				"method": "PATCH"
+			},
+			{
+				"id": "505c4066-4afc-4775-95ec-388ff904661e",
+				"method": "POST"
+			},
+			{
+				"id": "b029c623-d39e-4abe-892f-5ee2933910e6",
+				"method": "POST"
+			},
+			{
+				"id": "d49b4c27-974e-4189-90db-1c23a9ea0770",
+				"method": "GET"
+			},
+			{
+				"id": "789fda7b-0ed2-41ba-801e-40e22f66bb1c",
+				"method": "GET"
+			}
+		]
+	}
+}
