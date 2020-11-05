@@ -1,7 +1,11 @@
 package nl.prbed.hu.aviation.management.application.filter;
 
+import ch.qos.logback.classic.boolex.GEventEvaluator;
 import nl.prbed.hu.aviation.management.application.exception.SearchFlightDetailsException;
+import nl.prbed.hu.aviation.management.domain.aircraft.SeatType;
 import nl.prbed.hu.aviation.management.domain.flight.Flight;
+import org.apache.commons.collections.EnumerationUtils;
+import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.validator.GenericValidator;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +21,8 @@ public class FilterChainFactory {
         if (searchDetails.containsKey("passengers") && searchDetails.containsKey("flightClass")) {
             if (!GenericValidator.isInt(searchDetails.get("passengers")))
                 this.detailsNotCorrect(searchDetails.get("passengers"));
+            if(!EnumUtils.isValidEnum(SeatType.class, searchDetails.get("flightClass")))
+                this.detailsNotCorrect(searchDetails.get("flightClass"));
             filterChain.addFilter(new AvailableSeatsFilter());
         }
         if (searchDetails.containsKey("from")) {
