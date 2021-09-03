@@ -15,7 +15,7 @@
     <description>Flight managment software for a project (Hogeschool Utrecht)</description>
 
     <properties>
-        <java.version>16.0.2</java.version>
+        <java.version>16</java.version>
     </properties>
 
     <dependencies>
@@ -191,8 +191,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.16</source>
-                    <target>1.16</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
