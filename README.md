@@ -1,4 +1,4 @@
-# Avation project - Hogeschool Utrecht
+# Aviation project - Hogeschool Utrecht
 
 ![Logo](logo/2x/witLogo-1@2x.png)
 
